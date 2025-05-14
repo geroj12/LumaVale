@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f425f72b94056474a8d4c1295363da30
+timeCreated: 1579815235
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Wep_Pickaxe_01_Convex 1.asset
+  uploadId: 714565

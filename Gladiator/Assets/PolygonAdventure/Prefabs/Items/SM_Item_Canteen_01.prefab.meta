@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7f2d17faeec5e784e83bf7070475e4c5
+timeCreated: 1484281211
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Prefabs/Items/SM_Item_Canteen_01.prefab
+  uploadId: 714565

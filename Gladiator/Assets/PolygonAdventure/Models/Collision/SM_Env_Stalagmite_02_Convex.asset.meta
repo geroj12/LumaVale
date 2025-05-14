@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ee1bd5accce2b4b4ca3838e473408502
+timeCreated: 1579813261
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Env_Stalagmite_02_Convex.asset
+  uploadId: 714565

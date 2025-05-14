@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: ea3e4b6639241f44ea8fe06835de5ba5
+timeCreated: 1579823513
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Env_Tree_014_Snow_Convex
+    4.asset
+  uploadId: 714565

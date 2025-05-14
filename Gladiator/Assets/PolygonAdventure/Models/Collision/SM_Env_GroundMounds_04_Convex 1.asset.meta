@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 64818d92842aed447998fc39928b5962
+timeCreated: 1579819112
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Env_GroundMounds_04_Convex
+    1.asset
+  uploadId: 714565

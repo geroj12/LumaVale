@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ac2a4cf6f8ce1284980a5c73a4f8e3bc
+timeCreated: 1579813564
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Env_Reeds_02_Convex.asset
+  uploadId: 714565

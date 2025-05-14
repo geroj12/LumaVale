@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cf6871bb3104ec44c9b52e64356323d6
+timeCreated: 1484281212
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Prefabs/Props/SM_Prop_RoadSign_01.prefab
+  uploadId: 714565

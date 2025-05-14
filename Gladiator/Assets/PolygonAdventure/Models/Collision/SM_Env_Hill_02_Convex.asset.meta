@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7e9d0ac09ee017340a0bbcba0a397d56
+timeCreated: 1579815427
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Env_Hill_02_Convex.asset
+  uploadId: 714565

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fb4e0b01a8eccf24c9e5ca4c30a9b2be
+timeCreated: 1485659093
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Prefabs/Environments/SM_Env_Water.prefab
+  uploadId: 714565

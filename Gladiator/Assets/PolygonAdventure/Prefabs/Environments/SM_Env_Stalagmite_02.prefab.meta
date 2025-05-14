@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: db96700501799fd448a90dae5ab5a837
+timeCreated: 1484281217
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Prefabs/Environments/SM_Env_Stalagmite_02.prefab
+  uploadId: 714565

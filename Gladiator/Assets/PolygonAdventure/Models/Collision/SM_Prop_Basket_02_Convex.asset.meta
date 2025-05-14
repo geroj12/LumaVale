@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a87f7733e90e37f4991952fd0d7333b0
+timeCreated: 1579814905
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Prop_Basket_02_Convex.asset
+  uploadId: 714565

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ee03f0b315877454f81af30c996c0655
+timeCreated: 1579814961
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Prop_Meat_02_Convex 2.asset
+  uploadId: 714565

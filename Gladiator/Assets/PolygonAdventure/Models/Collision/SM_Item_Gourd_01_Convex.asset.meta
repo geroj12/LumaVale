@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 09161815f0154904bbf453f7f01659b9
+timeCreated: 1579814412
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Item_Gourd_01_Convex.asset
+  uploadId: 714565

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d76c4f3e6cf0e494b92f19db9ec030c7
+timeCreated: 1579812927
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Env_CampFire_01_Convex.asset
+  uploadId: 714565

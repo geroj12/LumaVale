@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b3b7d6cd6455cc54686f9ee06a3ca8d6
+timeCreated: 1579814628
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Prop_Chest_01_Convex.asset
+  uploadId: 714565

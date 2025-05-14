@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: de9d41edc8d4b4e4bad59c61ceaaf764
+timeCreated: 1579813405
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Env_TreeDead_01_Convex 3.asset
+  uploadId: 714565

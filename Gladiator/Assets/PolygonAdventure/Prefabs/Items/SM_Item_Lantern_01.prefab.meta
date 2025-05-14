@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f4c62b1a746281e44800c9250dd3643c
+timeCreated: 1484281214
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Prefabs/Items/SM_Item_Lantern_01.prefab
+  uploadId: 714565

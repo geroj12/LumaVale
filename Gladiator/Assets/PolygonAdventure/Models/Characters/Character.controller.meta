@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 045d516655f5d414dbbb4765caab1b6a
+timeCreated: 1484100931
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Characters/Character.controller
+  uploadId: 714565

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c4f98dd60fed851419a178fe896ff76f
+timeCreated: 1579755646
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Bld_Village_07_Convex.asset
+  uploadId: 714565

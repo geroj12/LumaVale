@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4fd72ede44298284b89704ad0b9dedad
+timeCreated: 1484187947
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Prefabs/Characters/Character_Warrior_White.prefab
+  uploadId: 714565

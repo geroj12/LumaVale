@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: b947b48f946cc7e4782084605366dd00
+timeCreated: 1579823262
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Env_TreeBirch_03_Convex
+    2.asset
+  uploadId: 714565

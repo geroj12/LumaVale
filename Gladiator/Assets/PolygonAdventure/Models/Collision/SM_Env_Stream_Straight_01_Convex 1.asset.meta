@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: e4d1cd38fb19eeb4b8ff9dc62f516d3b
+timeCreated: 1579819571
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Env_Stream_Straight_01_Convex
+    1.asset
+  uploadId: 714565

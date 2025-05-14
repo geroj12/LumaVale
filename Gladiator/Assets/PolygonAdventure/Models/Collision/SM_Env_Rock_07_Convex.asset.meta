@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d76eda2ffa5572a41b8d2668161fd9dd
+timeCreated: 1579812923
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Env_Rock_07_Convex.asset
+  uploadId: 714565

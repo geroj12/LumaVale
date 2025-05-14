@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5ca9102b31bf70f498ce31a2b1d27cb8
+timeCreated: 1579815519
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80585
+  packageName: Adventure Pack - Synty POLYGON - Stylized low poly art
+  packageVersion: 1.7.2
+  assetPath: Assets/PolygonAdventure/Models/Collision/SM_Env_SnowPile_02_Convex 6.asset
+  uploadId: 714565
