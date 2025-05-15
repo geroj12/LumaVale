@@ -55,7 +55,6 @@ public class Combat : MonoBehaviour
             else if (state.mouseOnRightSide)
                 anim.SetBool("attackRight", true);
             StartCoroutine(ResetAttackBools());
-            directionHandler.DeactivateAttackDirectionImages();
         }
 
 

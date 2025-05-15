@@ -1,10 +1,19 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombatDirectionHandler : MonoBehaviour
 {
-    [Header("UI Images")]
-    [SerializeField] private GameObject rightImg, leftImg, blockImg;
+    [Header("Swipe Visuals")]
+    [SerializeField] private RectTransform swipeVisual;
+    [SerializeField] private Image swipeVisualImage;
+    [SerializeField] private RectTransform swipeArrow;
+    [SerializeField] private Canvas canvas;
 
+    [SerializeField] private Gradient swipeColorByStrength;
+    public float minSwipeDistance = 50f;
+
+    private Vector2 swipeStartPos;
+    private bool isSwiping = false;
 
     [Header("References")]
     [SerializeField] private State playerState;
@@ -14,15 +23,14 @@ public class CombatDirectionHandler : MonoBehaviour
     [Range(0.1f, 1f)] public float blockDelay = 0.5f;
 
     private float blockTimer = 0f;
-    private Vector2 smoothedMouseDelta;
-    public float minSwipeDistance = 50f;
-    private Vector2 swipeStartPos;
-    private bool isSwiping = false;
+
     void Update()
     {
+        HandleSwipeVisual();
+        //HandleBlocking();
 
-        HandleBlocking();
     }
+
 
     public void StartSwipe(Vector2 startPosition)
     {
@@ -32,7 +40,7 @@ public class CombatDirectionHandler : MonoBehaviour
 
     public void EndSwipe(Vector2 endPosition)
     {
-        if (!isSwiping || !playerState.Strafe || playerState.blocking)
+        if (!playerState.Strafe || playerState.blocking)
         {
             ResetMouseStates();
             return;
@@ -44,7 +52,6 @@ public class CombatDirectionHandler : MonoBehaviour
         if (swipeDelta.magnitude < minSwipeDistance)
         {
             ResetMouseStates();
-            DeactivateAttackDirectionImages();
             return;
         }
 
@@ -53,17 +60,55 @@ public class CombatDirectionHandler : MonoBehaviour
 
         if (angle < -90f + directionToleranceAngle && angle > -90f - directionToleranceAngle)
         {
-            ActivateUI(leftImg);
             playerState.mouseOnLeftSide = true;
         }
         else if (angle > 90f - directionToleranceAngle && angle < 90f + directionToleranceAngle)
         {
-            ActivateUI(rightImg);
             playerState.mouseOnRightSide = true;
         }
-        else
+
+    }
+
+    private void HandleSwipeVisual()
+    {
+        if (!playerState.Strafe || playerState.blocking) return;
+
+        if (Input.GetMouseButtonDown(0))
         {
-            DeactivateAttackDirectionImages();
+            isSwiping = true;
+            swipeStartPos = Input.mousePosition;
+
+            swipeVisual.gameObject.SetActive(true);
+            swipeArrow.gameObject.SetActive(true);
+
+            swipeVisual.position = swipeStartPos;
+            swipeArrow.position = swipeStartPos;
+        }
+
+        if (Input.GetMouseButton(0) && isSwiping)
+        {
+            Vector2 currentPos = Input.mousePosition;
+            Vector2 delta = currentPos - swipeStartPos;
+            float distance = delta.magnitude;
+
+            // Scale visual based on distance
+            swipeVisual.sizeDelta = new Vector2(distance, 12f);
+            swipeVisual.position = swipeStartPos;
+            swipeVisual.rotation = Quaternion.FromToRotation(Vector2.right, delta.normalized);
+
+            // Move arrow to the end
+            swipeArrow.position = swipeStartPos + delta.normalized * distance;
+
+            // Color by strength
+            float t = Mathf.InverseLerp(0f, 200f, distance);
+            swipeVisualImage.color = swipeColorByStrength.Evaluate(t);
+        }
+
+        if (Input.GetMouseButtonUp(0) && isSwiping)
+        {
+            isSwiping = false;
+            swipeVisual.gameObject.SetActive(false);
+            swipeArrow.gameObject.SetActive(false);
         }
     }
 
@@ -89,20 +134,6 @@ public class CombatDirectionHandler : MonoBehaviour
         }
     }
 
-    private void ActivateUI(GameObject uiElement)
-    {
-        rightImg.SetActive(uiElement == rightImg);
-        leftImg.SetActive(uiElement == leftImg);
-
-    }
-
-    public void DeactivateAttackDirectionImages()
-    {
-        rightImg.SetActive(false);
-        leftImg.SetActive(false);
-
-        ResetMouseStates();
-    }
 
     private void ResetMouseStates()
     {
@@ -116,9 +147,7 @@ public class CombatDirectionHandler : MonoBehaviour
         //playerState.anim.SetBool("Block", true);
         //playerState.hurtBoxPlayer.GetComponent<BoxCollider>().enabled = false;
         playerState.blocking = true;
-        blockImg.SetActive(true);
         //playerState.BlockCollider.GetComponent<BoxCollider>().enabled = true;
-        DeactivateAttackDirectionImages();
     }
 
     private void DeactivateBlock()
@@ -126,7 +155,6 @@ public class CombatDirectionHandler : MonoBehaviour
         //playerState.anim.SetBool("Block", false);
         //playerState.hurtBoxPlayer.GetComponent<BoxCollider>().enabled = true;
         playerState.blocking = false;
-        blockImg.SetActive(false);
         //playerState.BlockCollider.GetComponent<BoxCollider>().enabled = false;
     }
 }
