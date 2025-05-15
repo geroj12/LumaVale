@@ -6,6 +6,8 @@ public class State : MonoBehaviour
     public bool blockedAttack;
     public bool equipped = false;
     public bool blocking = false;
+    public bool isAttacking = false;
+
 
     public bool mouseOnLeftSide = false;
     public bool mouseOnRightSide = false;

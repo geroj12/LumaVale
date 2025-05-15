@@ -20,14 +20,10 @@ public class CombatDirectionHandler : MonoBehaviour
 
     [Header("Settings")]
     [Range(5f, 45f)] public float directionToleranceAngle = 30f;
-    [Range(0.1f, 1f)] public float blockDelay = 0.5f;
-
-    private float blockTimer = 0f;
 
     void Update()
     {
         HandleSwipeVisual();
-        //HandleBlocking();
 
     }
 
@@ -112,28 +108,6 @@ public class CombatDirectionHandler : MonoBehaviour
         }
     }
 
-    private void HandleBlocking()
-    {
-        if (!playerState.equipped) return;
-
-        bool isHoldingBlock = Input.GetAxis("Fire2") > 0.1f;
-
-        if (isHoldingBlock)
-        {
-            blockTimer += Time.deltaTime;
-            if (blockTimer > blockDelay)
-            {
-                ActivateBlock();
-                blockTimer = 0;
-            }
-        }
-        else
-        {
-            DeactivateBlock();
-            blockTimer = 0;
-        }
-    }
-
 
     private void ResetMouseStates()
     {
@@ -142,19 +116,5 @@ public class CombatDirectionHandler : MonoBehaviour
 
     }
 
-    private void ActivateBlock()
-    {
-        //playerState.anim.SetBool("Block", true);
-        //playerState.hurtBoxPlayer.GetComponent<BoxCollider>().enabled = false;
-        playerState.blocking = true;
-        //playerState.BlockCollider.GetComponent<BoxCollider>().enabled = true;
-    }
 
-    private void DeactivateBlock()
-    {
-        //playerState.anim.SetBool("Block", false);
-        //playerState.hurtBoxPlayer.GetComponent<BoxCollider>().enabled = true;
-        playerState.blocking = false;
-        //playerState.BlockCollider.GetComponent<BoxCollider>().enabled = false;
-    }
 }

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class WeaponHolster : MonoBehaviour
 {
+    public enum WeaponState { Idle, Equipping, Equipped, Unequipping }
+    public WeaponState currentWeaponState = WeaponState.Idle;
     [SerializeField] private GameObject sword;
     State state;
     private Animator anim;
@@ -13,6 +15,8 @@ public class WeaponHolster : MonoBehaviour
 
     public Vector3 handPositionOffset;
     public Vector3 handRotationOffset;
+
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -21,47 +25,58 @@ public class WeaponHolster : MonoBehaviour
     }
     void LateUpdate()
     {
-        EquipANDUnequip();
+        HandleEquipInput();
     }
-    void EquipANDUnequip()
+    void HandleEquipInput()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !state.equipped)
+        if (currentWeaponState != WeaponState.Idle && currentWeaponState != WeaponState.Equipped)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Q) && currentWeaponState == WeaponState.Idle)
         {
-            anim.SetBool("Equip", true);
-            state.equipped = true;
-            StartCoroutine(EquipTimer());
+            StartCoroutine(EquipRoutine());
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && state.equipped)
+        else if (Input.GetKeyDown(KeyCode.Q) && currentWeaponState == WeaponState.Equipped)
         {
-            anim.SetBool("Unequip", true);
-            StartCoroutine(UnequipTimer());
+            StartCoroutine(UnequipRoutine());
         }
     }
 
+    //Über Animation Events aufgerufen
     public void AttachSwordToHand()
     {
         sword.transform.SetParent(rightHandTransform);
         sword.transform.localPosition = handPositionOffset;
         sword.transform.localRotation = Quaternion.Euler(handRotationOffset);
     }
-
+    //Über Animation Events aufgerufen
     public void AttachSwordToHolster()
     {
         sword.transform.SetParent(holsterTransform);
         sword.transform.localPosition = Vector3.zero;
         sword.transform.localRotation = Quaternion.identity;
     }
-    IEnumerator EquipTimer()
+    IEnumerator EquipRoutine()
     {
-        yield return new WaitForSeconds(1f);
+        currentWeaponState = WeaponState.Equipping;
+        anim.SetBool("Equip", true);
+
+        yield return new WaitForSeconds(1f); // warte auf Equip-Animation
         anim.SetBool("Equip", false);
+
         state.equipped = true;
+        currentWeaponState = WeaponState.Equipped;
     }
 
-    IEnumerator UnequipTimer()
+    IEnumerator UnequipRoutine()
     {
-        yield return new WaitForSeconds(1f);
+        currentWeaponState = WeaponState.Unequipping;
+        anim.SetBool("Unequip", true);
+
+        yield return new WaitForSeconds(1f); // warte auf Unequip-Animation
         anim.SetBool("Unequip", false);
+
         state.equipped = false;
+        currentWeaponState = WeaponState.Idle;
     }
 }
