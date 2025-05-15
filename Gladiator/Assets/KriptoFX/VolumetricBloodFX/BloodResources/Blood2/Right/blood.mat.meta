@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ad02d209989cecb448b4ab106503ec44
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/BloodResources/Blood2/Right/blood.mat
+  uploadId: 697396

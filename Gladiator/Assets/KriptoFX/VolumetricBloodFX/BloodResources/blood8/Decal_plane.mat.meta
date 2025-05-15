@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3a9d9cd2f5773764e97045d25b158679
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/BloodResources/blood8/Decal_plane.mat
+  uploadId: 697396

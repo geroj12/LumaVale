@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ece88c1f58dc84b4da85e14370eb3148
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/Scripts/BFX_DecalSettings.cs
+  uploadId: 697396

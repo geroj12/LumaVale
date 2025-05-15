@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 705c4567e6d8d21498d1a2b6ac8520e0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/BloodResources/Blood2/Left/Decal.mat
+  uploadId: 697396

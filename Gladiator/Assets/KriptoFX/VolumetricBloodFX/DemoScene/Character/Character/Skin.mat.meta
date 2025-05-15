@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 869ba61e99e58db43ba4237de4951488
+timeCreated: 1471569168
+licenseType: Free
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/DemoScene/Character/Character/Skin.mat
+  uploadId: 697396

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 60ce3569233156b459a3901c2a8f444a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/DemoScene/Character/Chal_Rig2 (1).controller
+  uploadId: 697396

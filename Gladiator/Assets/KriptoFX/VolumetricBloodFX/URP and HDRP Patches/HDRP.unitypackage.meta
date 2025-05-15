@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4d38bd9e4ebc6b449ba9fe98c4f1e34c
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/URP and HDRP Patches/HDRP.unitypackage
+  uploadId: 697396

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 5cdfcd8a5761aad45b83bac6c6cf290e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/Scripts/BFX_MouseOrbit.cs
+  uploadId: 697396

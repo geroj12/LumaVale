@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c3ed06559a66b724b91c3124e75ddec9
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/Prefabs/Blood11.prefab
+  uploadId: 697396

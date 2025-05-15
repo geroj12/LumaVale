@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2ed07586cd9fdb849afe4ea5a4e2a8a1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/BloodResources/blood4/decal.mat
+  uploadId: 697396

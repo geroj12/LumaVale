@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 45eef0a861a8a8946b4c23fb9f4f779a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/Prefabs/AttachedBloodDecal.prefab
+  uploadId: 697396

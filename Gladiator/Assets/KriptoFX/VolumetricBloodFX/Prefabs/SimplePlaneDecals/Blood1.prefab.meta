@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5b81b9f1fd600654991c314e95e9e692
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/Prefabs/SimplePlaneDecals/Blood1.prefab
+  uploadId: 697396

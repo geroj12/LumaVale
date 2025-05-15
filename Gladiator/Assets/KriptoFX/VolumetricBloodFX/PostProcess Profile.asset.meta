@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 59d5328e27fb25c47a4dbeab6be42ffb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/PostProcess Profile.asset
+  uploadId: 697396

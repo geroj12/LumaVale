@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bd420104d99485e45b901bffcc31e6dd
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/Shaders/BFX_Decal.shader
+  uploadId: 697396

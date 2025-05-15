@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0d8a22aca809c1749b4e1b76c9b5e9bc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 173863
+  packageName: Volumetric Blood Fluids
+  packageVersion: 1.0.2
+  assetPath: Assets/KriptoFX/VolumetricBloodFX/DemoScene/BFX_DemoTest.cs
+  uploadId: 697396
