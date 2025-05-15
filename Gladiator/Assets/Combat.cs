@@ -18,10 +18,7 @@ public class Combat : MonoBehaviour
     {
         HandleAttack();
     }
-    void FixedUpdate()
-    {
-        directionHandler.HandleAttackDirectionUI();
-    }
+    
     public void HandleAttack()
     {
         if (state.blocking)
@@ -30,7 +27,6 @@ public class Combat : MonoBehaviour
         }
 
         if (isAttacking) return;
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             state.attackThrust = true;
@@ -44,16 +40,25 @@ public class Combat : MonoBehaviour
             anim.SetBool("attackUp", true);
             StartCoroutine(ResetAttackBools());
         }
-
+        
+        if (Input.GetMouseButtonDown(0))
+            directionHandler.StartSwipe(Input.mousePosition);
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (state.mouseOnRightSide) anim.SetBool("attackRight", true);
-            if (state.mouseOnLeftSide) anim.SetBool("attackLeft", true);
+            directionHandler.EndSwipe(Input.mousePosition);
 
+            // Dann in Combat.cs:
+            if (state.mouseOnLeftSide)
+                anim.SetBool("attackLeft", true);
+
+            else if (state.mouseOnRightSide)
+                anim.SetBool("attackRight", true);
             StartCoroutine(ResetAttackBools());
             directionHandler.DeactivateAttackDirectionImages();
         }
+
+
 
     }
     public void StartAttack()

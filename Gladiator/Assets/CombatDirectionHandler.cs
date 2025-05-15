@@ -15,49 +15,56 @@ public class CombatDirectionHandler : MonoBehaviour
 
     private float blockTimer = 0f;
     private Vector2 smoothedMouseDelta;
-
+    public float minSwipeDistance = 50f;
+    private Vector2 swipeStartPos;
+    private bool isSwiping = false;
     void Update()
     {
 
         HandleBlocking();
     }
 
-
-
-    public void HandleAttackDirectionUI()
+    public void StartSwipe(Vector2 startPosition)
     {
-        if (!playerState.Strafe || playerState.blocking || !Input.GetMouseButton(0))
+        swipeStartPos = startPosition;
+        isSwiping = true;
+    }
+
+    public void EndSwipe(Vector2 endPosition)
+    {
+        if (!isSwiping || !playerState.Strafe || playerState.blocking)
         {
+            ResetMouseStates();
+            return;
+        }
+
+        Vector2 swipeDelta = endPosition - swipeStartPos;
+        isSwiping = false;
+
+        if (swipeDelta.magnitude < minSwipeDistance)
+        {
+            ResetMouseStates();
             DeactivateAttackDirectionImages();
             return;
         }
 
-        Vector2 rawMouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        smoothedMouseDelta = Vector2.Lerp(smoothedMouseDelta, rawMouseDelta, Time.fixedDeltaTime * 10f);
-
-        if (smoothedMouseDelta.magnitude < 0.1f)
-        {
-            DeactivateAttackDirectionImages();
-
-            return;
-        }
-
-        float angle = Vector2.SignedAngle(Vector2.up, smoothedMouseDelta);
-
+        float angle = Vector2.SignedAngle(Vector2.up, swipeDelta.normalized);
         ResetMouseStates();
 
         if (angle < -90f + directionToleranceAngle && angle > -90f - directionToleranceAngle)
         {
             ActivateUI(leftImg);
             playerState.mouseOnLeftSide = true;
-
         }
         else if (angle > 90f - directionToleranceAngle && angle < 90f + directionToleranceAngle)
         {
             ActivateUI(rightImg);
             playerState.mouseOnRightSide = true;
         }
-        
+        else
+        {
+            DeactivateAttackDirectionImages();
+        }
     }
 
     private void HandleBlocking()
