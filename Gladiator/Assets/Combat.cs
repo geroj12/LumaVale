@@ -6,6 +6,7 @@ public class Combat : MonoBehaviour
     private Animator anim;
     private State state;
     [SerializeField] private CombatDirectionHandler directionHandler;
+    private bool isAttacking = false;
 
     void Start()
     {
@@ -28,18 +29,41 @@ public class Combat : MonoBehaviour
             state.ResetMouseDirections();
         }
 
+        if (isAttacking) return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            state.attackThrust = true;
+            anim.SetBool("attackThrust", true);
+            StartCoroutine(ResetAttackBools());
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            state.attackUp = true;
+            anim.SetBool("attackUp", true);
+            StartCoroutine(ResetAttackBools());
+        }
+
+
         if (Input.GetMouseButtonUp(0))
         {
             if (state.mouseOnRightSide) anim.SetBool("attackRight", true);
             if (state.mouseOnLeftSide) anim.SetBool("attackLeft", true);
-            if (state.mouseOnDownSide) anim.SetBool("attackThrust", true);
-            if (state.mouseOnTopSide) anim.SetBool("attackUp", true);
 
             StartCoroutine(ResetAttackBools());
             directionHandler.DeactivateAttackDirectionImages();
         }
-    }
 
+    }
+    public void StartAttack()
+    {
+        isAttacking = true;
+    }
+    public void EndAttack()
+    {
+        isAttacking = false;
+    }
     IEnumerator ResetAttackBools()
     {
         yield return new WaitForSeconds(1f);

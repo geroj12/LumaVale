@@ -9,15 +9,15 @@ public class State : MonoBehaviour
 
     public bool mouseOnLeftSide = false;
     public bool mouseOnRightSide = false;
-    public bool mouseOnTopSide = false;
-    public bool mouseOnDownSide = false;
+    public bool attackUp = false;
+    public bool attackThrust = false;
 
     public void ResetMouseDirections()
     {
         mouseOnLeftSide = false;
         mouseOnRightSide = false;
-        mouseOnTopSide = false;
-        mouseOnDownSide = false;
-    }
+        attackThrust = false;
+        attackUp = false;
 
+    }
 }

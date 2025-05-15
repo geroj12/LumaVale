@@ -3,7 +3,8 @@ using UnityEngine;
 public class CombatDirectionHandler : MonoBehaviour
 {
     [Header("UI Images")]
-    [SerializeField] private GameObject rightImg, leftImg, topImg, midImg, blockImg;
+    [SerializeField] private GameObject rightImg, leftImg, blockImg;
+
 
     [Header("References")]
     [SerializeField] private State playerState;
@@ -11,17 +12,17 @@ public class CombatDirectionHandler : MonoBehaviour
     [Header("Settings")]
     [Range(5f, 45f)] public float directionToleranceAngle = 30f;
     [Range(0.1f, 1f)] public float blockDelay = 0.5f;
-    
+
     private float blockTimer = 0f;
     private Vector2 smoothedMouseDelta;
 
     void Update()
     {
-       
+
         HandleBlocking();
     }
 
-   
+
 
     public void HandleAttackDirectionUI()
     {
@@ -37,6 +38,7 @@ public class CombatDirectionHandler : MonoBehaviour
         if (smoothedMouseDelta.magnitude < 0.1f)
         {
             DeactivateAttackDirectionImages();
+
             return;
         }
 
@@ -44,27 +46,18 @@ public class CombatDirectionHandler : MonoBehaviour
 
         ResetMouseStates();
 
-        // Determine direction
-        if (Mathf.Abs(angle) <= directionToleranceAngle)
-        {
-            ActivateUI(topImg);
-            playerState.mouseOnTopSide = true;
-        }
-        else if (Mathf.Abs(angle - 180f) <= directionToleranceAngle || Mathf.Abs(angle + 180f) <= directionToleranceAngle)
-        {
-            ActivateUI(midImg);
-            playerState.mouseOnDownSide = true;
-        }
-        else if (angle < -90f + directionToleranceAngle && angle > -90f - directionToleranceAngle)
+        if (angle < -90f + directionToleranceAngle && angle > -90f - directionToleranceAngle)
         {
             ActivateUI(leftImg);
             playerState.mouseOnLeftSide = true;
+
         }
         else if (angle > 90f - directionToleranceAngle && angle < 90f + directionToleranceAngle)
         {
             ActivateUI(rightImg);
             playerState.mouseOnRightSide = true;
         }
+        
     }
 
     private void HandleBlocking()
@@ -93,16 +86,14 @@ public class CombatDirectionHandler : MonoBehaviour
     {
         rightImg.SetActive(uiElement == rightImg);
         leftImg.SetActive(uiElement == leftImg);
-        topImg.SetActive(uiElement == topImg);
-        midImg.SetActive(uiElement == midImg);
+
     }
 
     public void DeactivateAttackDirectionImages()
     {
         rightImg.SetActive(false);
         leftImg.SetActive(false);
-        topImg.SetActive(false);
-        midImg.SetActive(false);
+
         ResetMouseStates();
     }
 
@@ -110,8 +101,7 @@ public class CombatDirectionHandler : MonoBehaviour
     {
         playerState.mouseOnLeftSide = false;
         playerState.mouseOnRightSide = false;
-        playerState.mouseOnTopSide = false;
-        playerState.mouseOnDownSide = false;
+
     }
 
     private void ActivateBlock()
