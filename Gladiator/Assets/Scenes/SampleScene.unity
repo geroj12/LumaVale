@@ -23232,7 +23232,7 @@ MonoBehaviour:
   mainCollider: {fileID: 0}
   finisherDuration: 3
   IsFinisherReady: 1
-  bloodEmitterPrefab: {fileID: 2200741100250280157, guid: 6801d3351bc4a304aace69eeb10a56e6, type: 3}
+  bloodEmitterPrefab: {fileID: 764304066602274965, guid: 4a322f29a9e1fa54f90223de8bcf3a28, type: 3}
   ragdollRigidbodies: []
   player: {fileID: 0}
 --- !u!136 &7364103000546426916
