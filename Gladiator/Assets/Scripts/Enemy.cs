@@ -11,42 +11,59 @@ public class Enemy : MonoBehaviour
     [Header("Settings")]
     public float finisherDuration = 3f;
     public bool IsFinisherReady = false;
+    private bool isFatalFinisher = false;
+
     public GameObject bloodEmitterPrefab;
     private GameObject activeBloodEmitter;
+
+    [Header("Finisher Einstellungen")]
+    public float fatalFinisherThreshold = 10f; // Prozent
+
     [HideInInspector]
     private bool isDead = false;
     public Rigidbody[] ragdollRigidbodies;
 
     public Player player;
+
+    [SerializeField] private float maxHP = 100f;
+    [SerializeField] private float currentHP = 100f;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
     }
 
-    // Call this when enemy becomes vulnerable to finisher
-    public void MakeFinisherReady()
-    {
-        IsFinisherReady = true;
-    }
 
-    public void StartFinisher()
+    public void StartFinisher(string finisherTrigger)
     {
+        if (isDead) return;
+
+        float hpPercent = GetHealthPercent();
+        isFatalFinisher = hpPercent <= fatalFinisherThreshold;
+
+        animator.SetTrigger(finisherTrigger);
+
         StartCoroutine(HandleFinisher());
     }
 
     private IEnumerator HandleFinisher()
     {
         IsFinisherReady = false;
+
+        //Rotation zum spieler
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
         lookDirection.y = 0;
         transform.rotation = Quaternion.LookRotation(lookDirection);
-        // Trigger animation
-        animator.SetTrigger("Death");
 
         // Continue blood after death
         yield return new WaitForSeconds(finisherDuration);
 
     }
+    public float GetHealthPercent()
+    {
+        return (float)currentHP / maxHP * 100f;
+    }
+
+    //Wird über Animation Event aufgerufen
     public void StartBloodEffect()
     {
         if (bloodEmitterPrefab != null)
