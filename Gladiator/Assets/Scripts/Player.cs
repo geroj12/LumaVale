@@ -19,13 +19,14 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 1f))
-            {   
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 1.2f))
+            {
                 var enemy = hit.collider.GetComponent<Enemy>();
                 Debug.Log(hit.collider);
                 if (enemy != null && enemy.IsFinisherReady)
                 {
                     enemy.StartFinisher();
+                    
                     animator.SetTrigger("FinisherLongsword01"); // Spieleranimation
                 }
             }

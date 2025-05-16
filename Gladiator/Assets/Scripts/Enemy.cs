@@ -16,8 +16,11 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     private bool isDead = false;
     public Rigidbody[] ragdollRigidbodies;
+
+    public Player player;
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     // Call this when enemy becomes vulnerable to finisher
@@ -34,16 +37,17 @@ public class Enemy : MonoBehaviour
     private IEnumerator HandleFinisher()
     {
         IsFinisherReady = false;
-
+        Vector3 lookDirection = (player.transform.position - transform.position).normalized;
+        lookDirection.y = 0;
+        transform.rotation = Quaternion.LookRotation(lookDirection);
         // Trigger animation
         animator.SetTrigger("Death");
 
-        StartBloodEffect();
         // Continue blood after death
         yield return new WaitForSeconds(finisherDuration);
 
     }
-    private void StartBloodEffect()
+    public void StartBloodEffect()
     {
         if (bloodEmitterPrefab != null)
         {
@@ -58,14 +62,7 @@ public class Enemy : MonoBehaviour
             activeBloodEmitter = Instantiate(bloodEmitterPrefab, bloodSpawnPoint.position, bloodSpawnPoint.rotation, bloodSpawnPoint);
         }
     }
-    private void StopBloodEffect()
-    {
-        if (activeBloodEmitter != null)
-        {
-            Destroy(activeBloodEmitter, 5f); // optional: lasse Blut etwas länger laufen
-            activeBloodEmitter = null;
-        }
-    }
+
     public void EnableRagdoll()
     {
         isDead = true;
@@ -81,5 +78,5 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    
+
 }
