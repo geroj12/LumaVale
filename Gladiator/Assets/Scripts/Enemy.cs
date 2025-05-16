@@ -1,4 +1,6 @@
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -6,7 +8,9 @@ public class Enemy : MonoBehaviour
     [Header("Setup")]
     public Animator animator;
 
-    public GameObject mainCollider;
+    public CapsuleCollider mainCollider;
+    public Rigidbody mainRigidbody;     // z.B. das Rigidbody des Root GameObjects
+
 
     [Header("Settings")]
     public float finisherDuration = 3f;
@@ -18,15 +22,27 @@ public class Enemy : MonoBehaviour
 
     [Header("Finisher Einstellungen")]
     public float fatalFinisherThreshold = 10f; // Prozent
-
-    [HideInInspector]
     private bool isDead = false;
-    public Rigidbody[] ragdollRigidbodies;
+    private Rigidbody[] ragdollRigidbodies;
+    private Collider[] ragdollColliders;
+
 
     public Player player;
 
     [SerializeField] private float maxHP = 100f;
     [SerializeField] private float currentHP = 100f;
+
+    void Awake()
+    {
+        // Suche alle Rigidbodies & Collider INKLUSIVE deaktivierter, untergeordneten Bones
+        ragdollRigidbodies = GetComponentsInChildren<Rigidbody>(true);
+        ragdollColliders = GetComponentsInChildren<Collider>(true);
+        // Initial Ragdoll deaktivieren
+        foreach (var rb in ragdollRigidbodies)
+        {
+            rb.isKinematic = true;
+        } 
+    }
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
@@ -82,17 +98,27 @@ public class Enemy : MonoBehaviour
 
     public void EnableRagdoll()
     {
+
         isDead = true;
 
         animator.enabled = false;
-        if (mainCollider != null)
-            mainCollider.SetActive(false);
 
         foreach (var rb in ragdollRigidbodies)
         {
             rb.isKinematic = false;
-            rb.detectCollisions = true;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.interpolation = RigidbodyInterpolation.None;
+            rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
         }
+
+        foreach (var col in ragdollColliders)
+        {
+            col.enabled = true;
+        }
+
+        if (mainCollider != null) mainCollider.enabled = false;
+
     }
 
 

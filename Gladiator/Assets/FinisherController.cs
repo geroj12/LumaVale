@@ -26,7 +26,7 @@ public class FinisherController : MonoBehaviour
     }
     public void TryStartFinisher(Enemy enemy)
     {
-
+        
         string chosenFinisher = ChooseFinisher(enemy);
         playerAnimator.SetTrigger(chosenFinisher);
 
