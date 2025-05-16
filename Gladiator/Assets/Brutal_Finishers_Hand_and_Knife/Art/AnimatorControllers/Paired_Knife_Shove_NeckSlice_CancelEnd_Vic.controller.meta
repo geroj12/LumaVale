@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bba6c8b72b136d74984f08713182f0b7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227112
+  packageName: Brutal Finishers - Hand and Knife
+  packageVersion: 1.0
+  assetPath: Assets/Brutal_Finishers_Hand_and_Knife/Art/AnimatorControllers/Paired_Knife_Shove_NeckSlice_CancelEnd_Vic.controller
+  uploadId: 511820

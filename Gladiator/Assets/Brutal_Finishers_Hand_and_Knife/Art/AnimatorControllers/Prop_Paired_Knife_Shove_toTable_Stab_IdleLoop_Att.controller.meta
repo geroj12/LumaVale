@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 206e00c093c18b948af1b39ee739e6b7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227112
+  packageName: Brutal Finishers - Hand and Knife
+  packageVersion: 1.0
+  assetPath: Assets/Brutal_Finishers_Hand_and_Knife/Art/AnimatorControllers/Prop_Paired_Knife_Shove_toTable_Stab_IdleLoop_Att.controller
+  uploadId: 511820

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 18a7894481eb6fc42a02913a54ebaa3b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227112
+  packageName: Brutal Finishers - Hand and Knife
+  packageVersion: 1.0
+  assetPath: Assets/Brutal_Finishers_Hand_and_Knife/Art/AnimatorControllers/Paired_Knife_Stab_MidSection_Att.controller
+  uploadId: 511820

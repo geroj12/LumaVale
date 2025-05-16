@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 94b9819c24e4a364f9880a1f0f6921c6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227112
+  packageName: Brutal Finishers - Hand and Knife
+  packageVersion: 1.0
+  assetPath: Assets/Brutal_Finishers_Hand_and_Knife/Art/AnimatorControllers/Paired_H2H_KneeKick_Punch_Vic.controller
+  uploadId: 511820

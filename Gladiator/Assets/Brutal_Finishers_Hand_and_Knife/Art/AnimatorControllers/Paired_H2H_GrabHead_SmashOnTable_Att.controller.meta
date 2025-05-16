@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 48b69ca4d736ade4c9476cd637c6527c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227112
+  packageName: Brutal Finishers - Hand and Knife
+  packageVersion: 1.0
+  assetPath: Assets/Brutal_Finishers_Hand_and_Knife/Art/AnimatorControllers/Paired_H2H_GrabHead_SmashOnTable_Att.controller
+  uploadId: 511820
