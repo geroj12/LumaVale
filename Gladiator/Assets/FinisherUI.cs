@@ -3,28 +3,32 @@ using UnityEngine;
 public class FinisherUI : MonoBehaviour
 {
     public GameObject iconObject;
-    private Enemy enemyHealth;
+    private Enemy enemy;
     public CanvasGroup canvasGroup;
     public float blinkSpeed = 2f;
 
     void Start()
     {
-        enemyHealth = GetComponent<Enemy>();
+        enemy = GetComponent<Enemy>();
     }
     void Update()
     {
-        float hpPercent = enemyHealth.GetHealthPercent(); // z. B. 5 = 5%
+        float hpPercent = enemy.GetHealthPercent(); // z. B. 5 = 5%
 
-        if (hpPercent <= enemyHealth.fatalFinisherThreshold)
+        if (hpPercent <= enemy.fatalFinisherThreshold)
         {
             iconObject.SetActive(true);
             BlinkIcon();
         }
+        else if(hpPercent >= enemy.fatalFinisherThreshold) 
+        {
+            iconObject.SetActive(false);
+
+        }
 
         if (Camera.main != null)
         {
-            transform.LookAt(Camera.main.transform);
-            transform.Rotate(0, 180, 0); // Falls rückwärts
+            iconObject.transform.LookAt(Camera.main.transform);
         }
 
     }

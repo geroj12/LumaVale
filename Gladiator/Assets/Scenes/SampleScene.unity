@@ -14586,7 +14586,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7364103000536653219}
   mainCollider: {fileID: 0}
-  mainRigidbody: {fileID: 0}
+  swordObject: {fileID: 0}
+  shieldObject: {fileID: 0}
   finisherDuration: 3
   IsFinisherReady: 0
   bloodEmitterPrefab: {fileID: 764304066602274965, guid: 4a322f29a9e1fa54f90223de8bcf3a28, type: 3}

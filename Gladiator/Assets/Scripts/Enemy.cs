@@ -1,7 +1,6 @@
+using System;
 using System.Collections;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -10,9 +9,9 @@ public class Enemy : MonoBehaviour
     public Animator animator;
 
     public CapsuleCollider mainCollider;
-    public Rigidbody mainRigidbody;     // z.B. das Rigidbody des Root GameObjects
 
-
+    [SerializeField] private GameObject swordObject;
+    [SerializeField] private GameObject shieldObject;
     [Header("Settings")]
     public float finisherDuration = 3f;
     public bool IsFinisherReady = false;
@@ -74,7 +73,7 @@ public class Enemy : MonoBehaviour
         lookDirection.y = 0;
         transform.rotation = Quaternion.LookRotation(lookDirection);
 
-        
+
         // Continue blood after death
         yield return new WaitForSeconds(finisherDuration);
         cinemachineInputAxisController.enabled = true;
@@ -127,5 +126,23 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public void DropWeapons()
+    {
+        ApplyPhysics(swordObject);
+        ApplyPhysics(shieldObject);
 
+    }
+
+    private void ApplyPhysics(GameObject obj)
+    {
+        obj.transform.parent = null; // Vom Gegner lösen
+        if (obj.TryGetComponent<Rigidbody>(out var rb))
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
+        }
+        var collider = obj.GetComponent<Collider>();
+        if (collider != null) collider.enabled = true;
+
+    }
 }

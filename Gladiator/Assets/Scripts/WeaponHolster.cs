@@ -16,6 +16,7 @@ public class WeaponHolster : MonoBehaviour
     public Vector3 handPositionOffset;
     public Vector3 handRotationOffset;
 
+    int currentWeaponType = 0; // 0 = unbewaffnet, 1 = Schwert, 2 = Zweihänder usw.
 
     void Start()
     {
@@ -32,13 +33,20 @@ public class WeaponHolster : MonoBehaviour
         if (currentWeaponState != WeaponState.Idle && currentWeaponState != WeaponState.Equipped)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Q) && currentWeaponState == WeaponState.Idle)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            StartCoroutine(EquipRoutine());
+            if (currentWeaponType == 1)
+                StartCoroutine(UnequipRoutine());
+            else
+                StartCoroutine(SwitchWeapon(1));
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && currentWeaponState == WeaponState.Equipped)
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            StartCoroutine(UnequipRoutine());
+            if (currentWeaponType == 2)
+                StartCoroutine(UnequipRoutine());
+            else
+                StartCoroutine(SwitchWeapon(2));
         }
     }
 
@@ -56,27 +64,52 @@ public class WeaponHolster : MonoBehaviour
         sword.transform.localPosition = Vector3.zero;
         sword.transform.localRotation = Quaternion.identity;
     }
-    IEnumerator EquipRoutine()
-    {
-        currentWeaponState = WeaponState.Equipping;
-        anim.SetBool("Equip", true);
 
+    IEnumerator SwitchWeapon(int newWeaponType)
+    {
+        if (state.equipped)
+        {
+            yield return StartCoroutine(UnequipRoutine());
+            yield return new WaitForSeconds(0.1f); // kleine Pufferzeit (optional)
+        }
+
+        yield return StartCoroutine(EquipRoutine(newWeaponType));
+    }
+    IEnumerator EquipRoutine(int weaponType)
+    {
+        if (currentWeaponState == WeaponState.Equipping)
+            yield break;
+
+        currentWeaponState = WeaponState.Equipping;
+
+        anim.SetBool("Equip", true);
         yield return new WaitForSeconds(1f); // warte auf Equip-Animation
         anim.SetBool("Equip", false);
 
+
+        currentWeaponType = weaponType;
+        anim.SetInteger("WeaponType", weaponType);
+        // Sofort Animation aktualisieren, falls im Strafe-Zustand
+        
         state.equipped = true;
         currentWeaponState = WeaponState.Equipped;
     }
 
     IEnumerator UnequipRoutine()
     {
-        currentWeaponState = WeaponState.Unequipping;
-        anim.SetBool("Unequip", true);
+        if (currentWeaponState == WeaponState.Unequipping || !state.equipped)
+            yield break;
 
+        currentWeaponState = WeaponState.Unequipping;
+
+        anim.SetBool("Unequip", true);
         yield return new WaitForSeconds(1f); // warte auf Unequip-Animation
         anim.SetBool("Unequip", false);
 
+        anim.SetInteger("WeaponType", 0); // auf unbewaffnet setzen
+
         state.equipped = false;
+        currentWeaponType = 0;
         currentWeaponState = WeaponState.Idle;
     }
 }
