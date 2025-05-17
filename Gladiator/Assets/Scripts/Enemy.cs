@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
@@ -26,7 +27,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody[] ragdollRigidbodies;
     private Collider[] ragdollColliders;
 
-
+    private CinemachineInputAxisController cinemachineInputAxisController;
     public Player player;
 
     [SerializeField] private float maxHP = 100f;
@@ -41,11 +42,13 @@ public class Enemy : MonoBehaviour
         foreach (var rb in ragdollRigidbodies)
         {
             rb.isKinematic = true;
-        } 
+        }
     }
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
+        cinemachineInputAxisController = GameObject.Find("FreeLook Camera").GetComponent<CinemachineInputAxisController>();
+
     }
 
 
@@ -64,14 +67,17 @@ public class Enemy : MonoBehaviour
     private IEnumerator HandleFinisher()
     {
         IsFinisherReady = false;
+        cinemachineInputAxisController.enabled = false;
 
         //Rotation zum spieler
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
         lookDirection.y = 0;
         transform.rotation = Quaternion.LookRotation(lookDirection);
 
+        
         // Continue blood after death
         yield return new WaitForSeconds(finisherDuration);
+        cinemachineInputAxisController.enabled = true;
 
     }
     public float GetHealthPercent()

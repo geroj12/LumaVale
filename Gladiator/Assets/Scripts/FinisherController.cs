@@ -26,12 +26,16 @@ public class FinisherController : MonoBehaviour
     }
     public void TryStartFinisher(Enemy enemy)
     {
-        
+
         string chosenFinisher = ChooseFinisher(enemy);
         playerAnimator.SetTrigger(chosenFinisher);
 
         // Finisher starten
         enemy.StartFinisher(chosenFinisher);
+        // Richte den Spieler zum Gegner aus
+        Vector3 toEnemy = (enemy.transform.position - transform.position).normalized;
+        toEnemy.y = 0;
+        transform.forward = toEnemy;
 
     }
 
