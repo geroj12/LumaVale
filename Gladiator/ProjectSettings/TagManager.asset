@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Cinemachine
+  - Enemy
+  - EnemyShield
   layers:
   - Default
   - TransparentFX
@@ -13,9 +15,9 @@ TagManager:
   - Water
   - UI
   - 
+  - Enemy
   - 
-  - 
-  - 
+  - PlayerWeapon
   - 
   - 
   - 
@@ -44,6 +46,9 @@ TagManager:
     locked: 0
   m_RenderingLayers:
   - Default
+  - Ground
+  - Enemy
+  - Player
   - Light Layer 1
   - Light Layer 2
   - Light Layer 3

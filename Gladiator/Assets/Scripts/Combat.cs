@@ -10,12 +10,14 @@ public class Combat : MonoBehaviour
 
     [SerializeField] private CombatDirectionHandler directionHandler;
     [SerializeField] private WeaponHolster weaponHolster;
+    [SerializeField] private CapsuleCollider gladiusCollider;
 
     [Header("Settings")]
     [Range(0.1f, 1f)] public float blockDelay = 0.5f;
 
     private float blockTimer = 0f;
     private float lastScrollValue = 0f;
+    [SerializeField] private WeaponDamage weaponDamage;
 
     #endregion
 
@@ -169,17 +171,28 @@ public class Combat : MonoBehaviour
     /// <summary>
     /// Wird durch Animation Event oder Timing ausgelöst, um Angriffsstatus zu setzen.
     /// </summary>
-    public void StartAttack() => state.isAttacking = true;
+    public void StartAttack()
+    {
+        state.isAttacking = true;
+        //gladiusCollider.enabled = true;
+        weaponDamage.EnableDamage();
+    }
 
     /// <summary>
     /// Wird durch Animation Event oder Timing ausgelöst, um Angriffsstatus zurückzusetzen.
     /// </summary>
-    public void EndAttack() => state.isAttacking = false;
+    public void EndAttack()
+    {
+        state.isAttacking = false;
+        //gladiusCollider.enabled = false;
+        weaponDamage.DisableDamage();
+
+    }
 
     /// <summary>
     /// Setzt alle Angriffs-Animation-Bools zurück.
     /// </summary>
-    private IEnumerator ResetAttackBools()
+    public IEnumerator ResetAttackBools()
     {
         yield return new WaitForSeconds(1f);
 

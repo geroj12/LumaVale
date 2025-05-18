@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
     private Movement movement;
     [SerializeField] private Animator animator;
+    [SerializeField] private Combat combat;
 
 
     void Start()
@@ -16,7 +17,17 @@ public class Player : MonoBehaviour
     {
 
         movement.HandleMovement();
-        
+
     }
 
+
+    public void InterruptAttack()
+    {
+        combat = GetComponent<Combat>();
+        if (combat != null)
+        {
+            combat.StartCoroutine(combat.ResetAttackBools());
+        }
+        animator.SetTrigger("HitBlocked"); // z. B. kleine Rückzuck-Animation
+    }
 }

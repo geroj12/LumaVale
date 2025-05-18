@@ -248,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8920809562116647573, guid: 53d0af4b36a395e42afa838b583ab79d, type: 3}
       propertyPath: currentHP
-      value: 4
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1538,7 +1538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8920809562116647573, guid: 53d0af4b36a395e42afa838b583ab79d, type: 3}
       propertyPath: currentHP
-      value: 34
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1772,7 +1772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8920809562116647573, guid: 53d0af4b36a395e42afa838b583ab79d, type: 3}
       propertyPath: currentHP
-      value: 4
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4178,6 +4178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2210508922341747431}
+  combat: {fileID: 0}
 --- !u!114 &2210508922351470565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4241,7 +4242,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionHandler: {fileID: 2210508922351470565}
   weaponHolster: {fileID: 0}
+  gladiusCollider: {fileID: 8540065584455477302}
   blockDelay: 0.5
+  weaponDamage: {fileID: 8540065584455477303}
 --- !u!114 &2210508922351470567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11004,28 +11007,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53d0af4b36a395e42afa838b583ab79d, type: 3}
---- !u!64 &5405881412644615172
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7891595272871889376}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 20674280298369315, guid: d4c20403f9591ef488435e387a42cf39, type: 3}
 --- !u!33 &5863861739217558783
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11060,8 +11041,10 @@ GameObject:
   - component: {fileID: 7408215478979400538}
   - component: {fileID: 5863861739217558783}
   - component: {fileID: 8540065584455477301}
-  - component: {fileID: 5405881412644615172}
-  m_Layer: 0
+  - component: {fileID: 8540065584455477302}
+  - component: {fileID: 8540065584455477303}
+  - component: {fileID: 8540065584455477304}
+  m_Layer: 9
   m_Name: Gladius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11147,7 +11130,7 @@ GameObject:
   - component: {fileID: 8122313394128258055}
   - component: {fileID: 8122313394127488039}
   - component: {fileID: 8122313394126358247}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Longsword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11199,6 +11182,70 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8540065584455477302
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891595272871889376}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.040135846
+  m_Height: 0.5
+  m_Direction: 1
+  m_Center: {x: -0.00000033805037, y: 0.47, z: 0.00000011851573}
+--- !u!114 &8540065584455477303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891595272871889376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53574dff68fb795489c171cd49fb0be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  player: {fileID: 2210508922351470564}
+--- !u!54 &8540065584455477304
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891595272871889376}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
