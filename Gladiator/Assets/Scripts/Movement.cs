@@ -53,7 +53,7 @@ public class Movement : MonoBehaviour
 
     private void NormalMovement()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && !playerState.equipped)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             maxValue = 2f;
             inputX = Input.GetAxis("Horizontal") * 2f;

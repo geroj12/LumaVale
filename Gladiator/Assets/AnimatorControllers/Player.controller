@@ -2027,11 +2027,19 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Locomotion
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: 1fd1ed099547894469fb6539a1dba1d2, type: 3}
+    m_Threshold: 2
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 0.8
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Locomotion
+    m_Mirror: 0
   m_BlendParameter: Locomotion
   m_BlendParameterY: Locomotion
   m_MinThreshold: 0
   m_MaxThreshold: 2
-  m_UseAutomaticThresholds: 0
+  m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
 --- !u!1101 &2983631530731176806
@@ -2402,10 +2410,18 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Locomotion
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400014, guid: c5937c944a220444aa33be3fe1480174, type: 3}
+    m_Threshold: 2
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 0.8
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Locomotion
+    m_Mirror: 0
   m_BlendParameter: Locomotion
   m_BlendParameterY: Locomotion
   m_MinThreshold: 0
-  m_MaxThreshold: 1
+  m_MaxThreshold: 2
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
