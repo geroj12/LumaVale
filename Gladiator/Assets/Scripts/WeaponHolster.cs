@@ -6,15 +6,21 @@ public class WeaponHolster : MonoBehaviour
     public enum WeaponState { Idle, Equipping, Equipped, Unequipping }
     public WeaponState currentWeaponState = WeaponState.Idle;
     [SerializeField] private GameObject sword;
+    [SerializeField] private GameObject twoHandedWeapon;
+
     State state;
     private Animator anim;
 
     [SerializeField] private Transform rightHandTransform;
     [SerializeField] private Transform holsterTransform;
 
+    [SerializeField] private Transform holsterTransformTwoHandedSword;
 
-    public Vector3 handPositionOffset;
+    public Vector3 handPositionOffsetSword;
     public Vector3 handRotationOffset;
+
+    public Vector3 handPositionOffsetTwoHandedSword;
+    public Vector3 handRotationOffsetTwoHandedSword;
 
     int currentWeaponType = 0; // 0 = unbewaffnet, 1 = Schwert, 2 = Zweihänder usw.
 
@@ -50,19 +56,38 @@ public class WeaponHolster : MonoBehaviour
         }
     }
 
-    //Über Animation Events aufgerufen
-    public void AttachSwordToHand()
+    // Wird durch Animation Event aufgerufen
+    public void AttachCurrentWeaponToHand()
     {
-        sword.transform.SetParent(rightHandTransform);
-        sword.transform.localPosition = handPositionOffset;
-        sword.transform.localRotation = Quaternion.Euler(handRotationOffset);
+        if (currentWeaponType == 1)
+        {
+            sword.transform.SetParent(rightHandTransform);
+            sword.transform.localPosition = handPositionOffsetSword;
+            sword.transform.localRotation = Quaternion.Euler(handRotationOffset);
+        }
+        else if (currentWeaponType == 2)
+        {
+            twoHandedWeapon.transform.SetParent(rightHandTransform);
+            twoHandedWeapon.transform.localPosition = handPositionOffsetTwoHandedSword;
+            twoHandedWeapon.transform.localRotation = Quaternion.Euler(handRotationOffsetTwoHandedSword);
+        }
     }
-    //Über Animation Events aufgerufen
-    public void AttachSwordToHolster()
+
+    // Wird durch Animation Event aufgerufen
+    public void AttachCurrentWeaponToHolster()
     {
-        sword.transform.SetParent(holsterTransform);
-        sword.transform.localPosition = Vector3.zero;
-        sword.transform.localRotation = Quaternion.identity;
+        if (currentWeaponType == 1)
+        {
+            sword.transform.SetParent(holsterTransform);
+            sword.transform.localPosition = Vector3.zero;
+            sword.transform.localRotation = Quaternion.identity;
+        }
+        else if (currentWeaponType == 2)
+        {
+            twoHandedWeapon.transform.SetParent(holsterTransformTwoHandedSword);
+            twoHandedWeapon.transform.localPosition = Vector3.zero;
+            twoHandedWeapon.transform.localRotation = Quaternion.identity;
+        }
     }
 
     IEnumerator SwitchWeapon(int newWeaponType)
@@ -82,15 +107,14 @@ public class WeaponHolster : MonoBehaviour
 
         currentWeaponState = WeaponState.Equipping;
 
-        anim.SetBool("Equip", true);
-        yield return new WaitForSeconds(1f); // warte auf Equip-Animation
-        anim.SetBool("Equip", false);
-
-
+        // 🟡 WeaponType VOR Animation setzen!
         currentWeaponType = weaponType;
         anim.SetInteger("WeaponType", weaponType);
-        // Sofort Animation aktualisieren, falls im Strafe-Zustand
-        
+
+        anim.SetBool("Equip", true);
+        yield return new WaitForSeconds(1f); // Wartezeit abhängig von Animation
+        anim.SetBool("Equip", false);
+
         state.equipped = true;
         currentWeaponState = WeaponState.Equipped;
     }
@@ -105,6 +129,8 @@ public class WeaponHolster : MonoBehaviour
         anim.SetBool("Unequip", true);
         yield return new WaitForSeconds(1f); // warte auf Unequip-Animation
         anim.SetBool("Unequip", false);
+
+
 
         anim.SetInteger("WeaponType", 0); // auf unbewaffnet setzen
 
