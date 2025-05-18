@@ -8,6 +8,8 @@ public class Combat : MonoBehaviour
     [SerializeField] private CombatDirectionHandler directionHandler;
     [Range(0.1f, 1f)] public float blockDelay = 0.5f;
 
+    [SerializeField] private WeaponHolster weaponHolster;
+
     private float blockTimer = 0f;
     private float lastScrollValue = 0f;
 
@@ -16,10 +18,11 @@ public class Combat : MonoBehaviour
         anim = GetComponent<Animator>();
         state = GetComponent<State>();
         directionHandler = GetComponent<CombatDirectionHandler>();
+        weaponHolster = GetComponent<WeaponHolster>();
+
     }
     void Update()
     {
-        Debug.Log("Scroll Value: " + Input.GetAxis("Mouse ScrollWheel"));
         HandleAttack();
         HandleBlocking();
     }
@@ -33,17 +36,29 @@ public class Combat : MonoBehaviour
 
         if (state.isAttacking) return;
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll < 0f && lastScrollValue == 0f)
+        if (scroll < 0f && lastScrollValue == 0f && weaponHolster.currentWeaponType == 2)
         {
             state.attackThrust = true;
-            anim.SetBool("attackThrust", true);
+            anim.SetBool("AttackThrust_TwoHanded01", true);
+            StartCoroutine(ResetAttackBools());
+        }
+        else if (scroll < 0f && lastScrollValue == 0f && weaponHolster.currentWeaponType == 1)
+        {
+            state.attackThrust = true;
+            anim.SetBool("Attack_Thrust_OneHanded01", true);
             StartCoroutine(ResetAttackBools());
         }
 
-        if (scroll > 0f && lastScrollValue == 0f)
+        if (scroll > 0f && lastScrollValue == 0f && weaponHolster.currentWeaponType == 2)
         {
             state.attackUp = true;
-            anim.SetBool("attackUp", true);
+            anim.SetBool("AttackUp_TwoHanded01", true);
+            StartCoroutine(ResetAttackBools());
+        }
+        else if (scroll > 0f && lastScrollValue == 0f && weaponHolster.currentWeaponType == 1)
+        {
+            state.attackUp = true;
+            anim.SetBool("Attack_UP_OneHanded01", true);
             StartCoroutine(ResetAttackBools());
         }
         lastScrollValue = scroll;
@@ -56,11 +71,11 @@ public class Combat : MonoBehaviour
             directionHandler.EndSwipe(Input.mousePosition);
 
             // Dann in Combat.cs:
-            if (state.mouseOnLeftSide)
-                anim.SetBool("attackLeft", true);
+            if (state.mouseOnLeftSide && weaponHolster.currentWeaponType == 2)
+                anim.SetBool("Attack_LEFT_TwoHanded01", true);
 
-            else if (state.mouseOnRightSide)
-                anim.SetBool("attackRight", true);
+            else if (state.mouseOnRightSide && weaponHolster.currentWeaponType == 2)
+                anim.SetBool("Attack_RIGHT_TwoHanded01", true);
             StartCoroutine(ResetAttackBools());
         }
 
@@ -115,10 +130,14 @@ public class Combat : MonoBehaviour
     IEnumerator ResetAttackBools()
     {
         yield return new WaitForSeconds(1f);
-        anim.SetBool("attackLeft", false);
-        anim.SetBool("attackThrust", false);
-        anim.SetBool("attackRight", false);
-        anim.SetBool("attackUp", false);
+        anim.SetBool("Attack_LEFT_TwoHanded01", false);
+        anim.SetBool("AttackThrust_TwoHanded01", false);
+        anim.SetBool("Attack_RIGHT_TwoHanded01", false);
+        anim.SetBool("AttackUp_TwoHanded01", false);
+
+
+        anim.SetBool("Attack_UP_OneHanded01", false);
+        anim.SetBool("Attack_Thrust_OneHanded01", false);
 
         state.ResetMouseDirections();
     }

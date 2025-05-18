@@ -22,7 +22,7 @@ public class WeaponHolster : MonoBehaviour
     public Vector3 handPositionOffsetTwoHandedSword;
     public Vector3 handRotationOffsetTwoHandedSword;
 
-    int currentWeaponType = 0; // 0 = unbewaffnet, 1 = Schwert, 2 = Zweihänder usw.
+    public int currentWeaponType = 0; // 0 = unbewaffnet, 1 = Schwert, 2 = Zweihänder usw.
 
     void Start()
     {

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2eef867b8273d4641a631e8cf0ed896f
+guid: 285f7f6e302304147b0adba087326a87
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -34,22 +34,22 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sword And Shield Idle
+      name: Attack_Thrust_OneHanded01
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 76
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1

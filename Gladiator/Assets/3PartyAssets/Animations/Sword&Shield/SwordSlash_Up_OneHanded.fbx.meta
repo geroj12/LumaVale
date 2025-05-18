@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2eef867b8273d4641a631e8cf0ed896f
+guid: 06864c8949aa0594e812cf443ada397d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -34,18 +34,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sword And Shield Idle
+      name: SwordSlash_Up_OneHanded
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 76
+      lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
