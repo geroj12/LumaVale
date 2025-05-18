@@ -4245,7 +4245,7 @@ MonoBehaviour:
   fatalFinisherThreshold: 10
   player: {fileID: 0}
   maxHP: 100
-  currentHP: 100
+  currentHP: 20
   hitReactionCooldown: 0.5
 --- !u!114 &977096295576958453
 MonoBehaviour:

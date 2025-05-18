@@ -10,14 +10,13 @@ public class Combat : MonoBehaviour
 
     [SerializeField] private CombatDirectionHandler directionHandler;
     [SerializeField] private WeaponHolster weaponHolster;
-    [SerializeField] private CapsuleCollider gladiusCollider;
 
     [Header("Settings")]
     [Range(0.1f, 1f)] public float blockDelay = 0.5f;
 
     private float blockTimer = 0f;
     private float lastScrollValue = 0f;
-    [SerializeField] private WeaponDamage weaponDamage;
+    private WeaponDamage weaponDamage;
 
     #endregion
 
@@ -29,6 +28,8 @@ public class Combat : MonoBehaviour
         state = GetComponent<State>();
         directionHandler = GetComponent<CombatDirectionHandler>();
         weaponHolster = GetComponent<WeaponHolster>();
+        weaponDamage = weaponHolster.GetCurrentWeaponDamage();
+
     }
 
     void Update()
@@ -188,7 +189,10 @@ public class Combat : MonoBehaviour
         weaponDamage.DisableDamage();
 
     }
-
+    public void UpdateWeaponDamage(WeaponDamage newDamage)
+    {
+        weaponDamage = newDamage;
+    }
     /// <summary>
     /// Setzt alle Angriffs-Animation-Bools zurück.
     /// </summary>

@@ -7,7 +7,7 @@ public class WeaponHolster : MonoBehaviour
     public WeaponState currentWeaponState = WeaponState.Idle;
     [SerializeField] private GameObject sword;
     [SerializeField] private GameObject twoHandedWeapon;
-
+    public Combat combatScript;
     State state;
     private Animator anim;
 
@@ -117,6 +117,8 @@ public class WeaponHolster : MonoBehaviour
 
         state.equipped = true;
         currentWeaponState = WeaponState.Equipped;
+        if (combatScript != null)
+            combatScript.UpdateWeaponDamage(GetCurrentWeaponDamage());
     }
 
     IEnumerator UnequipRoutine()
@@ -137,5 +139,25 @@ public class WeaponHolster : MonoBehaviour
         state.equipped = false;
         currentWeaponType = 0;
         currentWeaponState = WeaponState.Idle;
+    }
+
+    public WeaponDamage GetCurrentWeaponDamage()
+    {
+        GameObject activeWeapon = null;
+
+        switch (currentWeaponType)
+        {
+            case 1:
+                activeWeapon = sword;
+                break;
+            case 2:
+                activeWeapon = twoHandedWeapon;
+                break;
+        }
+
+        if (activeWeapon != null)
+            return activeWeapon.GetComponentInChildren<WeaponDamage>();
+
+        return null;
     }
 }
