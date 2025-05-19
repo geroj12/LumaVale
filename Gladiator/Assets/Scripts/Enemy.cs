@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     private CinemachineInputAxisController cinemachineInputAxisController;
     public Player player;
 
-
+    
     [SerializeField] private float maxHP = 100f;
     [SerializeField] private float currentHP = 100f;
 
