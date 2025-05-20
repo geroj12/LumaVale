@@ -1645,7 +1645,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 0.09803922}
-      key1: {r: 1, g: 1, b: 1, a: 0.09803922}
+      key1: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0.05882353}
       key2: {r: 1, g: 1, b: 1, a: 0.09803922}
       key3: {r: 1, g: 1, b: 1, a: 0.09803922}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1823,7 +1823,7 @@ TrailRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
-  m_MotionVectors: 0
+  m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
@@ -3199,6 +3199,7 @@ GameObject:
   - component: {fileID: 2210508922351470567}
   - component: {fileID: 2210508922351470569}
   - component: {fileID: 2210508922351470570}
+  - component: {fileID: 2210508922351470571}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4596,6 +4597,33 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!54 &2210508922351470571
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210508922351132217}
+  serializedVersion: 4
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 2
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &2210508922351470639
 Transform:
   m_ObjectHideFlags: 0

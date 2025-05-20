@@ -18,8 +18,6 @@ public class CombatDirectionHandler : MonoBehaviour
     [Header("References")]
     [SerializeField] private State playerState;
 
-    [Header("Settings")]
-    [Range(5f, 45f)] public float directionToleranceAngle = 30f;
 
     void Update()
     {
@@ -51,14 +49,14 @@ public class CombatDirectionHandler : MonoBehaviour
             return;
         }
 
-        float angle = Vector2.SignedAngle(Vector2.up, swipeDelta.normalized);
         ResetMouseStates();
 
-        if (angle < -90f + directionToleranceAngle && angle > -90f - directionToleranceAngle)
+        // Neue Logik: Nur X-Achse zählt
+        if (swipeDelta.x > 0f)
         {
             playerState.mouseOnLeftSide = true;
         }
-        else if (angle > 90f - directionToleranceAngle && angle < 90f + directionToleranceAngle)
+        else if (swipeDelta.x < 0f)
         {
             playerState.mouseOnRightSide = true;
         }

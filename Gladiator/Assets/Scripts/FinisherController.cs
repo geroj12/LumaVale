@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 /// <summary>
 /// Steuert Finisher-Moves des Spielers, abhängig von Gegnerstatus und aktueller Waffe.
@@ -12,6 +13,8 @@ public class FinisherController : MonoBehaviour
     public WeaponFinishers twoHandedFinishers;
     public WeaponFinishers oneHandedFinishers;
     public WeaponFinishers unarmedFinishers;
+    private bool isFinishing = false;
+    private Enemy currentFinisherTarget;
 
     private void Start()
     {
@@ -21,9 +24,10 @@ public class FinisherController : MonoBehaviour
 
     private void Update()
     {
+        if (isFinishing) return;
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1.3f))
+            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1.4f))
             {
                 Enemy enemy = hit.collider.GetComponent<Enemy>();
                 if (enemy != null)
@@ -34,21 +38,45 @@ public class FinisherController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Startet den passenden Finisher gegen den Gegner.
-    /// </summary>
+
     public void TryStartFinisher(Enemy enemy)
     {
+        isFinishing = true;
+        currentFinisherTarget = enemy;
+
         string chosenFinisher = ChooseFinisher(enemy);
         playerAnimator.SetTrigger(chosenFinisher);
         enemy.StartFinisher(chosenFinisher);
 
-        // Richte den Spieler zum Gegner aus
-        Vector3 toEnemy = (enemy.transform.position - transform.position).normalized;
-        toEnemy.y = 0;
-        transform.forward = toEnemy;
+        SnapToFinisherAnchor(enemy.finisherAnchor);
+
+        if (!IsFatalFinisher(enemy))
+        {
+            WeaponDamage weaponDamage = weaponHolster.GetCurrentWeaponDamage();
+            float fullDamage = weaponDamage != null ? weaponDamage.damage : 15f;
+
+            float reducedDamage = fullDamage * 0.6f;
+            enemy.TakeDamage(reducedDamage, transform.position);
+        }
+    }
+    private bool IsFatalFinisher(Enemy enemy)
+    {
+        return enemy.GetHealthPercent() <= enemy.fatalFinisherThreshold;
     }
 
+
+    private void SnapToFinisherAnchor(Transform anchor)
+    {
+        if (anchor == null) return;
+        transform.position = anchor.position;
+        transform.rotation = anchor.rotation;
+    }
+    public void ResetFinisherState()
+    {
+        isFinishing = false;
+        currentFinisherTarget = null;
+
+    }
     /// <summary>
     /// Wählt den Finisher abhängig von Waffe und Gegnerzustand.
     /// </summary>

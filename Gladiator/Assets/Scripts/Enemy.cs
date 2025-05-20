@@ -27,8 +27,9 @@ public class Enemy : MonoBehaviour
     private Collider[] ragdollColliders;
     private CinemachineInputAxisController cinemachineInputAxisController;
     public Player player;
+    public Transform finisherAnchor;
 
-    
+
     [SerializeField] private float maxHP = 100f;
     [SerializeField] private float currentHP = 100f;
 
