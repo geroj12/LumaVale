@@ -4506,7 +4506,6 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   minSwipeDistance: 50
   playerState: {fileID: 2210508922351470562}
-  directionToleranceAngle: 5
 --- !u!114 &2210508922351470566
 MonoBehaviour:
   m_ObjectHideFlags: 0
