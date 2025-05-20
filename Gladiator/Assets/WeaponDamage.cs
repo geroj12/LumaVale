@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponDamage : MonoBehaviour
@@ -5,20 +6,30 @@ public class WeaponDamage : MonoBehaviour
     public float damage = 20f;
     public Player player;
     [SerializeField] private BoxCollider weaponCollider;
+    [SerializeField] private TrailRenderer weaponTrail;
 
     private bool canDealDamage = false;
+    private HashSet<Enemy> damagedEnemies = new HashSet<Enemy>();
 
     public void EnableDamage()
     {
         canDealDamage = true;
+        damagedEnemies.Clear();
+
         weaponCollider.isTrigger = true;
+        if (weaponTrail != null)
+        {
+            weaponTrail.Clear();          // Trail-Cache löschen (verhindert Artefakte)
+            weaponTrail.emitting = true; // ⬅️ Trail aktivieren
+        }
     }
 
     public void DisableDamage()
     {
         canDealDamage = false;
         weaponCollider.isTrigger = false;
-
+        if (weaponTrail != null)
+            weaponTrail.emitting = false; // ⬅️ Trail deaktivieren
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,8 +38,9 @@ public class WeaponDamage : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
+            if (enemy != null && !damagedEnemies.Contains(enemy))
             {
+                damagedEnemies.Add(enemy);
                 enemy.TakeDamage(damage, player.transform.position);
                 canDealDamage = false; // Nur 1x pro Schlag
             }
@@ -40,7 +52,7 @@ public class WeaponDamage : MonoBehaviour
             {
                 enemy.TakeDamage(0f, player.transform.position, true);
                 player.InterruptAttack(); // Bricht Angriffsanimation ab
-                weaponCollider.isTrigger = false;
+                DisableDamage();
             }
         }
     }

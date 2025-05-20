@@ -965,8 +965,8 @@ GameObject:
   - component: {fileID: 3388943799417443723}
   - component: {fileID: 1776716212722801198}
   - component: {fileID: 4561265381055262436}
-  - component: {fileID: 192169463943616682}
   - component: {fileID: 1158885153706962800}
+  - component: {fileID: 6939172146161030718}
   m_Layer: 7
   m_Name: Gladius
   m_TagString: Untagged
@@ -983,7 +983,7 @@ Transform:
   m_GameObject: {fileID: 2615503703347187505}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7923262, y: -0.11241199, z: 0.15366153, w: 0.57962996}
-  m_LocalPosition: {x: 0.073, y: 0.061, z: 0.069}
+  m_LocalPosition: {x: 0.071, y: 0.061, z: 0.071}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1042,29 +1042,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &192169463943616682
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2615503703347187505}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.040135935
-  m_Height: 0.52
-  m_Direction: 1
-  m_Center: {x: 0.0000025989693, y: 0.44, z: -0.000001231413}
 --- !u!54 &1158885153706962800
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1092,6 +1069,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6939172146161030718
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615503703347187505}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08027181, y: 0.70345557, z: 0.04910369}
+  m_Center: {x: -0.0000007572349, y: 0.35172778, z: -0.0000003006687}
 --- !u!1 &2693424107076274224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,7 +2209,7 @@ SkinnedMeshRenderer:
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
-  m_UpdateWhenOffscreen: 0
+  m_UpdateWhenOffscreen: 1
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: 4300022, guid: fd7d68a65822e4a44a9ef78850e64cfc, type: 3}
   m_Bones:
@@ -4221,7 +4219,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!114 &8920809562116647573
 MonoBehaviour:
