@@ -29,6 +29,7 @@ public class WeaponHolster : MonoBehaviour
         anim = GetComponent<Animator>();
         state = GetComponent<State>();
 
+
     }
     void LateUpdate()
     {

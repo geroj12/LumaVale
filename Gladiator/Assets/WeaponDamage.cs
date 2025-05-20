@@ -4,17 +4,21 @@ public class WeaponDamage : MonoBehaviour
 {
     public float damage = 20f;
     public Player player;
+    [SerializeField] private BoxCollider weaponCollider;
 
     private bool canDealDamage = false;
 
     public void EnableDamage()
     {
         canDealDamage = true;
+        weaponCollider.isTrigger = true;
     }
 
     public void DisableDamage()
     {
         canDealDamage = false;
+        weaponCollider.isTrigger = false;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,6 +40,7 @@ public class WeaponDamage : MonoBehaviour
             {
                 enemy.TakeDamage(0f, player.transform.position, true);
                 player.InterruptAttack(); // Bricht Angriffsanimation ab
+                weaponCollider.isTrigger = false;
             }
         }
     }

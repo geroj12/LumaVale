@@ -17,9 +17,8 @@ public class Combat : MonoBehaviour
     private float blockTimer = 0f;
     private float lastScrollValue = 0f;
     private WeaponDamage weaponDamage;
-    [Header("Timing")]
-    public float attackCooldown = 1f; // Zeit zwischen Angriffen
-    private float nextAttackTime = 0f; // Wann darf der nächste Angriff passieren
+  
+    
     #endregion
 
     #region Unity Methods
@@ -49,7 +48,6 @@ public class Combat : MonoBehaviour
     /// </summary>
     private void HandleAttack()
     {
-        if (Time.time < nextAttackTime || state.isAttacking) return;
 
         if (state.blocking)
             state.ResetMouseDirections();
@@ -83,7 +81,6 @@ public class Combat : MonoBehaviour
     private void TriggerThrustAttack()
     {
         state.attackThrust = true;
-        nextAttackTime = Time.time + attackCooldown;
         switch (weaponHolster.currentWeaponType)
         {
             case 2: anim.SetBool("AttackThrust_TwoHanded01", true); break;
@@ -96,7 +93,6 @@ public class Combat : MonoBehaviour
     private void TriggerOverheadAttack()
     {
         state.attackUp = true;
-        nextAttackTime = Time.time + attackCooldown;
         switch (weaponHolster.currentWeaponType)
         {
             case 2: anim.SetBool("AttackUp_TwoHanded01", true); break;
@@ -109,7 +105,6 @@ public class Combat : MonoBehaviour
     private void TriggerSwipeAttack()
     {
         int weapon = weaponHolster.currentWeaponType;
-        nextAttackTime = Time.time + attackCooldown;
         if (state.mouseOnLeftSide)
         {
             switch (weapon)
@@ -181,7 +176,6 @@ public class Combat : MonoBehaviour
     public void StartAttack()
     {
         state.isAttacking = true;
-        //gladiusCollider.enabled = true;
         weaponDamage.EnableDamage();
     }
 
@@ -191,7 +185,6 @@ public class Combat : MonoBehaviour
     public void EndAttack()
     {
         state.isAttacking = false;
-        //gladiusCollider.enabled = false;
         weaponDamage.DisableDamage();
 
     }
