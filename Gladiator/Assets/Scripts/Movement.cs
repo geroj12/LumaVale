@@ -20,9 +20,10 @@ public class Movement : MonoBehaviour
         playerState.canMove = true;
     }
 
-    
+
     public void HandleMovement()
-    {   if (!playerState.canMove) return;
+    {
+        if (!playerState.canMove) return;
         if (playerState.Strafe)
         {
             StrafeMovement();
@@ -39,7 +40,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    
+
     private void StrafeMovement()
     {
         inputX = Input.GetAxis("Horizontal");
@@ -48,11 +49,11 @@ public class Movement : MonoBehaviour
         float camRot = cam.transform.eulerAngles.y;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, camRot, 0), 4f * Time.deltaTime);
 
-        anim.SetFloat("InputX", inputX);
-        anim.SetFloat("InputY", inputY);
+        anim.SetFloat("InputX", inputX, smoothValue, Time.deltaTime);
+        anim.SetFloat("InputY", inputY, smoothValue, Time.deltaTime);
     }
 
-    
+
 
     private void NormalMovement()
     {
@@ -77,6 +78,6 @@ public class Movement : MonoBehaviour
         transform.forward = Vector3.Slerp(transform.forward, rot, Time.deltaTime * movementSpeed);
     }
 
-    
+
 
 }
