@@ -246,10 +246,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 8920809562116647573, guid: 53d0af4b36a395e42afa838b583ab79d, type: 3}
-      propertyPath: currentHP
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4426,6 +4422,7 @@ MonoBehaviour:
   equipped: 0
   blocking: 0
   isAttacking: 0
+  canMove: 0
   mouseOnLeftSide: 0
   mouseOnRightSide: 0
   attackUp: 0
@@ -4520,6 +4517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionHandler: {fileID: 2210508922351470565}
   weaponHolster: {fileID: 0}
+  finisherController: {fileID: 2210508922351470569}
   blockDelay: 0.5
 --- !u!114 &2210508922351470567
 MonoBehaviour:
@@ -4559,6 +4557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 2210508922341747431}
   weaponHolster: {fileID: 0}
+  playerState: {fileID: 0}
   twoHandedFinishers:
     fatalFinishers:
     - Fatal_Longsword01
@@ -4571,8 +4570,10 @@ MonoBehaviour:
     - NonFatal_OneHanded01
     - NonFatal_OneHanded02
   unarmedFinishers:
-    fatalFinishers: []
-    nonFatalFinishers: []
+    fatalFinishers:
+    - Fatal_Unarmed01
+    nonFatalFinishers:
+    - NonFatal_OneHanded02
 --- !u!136 &2210508922351470570
 CapsuleCollider:
   m_ObjectHideFlags: 0

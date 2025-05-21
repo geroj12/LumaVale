@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject swordObject;
     [SerializeField] private GameObject shieldObject;
 
-
     [Header("Settings")]
     public float finisherDuration = 3f;
     public bool IsFinisherReady = false;
@@ -22,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Finisher Einstellungen")]
     public float fatalFinisherThreshold = 10f; // Prozent
-    private bool isDead = false;
+    public bool isDead = false;
     private Rigidbody[] ragdollRigidbodies;
     private Collider[] ragdollColliders;
     private CinemachineInputAxisController cinemachineInputAxisController;

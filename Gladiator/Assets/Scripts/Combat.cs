@@ -10,6 +10,7 @@ public class Combat : MonoBehaviour
 
     [SerializeField] private CombatDirectionHandler directionHandler;
     [SerializeField] private WeaponHolster weaponHolster;
+    [SerializeField] private FinisherController finisherController;
 
     [Header("Settings")]
     [Range(0.1f, 1f)] public float blockDelay = 0.5f;
@@ -17,8 +18,8 @@ public class Combat : MonoBehaviour
     private float blockTimer = 0f;
     private float lastScrollValue = 0f;
     private WeaponDamage weaponDamage;
-  
-    
+
+
     #endregion
 
     #region Unity Methods
@@ -48,7 +49,7 @@ public class Combat : MonoBehaviour
     /// </summary>
     private void HandleAttack()
     {
-
+        if (weaponHolster.IsBusy() || finisherController.IsFinishing()) return;
         if (state.blocking)
             state.ResetMouseDirections();
 

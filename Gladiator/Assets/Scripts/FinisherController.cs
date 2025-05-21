@@ -8,6 +8,7 @@ public class FinisherController : MonoBehaviour
     [Header("References")]
     public Animator playerAnimator;
     [SerializeField] private WeaponHolster weaponHolster;
+    [SerializeField] private State playerState;
 
     [Header("Finisher Animationen")]
     public WeaponFinishers twoHandedFinishers;
@@ -20,6 +21,7 @@ public class FinisherController : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         weaponHolster = GetComponent<WeaponHolster>();
+        playerState = GetComponent<State>();
     }
 
     private void Update()
@@ -43,6 +45,7 @@ public class FinisherController : MonoBehaviour
     {
         isFinishing = true;
         currentFinisherTarget = enemy;
+        playerState.canMove = false;
 
         string chosenFinisher = ChooseFinisher(enemy);
         playerAnimator.SetTrigger(chosenFinisher);
@@ -75,6 +78,7 @@ public class FinisherController : MonoBehaviour
     {
         isFinishing = false;
         currentFinisherTarget = null;
+        playerState.canMove = true;
 
     }
     /// <summary>
@@ -95,7 +99,10 @@ public class FinisherController : MonoBehaviour
             return selectedSet.nonFatalFinishers[Random.Range(0, selectedSet.nonFatalFinishers.Length)];
         }
     }
-
+    public bool IsFinishing()
+    {
+        return isFinishing;
+    }
     /// <summary>
     /// Gibt das passende Finisher-Set für die ausgerüstete Waffe zurück.
     /// </summary>

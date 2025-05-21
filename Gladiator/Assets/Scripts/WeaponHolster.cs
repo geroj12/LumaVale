@@ -141,7 +141,10 @@ public class WeaponHolster : MonoBehaviour
         currentWeaponType = 0;
         currentWeaponState = WeaponState.Idle;
     }
-
+    public bool IsBusy()
+    {
+        return currentWeaponState == WeaponState.Equipping || currentWeaponState == WeaponState.Unequipping;
+    }
     public WeaponDamage GetCurrentWeaponDamage()
     {
         GameObject activeWeapon = null;

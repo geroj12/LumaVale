@@ -17,11 +17,12 @@ public class Movement : MonoBehaviour
         cam = Camera.main;
         anim = GetComponent<Animator>();
         playerState = GetComponent<State>();
+        playerState.canMove = true;
     }
 
     
     public void HandleMovement()
-    {
+    {   if (!playerState.canMove) return;
         if (playerState.Strafe)
         {
             StrafeMovement();
@@ -50,6 +51,8 @@ public class Movement : MonoBehaviour
         anim.SetFloat("InputX", inputX);
         anim.SetFloat("InputY", inputY);
     }
+
+    
 
     private void NormalMovement()
     {
