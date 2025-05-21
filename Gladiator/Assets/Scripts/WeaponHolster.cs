@@ -1,9 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponHolster : MonoBehaviour
 {
     public enum WeaponState { Idle, Equipping, Equipped, Unequipping }
+    [SerializeField] private FinisherController finisherController;
     public WeaponState currentWeaponState = WeaponState.Idle;
     [SerializeField] private GameObject sword;
     [SerializeField] private GameObject twoHandedWeapon;
@@ -37,7 +39,8 @@ public class WeaponHolster : MonoBehaviour
     }
     void HandleEquipInput()
     {
-        if (currentWeaponState != WeaponState.Idle && currentWeaponState != WeaponState.Equipped)
+        if (currentWeaponState != WeaponState.Idle && currentWeaponState != WeaponState.Equipped ||
+        (finisherController != null && finisherController.IsFinishing()))
             return;
 
         if (Input.GetKeyDown(KeyCode.Q))

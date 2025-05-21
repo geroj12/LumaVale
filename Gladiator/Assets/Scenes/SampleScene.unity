@@ -4535,6 +4535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c687533e857b2f43bb72d4a43bd5697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finisherController: {fileID: 2210508922351470569}
   currentWeaponState: 2
   sword: {fileID: 7891595272871889376}
   twoHandedWeapon: {fileID: 8122313394128558119}
@@ -4578,6 +4579,7 @@ MonoBehaviour:
     - Fatal_Unarmed01
     nonFatalFinishers:
     - NonFatal_OneHanded02
+  isFinishing: 0
 --- !u!136 &2210508922351470570
 CapsuleCollider:
   m_ObjectHideFlags: 0

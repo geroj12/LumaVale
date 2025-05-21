@@ -6,6 +6,7 @@ using UnityEngine;
 public class FinisherController : MonoBehaviour
 {
     [Header("References")]
+
     public Animator playerAnimator;
     [SerializeField] private WeaponHolster weaponHolster;
     [SerializeField] private State playerState;
@@ -14,7 +15,7 @@ public class FinisherController : MonoBehaviour
     public WeaponFinishers twoHandedFinishers;
     public WeaponFinishers oneHandedFinishers;
     public WeaponFinishers unarmedFinishers;
-    private bool isFinishing = false;
+    public bool isFinishing = false;
     private Enemy currentFinisherTarget;
 
     private void Start()
@@ -73,6 +74,8 @@ public class FinisherController : MonoBehaviour
         if (anchor == null) return;
         transform.position = anchor.position;
         transform.rotation = anchor.rotation;
+
+        
     }
     public void ResetFinisherState()
     {

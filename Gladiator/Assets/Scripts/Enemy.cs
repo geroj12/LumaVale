@@ -24,7 +24,6 @@ public class Enemy : MonoBehaviour
     public bool isDead = false;
     private Rigidbody[] ragdollRigidbodies;
     private Collider[] ragdollColliders;
-    private CinemachineInputAxisController cinemachineInputAxisController;
     public Player player;
     public Transform finisherAnchor;
 
@@ -50,7 +49,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
-        cinemachineInputAxisController = GameObject.Find("FreeLook Camera").GetComponent<CinemachineInputAxisController>();
 
     }
 
@@ -72,16 +70,13 @@ public class Enemy : MonoBehaviour
     private IEnumerator HandleFinisher()
     {
         IsFinisherReady = false;
-        cinemachineInputAxisController.enabled = false;
 
         // Spieler anschauen
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
         lookDirection.y = 0;
         transform.rotation = Quaternion.LookRotation(lookDirection);
 
-
         yield return new WaitForSeconds(finisherDuration);
-        cinemachineInputAxisController.enabled = true;
 
     }
     public float GetHealthPercent()
