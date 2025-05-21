@@ -2766,7 +2766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2641904561539882353
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4241,6 +4241,7 @@ MonoBehaviour:
   IsFinisherReady: 0
   bloodEmitterPrefab: {fileID: 2200741100250280157, guid: 6801d3351bc4a304aace69eeb10a56e6, type: 3}
   fatalFinisherThreshold: 10
+  isDead: 0
   player: {fileID: 0}
   finisherAnchor: {fileID: 5287518467891222640}
   maxHP: 100
