@@ -1297,6 +1297,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3567991955953489951, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 170569761}
+    - target: {fileID: 3567991955953489951, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: swipeArrow
+      value: 
+      objectReference: {fileID: 93672588}
+    - target: {fileID: 3567991955953489951, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: swipeVisual
+      value: 
+      objectReference: {fileID: 15635684}
+    - target: {fileID: 3567991955953489951, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: swipeVisualImage
+      value: 
+      objectReference: {fileID: 15635685}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
