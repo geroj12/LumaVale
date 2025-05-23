@@ -398,6 +398,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1168321291586603963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7079400257064367660}
+  m_Layer: 7
+  m_Name: DamageTextPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7079400257064367660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168321291586603963}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1271495619617351941}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1169680485425500195
 GameObject:
   m_ObjectHideFlags: 0
@@ -4148,6 +4179,7 @@ Transform:
   - {fileID: 6997400979731642235}
   - {fileID: 5287518467891222640}
   - {fileID: 4962414033671209405}
+  - {fileID: 7079400257064367660}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1878604076283804334
@@ -4238,9 +4270,12 @@ MonoBehaviour:
   mainCollider: {fileID: 1600260610081708197}
   swordObject: {fileID: 2615503703347187505}
   shieldObject: {fileID: 2881662872099047601}
+  damageTextPrefab: {fileID: 4478206686024956061, guid: 1224a1a819a0e694381919a39f44e92e, type: 3}
+  damageTextSpawnPoint: {fileID: 7079400257064367660}
   finisherDuration: 3
   IsFinisherReady: 0
   bloodEmitterPrefab: {fileID: 2200741100250280157, guid: 6801d3351bc4a304aace69eeb10a56e6, type: 3}
+  isStunned: 0
   fatalFinisherThreshold: 10
   isDead: 0
   player: {fileID: 0}

@@ -19,7 +19,8 @@ public class Combat : MonoBehaviour
     private float blockTimer = 0f;
     private float lastScrollValue = 0f;
     private WeaponDamage weaponDamage;
-    private NavMeshAgent agent;
+    [SerializeField] private float attackCooldown = 1f;
+    private float nextAttackTime = 0f;
     #endregion
 
     #region Unity Methods
@@ -27,7 +28,6 @@ public class Combat : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
 
         state = GetComponent<State>();
         directionHandler = GetComponent<CombatDirectionHandler>();
@@ -51,6 +51,7 @@ public class Combat : MonoBehaviour
     /// </summary>
     private void HandleAttack()
     {
+        if (Time.time < nextAttackTime) return; // Cooldown aktiv
         if (weaponHolster.IsBusy() || finisherController.IsFinishing()) return;
         if (state.blocking)
             state.ResetMouseDirections();
@@ -83,9 +84,14 @@ public class Combat : MonoBehaviour
 
     private void TriggerThrustAttack()
     {
+        if (state.currentEnergy < state.heavyAttackCost) return;
 
+        state.UseEnergy(state.heavyAttackCost);
+        weaponDamage.SetAttackType(WeaponDamage.AttackType.Thrust);
 
         state.attackThrust = true;
+        nextAttackTime = Time.time + attackCooldown;
+
         switch (weaponHolster.currentWeaponType)
         {
             case 2: anim.SetBool("AttackThrust_TwoHanded01", true); break;
@@ -98,8 +104,14 @@ public class Combat : MonoBehaviour
     private void TriggerOverheadAttack()
     {
 
+        if (state.currentEnergy < state.heavyAttackCost) return;
+        state.UseEnergy(state.heavyAttackCost);
+
+        weaponDamage.SetAttackType(WeaponDamage.AttackType.HeavyOverhead);
 
         state.attackUp = true;
+        nextAttackTime = Time.time + attackCooldown;
+
         switch (weaponHolster.currentWeaponType)
         {
             case 2: anim.SetBool("AttackUp_TwoHanded01", true); break;
@@ -112,6 +124,9 @@ public class Combat : MonoBehaviour
     private void TriggerSwipeAttack()
     {
 
+        weaponDamage.SetAttackType(WeaponDamage.AttackType.Normal);
+        state.UseEnergy(state.normalAttackCost);
+        nextAttackTime = Time.time + attackCooldown;
 
         int weapon = weaponHolster.currentWeaponType;
         if (state.mouseOnLeftSide)
@@ -136,7 +151,7 @@ public class Combat : MonoBehaviour
 
     #endregion
 
-    
+
     #region Combat - Blocking
 
     /// <summary>

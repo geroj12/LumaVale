@@ -5,6 +5,8 @@ public class Player : MonoBehaviour
     private Movement movement;
     [SerializeField] private Animator animator;
     [SerializeField] private Combat combat;
+        [SerializeField] private State state;
+
     
     void Start()
     {
@@ -14,7 +16,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
+        state.RegenerateEnergy();
         movement.HandleMovement();
     }
 

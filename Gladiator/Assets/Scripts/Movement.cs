@@ -31,6 +31,7 @@ public class Movement : MonoBehaviour
 
     public void HandleMovement()
     {
+        if (playerState.attackThrust || playerState.attackUp) return;
         if (!playerState.canMove) return;
         if (playerState.Strafe)
         {

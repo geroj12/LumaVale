@@ -10,13 +10,16 @@ public class Enemy : MonoBehaviour
     public CapsuleCollider mainCollider;
     [SerializeField] private GameObject swordObject;
     [SerializeField] private GameObject shieldObject;
-
+    public GameObject damageTextPrefab;
+    public Transform damageTextSpawnPoint;
     [Header("Settings")]
     public float finisherDuration = 3f;
     public bool IsFinisherReady = false;
     private bool isFatalFinisher = false;
     public GameObject bloodEmitterPrefab;
     private GameObject activeBloodEmitter;
+    public bool isStunned = false;
+    [SerializeField] private Transform damageCanvasTransform;
 
 
     [Header("Finisher Einstellungen")]
@@ -169,13 +172,27 @@ public class Enemy : MonoBehaviour
             lastHitTime = Time.time;
             PlayHitReaction(attackerPosition);
         }
+        ShowDamageText(amount); // hinzufügen
 
         if (currentHP <= 0f)
         {
             Die();
         }
     }
+    private void ShowDamageText(float amount)
+    {
+        if (damageTextPrefab == null || damageTextSpawnPoint == null) return;
 
+        GameObject go = Instantiate(damageTextPrefab, damageTextSpawnPoint.position, Quaternion.identity,damageCanvasTransform);
+        DamageText dmg = go.GetComponent<DamageText>();
+
+        // Optional: Unterschiedliche Farben
+        Color color = Color.white;
+        if (amount > 30) color = Color.red;
+        else if (amount < 10) color = Color.yellow;
+
+        dmg.ShowDamage(amount, color);
+    }
     private void PlayHitReaction(Vector3 attackerPosition)
     {
         Vector3 toAttacker = (attackerPosition - transform.position).normalized;
@@ -189,7 +206,6 @@ public class Enemy : MonoBehaviour
         string trigger = Mathf.Abs(angle) <= 90f ? "HitFront" : "HitBack";
         animator.SetTrigger(trigger);
     }
-
 
     private void Die()
     {

@@ -10,7 +10,15 @@ public class WeaponDamage : MonoBehaviour
 
     private bool canDealDamage = false;
     private HashSet<Enemy> damagedEnemies = new HashSet<Enemy>();
+    public enum AttackType { Normal, HeavyOverhead, Thrust }
 
+    private AttackType currentAttackType = AttackType.Normal;
+    [SerializeField] private float heavyAttackDmgModifier;
+
+    public void SetAttackType(AttackType type)
+    {
+        currentAttackType = type;
+    }
     public void EnableDamage()
     {
         canDealDamage = true;
@@ -21,6 +29,20 @@ public class WeaponDamage : MonoBehaviour
         {
             weaponTrail.Clear();          // Trail-Cache löschen (verhindert Artefakte)
             weaponTrail.emitting = true; // ⬅️ Trail aktivieren
+        }
+
+        switch (currentAttackType)
+        {
+            case AttackType.HeavyOverhead:
+                damage *= heavyAttackDmgModifier;
+                break;
+            case AttackType.Thrust:
+                damage *= heavyAttackDmgModifier; 
+               
+                break;
+            case AttackType.Normal:
+                
+                break;
         }
     }
 
