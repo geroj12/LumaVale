@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
 
     public void InterruptAttack()
     {
-       
         combat = GetComponent<Combat>();
         if (combat != null)
         {

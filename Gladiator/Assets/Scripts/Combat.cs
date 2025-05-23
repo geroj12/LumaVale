@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Combat : MonoBehaviour
 {
@@ -18,8 +19,7 @@ public class Combat : MonoBehaviour
     private float blockTimer = 0f;
     private float lastScrollValue = 0f;
     private WeaponDamage weaponDamage;
-
-
+    private NavMeshAgent agent;
     #endregion
 
     #region Unity Methods
@@ -27,6 +27,8 @@ public class Combat : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+
         state = GetComponent<State>();
         directionHandler = GetComponent<CombatDirectionHandler>();
         weaponHolster = GetComponent<WeaponHolster>();
@@ -81,6 +83,8 @@ public class Combat : MonoBehaviour
 
     private void TriggerThrustAttack()
     {
+
+
         state.attackThrust = true;
         switch (weaponHolster.currentWeaponType)
         {
@@ -93,6 +97,8 @@ public class Combat : MonoBehaviour
 
     private void TriggerOverheadAttack()
     {
+
+
         state.attackUp = true;
         switch (weaponHolster.currentWeaponType)
         {
@@ -105,6 +111,8 @@ public class Combat : MonoBehaviour
 
     private void TriggerSwipeAttack()
     {
+
+
         int weapon = weaponHolster.currentWeaponType;
         if (state.mouseOnLeftSide)
         {
@@ -128,7 +136,7 @@ public class Combat : MonoBehaviour
 
     #endregion
 
-
+    
     #region Combat - Blocking
 
     /// <summary>
