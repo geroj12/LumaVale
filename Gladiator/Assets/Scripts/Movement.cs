@@ -1,6 +1,7 @@
 using System;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Movement : MonoBehaviour
 {
@@ -11,13 +12,20 @@ public class Movement : MonoBehaviour
     private Camera cam;
     private Animator anim;
     private State playerState;
-
+    private NavMeshAgent agent;
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         cam = Camera.main;
         anim = GetComponent<Animator>();
         playerState = GetComponent<State>();
         playerState.canMove = true;
+
+        // Agent sollte keine eigene Rotation machen
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.speed = movementSpeed;
+
     }
 
 
@@ -51,6 +59,12 @@ public class Movement : MonoBehaviour
 
         anim.SetFloat("InputX", inputX, smoothValue, Time.deltaTime);
         anim.SetFloat("InputY", inputY, smoothValue, Time.deltaTime);
+
+        Vector3 inputDir = new Vector3(inputX, 0, inputY);
+        Vector3 worldDir = cam.transform.TransformDirection(inputDir);
+        worldDir.y = 0;
+        worldDir.Normalize();
+        agent.Move(worldDir * movementSpeed * Time.deltaTime);
     }
 
 
@@ -60,12 +74,16 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             maxValue = 2f;
+            agent.speed = movementSpeed * 2f;
+
             inputX = Input.GetAxis("Horizontal") * 2f;
             inputY = Input.GetAxis("Vertical") * 2f;
         }
         else
         {
             maxValue = 1f;
+            agent.speed = movementSpeed;
+
             inputX = Input.GetAxis("Horizontal");
             inputY = Input.GetAxis("Vertical");
         }
@@ -73,9 +91,19 @@ public class Movement : MonoBehaviour
         direction = new Vector3(inputX, 0, inputY);
         anim.SetFloat("Locomotion", Vector3.ClampMagnitude(direction, maxValue).magnitude, smoothValue, Time.deltaTime);
 
-        Vector3 rot = cam.transform.TransformDirection(direction);
-        rot.y = 0;
-        transform.forward = Vector3.Slerp(transform.forward, rot, Time.deltaTime * movementSpeed);
+        Vector3 move = cam.transform.TransformDirection(direction);
+        move.y = 0;
+        move.Normalize();
+
+        // Neue Bewegung über NavMeshAgent
+        agent.Move(move * agent.speed * Time.deltaTime);
+
+        // Schnelle und präzise Rotation zur Bewegungsrichtung
+        if (move.magnitude > 0.1f)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 540f * Time.deltaTime); // 720 Grad/s
+        }
     }
 
 
