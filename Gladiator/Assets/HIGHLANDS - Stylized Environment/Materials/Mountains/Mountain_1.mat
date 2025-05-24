@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Mountain_1
   m_Shader: {fileID: 4800000, guid: ca17eb9d328bd334c93af7d8e6e8842e, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _FOGON_ON
   m_InvalidKeywords:
@@ -19,6 +21,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -31,7 +34,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 45577e093d5c840419b36c5502bff95f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
@@ -71,7 +74,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 07a6a70a7384a1d408f28685f74f69de, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_LightmapsInd:
@@ -84,6 +87,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AddPrecomputedVelocity: 0
     - _AlphaCutoff: 0.5
     - _BumpScale: 1
     - _CustomCutoff: 0
@@ -96,30 +100,31 @@ Material:
     - _Float1: -131.4
     - _FogOn: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 1
     - _GlossyReflections: 1
     - _Height: -40
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 2
     - _NormalScale: 0.6
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Power: 234.3
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0
-    - _SmoothnessTextureChannel: 0
+    - _SmoothnessTextureChannel: -0.03
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - __dirty: 0
+    - __dirty: -40
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0, g: 0.5288246, b: 0.7176471, a: 1}
+    - _Color: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
+    - _Color0: {r: 1, g: 0.5288246, b: 0.7176471, a: 1}
     - _Color1: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FogColor: {r: 0, g: 0.56078434, b: 0.7529412, a: 0}
-    - _Vector0: {r: 0, g: 0, b: 0, a: 0}
+    - _FogColor: {r: 0.036712352, g: 0.15390548, b: 0.31132078, a: 1}
+    - _Vector0: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
