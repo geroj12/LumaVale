@@ -33,7 +33,6 @@ public class Combat : MonoBehaviour
         directionHandler = GetComponent<CombatDirectionHandler>();
         weaponHolster = GetComponent<WeaponHolster>();
         weaponDamage = weaponHolster.GetCurrentWeaponDamage();
-
     }
 
     void Update()
@@ -84,6 +83,7 @@ public class Combat : MonoBehaviour
 
     private void TriggerThrustAttack()
     {
+
         if (state.currentEnergy < state.heavyAttackCost) return;
 
         state.UseEnergy(state.heavyAttackCost);
