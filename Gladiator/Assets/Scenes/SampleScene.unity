@@ -2947,7 +2947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488613927352275942, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
       propertyPath: currentWeaponType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 488613927352275942, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
       propertyPath: handRotationOffset.x
