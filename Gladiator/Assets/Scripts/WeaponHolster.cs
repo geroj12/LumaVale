@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponHolster : MonoBehaviour
 {
+    public delegate void WeaponChangedDelegate(WeaponDamage newDamage);
+    public event WeaponChangedDelegate OnWeaponChanged;
     public enum WeaponState { Idle, Equipping, Equipped, Unequipping }
     [SerializeField] private FinisherController finisherController;
     public WeaponState currentWeaponState = WeaponState.Idle;
@@ -121,8 +123,7 @@ public class WeaponHolster : MonoBehaviour
 
         state.equipped = true;
         currentWeaponState = WeaponState.Equipped;
-        if (combatScript != null)
-            combatScript.UpdateWeaponDamage(GetCurrentWeaponDamage());
+        NotifyWeaponChanged();
     }
 
     IEnumerator UnequipRoutine()
@@ -143,6 +144,14 @@ public class WeaponHolster : MonoBehaviour
         state.equipped = false;
         currentWeaponType = 0;
         currentWeaponState = WeaponState.Idle;
+        NotifyWeaponChanged();
+    }
+
+    private void NotifyWeaponChanged()
+    {
+        WeaponDamage newDamage = GetCurrentWeaponDamage();
+        combatScript.UpdateWeaponDamage(newDamage);
+        OnWeaponChanged?.Invoke(newDamage);
     }
     public bool IsBusy()
     {

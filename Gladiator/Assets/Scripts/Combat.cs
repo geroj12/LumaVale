@@ -19,6 +19,9 @@ public class Combat : MonoBehaviour
     private float blockTimer = 0f;
     private float lastScrollValue = 0f;
     private WeaponDamage weaponDamage;
+    [SerializeField] private WeaponDamage unarmedWeaponDamageLeftFist;
+    [SerializeField] private WeaponDamage unarmedWeaponDamageRightFist;
+
     [SerializeField] private float attackCooldown = 1f;
     private float nextAttackTime = 0f;
     #endregion
@@ -32,7 +35,9 @@ public class Combat : MonoBehaviour
         state = GetComponent<State>();
         directionHandler = GetComponent<CombatDirectionHandler>();
         weaponHolster = GetComponent<WeaponHolster>();
-        weaponDamage = weaponHolster.GetCurrentWeaponDamage();
+        weaponHolster.OnWeaponChanged += UpdateWeaponDamage;
+
+        weaponDamage = weaponHolster.GetCurrentWeaponDamage() ?? unarmedWeaponDamageRightFist;
     }
 
     void Update()
@@ -124,8 +129,9 @@ public class Combat : MonoBehaviour
     private void TriggerSwipeAttack()
     {
 
-        weaponDamage.SetAttackType(WeaponDamage.AttackType.Normal);
         state.UseEnergy(state.normalAttackCost);
+        weaponDamage.SetAttackType(WeaponDamage.AttackType.Normal);
+
         nextAttackTime = Time.time + attackCooldown;
 
         int weapon = weaponHolster.currentWeaponType;
@@ -200,7 +206,18 @@ public class Combat : MonoBehaviour
     public void StartAttack()
     {
         state.isAttacking = true;
-        weaponDamage.EnableDamage(state);
+
+        if (weaponHolster.currentWeaponType == 0)
+        {
+            if (state.mouseOnLeftSide)
+                unarmedWeaponDamageLeftFist.EnableDamage(state);
+            else if (state.mouseOnRightSide)
+                unarmedWeaponDamageRightFist.EnableDamage(state);
+        }
+        else
+        {
+            weaponDamage?.EnableDamage(state);
+        }
     }
 
     /// <summary>
@@ -209,12 +226,21 @@ public class Combat : MonoBehaviour
     public void EndAttack()
     {
         state.isAttacking = false;
-        weaponDamage.DisableDamage();
+
+        if (weaponHolster.currentWeaponType == 0)
+        {
+            unarmedWeaponDamageLeftFist.DisableDamage();
+            unarmedWeaponDamageRightFist.DisableDamage();
+        }
+        else
+        {
+            weaponDamage?.DisableDamage();
+        }
 
     }
     public void UpdateWeaponDamage(WeaponDamage newDamage)
     {
-        weaponDamage = newDamage;
+        weaponDamage = newDamage ?? unarmedWeaponDamageRightFist;
     }
     /// <summary>
     /// Setzt alle Angriffs-Animation-Bools zurück.
