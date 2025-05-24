@@ -200,7 +200,7 @@ public class Combat : MonoBehaviour
     public void StartAttack()
     {
         state.isAttacking = true;
-        weaponDamage.EnableDamage();
+        weaponDamage.EnableDamage(state);
     }
 
     /// <summary>

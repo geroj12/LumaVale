@@ -155,7 +155,7 @@ public class Enemy : MonoBehaviour
     // ==========================
     // === DAMAGE & REACTIONS ===
     // ==========================
-    public void TakeDamage(float amount, Vector3 attackerPosition, bool hitShield = false)
+    public void TakeDamage(float amount, Vector3 attackerPosition, bool hitShield = false, WeaponDamage.AttackType attackType = WeaponDamage.AttackType.Normal)
     {
         if (isDead) return;
 
@@ -172,24 +172,34 @@ public class Enemy : MonoBehaviour
             lastHitTime = Time.time;
             PlayHitReaction(attackerPosition);
         }
-        ShowDamageText(amount); // hinzufügen
+        ShowDamageText(amount, attackType); // hinzufügen
 
         if (currentHP <= 0f)
         {
             Die();
         }
     }
-    private void ShowDamageText(float amount)
+    private void ShowDamageText(float amount, WeaponDamage.AttackType attackType)
     {
         if (damageTextPrefab == null || damageTextSpawnPoint == null) return;
 
-        GameObject go = Instantiate(damageTextPrefab, damageTextSpawnPoint.position, Quaternion.identity,damageCanvasTransform);
+        GameObject go = Instantiate(damageTextPrefab, damageTextSpawnPoint.position, Quaternion.identity, damageCanvasTransform);
         DamageText dmg = go.GetComponent<DamageText>();
-
-        // Optional: Unterschiedliche Farben
+        // Farbe abhängig vom Angriffstyp
         Color color = Color.white;
-        if (amount > 30) color = Color.red;
-        else if (amount < 10) color = Color.yellow;
+        switch (attackType)
+        {
+            case WeaponDamage.AttackType.HeavyOverhead:
+                color = Color.red; // z. B. von oben
+                break;
+            case WeaponDamage.AttackType.Thrust:
+                color = Color.yellow; // z. B. von unten
+                break;
+            case WeaponDamage.AttackType.Normal:
+            default:
+                color = Color.white; // links/rechts oder Standard
+                break;
+        }
 
         dmg.ShowDamage(amount, color);
     }

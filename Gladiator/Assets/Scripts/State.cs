@@ -10,6 +10,7 @@ public class State : MonoBehaviour
     public bool canMove = false;
 
     [Header("Energy & Combat")]
+    public float strength = 1f;
     public float currentEnergy = 100f;
     public float maxEnergy = 100f;
 

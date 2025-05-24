@@ -1345,7 +1345,7 @@ MonoBehaviour:
   player: {fileID: 4993645054264091689}
   weaponCollider: {fileID: 6161954740209680821}
   weaponTrail: {fileID: 4395610025385450158}
-  heavyAttackDmgModifier: 1.4
+  heavyAttackDmgModifier: 20
 --- !u!1 &501401456770779192
 GameObject:
   m_ObjectHideFlags: 0
@@ -3523,6 +3523,7 @@ MonoBehaviour:
   blocking: 0
   isAttacking: 0
   canMove: 0
+  strength: 3
   currentEnergy: 100
   maxEnergy: 100
   normalAttackCost: 5
@@ -5133,11 +5134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53574dff68fb795489c171cd49fb0be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 10
   player: {fileID: 4993645054264091689}
   weaponCollider: {fileID: 5306109791162479716}
   weaponTrail: {fileID: 7349790820390347677}
-  heavyAttackDmgModifier: 1.1
+  heavyAttackDmgModifier: 10
 --- !u!1 &4306181359393446072
 GameObject:
   m_ObjectHideFlags: 0
@@ -5365,7 +5366,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4524549802509278037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -81.47}
+  m_LocalPosition: {x: 0, y: 0, z: -40.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6410,7 +6411,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5554318710428928645}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 81.668}
+  m_LocalPosition: {x: 0, y: 0, z: 40.831}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
