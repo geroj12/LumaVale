@@ -19,6 +19,9 @@ public class EnergyUI : MonoBehaviour
     private float fadeDelay = 2.5f;   // Sekunden ohne Veränderung bis Fade-Out
     private float fadeSpeed = 2f;
     private Transform mainCamera;
+    private float shakeDuration = 0.2f;
+    private float shakeTimer = 0f;
+    private float shakeStrength = 0.05f;
 
     [System.Obsolete]
     private void Start()
@@ -31,6 +34,8 @@ public class EnergyUI : MonoBehaviour
             canvasGroup = GetComponent<CanvasGroup>();
         if (fillImage == null)
             fillImage = energySlider.fillRect.GetComponent<Image>();
+
+        offset = transform.localPosition;
 
         mainCamera = Camera.main.transform;
 
@@ -90,7 +95,23 @@ public class EnergyUI : MonoBehaviour
                 canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, 0f, Time.deltaTime * fadeSpeed);
             }
         }
+        // Shake Trigger
+        if (currentEnergy < lastEnergy - 0.5f) // Nur bei merklichem Verbrauch
+        {
+            shakeTimer = shakeDuration;
+        }
 
+        // Shake Update
+        if (shakeTimer > 0f)
+        {
+            shakeTimer -= Time.deltaTime;
+            Vector3 shakeOffset = Random.insideUnitSphere * shakeStrength;
+            transform.localPosition = offset + shakeOffset;
+        }
+        else
+        {
+            transform.localPosition = offset;
+        }
         lastEnergy = currentEnergy;
     }
 
