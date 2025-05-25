@@ -2921,6 +2921,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1954052987627496177, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.189
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954052987627496177, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954052987627496177, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 2939129130572697108, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2941,10 +2953,138 @@ PrefabInstance:
       propertyPath: swipeVisualImage
       value: 
       objectReference: {fileID: 15635685}
+    - target: {fileID: 4395610025385450158, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_ApplyActiveColorSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395610025385450158, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.textureScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395610025385450158, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0.039215688
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395610025385450158, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0.039215688
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395610025385450158, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.a
+      value: 0.003921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718194581519077202, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718194581519077202, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718194581519077202, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023867287883322139, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Center.x
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306109791162479716, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Size.x
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306109791162479716, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Size.z
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306109791162479716, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7024859518048470090, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585549}
+    - target: {fileID: 7349790820390347677, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_MotionVectors
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349790820390347677, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_ApplyActiveColorSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349790820390347677, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.textureScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349790820390347677, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0.039215688
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349790820390347677, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0.039215688
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349790820390347677, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.8584906
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349790820390347677, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.8584906
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349790820390347677, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.8584906
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349790820390347677, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.a
+      value: 0.003921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720780933039255975, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_ApplyActiveColorSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720780933039255975, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.textureScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720780933039255975, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0.039215688
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720780933039255975, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0.039215688
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720780933039255975, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.a
+      value: 0.003921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 8662368696546211545, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_ApplyActiveColorSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8662368696546211545, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 8662368696546211545, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.textureScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8662368696546211545, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0.039215688
+      objectReference: {fileID: 0}
+    - target: {fileID: 8662368696546211545, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0.039215688
+      objectReference: {fileID: 0}
+    - target: {fileID: 8662368696546211545, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.a
+      value: 0.003921569
+      objectReference: {fileID: 0}
     - target: {fileID: 9102416745461517484, guid: 47a297d8001141a4fb122f8938938dac, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
