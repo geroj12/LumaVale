@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4226069d579fbe445bb80af76547f3de
+guid: 0db318cb4f1cb8d4c880c99a1c01a250
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -34,11 +34,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sword Slash_LEFT_OneHanded01
+      name: Standing Melee Attack Horizontal
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 43
+      lastFrame: 55
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -57,21 +57,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000000000001000000010000000000000001000000000000000100000001000000010000000000000001000000
       curves: []
-      events:
-      - time: 0.3775133
-        functionName: StartAttack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.4753908
-        functionName: EndAttack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
