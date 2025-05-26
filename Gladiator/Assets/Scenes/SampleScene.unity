@@ -6990,8 +6990,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4b30ddfb5e37d4dab1d08e90102dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
-  smoothValue: 0.2
+  movementSpeed: 2.1
+  smoothValue: 0.04
   anim: {fileID: 2234415918731777033}
 --- !u!114 &2234415918731777042
 MonoBehaviour:
