@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b7c42e93d1cf2384491cbdd0304d224a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301499
+  packageName: Female Runner Animset - Free Walk&Jog
+  packageVersion: 1.0
+  assetPath: Assets/FemaleRunnerAnimset/Controllers/Jog/Jog_L180.controller
+  uploadId: 708217
