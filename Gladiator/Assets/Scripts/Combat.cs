@@ -6,7 +6,7 @@ public class Combat : MonoBehaviour
 {
     #region Fields and References
 
-    private Animator anim;
+    [SerializeField]private Animator anim;
     private State state;
 
     [SerializeField] private CombatDirectionHandler directionHandler;
@@ -30,7 +30,6 @@ public class Combat : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
 
         state = GetComponent<State>();
         directionHandler = GetComponent<CombatDirectionHandler>();

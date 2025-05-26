@@ -10,14 +10,13 @@ public class Movement : MonoBehaviour
     private float inputX, inputY, maxValue;
     private Vector3 direction;
     private Camera cam;
-    private Animator anim;
+    [SerializeField]private Animator anim;
     private State playerState;
     private NavMeshAgent agent;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         cam = Camera.main;
-        anim = GetComponent<Animator>();
         playerState = GetComponent<State>();
         playerState.canMove = true;
 

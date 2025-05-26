@@ -13,7 +13,7 @@ public class WeaponHolster : MonoBehaviour
     [SerializeField] private GameObject twoHandedWeapon;
     public Combat combatScript;
     State state;
-    private Animator anim;
+    [SerializeField]private Animator anim;
 
     [SerializeField] private Transform rightHandTransform;
     [SerializeField] private Transform holsterTransform;
@@ -30,10 +30,7 @@ public class WeaponHolster : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
         state = GetComponent<State>();
-
-
     }
     void LateUpdate()
     {
