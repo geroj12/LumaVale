@@ -1915,15 +1915,15 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 5abd4d104fe9a47498f0724f01838b16, type: 3}
-    m_Threshold: 0.2
+    m_Motion: {fileID: -203655887218126122, guid: 2f8f4f51f7b118f44b4f82292f4c3822, type: 3}
+    m_Threshold: 0.3
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
-    m_DirectBlendParameter: Blend
+    m_DirectBlendParameter: Locomotion
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 4072b70d35fbcc849a3b772459dd24f9, type: 3}
+    m_Motion: {fileID: -2911104375623730541, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
     m_Threshold: 2
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
