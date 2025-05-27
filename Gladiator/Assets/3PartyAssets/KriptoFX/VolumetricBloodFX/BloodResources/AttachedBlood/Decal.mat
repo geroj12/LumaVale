@@ -140,7 +140,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SunPos: {r: 0.3, g: 0.6, b: 0.06, a: 0}
-    - _TintColor: {r: 0.5650987, g: 1, b: 0.3915094, a: 1}
+    - _TintColor: {r: 0.5, g: 0.014686367, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2207220920908345726
