@@ -9,6 +9,7 @@ TagManager:
   - EnemyShield
   - Item
   - Interactive
+  - Walkable
   layers:
   - Default
   - TransparentFX
@@ -28,10 +29,10 @@ TagManager:
   - Interactive
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Grass
+  - Mud
+  - Dirt
+  - Gravel
   - 
   - 
   - 

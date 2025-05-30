@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     private Camera cam;
     [SerializeField]private Animator anim;
     private State playerState;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
