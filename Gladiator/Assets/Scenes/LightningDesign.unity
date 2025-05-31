@@ -35379,10 +35379,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1091973986698834181, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: moanVolume
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1328127290825078433, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_Name
       value: Player
@@ -35410,14 +35406,6 @@ PrefabInstance:
     - target: {fileID: 6193288042113578271, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6799909794390501677, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.a
-      value: 0.15686275
-      objectReference: {fileID: 0}
-    - target: {fileID: 6799909794390501677, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.a
-      value: 0.078431375
       objectReference: {fileID: 0}
     - target: {fileID: 7159711427784044357, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_Camera

@@ -7,7 +7,7 @@ public class FMODEquipUnequip : MonoBehaviour
 {
     [SerializeField]
     private EventReference equipUnequipEvent; // NEU: korrektes EventReference-Feld
-    [SerializeField] WeaponHolster weaponHolster;
+    WeaponHolster weaponHolster;
     private EventInstance instance;
 
 
@@ -18,17 +18,7 @@ public class FMODEquipUnequip : MonoBehaviour
         instance = RuntimeManager.CreateInstance(equipUnequipEvent);
     }
 
-    void Update()
-    {
-        if (weaponHolster.currentWeaponState == WeaponHolster.WeaponState.Equipping)
-        {
-            PlayEquip();
-        }
-        else if (weaponHolster.currentWeaponState == WeaponHolster.WeaponState.Unequipping)
-        {
-            PlayUnequip();
-        }
-    }
+
 
     internal void PlayEquip()
     {

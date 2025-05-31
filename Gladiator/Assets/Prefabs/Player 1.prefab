@@ -2322,8 +2322,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0.039215688}
-      key1: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0.039215688}
+      key0: {r: 1, g: 1, b: 1, a: 0.15686275}
+      key1: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0.078431375}
       key2: {r: 1, g: 1, b: 1, a: 0.003921569}
       key3: {r: 1, g: 1, b: 1, a: 0.09803922}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -3413,6 +3413,11 @@ MonoBehaviour:
     Path: event:/Events/Characters/Footsteps
   detectGround: {fileID: 7815269264389947978}
   animator: {fileID: 8075385664443808935}
+  playerTransform: {fileID: 8124436766070144346}
+  minSpeed: 0.1
+  stepInterval: 0.5
+  minStepInterval: 0.3
+  state: {fileID: 3971556074646984906}
 --- !u!114 &3192962603021904233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3452,4 +3457,4 @@ MonoBehaviour:
       Data3: 608867209
       Data4: -1171707420
     Path: event:/Events/Characters/SwordWoosh
-  moanVolume: 1
+  moanVolume: 0.5
