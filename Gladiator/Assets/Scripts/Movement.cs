@@ -7,31 +7,31 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 2f;
     [SerializeField] private float smoothValue = 0.2f;
+    [SerializeField] private float gravity = 9.81f;
+    [SerializeField] private float rotationSpeed = 10f;
+
     private float inputX, inputY, maxValue;
-    private Vector3 direction;
     private Camera cam;
-    [SerializeField]private Animator anim;
+    private Animator anim;
     private State playerState;
-    public NavMeshAgent agent;
+    private CharacterController controller;
+    private Vector3 velocity;
+
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
         cam = Camera.main;
+        anim = GetComponent<Animator>();
         playerState = GetComponent<State>();
-        playerState.canMove = true;
-
-        // Agent sollte keine eigene Rotation machen
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-        agent.speed = movementSpeed;
-
+        controller = GetComponent<CharacterController>();
     }
 
+    void FixedUpdate()
+    {
+        ApplyGravity(); // sorgt dafür, dass wir nicht in der Luft schweben
+    }
 
     public void HandleMovement()
     {
-        if (playerState.attackThrust || playerState.attackUp) return;
-        if (!playerState.canMove) return;
         if (playerState.Strafe)
         {
             StrafeMovement();
@@ -48,7 +48,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-
     private void StrafeMovement()
     {
         inputX = Input.GetAxis("Horizontal");
@@ -57,55 +56,62 @@ public class Movement : MonoBehaviour
         float camRot = cam.transform.eulerAngles.y;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, camRot, 0), 4f * Time.deltaTime);
 
-        anim.SetFloat("InputX", inputX, smoothValue, Time.deltaTime);
-        anim.SetFloat("InputY", inputY, smoothValue, Time.deltaTime);
+        Vector3 move = (transform.right * inputX + transform.forward * inputY).normalized;
+        Vector3 finalMove = move * movementSpeed;
+        finalMove.y = velocity.y;
 
-        Vector3 inputDir = new Vector3(inputX, 0, inputY);
-        Vector3 worldDir = cam.transform.TransformDirection(inputDir);
-        worldDir.y = 0;
-        worldDir.Normalize();
-        agent.Move(worldDir * movementSpeed * Time.deltaTime);
+        controller.Move(finalMove * Time.deltaTime);
+
+        anim.SetFloat("InputX", inputX,smoothValue, Time.deltaTime);
+        anim.SetFloat("InputY", inputY,smoothValue, Time.deltaTime);
     }
-
-
 
     private void NormalMovement()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        inputX = Input.GetAxis("Horizontal");
+        inputY = Input.GetAxis("Vertical");
+
+        Vector3 rawDir = new Vector3(inputX, 0, inputY);
+        Vector3 moveDir = cam.transform.TransformDirection(rawDir);
+        moveDir.y = 0f;
+        moveDir = Vector3.ClampMagnitude(moveDir, 1f).normalized;
+
+        // Bewegungsgeschwindigkeit
+        float sprintMultiplier = Input.GetKey(KeyCode.LeftShift) ? 2f : 1f;
+        Vector3 finalMove = moveDir * movementSpeed * sprintMultiplier;
+        finalMove.y = velocity.y;
+
+        controller.Move(finalMove * Time.deltaTime);
+
+        // Berechne weichen Übergang für Animation
+        float moveAmount = rawDir.magnitude * sprintMultiplier;
+        moveAmount = Mathf.Min(moveAmount, 2f); // Max-Wert für Animation
+
+        anim.SetFloat("Locomotion", moveAmount, smoothValue, Time.deltaTime);
+
+        if (moveDir != Vector3.zero)
         {
-            maxValue = 2f;
-            agent.speed = movementSpeed * 2f;
-
-            inputX = Input.GetAxis("Horizontal") * 2f;
-            inputY = Input.GetAxis("Vertical") * 2f;
-        }
-        else
-        {
-            maxValue = 1f;
-            agent.speed = movementSpeed;
-
-            inputX = Input.GetAxis("Horizontal");
-            inputY = Input.GetAxis("Vertical");
-        }
-
-        direction = new Vector3(inputX, 0, inputY);
-        anim.SetFloat("Locomotion", Vector3.ClampMagnitude(direction, maxValue).magnitude, smoothValue, Time.deltaTime);
-
-        Vector3 move = cam.transform.TransformDirection(direction);
-        move.y = 0;
-        move.Normalize();
-
-        // Neue Bewegung über NavMeshAgent
-        agent.Move(move * agent.speed * Time.deltaTime);
-
-        // Schnelle und präzise Rotation zur Bewegungsrichtung
-        if (move.magnitude > 0.1f)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 540f * Time.deltaTime); // 720 Grad/s
+            transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotationSpeed);
         }
     }
 
-
+    private void ApplyGravity()
+    {
+        if (controller.isGrounded)
+        {
+            velocity.y = -1f; // "kleiner Druck", um grounded zu bleiben
+        }
+        else
+        {
+            velocity.y -= gravity * Time.deltaTime;
+        }
+    }
 
 }
+
+// direction = new Vector3(inputX, 0, inputY);
+// anim.SetFloat("Locomotion", Vector3.ClampMagnitude(direction, maxValue).magnitude, smoothValue, Time.deltaTime);
+
+// Vector3 rot = cam.transform.TransformDirection(direction);
+// rot.y = 0;
+// transform.forward = Vector3.Slerp(transform.forward, rot, Time.deltaTime * movementSpeed);'

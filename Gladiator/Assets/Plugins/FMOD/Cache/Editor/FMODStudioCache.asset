@@ -84,6 +84,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-4835544243851429964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/EquipingUnequiping
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/EquipingUnequiping
+  Guid:
+    Data1: 1748633811
+    Data2: 1219696117
+    Data3: -339242103
+    Data4: 875401260
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 7998115881338737281}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3898688077901585469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,12 +183,14 @@ MonoBehaviour:
   - {fileID: -6823622930557566631}
   - {fileID: -8564437162432450431}
   - {fileID: -5846664706956646027}
+  - {fileID: -4835544243851429964}
+  - {fileID: 7127282614387132191}
   EditorParameters: []
   MasterBanks:
   - {fileID: 295523176594350469}
   StringsBanks:
   - {fileID: 4501806437844525808}
-  cacheTime: 638842294825708718
+  cacheTime: 638843183085197802
   cacheVersion: 131605
 --- !u!114 &295523176594350469
 MonoBehaviour:
@@ -177,10 +207,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638842294825470514
+  lastModified: 638843183084974374
   FileSizes:
   - Name: Desktop
-    Value: 3549216
+    Value: 3632448
   Exists: 1
 --- !u!114 &4501806437844525808
 MonoBehaviour:
@@ -197,10 +227,34 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638842294825708718
+  lastModified: 638843183085197802
   FileSizes:
   - Name: Desktop
-    Value: 1026
+    Value: 1222
+  Exists: 1
+--- !u!114 &5397636632080141615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SwordWoosh/MoanVolume
+  m_EditorClassIdentifier: 
+  Name: MoanVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 110037213
+    data2: 1073913197
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &6913477806549397709
 MonoBehaviour:
@@ -227,4 +281,58 @@ MonoBehaviour:
   Labels:
   - Main
   - Combat
+  Exists: 1
+--- !u!114 &7127282614387132191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/SwordWoosh
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/SwordWoosh
+  Guid:
+    Data1: -527021190
+    Data2: 1337569992
+    Data3: 608867209
+    Data4: -1171707420
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 5397636632080141615}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &7998115881338737281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/EquipingUnequiping/EquipUnequip
+  m_EditorClassIdentifier: 
+  Name: EquipUnequip
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 505351248
+    data2: 704311577
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Equiping
+  - Unequiping
   Exists: 1

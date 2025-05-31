@@ -19,10 +19,6 @@ public class FMODFootsteps : MonoBehaviour
     {
         RuntimeManager.LoadBank("Master", true);
     }
-    private void Update()
-    {
-
-    }
 
     public void PlayFootstepWalkAudio()
     {
