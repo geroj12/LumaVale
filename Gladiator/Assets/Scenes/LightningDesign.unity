@@ -38038,6 +38038,18 @@ PrefabInstance:
       propertyPath: swipeVisualImage
       value: 
       objectReference: {fileID: 15635685}
+    - target: {fileID: 3971556074646984906, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: blocking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264708964014174712, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: smoothValue
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264708964014174712, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: movementSpeed
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6193288042113578271, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

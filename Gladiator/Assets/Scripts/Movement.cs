@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private float sprintMultiplier = 2f;
+    private float inputAngle; // global verfügbar
+
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     private Transform rightFoot;
     private Transform leftFoot;
@@ -64,13 +66,34 @@ public class Movement : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, camRot, 0), 4f * Time.deltaTime);
 
         Vector3 move = (transform.right * inputX + transform.forward * inputY).normalized;
-        Vector3 finalMove = move * movementSpeed;
+
+        // Magnitude berechnen (für Blendtree)
+        Vector2 inputVector = new Vector2(inputX, inputY);
+        float inputMagnitude = Mathf.Clamp01(inputVector.magnitude);
+
+       
+        float currentSpeed = movementSpeed;
+
+        Vector3 finalMove = move * currentSpeed;
         finalMove.y = velocity.y;
 
         controller.Move(finalMove * Time.deltaTime);
 
         anim.SetFloat("InputX", inputX, smoothValue, Time.deltaTime);
         anim.SetFloat("InputY", inputY, smoothValue, Time.deltaTime);
+
+        float animMagnitude = inputMagnitude;
+        anim.SetFloat("InputMagnitude", animMagnitude, smoothValue, Time.deltaTime);
+
+        if (move.magnitude > 0.1f)
+        {
+            inputAngle = Vector3.SignedAngle(transform.forward, move, Vector3.up);
+            anim.SetFloat("InputAngle", inputAngle);
+        }
+        else
+        {
+            anim.SetFloat("InputAngle", 0f);
+        }
     }
 
     private void FreeLookMovement()
@@ -112,9 +135,10 @@ public class Movement : MonoBehaviour
         float animMagnitude = inputMagnitude * (isSprinting ? sprintMultiplier : 1f);
         anim.SetFloat("InputMagnitude", animMagnitude, smoothValue, Time.deltaTime);
         // Optional: Richtungswinkel für z. B. RotationDirection
-        float angle = Vector3.SignedAngle(transform.forward, moveDir, Vector3.up);
-        anim.SetFloat("InputDirection", angle);
-        anim.SetFloat("RotationDirection", angle);
+        inputAngle = Vector3.SignedAngle(transform.forward, moveDir, Vector3.up);
+        anim.SetFloat("InputDirection", inputAngle);
+        anim.SetFloat("RotationDirection", inputAngle);
+        anim.SetFloat("InputAngle", inputAngle); // für WalkStarts
 
         // Rotation des Charakters (nur bei Bewegung)
         if (inputMagnitude > 0.1f)
