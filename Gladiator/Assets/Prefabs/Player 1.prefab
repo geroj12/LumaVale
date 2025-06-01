@@ -313,10 +313,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4b30ddfb5e37d4dab1d08e90102dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0.5
-  smoothValue: 0.1
+  movementSpeed: 0.7
+  smoothValue: 0.3
   gravity: 9.81
   rotationSpeed: 10
+  sprintMultiplier: 3
+  sprintKey: 304
 --- !u!114 &5715105754577012175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3415,8 +3417,8 @@ MonoBehaviour:
   animator: {fileID: 8075385664443808935}
   playerTransform: {fileID: 8124436766070144346}
   minSpeed: 0.1
-  stepInterval: 0.5
-  minStepInterval: 0.3
+  stepInterval: 0.8
+  minStepInterval: 0.4
   state: {fileID: 3971556074646984906}
 --- !u!114 &3192962603021904233
 MonoBehaviour:
@@ -3437,7 +3439,6 @@ MonoBehaviour:
       Data3: -339242103
       Data4: 875401260
     Path: event:/Events/Characters/EquipingUnequiping
-  weaponHolster: {fileID: 1397612208756018104}
 --- !u!114 &1091973986698834181
 MonoBehaviour:
   m_ObjectHideFlags: 0

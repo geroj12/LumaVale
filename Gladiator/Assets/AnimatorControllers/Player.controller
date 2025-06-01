@@ -465,22 +465,6 @@ BlendTree:
   m_Name: WalkStartsStrafe
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400024, guid: c4ee2fe5d564b5a44ac4ff4d307304ab, type: 3}
-    m_Threshold: -180
-    m_Position: {x: -180, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: 
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400028, guid: c4ee2fe5d564b5a44ac4ff4d307304ab, type: 3}
-    m_Threshold: -90
-    m_Position: {x: -90, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: 
-    m_Mirror: 0
-  - serializedVersion: 2
     m_Motion: {fileID: 7400022, guid: c4ee2fe5d564b5a44ac4ff4d307304ab, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
@@ -488,26 +472,10 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: 
     m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400026, guid: c4ee2fe5d564b5a44ac4ff4d307304ab, type: 3}
-    m_Threshold: 90
-    m_Position: {x: 90, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: 
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400024, guid: c4ee2fe5d564b5a44ac4ff4d307304ab, type: 3}
-    m_Threshold: 180
-    m_Position: {x: 180, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: 
-    m_Mirror: 0
   m_BlendParameter: InputMagnitude
   m_BlendParameterY: WalkStartDirection
-  m_MinThreshold: -180
-  m_MaxThreshold: 180
+  m_MinThreshold: 60
+  m_MaxThreshold: 60
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -663,7 +631,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: e6f828ab94a5b6944bfa2e7e5b41aa70, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 87416a61507fdba41a784748706a9df5, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

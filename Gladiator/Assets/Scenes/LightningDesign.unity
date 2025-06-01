@@ -38018,21 +38018,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 416191633223857292, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: stepInterval
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 416191633223857292, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: minStepInterval
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 1328127290825078433, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328127290825078433, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2514439552197198374, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: canvas
@@ -38050,18 +38038,6 @@ PrefabInstance:
       propertyPath: swipeVisualImage
       value: 
       objectReference: {fileID: 15635685}
-    - target: {fileID: 4264708964014174712, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: smoothValue
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4264708964014174712, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: movementSpeed
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4264708964014174712, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: sprintMultiplier
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6193288042113578271, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -38074,10 +38050,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585549}
-    - target: {fileID: 8075385664443808935, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8124436766070144346, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 62.1

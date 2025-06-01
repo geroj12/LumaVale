@@ -21,9 +21,6 @@ public class Movement : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
 
-    // OPTIONAL: Für Fußlogik (falls du Fuß-Bones hast)
-    // public Transform rightFoot;
-    // public Transform leftFoot;
 
     void Start()
     {

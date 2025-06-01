@@ -72,7 +72,7 @@ public class FMODFootsteps : MonoBehaviour
 
         if (!state.Strafe)
         {
-            float speed = animator.GetFloat("Locomotion");
+            float speed = animator.GetFloat("InputMagnitude");
             if (speed < minSpeed)
                 return;
         }
