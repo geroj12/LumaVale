@@ -141,7 +141,7 @@ Animator:
   m_GameObject: {fileID: 1306061360791781773}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 96260bc91ededbf4ab76f05481d2ffec, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22f159e6697d77545a7cdbf615937f43, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -168,8 +168,8 @@ MonoBehaviour:
   anchorTransform: {fileID: 0}
   followSpeed: 8
   idleLocalOffset: {x: 1, y: 1.5, z: 0}
-  swipeOffsetDistance: 2
-  swipeMoveDuration: 1
+  swipeOffsetDistance: 1
+  swipeMoveDuration: 3
 --- !u!1 &1470288143620658174
 GameObject:
   m_ObjectHideFlags: 0
