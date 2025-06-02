@@ -166,10 +166,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorTransform: {fileID: 0}
-  followSpeed: 8
-  idleLocalOffset: {x: 1, y: 1.5, z: 0}
-  swipeOffsetDistance: 1
-  swipeMoveDuration: 3
+  targetLocalOffset: {x: 0, y: 1, z: 1}
+  followSpeed: 6
+  swipeOffsetDistance: 1.5
+  swipeReturnDelay: 1
 --- !u!1 &1470288143620658174
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,8 +258,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2161101227978071417}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5966981, y: 0.7448605, z: -0.18805729, w: 0.23188071}
-  m_LocalPosition: {x: 0.028311687, y: 0.012291389, z: 0.509847}
+  m_LocalRotation: {x: -0.67734575, y: -0.12188567, z: 0.7124943, w: -0.13674268}
+  m_LocalPosition: {x: 0.028311687, y: 0.0122913895, z: 0.509847}
   m_LocalScale: {x: 0.99999994, y: 1, z: 0.9999999}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -267,7 +267,7 @@ Transform:
   - {fileID: 7351829761542116832}
   - {fileID: 550796918263973947}
   m_Father: {fileID: 8251674138674515548}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 21.034, y: 273.236, z: -178.174}
 --- !u!1 &2262946266018250213
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,8 +738,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6374018570540585537}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

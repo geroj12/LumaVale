@@ -56,10 +56,11 @@ public class CombatDirectionHandler : MonoBehaviour
         else
             playerState.mouseOnLeftSide = true;
 
-        // 👉 NEU: Informiere das visuelle Wesen
+        // ➕ Das Wesen auf den Swipe reagieren lassen
         if (spawnedVisual != null)
         {
-            spawnedVisual.OnSwipeDirection(fromRight);
+            Vector2 swipeDir = swipeDelta.normalized;
+            spawnedVisual.ReactToSwipe(swipeDir);
         }
     }
 

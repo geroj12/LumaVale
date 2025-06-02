@@ -3,63 +3,66 @@ using UnityEngine;
 public class CombatVisualFollower : MonoBehaviour
 {
     public Transform anchorTransform;
-    public float followSpeed = 8f;
-    public Vector3 idleLocalOffset = new Vector3(1f, 1.5f, 0f); // Lokaler Offset relativ zur Blickrichtung
-    public float swipeOffsetDistance = 2f;
-    public float swipeMoveDuration = 0.3f;
+    public Vector3 targetLocalOffset = new Vector3(0.5f, 1.5f, 0f);
+    public float followSpeed = 10f;
+    public float swipeOffsetDistance = 1.2f;
+    public float swipeReturnDelay = 0.3f;
 
-    private Vector3 currentLocalOffset;
-    private float swipeTimer = 0f;
-    private bool inSwipeMove = false;
-
-    private float floatAmplitude = 0.2f;
-    private float floatFrequency = 2f;
+    private bool facingRight = true;
+    private Vector3 currentTargetPosition;
+    private Vector3 baseOffset;
+    private bool isInSwipeMotion = false;
 
     void Start()
     {
-        currentLocalOffset = idleLocalOffset;
+        baseOffset = targetLocalOffset;
     }
 
     void Update()
     {
         if (anchorTransform == null) return;
 
-        // Wackel-Offset für lebendiges Schweben
-        float floatOffsetY = Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
-        Vector3 floatOffset = new Vector3(0f, floatOffsetY, 0f);
+        Vector3 offset = facingRight ? baseOffset : new Vector3(-baseOffset.x, baseOffset.y, baseOffset.z);
+        currentTargetPosition = anchorTransform.position + anchorTransform.rotation * offset;
 
-        // Swipe-Timer auslaufen lassen
-        if (inSwipeMove)
+        transform.position = Vector3.Lerp(transform.position, currentTargetPosition, Time.deltaTime * followSpeed);
+
+        // Rotation (optional neigen nach vorne)
+        Vector3 toAnchor = (anchorTransform.position - transform.position).normalized;
+        if (toAnchor != Vector3.zero)
         {
-            swipeTimer -= Time.deltaTime;
-            if (swipeTimer <= 0f)
-            {
-                inSwipeMove = false;
-                currentLocalOffset = idleLocalOffset;
-            }
+            Quaternion targetRot = anchorTransform.rotation;
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * 8f);
         }
-
-        // Offset in Weltkoordinaten transformieren (Blickrichtungs-abhängig)
-        Vector3 worldOffset = anchorTransform.TransformDirection(currentLocalOffset);
-        Vector3 targetPosition = anchorTransform.position + worldOffset + floatOffset;
-
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * followSpeed);
     }
 
-    public void OnSwipeDirection(bool swipeFromRight)
+    public void SetFacingDirection(bool right)
     {
-        float dir = swipeFromRight ? -1f : 1f;
-        currentLocalOffset = idleLocalOffset + new Vector3(dir * swipeOffsetDistance, 0f, 0f);
-        swipeTimer = swipeMoveDuration;
-        inSwipeMove = true;
+        facingRight = right;
     }
 
-    public void SetFacingDirection(bool facingRight)
+    public void ReactToSwipe(Vector2 swipeDirection)
     {
-        idleLocalOffset = new Vector3(facingRight ? 1f : -1f, 1.5f, 0f);
-        if (!inSwipeMove)
-        {
-            currentLocalOffset = idleLocalOffset;
-        }
+        if (isInSwipeMotion) return;
+
+        isInSwipeMotion = true;
+
+        // Richtung im Welt-Raum berechnen
+        Vector3 worldSwipe = new Vector3(swipeDirection.x, 0f, swipeDirection.y).normalized;
+        Vector3 newOffset = baseOffset + worldSwipe * swipeOffsetDistance;
+
+        StopAllCoroutines();
+        StartCoroutine(SwipeMotionCoroutine(newOffset));
+    }
+
+    private System.Collections.IEnumerator SwipeMotionCoroutine(Vector3 swipeTargetOffset)
+    {
+        Vector3 originalOffset = baseOffset;
+        baseOffset = swipeTargetOffset;
+
+        yield return new WaitForSeconds(swipeReturnDelay);
+
+        baseOffset = originalOffset;
+        isInSwipeMotion = false;
     }
 }
