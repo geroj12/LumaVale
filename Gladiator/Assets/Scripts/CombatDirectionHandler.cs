@@ -3,35 +3,31 @@ using UnityEngine.UI;
 
 public class CombatDirectionHandler : MonoBehaviour
 {
-    [Header("Swipe Visuals")]
-    [SerializeField] private RectTransform swipeVisual;
-    [SerializeField] private Image swipeVisualImage;
-    [SerializeField] private RectTransform swipeArrow;
-    [SerializeField] private Canvas canvas;
-
-    [SerializeField] private Gradient swipeColorByStrength;
     public float minSwipeDistance = 50f;
 
     private Vector2 swipeStartPos;
     private bool isSwiping = false;
+    [Header("Visual Prefab")]
+
+    [SerializeField] private CombatVisualFollower visualFollowerPrefab;
+    private CombatVisualFollower spawnedVisual;
 
     [Header("References")]
     [SerializeField] private State playerState;
+    [SerializeField] private Transform visualAnchor; // ← setz im Inspector den Anchor vom Spieler
 
-    
     void Update()
     {
-        HandleSwipeVisual();
+        HandleSwipeInput();
+        HandleVisualFollower();
+
 
     }
-
 
     public void StartSwipe(Vector2 startPosition)
     {
         swipeStartPos = startPosition;
         isSwiping = true;
-
-
     }
 
     public void EndSwipe(Vector2 endPosition)
@@ -53,19 +49,21 @@ public class CombatDirectionHandler : MonoBehaviour
 
         ResetMouseStates();
 
-        // Neue Logik: Nur X-Achse zählt
-        if (swipeDelta.x > 0f)
-        {
-            playerState.mouseOnLeftSide = true;
-        }
-        else if (swipeDelta.x < 0f)
-        {
-            playerState.mouseOnRightSide = true;
-        }
+        bool fromRight = swipeDelta.x < 0f;
 
+        if (fromRight)
+            playerState.mouseOnRightSide = true;
+        else
+            playerState.mouseOnLeftSide = true;
+
+        // 👉 NEU: Informiere das visuelle Wesen
+        if (spawnedVisual != null)
+        {
+            spawnedVisual.OnSwipeDirection(fromRight);
+        }
     }
 
-    private void HandleSwipeVisual()
+    private void HandleSwipeInput()
     {
         if (!playerState.Strafe || playerState.blocking) return;
 
@@ -73,47 +71,41 @@ public class CombatDirectionHandler : MonoBehaviour
         {
             isSwiping = true;
             swipeStartPos = Input.mousePosition;
-
-            swipeVisual.gameObject.SetActive(true);
-            swipeArrow.gameObject.SetActive(true);
-
-            swipeVisual.position = swipeStartPos;
-            swipeArrow.position = swipeStartPos;
-        }
-
-        if (Input.GetMouseButton(0) && isSwiping)
-        {
-            Vector2 currentPos = Input.mousePosition;
-            Vector2 delta = currentPos - swipeStartPos;
-            float distance = delta.magnitude;
-
-            // Scale visual based on distance
-            swipeVisual.sizeDelta = new Vector2(distance, 12f);
-            swipeVisual.position = swipeStartPos;
-            swipeVisual.rotation = Quaternion.FromToRotation(Vector2.right, delta.normalized);
-
-            // Move arrow to the end
-            swipeArrow.position = swipeStartPos + delta.normalized * distance;
-
-            // Color by strength
-            float t = Mathf.InverseLerp(0f, 200f, distance);
-            swipeVisualImage.color = swipeColorByStrength.Evaluate(t);
         }
 
         if (Input.GetMouseButtonUp(0) && isSwiping)
         {
             isSwiping = false;
-            swipeVisual.gameObject.SetActive(false);
-            swipeArrow.gameObject.SetActive(false);
+            EndSwipe(Input.mousePosition);
         }
     }
+    private void HandleVisualFollower()
+    {
+        if (playerState.Strafe && !playerState.blocking)
+        {
+            if (spawnedVisual == null)
+            {
+                spawnedVisual = Instantiate(visualFollowerPrefab, visualAnchor.position + Vector3.right, Quaternion.identity);
+                spawnedVisual.anchorTransform = visualAnchor;
+            }
 
-
+            // Optional: Blickrichtung übergeben
+            bool facingRight = visualAnchor.localScale.x > 0f;
+            spawnedVisual.SetFacingDirection(facingRight);
+        }
+        else
+        {
+            if (spawnedVisual != null)
+            {
+                Destroy(spawnedVisual.gameObject);
+                spawnedVisual = null;
+            }
+        }
+    }
     private void ResetMouseStates()
     {
         playerState.mouseOnLeftSide = false;
         playerState.mouseOnRightSide = false;
-
     }
 
 
