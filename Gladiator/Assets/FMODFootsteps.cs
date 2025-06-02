@@ -7,28 +7,21 @@ public class FMODFootsteps : MonoBehaviour
 {
     private EventInstance instance;
 
-    [SerializeField]
-    private EventReference terrainFootstepEvent; // NEU: korrektes EventReference-Feld
-
-    [SerializeField]
-    private GroundCheck detectGround;
+    [SerializeField] private EventReference terrainFootstepEvent;
+    [SerializeField] private GroundCheck detectGround;
     [SerializeField] private Animator animator;
-
-
     [SerializeField] private Transform playerTransform;
+    [SerializeField] private State state;
+
     private Vector3 lastPosition;
-    // Optional: Mindestgeschwindigkeit ab der Sound abgespielt wird
-    [SerializeField]
-    private float minSpeed = 0.1f;
-
-    [SerializeField]
-    private float stepInterval = 0.5f;
-
     private float stepTimer = 0f;
     private float lastStepTime = 0f;
-    [SerializeField]
-    private float minStepInterval = 0.3f; // für Schutz gegen Doppel-Trigger
-    [SerializeField] private State state;
+
+    [Header("Step Settings")]
+    [SerializeField] private float minSpeed = 0.1f;
+    [SerializeField] private float baseStepInterval = 0.5f;
+    [SerializeField] private float minStepInterval = 0.3f;
+    
     void Start()
     {
         RuntimeManager.LoadBank("Master", true);
@@ -37,47 +30,34 @@ public class FMODFootsteps : MonoBehaviour
     }
     void Update()
     {
-        if (state.Strafe)
+        float inputMagnitude = animator.GetFloat("InputMagnitude");
+
+        float moveSpeed = Vector3.Distance(playerTransform.position, lastPosition) / Time.deltaTime;
+        lastPosition = playerTransform.position;
+
+        // Nur wenn Bewegung und grounded
+        if (inputMagnitude > minSpeed && moveSpeed > 0.05f && detectGround.isGrounded)
         {
-            float inputX = animator.GetFloat("InputX");
-            float inputY = animator.GetFloat("InputY");
-            float inputMagnitude = new Vector2(inputX, inputY).magnitude;
+            float dynamicStepInterval = baseStepInterval / Mathf.Max(1f, inputMagnitude); // z.B. schneller = häufiger Schritte
+            stepTimer -= Time.deltaTime;
 
-            // Bewegungsgeschwindigkeit (Distanz seit letztem Frame)
-            float moveSpeed = Vector3.Distance(playerTransform.position, lastPosition) / Time.deltaTime;
-
-            lastPosition = playerTransform.position;
-
-            // Check, ob Input und Bewegungsgeschwindigkeit beide über Threshold sind
-            if (inputMagnitude > minSpeed && moveSpeed > 0.1f && detectGround.isGrounded)
+            if (stepTimer <= 0f && (Time.time - lastStepTime) > minStepInterval)
             {
-                stepTimer -= Time.deltaTime;
-                if (stepTimer <= 0f && (Time.time - lastStepTime) > minStepInterval)
-                {
-                    PlayFootstepWalkAudio();
-                    stepTimer = stepInterval;
-                    lastStepTime = Time.time;
-                }
+                PlayFootstepWalkAudio();
+                stepTimer = dynamicStepInterval;
+                lastStepTime = Time.time;
             }
-            else
-            {
-                stepTimer = 0f;
-            }
+        }
+        else
+        {
+            stepTimer = 0f;
         }
     }
     public void PlayFootstepWalkAudio()
     {
-        if (!detectGround.isGrounded)
-            return;
+        if (!detectGround.isGrounded) return;
 
-        if (!state.Strafe)
-        {
-            float speed = animator.GetFloat("InputMagnitude");
-            if (speed < minSpeed)
-                return;
-        }
-
-        Debug.Log("PlayFootstepWalkAudio triggered");
+        Debug.Log("Footstep sound played via script");
 
         instance = RuntimeManager.CreateInstance(terrainFootstepEvent);
         instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
