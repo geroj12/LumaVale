@@ -10,6 +10,7 @@ public class Combat : MonoBehaviour
     private State state;
 
     [SerializeField] private CombatDirectionHandler directionHandler;
+
     [SerializeField] private WeaponHolster weaponHolster;
     [SerializeField] private FinisherController finisherController;
 

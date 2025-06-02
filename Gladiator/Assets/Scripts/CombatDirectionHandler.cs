@@ -18,7 +18,7 @@ public class CombatDirectionHandler : MonoBehaviour
     [Header("References")]
     [SerializeField] private State playerState;
 
-
+    
     void Update()
     {
         HandleSwipeVisual();
@@ -30,6 +30,8 @@ public class CombatDirectionHandler : MonoBehaviour
     {
         swipeStartPos = startPosition;
         isSwiping = true;
+
+
     }
 
     public void EndSwipe(Vector2 endPosition)
