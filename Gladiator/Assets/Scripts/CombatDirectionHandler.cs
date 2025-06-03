@@ -72,12 +72,18 @@ public class CombatDirectionHandler : MonoBehaviour
         {
             isSwiping = true;
             swipeStartPos = Input.mousePosition;
+
+            if (spawnedVisual != null)
+                spawnedVisual.BeginCharge(); // → Ladeanzeige
         }
 
         if (Input.GetMouseButtonUp(0) && isSwiping)
         {
             isSwiping = false;
             EndSwipe(Input.mousePosition);
+
+            if (spawnedVisual != null)
+                spawnedVisual.EndCharge(); // → Ladeanzeige aus
         }
     }
     private void HandleVisualFollower()

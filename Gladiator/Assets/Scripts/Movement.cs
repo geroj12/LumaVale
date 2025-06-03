@@ -1,8 +1,17 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
+    [Header("UI")]
+    public Image strafeHoldImage;
+    [SerializeField] private float holdDuration = 1.5f;
+
+    private float holdTimer = 0f;
+    private bool strafeToggled = false;
+
     [Header("Movement Settings")]
     [SerializeField] private float movementSpeed = 2f;
     [SerializeField] private float smoothValue = 0.2f;
@@ -22,7 +31,6 @@ public class Movement : MonoBehaviour
     private State playerState;
     private CharacterController controller;
     private Vector3 velocity;
-
 
     void Start()
     {
@@ -50,10 +58,29 @@ public class Movement : MonoBehaviour
             FreeLookMovement(); // neue Methode ersetzt NormalMovement()
         }
 
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKey(KeyCode.V))
         {
-            playerState.Strafe = !playerState.Strafe;
-            anim.SetBool("Strafe", playerState.Strafe);
+            holdTimer += Time.deltaTime;
+            float progress = Mathf.Clamp01(holdTimer / holdDuration);
+
+            if (strafeHoldImage != null)
+                strafeHoldImage.fillAmount = progress;
+
+            if (!strafeToggled && holdTimer >= holdDuration)
+            {
+                playerState.Strafe = !playerState.Strafe;
+                anim.SetBool("Strafe", playerState.Strafe);
+                strafeToggled = true;
+            }
+        }
+        // Wenn Taste losgelassen wird, Timer zurücksetzen
+        if (Input.GetKeyUp(KeyCode.V))
+        {
+            holdTimer = 0f;
+            strafeToggled = false;
+
+            if (strafeHoldImage != null)
+                strafeHoldImage.fillAmount = 0f;
         }
     }
 
@@ -71,7 +98,7 @@ public class Movement : MonoBehaviour
         Vector2 inputVector = new Vector2(inputX, inputY);
         float inputMagnitude = Mathf.Clamp01(inputVector.magnitude);
 
-       
+
         float currentSpeed = movementSpeed;
 
         Vector3 finalMove = move * currentSpeed;

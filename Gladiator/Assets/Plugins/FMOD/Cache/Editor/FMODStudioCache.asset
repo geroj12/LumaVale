@@ -140,6 +140,33 @@ MonoBehaviour:
   - Mud
   - Gravel
   Exists: 1
+--- !u!114 &-3551579079460854756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/PlayerCreature/Prepare
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/PlayerCreature/Prepare
+  Guid:
+    Data1: 1611226513
+    Data2: 1224956686
+    Data3: -1683371628
+    Data4: 1294953958
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 35260
 --- !u!114 &-2866697277472930651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,12 +212,14 @@ MonoBehaviour:
   - {fileID: -5846664706956646027}
   - {fileID: -4835544243851429964}
   - {fileID: 7127282614387132191}
+  - {fileID: -3551579079460854756}
+  - {fileID: 6481298104830338655}
   EditorParameters: []
   MasterBanks:
   - {fileID: 295523176594350469}
   StringsBanks:
   - {fileID: 4501806437844525808}
-  cacheTime: 638843216974841678
+  cacheTime: 638845613221780549
   cacheVersion: 131605
 --- !u!114 &295523176594350469
 MonoBehaviour:
@@ -207,10 +236,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638843216974611723
+  lastModified: 638845613221553420
   FileSizes:
   - Name: Desktop
-    Value: 3632448
+    Value: 4022368
   Exists: 1
 --- !u!114 &4501806437844525808
 MonoBehaviour:
@@ -227,10 +256,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638843216974841678
+  lastModified: 638845613221780549
   FileSizes:
   - Name: Desktop
-    Value: 1222
+    Value: 1324
   Exists: 1
 --- !u!114 &5397636632080141615
 MonoBehaviour:
@@ -256,6 +285,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &6481298104830338655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/PlayerCreature/Hyped
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/PlayerCreature/Hyped
+  Guid:
+    Data1: -2022797833
+    Data2: 1329060512
+    Data3: -2112364901
+    Data4: -715977198
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3000
 --- !u!114 &6913477806549397709
 MonoBehaviour:
   m_ObjectHideFlags: 0

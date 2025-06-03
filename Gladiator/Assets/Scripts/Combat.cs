@@ -6,7 +6,7 @@ public class Combat : MonoBehaviour
 {
     #region Fields and References
 
-    [SerializeField]private Animator anim;
+    [SerializeField] private Animator anim;
     private State state;
 
     [SerializeField] private CombatDirectionHandler directionHandler;
@@ -128,6 +128,7 @@ public class Combat : MonoBehaviour
 
     private void TriggerSwipeAttack()
     {
+        if (state.currentEnergy < state.normalAttackCost) return;
 
         state.UseEnergy(state.normalAttackCost);
         weaponDamage.SetAttackType(WeaponDamage.AttackType.Normal);

@@ -167,9 +167,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorTransform: {fileID: 0}
   targetLocalOffset: {x: 0, y: 1, z: 1}
-  followSpeed: 6
+  followSpeed: 4
   swipeOffsetDistance: 1.5
   swipeReturnDelay: 1
+  weaponRange: 0.6
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  chargeEffectPrefab: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
+  rangeGlowEffectPrefab: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
+  chargeSound:
+    Guid:
+      Data1: 1611226513
+      Data2: 1224956686
+      Data3: -1683371628
+      Data4: 1294953958
+    Path: event:/Events/Characters/PlayerCreature/Prepare
+  hypedSound:
+    Guid:
+      Data1: -2022797833
+      Data2: 1329060512
+      Data3: -2112364901
+      Data4: -715977198
+    Path: event:/Events/Characters/PlayerCreature/Hyped
 --- !u!1 &1470288143620658174
 GameObject:
   m_ObjectHideFlags: 0
