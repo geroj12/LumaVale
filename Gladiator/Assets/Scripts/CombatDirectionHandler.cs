@@ -11,6 +11,8 @@ public class CombatDirectionHandler : MonoBehaviour
 
     [SerializeField] private CombatVisualFollower visualFollowerPrefab;
     private CombatVisualFollower spawnedVisual;
+    [SerializeField] private GameObject spawnVfxPrefab;
+    private GameObject spawnVfxInstance;
 
     [Header("References")]
     [SerializeField] private State playerState;
@@ -90,9 +92,12 @@ public class CombatDirectionHandler : MonoBehaviour
     {
         if (playerState.Strafe && !playerState.blocking)
         {
+
             if (spawnedVisual == null)
             {
-                spawnedVisual = Instantiate(visualFollowerPrefab, visualAnchor.position + Vector3.right, Quaternion.identity);
+
+                spawnedVisual = Instantiate(visualFollowerPrefab, visualAnchor.position, Quaternion.identity);
+                spawnVfxInstance = Instantiate(spawnVfxPrefab, visualAnchor.position, Quaternion.identity, visualAnchor);
                 spawnedVisual.anchorTransform = visualAnchor;
             }
 
@@ -106,6 +111,11 @@ public class CombatDirectionHandler : MonoBehaviour
             {
                 Destroy(spawnedVisual.gameObject);
                 spawnedVisual = null;
+            }
+            if (spawnVfxInstance != null)
+            {
+                Destroy(spawnVfxInstance);
+                spawnVfxInstance = null;
             }
         }
     }

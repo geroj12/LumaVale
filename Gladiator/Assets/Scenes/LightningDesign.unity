@@ -35289,6 +35289,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2514439552197198374, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: spawnVfx
+      value: 
+      objectReference: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+    - target: {fileID: 2514439552197198374, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: spawnVfxPrefab
+      value: 
+      objectReference: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
+    - target: {fileID: 4819944904410011265, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6193288042113578271, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

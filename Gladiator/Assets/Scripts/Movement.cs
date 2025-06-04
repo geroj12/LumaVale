@@ -71,6 +71,7 @@ public class Movement : MonoBehaviour
                 playerState.Strafe = !playerState.Strafe;
                 anim.SetBool("Strafe", playerState.Strafe);
                 strafeToggled = true;
+                
             }
         }
         // Wenn Taste losgelassen wird, Timer zurücksetzen

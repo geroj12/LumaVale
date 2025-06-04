@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorTransform: {fileID: 0}
-  targetLocalOffset: {x: 0, y: 1, z: 1}
+  targetLocalOffset: {x: 1, y: 1, z: 1}
   followSpeed: 4
   swipeOffsetDistance: 1.5
   swipeReturnDelay: 1
