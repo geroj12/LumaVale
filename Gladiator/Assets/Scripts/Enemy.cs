@@ -12,6 +12,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject shieldObject;
     public GameObject damageTextPrefab;
     public Transform damageTextSpawnPoint;
+    private CharacterController controller;
+    private Vector3 velocity;
+    [SerializeField] private float gravity = 9.81f;
+
+
     [Header("Settings")]
     public float finisherDuration = 3f;
     public bool IsFinisherReady = false;
@@ -52,9 +57,13 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
+        controller = GetComponent<CharacterController>();
 
     }
-
+    void FixedUpdate()
+    {
+        ApplyGravity();
+    }
     // =====================
     // === FINISHER LOGIK ==
     // =====================
@@ -222,5 +231,19 @@ public class Enemy : MonoBehaviour
         EnableRagdoll();
         DropWeapons();
         // ggf. weitere Tod-Logik
+    }
+
+    private void ApplyGravity()
+    {
+        if (controller.isGrounded)
+        {
+            velocity.y = -1f; // leichter Druck nach unten für Bodenkontakt
+        }
+        else
+        {
+            velocity.y -= gravity * Time.deltaTime;
+        }
+
+        controller.Move(velocity * Time.deltaTime);
     }
 }

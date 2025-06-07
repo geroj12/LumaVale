@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd658ffc224d094a98adfec87289183, type: 3}
   m_Name: ReturnState
   m_EditorClassIdentifier: 
-  returnSpeed: 2
+  returnSpeed: 1
   closeEnoughDistance: 1
