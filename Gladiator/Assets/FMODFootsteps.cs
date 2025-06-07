@@ -57,7 +57,6 @@ public class FMODFootsteps : MonoBehaviour
     {
         if (!detectGround.isGrounded) return;
 
-        Debug.Log("Footstep sound played via script");
 
         instance = RuntimeManager.CreateInstance(terrainFootstepEvent);
         instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
