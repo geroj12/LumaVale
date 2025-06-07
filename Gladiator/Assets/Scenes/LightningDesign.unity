@@ -7264,8 +7264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 250189965}
   - component: {fileID: 250189966}
-  - component: {fileID: 250189968}
-  - component: {fileID: 250189967}
+  - component: {fileID: 250189969}
   m_Layer: 7
   m_Name: Vision
   m_TagString: Untagged
@@ -7309,7 +7308,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &250189967
+--- !u!114 &250189969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7322,39 +7321,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2514369599949965164}
-  viewDistance: 7
+  viewDistance: 10
   viewAngle: 90
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   targetMask:
     serializedVersion: 2
-    m_Bits: 2105344
---- !u!143 &250189968
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250189963}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+    m_Bits: 8192
 --- !u!1 &256344858
 GameObject:
   m_ObjectHideFlags: 0
@@ -9338,6 +9312,7 @@ GameObject:
   - component: {fileID: 560817212}
   - component: {fileID: 560817211}
   - component: {fileID: 560817218}
+  - component: {fileID: 560817219}
   m_Layer: 7
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -9509,6 +9484,31 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0.12}
+--- !u!114 &560817219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560817209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f859e0c7a79eb479c3180b9ca7f4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vision: {fileID: 250189969}
+  patrolPoints:
+  - {fileID: 76326588}
+  - {fileID: 1295544509}
+  initialState: {fileID: 11400000, guid: 865be84a915decb4eb2b1bd0f8e9af42, type: 2}
+  patrolState: {fileID: 11400000, guid: 865be84a915decb4eb2b1bd0f8e9af42, type: 2}
+  chaseState: {fileID: 11400000, guid: 17a5d5697995cb049b8721c71844360d, type: 2}
+  attackState: {fileID: 11400000, guid: 94591efa6ed035048a0175c420105af5, type: 2}
+  investigateState: {fileID: 11400000, guid: fe5f845d1ab183c45b99959bdc4fce28, type: 2}
+  returnState: {fileID: 11400000, guid: 224a681b111d29c49b2b68351cab9d4e, type: 2}
+  target: {fileID: 0}
+  controller: {fileID: 0}
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &564842237
 PrefabInstance:
   m_ObjectHideFlags: 0

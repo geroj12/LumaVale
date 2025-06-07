@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class EnemyAI : MonoBehaviour
+public class EnemyVision : MonoBehaviour
 {
     public Transform target;
     public float viewDistance = 10f;
@@ -51,7 +51,7 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-          OnTriggerStay(other);
+        OnTriggerStay(other);
     }
     private void OnTriggerStay(Collider other)
     {
@@ -89,7 +89,10 @@ public class EnemyAI : MonoBehaviour
             Debug.Log("Ziel außer Reichweite");
         }
     }
-
+    public bool CanSeeTarget()
+    {
+        return targetInSight;
+    }
     private void OnDrawGizmosSelected()
     {
         // Sichtweite als gelbe Kugel
