@@ -9,6 +9,8 @@ public class ReturnStateAsset : EnemyState
     public override void Enter(StateMachineEnemy enemy)
     {
         Debug.Log("Enter RETURN");
+        enemy.animator.SetBool("IsRunning", true);
+
     }
 
     public override void Tick(StateMachineEnemy enemy)
@@ -27,10 +29,16 @@ public class ReturnStateAsset : EnemyState
         }
 
         enemy.MoveTo(enemy.startPosition, returnSpeed);
+
+
+
+
     }
 
     public override void Exit(StateMachineEnemy enemy)
     {
         Debug.Log("Exit RETURN");
+        enemy.animator.SetBool("IsRunning", false);
+
     }
 }

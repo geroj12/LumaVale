@@ -13,6 +13,7 @@ public class InvestigateStateAsset : EnemyState
         Debug.Log("Enter INVESTIGATE");
         timer = 0f;
         lastKnownPosition = enemy.target.position;
+        enemy.animator.SetBool("InvestigateWalk", true);
     }
 
     public override void Tick(StateMachineEnemy enemy)
@@ -30,11 +31,14 @@ public class InvestigateStateAsset : EnemyState
         if (timer >= investigateDuration)
         {
             enemy.TransitionTo(enemy.returnState);
+
         }
     }
 
     public override void Exit(StateMachineEnemy enemy)
     {
         Debug.Log("Exit INVESTIGATE");
+        enemy.animator.SetBool("InvestigateWalk", false);
+
     }
 }

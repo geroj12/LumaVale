@@ -20,6 +20,8 @@ public class StateMachineEnemy : MonoBehaviour
     private EnemyState currentState;
     private int patrolIndex = 0;
 
+    public Animator animator;
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -53,7 +55,17 @@ public class StateMachineEnemy : MonoBehaviour
             controller.Move(direction * speed * Time.deltaTime);
         }
     }
+    public void FaceTarget(Transform target)
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        direction.y = 0;
 
+        if (direction.magnitude > 0.01f)
+        {
+            Quaternion lookRot = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, 10f * Time.deltaTime);
+        }
+    }
     public Transform GetNextPatrolPoint()
     {
         if (patrolPoints.Length == 0) return null;

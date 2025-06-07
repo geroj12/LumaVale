@@ -5,23 +5,23 @@ public class ChaseStateAsset : EnemyState
 {
     public float chaseSpeed = 5f;
     public float attackRange = 2f;
-
     public override void Enter(StateMachineEnemy enemy)
     {
-        Debug.Log("Enter CHASE");
+        enemy.animator.SetBool("IsRunning", true);
     }
 
     public override void Tick(StateMachineEnemy enemy)
     {
         if (!enemy.vision.CanSeeTarget())
         {
-            enemy.TransitionTo(enemy.investigateState);
+            enemy.TransitionTo(enemy.investigateState); // z. B. zurück zur Patrouille
             return;
         }
 
-        float dist = Vector3.Distance(enemy.transform.position, enemy.target.position);
-        if (dist <= attackRange)
+        float distance = Vector3.Distance(enemy.transform.position, enemy.target.position);
+        if (distance <= attackRange)
         {
+            enemy.animator.SetBool("IsRunning", false);
             enemy.TransitionTo(enemy.attackState);
             return;
         }
@@ -31,6 +31,7 @@ public class ChaseStateAsset : EnemyState
 
     public override void Exit(StateMachineEnemy enemy)
     {
-        Debug.Log("Exit CHASE");
+        enemy.animator.SetBool("IsRunning", false);
+
     }
 }

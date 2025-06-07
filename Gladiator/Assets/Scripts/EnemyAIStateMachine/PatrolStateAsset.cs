@@ -14,6 +14,7 @@ public class PatrolStateAsset : EnemyState
         Debug.Log("Enter PATROL");
         patrolIndex = 0;
         currentPatrolPoint = enemy.GetNextPatrolPoint();
+        enemy.animator.SetBool("IsWalking", true);
     }
 
     public override void Tick(StateMachineEnemy enemy)
@@ -38,5 +39,7 @@ public class PatrolStateAsset : EnemyState
     public override void Exit(StateMachineEnemy enemy)
     {
         Debug.Log("Exit PATROL");
+        enemy.animator.SetBool("IsWalking", false);
+
     }
 }

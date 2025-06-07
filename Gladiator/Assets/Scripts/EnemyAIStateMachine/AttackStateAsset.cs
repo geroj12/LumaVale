@@ -4,10 +4,14 @@ using UnityEngine;
 public class AttackStateAsset : EnemyState
 {
     public float attackRange = 2f;
+    private float lastAttackTime = -Mathf.Infinity;
+    public float attackCooldown = 1.5f; // Sek.
 
     public override void Enter(StateMachineEnemy enemy)
     {
-        Debug.Log("Enter ATTACK");
+        enemy.animator.SetBool("Attack", true);
+        lastAttackTime = Time.time; // Optional: Sofortiger Angriff beim Start verhindern
+
     }
 
     public override void Tick(StateMachineEnemy enemy)
@@ -25,12 +29,25 @@ public class AttackStateAsset : EnemyState
             return;
         }
 
-        enemy.MoveTo(enemy.transform.position, 0f); // Stehen bleiben
-        Debug.Log("Greife an!");
-    }
+        enemy.FaceTarget(enemy.target); // Stoppen
 
+        if (Time.time - lastAttackTime >= attackCooldown)
+        {
+            lastAttackTime = Time.time;
+
+            // Hier wird die tatsächliche Angriffshandlung ausgelöst
+            PerformAttack(enemy);
+        }
+    }
+    private void PerformAttack(StateMachineEnemy enemy)
+    {
+        // Angriff ausführen – z. B. Schadenslogik, Audio, Partikeleffekte
+        Debug.Log("Enemy führt Angriff aus!");
+        // Optional: Animation spielt durch Loop oder eingebettete Events
+    }
     public override void Exit(StateMachineEnemy enemy)
     {
-        Debug.Log("Exit ATTACK");
+        enemy.animator.SetBool("Attack", false);
+
     }
 }

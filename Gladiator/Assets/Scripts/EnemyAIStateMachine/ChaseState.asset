@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ChaseState
   m_EditorClassIdentifier: 
   chaseSpeed: 0.5
-  attackRange: 1
+  attackRange: 1.5
