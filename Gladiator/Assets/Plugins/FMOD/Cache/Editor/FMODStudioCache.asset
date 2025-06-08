@@ -49,7 +49,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 295523176594350469}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters:
   - {fileID: -3898688077901585469}
@@ -219,7 +219,7 @@ MonoBehaviour:
   - {fileID: 295523176594350469}
   StringsBanks:
   - {fileID: 4501806437844525808}
-  cacheTime: 638845613221780549
+  cacheTime: 638850109734105738
   cacheVersion: 131605
 --- !u!114 &295523176594350469
 MonoBehaviour:
@@ -236,10 +236,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638845613221553420
+  lastModified: 638850109733849437
   FileSizes:
   - Name: Desktop
-    Value: 4022368
+    Value: 4022624
   Exists: 1
 --- !u!114 &4501806437844525808
 MonoBehaviour:
@@ -256,7 +256,7 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638845613221780549
+  lastModified: 638850109734105738
   FileSizes:
   - Name: Desktop
     Value: 1324
