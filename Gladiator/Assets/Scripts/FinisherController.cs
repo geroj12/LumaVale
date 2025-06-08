@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using Unity.Cinemachine;
 using UnityEngine;
 /// <summary>
 /// Steuert Finisher-Moves des Spielers, abhängig von Gegnerstatus und aktueller Waffe.
@@ -11,7 +12,9 @@ public class FinisherController : MonoBehaviour
     public Animator playerAnimator;
     [SerializeField] private WeaponHolster weaponHolster;
     [SerializeField] private State playerState;
-
+    [SerializeField] private GameObject cinemachineFreelook;
+    [SerializeField] private BoxCollider weaponCollider;
+    [SerializeField] Player player;
     [Header("Finisher Animationen")]
     public WeaponFinishers twoHandedFinishers;
     public WeaponFinishers oneHandedFinishers;
@@ -62,6 +65,9 @@ public class FinisherController : MonoBehaviour
         isFinishing = true;
         currentFinisherTarget = enemy;
         playerState.canMove = false;
+        cinemachineFreelook.SetActive(false);
+        weaponCollider.isTrigger = true;
+        player.enabled = false;
 
         string chosenFinisher = ChooseFinisher(enemy);
         playerAnimator.SetTrigger(chosenFinisher);
@@ -97,6 +103,10 @@ public class FinisherController : MonoBehaviour
         isFinishing = false;
         currentFinisherTarget = null;
         playerState.canMove = true;
+        cinemachineFreelook.SetActive(true);
+        weaponCollider.isTrigger = false;
+        player.enabled = true;
+
 
     }
     /// <summary>

@@ -67,8 +67,8 @@ public class Enemy : MonoBehaviour
     // =====================
     public void StartFinisher(string finisherTrigger)
     {
+
         if (isDead) return;
-        controller.enabled = false;
 
         float hpPercent = GetHealthPercent();
         isFatalFinisher = hpPercent <= fatalFinisherThreshold;
@@ -154,7 +154,7 @@ public class Enemy : MonoBehaviour
             rb.useGravity = true;
         }
         var collider = obj.GetComponent<Collider>();
-        if (collider != null) collider.enabled = true;
+        if (collider != null) collider.isTrigger = false;
 
     }
 
@@ -225,6 +225,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        controller.enabled = false;
 
         EnableRagdoll();
         DropWeapons();
