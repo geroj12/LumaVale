@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb2c8b756b36aa49892b9e57f86316c, type: 3}
   m_Name: PatrolState
   m_EditorClassIdentifier: 
-  patrolSpeed: 0.4
+  patrolSpeed: 1
   pointReachedThreshold: 1

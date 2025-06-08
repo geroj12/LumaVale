@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Setup")]
     public Animator animator;
-    public CapsuleCollider mainCollider;
+    public BoxCollider mainCollider;
     [SerializeField] private GameObject swordObject;
     [SerializeField] private GameObject shieldObject;
     public GameObject damageTextPrefab;
@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     [SerializeField] private float gravity = 9.81f;
-
+    [SerializeField] private StateMachineEnemy statemachine;
 
     [Header("Settings")]
     public float finisherDuration = 3f;
@@ -120,9 +120,9 @@ public class Enemy : MonoBehaviour
     {
 
         isDead = true;
-
+        statemachine.enabled = false;
         animator.enabled = false;
-
+        controller.enabled = false;
         foreach (var rb in ragdollRigidbodies)
         {
             rb.isKinematic = false;

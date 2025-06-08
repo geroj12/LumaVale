@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -21,7 +22,7 @@ public class StateMachineEnemy : MonoBehaviour
     private int patrolIndex = 0;
 
     public Animator animator;
-
+    private bool isRunning;
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -66,6 +67,15 @@ public class StateMachineEnemy : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, 10f * Time.deltaTime);
         }
     }
+    public void SetRunning(bool running)
+    {
+        if (isRunning == running) return;
+        isRunning = running;
+        animator.SetBool("IsRunning", running);
+    }
+   
+
+    
     public Transform GetNextPatrolPoint()
     {
         if (patrolPoints.Length == 0) return null;
