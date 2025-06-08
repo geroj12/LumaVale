@@ -8,6 +8,7 @@ public class AttackStateAsset : EnemyState
     public float attackCooldown = 1.5f;
 
     private float lastAttackTime = -Mathf.Infinity;
+    public string[] attackAnimations = { "Attack_Left", "Attack_Right", "Attack_Overhead" };
 
     public override void Enter(StateMachineEnemy enemy)
     {
@@ -26,19 +27,19 @@ public class AttackStateAsset : EnemyState
         float dist = Vector3.Distance(enemy.transform.position, enemy.target.position);
         if (dist > attackRange)
         {
-            enemy.TransitionTo(enemy.chaseState);
+            enemy.TransitionTo(enemy.combatIdleState);
             return;
         }
 
         enemy.FaceTarget(enemy.target);
-        enemy.MoveTo(enemy.transform.position, 0f); // Stehen bleiben
+        //enemy.MoveTo(enemy.transform.position, 0f); // Stehen bleiben
 
         if (Time.time - lastAttackTime >= attackCooldown)
         {
             lastAttackTime = Time.time;
-            Debug.Log("Trigger Angriff");
-            enemy.animator.ResetTrigger("DoAttack"); // Optional, zur Sicherheit
-            enemy.animator.SetTrigger("DoAttack");
+            int index = Random.Range(0, attackAnimations.Length);
+            string anim = attackAnimations[index];
+            enemy.animator.SetTrigger(anim);
         }
     }
 

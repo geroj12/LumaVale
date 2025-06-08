@@ -8818,7 +8818,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 9aa91772c018c11448cbae296dd53ffb, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -8897,6 +8897,10 @@ MonoBehaviour:
   attackState: {fileID: 11400000, guid: 94591efa6ed035048a0175c420105af5, type: 2}
   investigateState: {fileID: 11400000, guid: fe5f845d1ab183c45b99959bdc4fce28, type: 2}
   returnState: {fileID: 11400000, guid: 224a681b111d29c49b2b68351cab9d4e, type: 2}
+  blockState: {fileID: 11400000, guid: cd83976bdc379054b8c9bd55b1c38e76, type: 2}
+  dodgeState: {fileID: 11400000, guid: d6d47362a2731bc4ba273a002991dd49, type: 2}
+  combatIdleState: {fileID: 11400000, guid: f60497491d4a4da429e8a6312bf6a1fc, type: 2}
+  combatRetreatState: {fileID: 11400000, guid: 2de6023fbeab1284a9f61fa00c3dc915, type: 2}
   target: {fileID: 0}
   controller: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}

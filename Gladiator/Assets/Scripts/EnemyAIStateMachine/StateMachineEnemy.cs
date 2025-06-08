@@ -13,6 +13,10 @@ public class StateMachineEnemy : MonoBehaviour
     public EnemyState attackState;
     public EnemyState investigateState;
     public EnemyState returnState;
+    public EnemyState blockState;
+    public EnemyState dodgeState;
+    public EnemyState combatIdleState;
+    public EnemyState combatRetreatState;
 
     [HideInInspector] public Transform target;
     [HideInInspector] public CharacterController controller;
@@ -73,9 +77,9 @@ public class StateMachineEnemy : MonoBehaviour
         isRunning = running;
         animator.SetBool("IsRunning", running);
     }
-   
 
-    
+
+
     public Transform GetNextPatrolPoint()
     {
         if (patrolPoints.Length == 0) return null;
