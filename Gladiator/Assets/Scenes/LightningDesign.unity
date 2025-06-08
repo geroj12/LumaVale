@@ -8781,11 +8781,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 560817215}
-  mainCollider: {fileID: 1994147682}
   swordObject: {fileID: 1698201175}
   shieldObject: {fileID: 5350832732001559978}
   damageTextPrefab: {fileID: 4478206686024956061, guid: 1224a1a819a0e694381919a39f44e92e, type: 3}
   damageTextSpawnPoint: {fileID: 206777368}
+  controller: {fileID: 560817218}
   gravity: 9.81
   statemachine: {fileID: 560817219}
   finisherDuration: 3
@@ -8843,7 +8843,6 @@ Transform:
   - {fileID: 206777368}
   - {fileID: 250189965}
   - {fileID: 681769279}
-  - {fileID: 1994147681}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -99.527, z: 0}
 --- !u!143 &560817218
@@ -8864,13 +8863,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.4
+  m_Height: 1.5
+  m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.1, z: 0.12}
+  m_Center: {x: 0, y: 0.8, z: 0.12}
 --- !u!114 &560817219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25167,87 +25166,6 @@ CapsuleCollider:
   m_Height: 0.44754702
   m_Direction: 1
   m_Center: {x: 0, y: 0.22377351, z: 0}
---- !u!1 &1994147680
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1994147681}
-  - component: {fileID: 1994147682}
-  - component: {fileID: 1994147683}
-  m_Layer: 7
-  m_Name: MainCollider
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1994147681
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994147680}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 560817216}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1994147682
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994147680}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.82, y: 1.5, z: 0.7}
-  m_Center: {x: 0, y: 0.8, z: 0.15}
---- !u!54 &1994147683
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994147680}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1998126189
 GameObject:
   m_ObjectHideFlags: 0
@@ -33135,6 +33053,10 @@ PrefabInstance:
       propertyPath: spawnVfxPrefab
       value: 
       objectReference: {fileID: 725748389856807714, guid: 1b14cd1a36079fc409e3368c8f82c52a, type: 3}
+    - target: {fileID: 3342247972556952074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: enemyLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 3971556074646984906, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: energyRegenRate
       value: 5
@@ -33146,6 +33068,10 @@ PrefabInstance:
     - target: {fileID: 3971556074646984906, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: normalAttackCost
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264708964014174712, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: holdDuration
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4819944904410011265, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 /// <summary>
 /// Steuert Finisher-Moves des Spielers, abhängig von Gegnerstatus und aktueller Waffe.
@@ -17,7 +18,9 @@ public class FinisherController : MonoBehaviour
     public WeaponFinishers unarmedFinishers;
     public bool isFinishing = false;
     private Enemy currentFinisherTarget;
-
+    public LayerMask enemyLayerMask; // Im Inspector zuweisen (z. B. nur "Enemy" aktivieren)
+    [SerializeField] private float finisherRange = 1.8f;
+    [SerializeField] private float finisherAngle = 60f;
     private void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -28,19 +31,31 @@ public class FinisherController : MonoBehaviour
     private void Update()
     {
         if (isFinishing) return;
+
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1.4f))
+            Collider[] hits = Physics.OverlapSphere(transform.position, finisherRange, enemyLayerMask);
+
+            foreach (Collider col in hits)
             {
-                Enemy enemy = hit.collider.GetComponent<Enemy>();
-                if (enemy != null)
+                Enemy enemy = col.GetComponentInParent<Enemy>();
+                if (enemy == null) continue;
+
+                Vector3 toEnemy = (enemy.transform.position - transform.position).normalized;
+                toEnemy.y = 0;
+
+                float angle = Vector3.Angle(transform.forward, toEnemy);
+
+                if (angle <= finisherAngle * 0.5f)
                 {
                     TryStartFinisher(enemy);
+                    break;
                 }
             }
+
+            Debug.DrawRay(transform.position, transform.forward * finisherRange, Color.green, 1f);
         }
     }
-
 
     public void TryStartFinisher(Enemy enemy)
     {
@@ -75,7 +90,7 @@ public class FinisherController : MonoBehaviour
         transform.position = anchor.position;
         transform.rotation = anchor.rotation;
 
-        
+
     }
     public void ResetFinisherState()
     {
@@ -118,5 +133,20 @@ public class FinisherController : MonoBehaviour
             case 0:
             default: return unarmedFinishers;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, finisherRange);
+
+        // Richtungs-Kegel visualisieren
+        Vector3 forward = transform.forward * finisherRange;
+        Vector3 left = Quaternion.Euler(0, -finisherAngle / 2, 0) * forward;
+        Vector3 right = Quaternion.Euler(0, finisherAngle / 2, 0) * forward;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + left);
+        Gizmos.DrawLine(transform.position, transform.position + right);
     }
 }

@@ -7,12 +7,11 @@ public class Enemy : MonoBehaviour
 
     [Header("Setup")]
     public Animator animator;
-    public BoxCollider mainCollider;
     [SerializeField] private GameObject swordObject;
     [SerializeField] private GameObject shieldObject;
     public GameObject damageTextPrefab;
     public Transform damageTextSpawnPoint;
-    private CharacterController controller;
+    [SerializeField] private CharacterController controller;
     private Vector3 velocity;
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] private StateMachineEnemy statemachine;
@@ -57,7 +56,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
-        controller = GetComponent<CharacterController>();
 
     }
     void FixedUpdate()
@@ -70,6 +68,7 @@ public class Enemy : MonoBehaviour
     public void StartFinisher(string finisherTrigger)
     {
         if (isDead) return;
+        controller.enabled = false;
 
         float hpPercent = GetHealthPercent();
         isFatalFinisher = hpPercent <= fatalFinisherThreshold;
@@ -122,7 +121,6 @@ public class Enemy : MonoBehaviour
         isDead = true;
         statemachine.enabled = false;
         animator.enabled = false;
-        controller.enabled = false;
         foreach (var rb in ragdollRigidbodies)
         {
             rb.isKinematic = false;
@@ -137,7 +135,6 @@ public class Enemy : MonoBehaviour
             col.enabled = true;
         }
 
-        if (mainCollider != null) mainCollider.enabled = false;
 
     }
 
@@ -228,6 +225,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+
         EnableRagdoll();
         DropWeapons();
         // ggf. weitere Tod-Logik
@@ -235,6 +233,7 @@ public class Enemy : MonoBehaviour
 
     private void ApplyGravity()
     {
+        if (controller == null || !controller.enabled || isDead) return;
         if (controller.isGrounded)
         {
             velocity.y = -1f; // leichter Druck nach unten für Bodenkontakt
