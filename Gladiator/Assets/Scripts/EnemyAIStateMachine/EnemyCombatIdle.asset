@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97820104f6a4393458be19815619fc13, type: 3}
   m_Name: EnemyCombatIdle
   m_EditorClassIdentifier: 
-  decisionInterval: 1.5
+  decisionInterval: 2

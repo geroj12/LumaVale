@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e428b3fee90ae8145b6292d20d081aee, type: 3}
   m_Name: EnemyCombatDodge
   m_EditorClassIdentifier: 
-  dodgeDistance: 1
-  dodgeSpeed: 2
+  dodgeDistance: 0.5
+  dodgeSpeed: 1
   dodgeDuration: 0.4

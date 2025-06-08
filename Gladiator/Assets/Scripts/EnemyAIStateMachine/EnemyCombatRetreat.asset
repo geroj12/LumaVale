@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4023c9fea777e9e40bd6ea67e40320bc, type: 3}
   m_Name: EnemyCombatRetreat
   m_EditorClassIdentifier: 
-  retreatDistance: 1
-  retreatSpeed: 1
-  maxRetreatTime: 2
+  retreatDistance: 2
+  retreatSpeed: 2
+  maxRetreatTime: 3

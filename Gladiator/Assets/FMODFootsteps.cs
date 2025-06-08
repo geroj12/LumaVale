@@ -11,7 +11,6 @@ public class FMODFootsteps : MonoBehaviour
     [SerializeField] private GroundCheck detectGround;
     [SerializeField] private Animator animator;
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private State state;
 
     private Vector3 lastPosition;
     private float stepTimer = 0f;

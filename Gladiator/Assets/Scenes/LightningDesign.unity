@@ -8751,6 +8751,7 @@ GameObject:
   - component: {fileID: 560817212}
   - component: {fileID: 560817211}
   - component: {fileID: 560817219}
+  - component: {fileID: 560817220}
   m_Layer: 7
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -8848,6 +8849,7 @@ Transform:
   - {fileID: 206777368}
   - {fileID: 250189965}
   - {fileID: 681769279}
+  - {fileID: 1392836112}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -99.527, z: 0}
 --- !u!143 &560817218
@@ -8905,6 +8907,21 @@ MonoBehaviour:
   controller: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 560817215}
+--- !u!114 &560817220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560817209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca491bc4019f07c438358c470fe7ebfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodFootstepsAudio: {fileID: 1392836114}
+  fmodEquipUnequip: {fileID: 0}
+  swordWoosh: {fileID: 1392836113}
 --- !u!1001 &564842237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17585,6 +17602,84 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cca5509b7c2c34fa8af39b8533c9bb, type: 3}
+--- !u!1 &1392836111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1392836112}
+  - component: {fileID: 1392836114}
+  - component: {fileID: 1392836113}
+  m_Layer: 7
+  m_Name: FMODAudioHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1392836112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 560817216}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1392836113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86307c00a0e01c4792307a9e140221b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordWooshEvent:
+    Guid:
+      Data1: -527021190
+      Data2: 1337569992
+      Data3: 608867209
+      Data4: -1171707420
+    Path: event:/Events/Characters/SwordWoosh
+  moanVolume: 0.5
+--- !u!114 &1392836114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f17bc92e9c5d91488b7426c6a585e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrainFootstepEvent:
+    Guid:
+      Data1: -1363382289
+      Data2: 1253784701
+      Data3: 1273491587
+      Data4: -1928796056
+    Path: event:/Events/Characters/Footsteps
+  detectGround: {fileID: 681769280}
+  animator: {fileID: 560817215}
+  playerTransform: {fileID: 560817216}
+  minSpeed: 0.1
+  baseStepInterval: 0.5
+  minStepInterval: 0.3
 --- !u!1 &1416871268
 GameObject:
   m_ObjectHideFlags: 0
@@ -33100,6 +33195,10 @@ PrefabInstance:
       propertyPath: freeLookCam
       value: 
       objectReference: {fileID: 188058230}
+    - target: {fileID: 3342247972556952074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: finisherRange
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3342247972556952074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: weaponCollider
       value: 
