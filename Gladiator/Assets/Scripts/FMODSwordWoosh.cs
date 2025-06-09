@@ -15,6 +15,8 @@ public class FMODSwordWoosh : MonoBehaviour
     {
         instance = RuntimeManager.CreateInstance(swordWooshEvent);
         instance.setParameterByName("MoanVolume", moanVolume);
+        instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+
         instance.start();
         instance.release();
     }

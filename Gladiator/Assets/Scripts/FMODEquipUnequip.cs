@@ -16,6 +16,8 @@ public class FMODEquipUnequip : MonoBehaviour
     {
         weaponHolster = GetComponent<WeaponHolster>();
         instance = RuntimeManager.CreateInstance(equipUnequipEvent);
+        instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+
     }
 
 
@@ -23,6 +25,8 @@ public class FMODEquipUnequip : MonoBehaviour
     internal void PlayEquip()
     {
         instance.setParameterByName("Equiping", 1f);
+        instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+
         instance.start();
 
     }
@@ -30,6 +34,8 @@ public class FMODEquipUnequip : MonoBehaviour
     internal void PlayUnequip()
     {
         instance.setParameterByName("Unequiping", 1f);
+        instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+
         instance.start();
 
     }

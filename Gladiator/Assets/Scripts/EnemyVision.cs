@@ -12,6 +12,7 @@ public class EnemyVision : MonoBehaviour
 
     private bool targetInSight = false;
     private SphereCollider sensorCollider;
+    public FMODMusic music;
 
     private void Start()
     {
@@ -68,6 +69,8 @@ public class EnemyVision : MonoBehaviour
                     if (!targetInSight)
                     {
                         Debug.Log("Ziel  sichtbar");
+                        music.SetCombatLevel(1f);
+
                     }
                     targetInSight = true;
                     return;
@@ -87,6 +90,8 @@ public class EnemyVision : MonoBehaviour
         {
             targetInSight = false;
             Debug.Log("Ziel außer Reichweite");
+            music.SetCombatLevel(0f);
+
         }
     }
     public bool CanSeeTarget()

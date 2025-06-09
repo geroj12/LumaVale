@@ -6866,6 +6866,7 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 8192
+  music: {fileID: 1685733586}
 --- !u!1 &256344858
 GameObject:
   m_ObjectHideFlags: 0
@@ -7396,6 +7397,26 @@ PrefabInstance:
     - target: {fileID: 2188707907504483262, guid: 08dc19a6863cd654e8b6bd4c0eaa85b8, type: 3}
       propertyPath: m_Name
       value: FMODMusicHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184569358918444558, guid: 08dc19a6863cd654e8b6bd4c0eaa85b8, type: 3}
+      propertyPath: musicEventReference.Path
+      value: event:/Events/Music/MainTheme
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184569358918444558, guid: 08dc19a6863cd654e8b6bd4c0eaa85b8, type: 3}
+      propertyPath: musicEventReference.Guid.Data1
+      value: -1447258224
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184569358918444558, guid: 08dc19a6863cd654e8b6bd4c0eaa85b8, type: 3}
+      propertyPath: musicEventReference.Guid.Data2
+      value: 1284908372
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184569358918444558, guid: 08dc19a6863cd654e8b6bd4c0eaa85b8, type: 3}
+      propertyPath: musicEventReference.Guid.Data3
+      value: -608047182
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184569358918444558, guid: 08dc19a6863cd654e8b6bd4c0eaa85b8, type: 3}
+      propertyPath: musicEventReference.Guid.Data4
+      value: 777023352
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8920,8 +8941,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fmodFootstepsAudio: {fileID: 1392836114}
-  fmodEquipUnequip: {fileID: 0}
+  fmodEquipUnequip: {fileID: 1392836117}
   swordWoosh: {fileID: 1392836113}
+  fMODHurt: {fileID: 1392836116}
+  fMODShield: {fileID: 1392836115}
 --- !u!1001 &564842237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17613,6 +17636,9 @@ GameObject:
   - component: {fileID: 1392836112}
   - component: {fileID: 1392836114}
   - component: {fileID: 1392836113}
+  - component: {fileID: 1392836116}
+  - component: {fileID: 1392836115}
+  - component: {fileID: 1392836117}
   m_Layer: 7
   m_Name: FMODAudioHandler
   m_TagString: Untagged
@@ -17680,6 +17706,63 @@ MonoBehaviour:
   minSpeed: 0.1
   baseStepInterval: 0.5
   minStepInterval: 0.3
+--- !u!114 &1392836115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765e0af293e7700478b4e646d5f022a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldImpactEvent:
+    Guid:
+      Data1: -1281523853
+      Data2: 1117571443
+      Data3: -156656996
+      Data4: 1083342789
+    Path: event:/Events/Impacts/ShieldHit
+--- !u!114 &1392836116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96609f1f7ca2a54096565b0fb4fb599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtEvent:
+    Guid:
+      Data1: 846001084
+      Data2: 1222566765
+      Data3: -1230008165
+      Data4: 837920032
+    Path: event:/Events/Characters/Enemy/Hurt
+--- !u!114 &1392836117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac55cdee8090ed46865302148fd0cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipUnequipEvent:
+    Guid:
+      Data1: 1748633811
+      Data2: 1219696117
+      Data3: -339242103
+      Data4: 875401260
+    Path: event:/Events/Characters/EquipingUnequiping
 --- !u!1 &1416871268
 GameObject:
   m_ObjectHideFlags: 0
@@ -18905,6 +18988,17 @@ Transform:
   - {fileID: 1489988555}
   m_Father: {fileID: 382353032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1685733586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4184569358918444558, guid: 08dc19a6863cd654e8b6bd4c0eaa85b8, type: 3}
+  m_PrefabInstance: {fileID: 339372409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8dc428a848bd0e47847a027e9dc8b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1687108835 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3136605153214515449, guid: 45eef0a861a8a8946b4c23fb9f4f779a, type: 3}

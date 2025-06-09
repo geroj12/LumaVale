@@ -9,21 +9,17 @@ public class FMODMusic : MonoBehaviour
     private EventReference musicEventReference; // NEU: korrektes EventReference-Feld
     void Start()
     {
-        instance = RuntimeManager.CreateInstance(musicEventReference); // EventReference ziehst du im Inspector rein
+        instance = RuntimeManager.CreateInstance(musicEventReference);
         instance.start();
-
-
-        instance.setParameterByNameWithLabel("MusicState", "Main");
+        instance.release(); // autom. Freigabe nach Stop
     }
 
-     public void SetMusicState(string label)
+
+
+    public void SetCombatLevel(float value)
     {
-        if (instance.isValid())
-        {
-            instance.setParameterByNameWithLabel("MusicState", label);
-        }
+        instance.setParameterByName("Combat", Mathf.Clamp01(value));
     }
-
     private void OnDestroy()
     {
         if (instance.isValid())
