@@ -77,7 +77,10 @@ public class StateMachineEnemy : MonoBehaviour
         isRunning = running;
         animator.SetBool("IsRunning", running);
     }
-
+    public void StopMovement()
+    {
+        controller.Move(Vector3.zero); // verhindert Restbewegung
+    }
 
 
     public Transform GetNextPatrolPoint()

@@ -272,7 +272,7 @@ MonoBehaviour:
   - {fileID: 295523176594350469}
   StringsBanks:
   - {fileID: 4501806437844525808}
-  cacheTime: 638850797416681336
+  cacheTime: 638850943184737725
   cacheVersion: 131605
 --- !u!114 &295523176594350469
 MonoBehaviour:
@@ -289,10 +289,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638850797416358746
+  lastModified: 638850943184456898
   FileSizes:
   - Name: Desktop
-    Value: 5332544
+    Value: 5332448
   Exists: 1
 --- !u!114 &723391868468284198
 MonoBehaviour:
@@ -320,7 +320,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 792
+  Length: 1608
 --- !u!114 &4501806437844525808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638850797416681336
+  lastModified: 638850943184737725
   FileSizes:
   - Name: Desktop
     Value: 1408

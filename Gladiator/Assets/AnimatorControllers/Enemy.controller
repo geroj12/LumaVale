@@ -1266,7 +1266,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Block
     m_StateMachine: {fileID: -2506086017804587437}
-    m_Mask: {fileID: 31900000, guid: 8cc30acca66595e4085603ae15e8f4d0, type: 2}
+    m_Mask: {fileID: 31900000, guid: 4ff47765d80971d4891eccce4a6a60da, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -2208,13 +2208,13 @@ AnimatorStateMachine:
     m_Position: {x: 360, y: -140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9094581096105399044}
-    m_Position: {x: 360, y: -10, z: 0}
+    m_Position: {x: 640, y: -140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5873362577929154156}
-    m_Position: {x: 639.90344, y: -94.26429, z: 0}
+    m_Position: {x: 100, y: -140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 425012381611101717}
-    m_Position: {x: 70, y: -120, z: 0}
+    m_Position: {x: 360, y: -10, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

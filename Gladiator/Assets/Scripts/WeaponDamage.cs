@@ -7,7 +7,6 @@ public class WeaponDamage : MonoBehaviour
     private float finalDamage;
 
     public Player player;
-    [SerializeField] private BoxCollider weaponCollider;
     [SerializeField] private TrailRenderer weaponTrail;
 
     private bool canDealDamage = false;
@@ -28,7 +27,6 @@ public class WeaponDamage : MonoBehaviour
         damagedEnemies.Clear();
         playerState = state;
 
-        weaponCollider.isTrigger = true;
         if (weaponTrail != null)
         {
             weaponTrail.Clear();          // Trail-Cache löschen (verhindert Artefakte)
@@ -41,7 +39,6 @@ public class WeaponDamage : MonoBehaviour
     public void DisableDamage()
     {
         canDealDamage = false;
-        weaponCollider.isTrigger = false;
         if (weaponTrail != null)
             weaponTrail.emitting = false; // ⬅️ Trail deaktivieren
     }

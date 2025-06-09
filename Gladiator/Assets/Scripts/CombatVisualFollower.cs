@@ -23,10 +23,8 @@ public class CombatVisualFollower : MonoBehaviour
 
     [Header("VFX Prefabs")]
     public GameObject chargeEffectPrefab;
-    public GameObject rangeGlowEffectPrefab;
 
     private GameObject currentChargeEffect;
-    private GameObject currentRangeGlow;
 
     [Header("Sounds")]
     [SerializeField] private EventReference chargeSound;
@@ -34,7 +32,7 @@ public class CombatVisualFollower : MonoBehaviour
 
     private EventInstance instance;
     private EventInstance swipeSoundInstance;
-
+    
     void Start()
     {
         baseOffset = targetLocalOffset;
@@ -59,7 +57,6 @@ public class CombatVisualFollower : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * 8f);
         }
 
-        CheckEnemyInRange();
     }
 
     public void SetFacingDirection(bool right)
@@ -138,26 +135,6 @@ public class CombatVisualFollower : MonoBehaviour
             instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); // oder IMMEDIATE
             instance.release();
             instance.clearHandle();
-        }
-    }
-
-    private void CheckEnemyInRange()
-    {
-        Collider[] enemies = Physics.OverlapSphere(transform.position, weaponRange, enemyLayer);
-        bool inRange = enemies.Length > 0;
-
-        if (inRange)
-        {
-            if (rangeGlowEffectPrefab != null && currentRangeGlow == null)
-                currentRangeGlow = Instantiate(rangeGlowEffectPrefab, transform);
-        }
-        else
-        {
-            if (currentRangeGlow != null)
-            {
-                Destroy(currentRangeGlow);
-                currentRangeGlow = null;
-            }
         }
     }
 

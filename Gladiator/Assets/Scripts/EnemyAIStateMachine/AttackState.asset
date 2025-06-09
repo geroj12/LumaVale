@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 1.5
   attackCooldown: 1
+  attackAnimations:
+  - Attack_Left
+  - Attack_Right
+  - Attack_Overhead
+  tooCloseDistance: 0.5

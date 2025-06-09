@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
     private bool isFatalFinisher = false;
     public GameObject bloodEmitterPrefab;
     private GameObject activeBloodEmitter;
+    public LayerMask decalAllowedLayers; // Set this in Inspector (exclude Player)
+
     public bool isStunned = false;
     [SerializeField] private Transform damageCanvasTransform;
 

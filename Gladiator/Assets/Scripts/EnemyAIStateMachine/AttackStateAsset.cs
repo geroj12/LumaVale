@@ -9,10 +9,12 @@ public class AttackStateAsset : EnemyState
 
     private float lastAttackTime = -Mathf.Infinity;
     public string[] attackAnimations = { "Attack_Left", "Attack_Right", "Attack_Overhead" };
-
+    public float tooCloseDistance = 1.0f;     // Wenn er zurückweichen soll
     public override void Enter(StateMachineEnemy enemy)
     {
         lastAttackTime = Time.time - attackCooldown; // Sofortiger Angriff möglich
+        enemy.animator.applyRootMotion = false;
+
     }
 
     public override void Tick(StateMachineEnemy enemy)
@@ -32,7 +34,9 @@ public class AttackStateAsset : EnemyState
         }
 
         enemy.FaceTarget(enemy.target);
-        //enemy.MoveTo(enemy.transform.position, 0f); // Stehen bleiben
+        enemy.StopMovement(); // stehen bleiben, wenn Abstand passt
+        enemy.animator.applyRootMotion = false;
+
 
         if (Time.time - lastAttackTime >= attackCooldown)
         {
@@ -47,6 +51,7 @@ public class AttackStateAsset : EnemyState
     public override void Exit(StateMachineEnemy enemy)
     {
         //isAttacking = false; // Sicherheit, falls unterbrochen
+        enemy.animator.applyRootMotion = true;
 
     }
 }

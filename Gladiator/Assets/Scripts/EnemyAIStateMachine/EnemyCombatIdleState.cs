@@ -46,5 +46,6 @@ public class EnemyCombatIdleState : EnemyState
 
     public override void Exit(StateMachineEnemy enemy)
     {
+
     }
 }
