@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4819944904410011265}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: CombatVisualAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 207510736268284866}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: -0.5}
+  m_LocalPosition: {x: -1, y: 0.6, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2705770449066279385}
   - component: {fileID: 7815269264389947978}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 6193288042113578271}
   - component: {fileID: 1894315731684875922}
   - component: {fileID: 6189996999793540247}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 465575311597821672}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: MainCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,13 +327,13 @@ MonoBehaviour:
   strength: 0
   currentEnergy: 100
   maxEnergy: 100
-  normalAttackCost: 25
-  heavyAttackCost: 35
+  normalAttackCost: 15
+  heavyAttackCost: 25
   mouseOnLeftSide: 0
   mouseOnRightSide: 0
   attackUp: 0
   attackThrust: 0
-  energyRegenRate: 4
+  energyRegenRate: 5
 --- !u!114 &4264708964014174712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strafeHoldImage: {fileID: 7193701811917999740}
-  holdDuration: 1.5
+  holdDuration: 0.5
   movementSpeed: 0.35
   smoothValue: 0.4
   gravity: 9.81
@@ -388,6 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSwipeDistance: 50
   visualFollowerPrefab: {fileID: 6681898802405439928, guid: dba5e432baeab894ab2481707024c57c, type: 3}
+  spawnVfxPrefab: {fileID: 725748389856807714, guid: 1b14cd1a36079fc409e3368c8f82c52a, type: 3}
   playerState: {fileID: 3971556074646984906}
   visualAnchor: {fileID: 4819944904410011265}
 --- !u!114 &1397612208756018104
@@ -431,6 +432,9 @@ MonoBehaviour:
   playerAnimator: {fileID: 8075385664443808935}
   weaponHolster: {fileID: 1397612208756018104}
   playerState: {fileID: 3971556074646984906}
+  cinemachineFreelook: {fileID: 0}
+  weaponCollider: {fileID: 7106130540988722939}
+  player: {fileID: 4437621691067550523}
   twoHandedFinishers:
     fatalFinishers:
     - Fatal_Longsword01
@@ -448,6 +452,11 @@ MonoBehaviour:
     nonFatalFinishers:
     - NonFatal_OneHanded02
   isFinishing: 0
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  finisherRange: 1.4
+  finisherAngle: 60
 --- !u!114 &5303213052083163190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,6 +472,8 @@ MonoBehaviour:
   fmodFootstepsAudio: {fileID: 416191633223857292}
   fmodEquipUnequip: {fileID: 3192962603021904233}
   swordWoosh: {fileID: 1091973986698834181}
+  fMODHurt: {fileID: 0}
+  fMODShield: {fileID: 0}
 --- !u!143 &5959511225186472596
 CharacterController:
   m_ObjectHideFlags: 0
@@ -476,7 +487,7 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
@@ -487,7 +498,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!1 &1667023076728047453
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +512,7 @@ GameObject:
   - component: {fileID: 4947993167013830232}
   - component: {fileID: 6812717661861894989}
   - component: {fileID: 3177957284945317141}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,7 +623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4686894060291968332}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: CamLookAT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,7 +656,7 @@ GameObject:
   - component: {fileID: 4349427407583699145}
   - component: {fileID: 1647353377207345495}
   - component: {fileID: 9029898894949174264}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: TwoHandedShealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +708,7 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 8
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 2aeea1488b0a8834ca71df58f5abf99e, type: 2}
@@ -832,7 +843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1646988348434941344}
   - component: {fileID: 9018825342725988897}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: WeaponTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1089,7 +1100,7 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 8
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: bbb00816f5d1279488a3d65284aab15f, type: 2}
@@ -1156,7 +1167,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1176,7 +1187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   player: {fileID: 4437621691067550523}
-  weaponCollider: {fileID: 6242036521968737088}
   weaponTrail: {fileID: 7852002693983435310}
   heavyAttackDmgModifier: 1.4
 --- !u!1 &2708035553031975744
@@ -1188,7 +1198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2420733716908855101}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: TwoHandedSwordAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1221,7 +1231,7 @@ GameObject:
   - component: {fileID: 1478925864454466301}
   - component: {fileID: 7757860799030770620}
   - component: {fileID: 1302369008074986699}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1294,7 +1304,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2150772989692513640}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: StaminaUIAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1494,7 +1504,7 @@ GameObject:
   - component: {fileID: 6127197455525666549}
   - component: {fileID: 1164730458897752541}
   - component: {fileID: 8745178087097486218}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: UnarmedWeaponRightFist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1531,7 +1541,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   player: {fileID: 4437621691067550523}
-  weaponCollider: {fileID: 1164730458897752541}
   weaponTrail: {fileID: 9018825342725988897}
   heavyAttackDmgModifier: 1.2
 --- !u!65 &1164730458897752541
@@ -1594,7 +1603,7 @@ GameObject:
   - component: {fileID: 8945716077112530996}
   - component: {fileID: 7193701811917999740}
   - component: {fileID: 2211865860346163929}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: ProgressStrafe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1680,7 +1689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3181943565829907268}
   - component: {fileID: 5449185179039204711}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: WeaponTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1819,7 +1828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6235124029614380190}
   - component: {fileID: 7852002693983435310}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: WeaponTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2053,7 +2062,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4608107606827658637}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2153,7 +2162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 84910720507312551}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2250,7 +2259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5403348676209185797}
   - component: {fileID: 6799909794390501677}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: WeaponTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2454,7 +2463,7 @@ GameObject:
   - component: {fileID: 4926750705615312509}
   - component: {fileID: 6247125694515961286}
   - component: {fileID: 5663905903024501560}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: UnarmedWeaponLeftFist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2491,7 +2500,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   player: {fileID: 4437621691067550523}
-  weaponCollider: {fileID: 6247125694515961286}
   weaponTrail: {fileID: 5449185179039204711}
   heavyAttackDmgModifier: 1.1
 --- !u!65 &6247125694515961286
@@ -2585,7 +2593,7 @@ GameObject:
   - component: {fileID: 2223049510998384275}
   - component: {fileID: 5746747195610076981}
   - component: {fileID: 2889134099498473777}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: ProgressStrafeCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2740,7 +2748,7 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 8
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: ed3f7c6b47c743f4cac8d8115bcf565b, type: 2}
@@ -2807,7 +2815,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2827,7 +2835,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   player: {fileID: 4437621691067550523}
-  weaponCollider: {fileID: 7106130540988722939}
   weaponTrail: {fileID: 6799909794390501677}
   heavyAttackDmgModifier: 1.8
 --- !u!1 &8264557589379068816
@@ -2873,7 +2880,7 @@ GameObject:
   - component: {fileID: 5351238607990882491}
   - component: {fileID: 1276495849674565102}
   - component: {fileID: 2042335458393631918}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: OneHandShealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2925,7 +2932,7 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 8
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 431bb6009682a5548a7d29fb3ce56b7f, type: 2}
@@ -3034,7 +3041,7 @@ SkinnedMeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 8
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 720f8d07efbcb7c4c8c202fa3123bb24, type: 2}
@@ -3105,7 +3112,7 @@ GameObject:
   - component: {fileID: 8640407883595148648}
   - component: {fileID: 3685515427213243595}
   - component: {fileID: 3293770934433463493}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: EnergySlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3245,7 +3252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8418693471820070643}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: OneHandSwordAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3311,7 +3318,7 @@ GameObject:
   - component: {fileID: 416191633223857292}
   - component: {fileID: 3192962603021904233}
   - component: {fileID: 1091973986698834181}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: FMODAudioHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3355,7 +3362,6 @@ MonoBehaviour:
   detectGround: {fileID: 7815269264389947978}
   animator: {fileID: 8075385664443808935}
   playerTransform: {fileID: 8124436766070144346}
-  state: {fileID: 3971556074646984906}
   minSpeed: 0.4
   baseStepInterval: 0.8
   minStepInterval: 0.4

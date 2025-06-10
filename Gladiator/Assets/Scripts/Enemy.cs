@@ -22,8 +22,8 @@ public class Enemy : MonoBehaviour
     private bool isFatalFinisher = false;
     public GameObject bloodEmitterPrefab;
     private GameObject activeBloodEmitter;
-    public LayerMask decalAllowedLayers; // Set this in Inspector (exclude Player)
-
+    [SerializeField] private GameObject attachedBloodDecals;
+    
     public bool isStunned = false;
     [SerializeField] private Transform damageCanvasTransform;
 
@@ -111,9 +111,13 @@ public class Enemy : MonoBehaviour
             }
 
             activeBloodEmitter = Instantiate(bloodEmitterPrefab, bloodSpawnPoint.position, bloodSpawnPoint.rotation, bloodSpawnPoint);
+            ActivateBloodDecal();
         }
     }
-
+    private void ActivateBloodDecal()
+    {
+        attachedBloodDecals.SetActive(true);
+    }
     // =============================
     // === RAGDOLL & WAFFEN DROP ===
     // =============================
@@ -173,7 +177,6 @@ public class Enemy : MonoBehaviour
             return;
         }
         currentHP -= amount;
-
         // Optional: Cooldown für Reaktionsanimation
         if (Time.time - lastHitTime >= hitReactionCooldown)
         {

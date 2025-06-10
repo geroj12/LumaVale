@@ -362,7 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimationSpeed: 2
   AutomaticGroundHeightDetection: 1
-  GroundHeight: 1
+  GroundHeight: 0
   LightIntensityMultiplier: 1
   DecalLifeTimeSeconds: 200
   DecalRenderingMode: 1

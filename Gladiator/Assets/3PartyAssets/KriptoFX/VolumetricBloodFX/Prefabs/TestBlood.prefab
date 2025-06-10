@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6413497075996353813}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 3407832069039333357}
   - component: {fileID: 7722211216117029431}
   - component: {fileID: 1613653825174111692}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7272964875902574093}
   - component: {fileID: 2162544465486265982}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: TestBlood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 968802221307428109}
   - component: {fileID: 1897226104368892187}
   - component: {fileID: 860744258903319857}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2135828144338373093}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6117752011056840643}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 7316642964623785678}
   - component: {fileID: 5143407959793932337}
   - component: {fileID: 8128129394795962055}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 8470053210441952919}
   - component: {fileID: 5365060425580739463}
   - component: {fileID: 718777863748317974}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,7 +802,7 @@ GameObject:
   - component: {fileID: 8940029008242319083}
   - component: {fileID: 7670394167346594267}
   - component: {fileID: 8746980449016693342}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -980,7 +980,7 @@ GameObject:
   - component: {fileID: 7354093241682510265}
   - component: {fileID: 982621091404625130}
   - component: {fileID: 4360352847277658223}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
