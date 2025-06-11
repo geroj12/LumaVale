@@ -8936,6 +8936,7 @@ MonoBehaviour:
   isDead: 0
   player: {fileID: 0}
   finisherAnchor: {fileID: 1180025929}
+  enemyWeapon: {fileID: 0}
   maxHP: 100
   currentHP: 35
   hitReactionCooldown: 0.5
@@ -19695,7 +19696,7 @@ GameObject:
   - component: {fileID: 1698201179}
   - component: {fileID: 1698201178}
   - component: {fileID: 1698201177}
-  - component: {fileID: 1698201176}
+  - component: {fileID: 1698201182}
   m_Layer: 7
   m_Name: Gladius
   m_TagString: Untagged
@@ -19703,33 +19704,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!54 &1698201176
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1698201175}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &1698201177
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19819,6 +19793,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1119160654}
   m_LocalEulerAnglesHint: {x: 8.378, y: -33.62, z: 62.396}
+--- !u!54 &1698201182
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698201175}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1700789570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34215,13 +34216,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1164730458897752541, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1328127290825078433, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2996473374516642074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3342247972556952074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: cinemachineFreelook
@@ -34233,10 +34234,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6193288042113578271, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6247125694515961286, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7159711427784044357, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
@@ -34283,7 +34280,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2996473374516642074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -5,9 +5,9 @@ public class Player : MonoBehaviour
     private Movement movement;
     [SerializeField] private Animator animator;
     [SerializeField] private Combat combat;
-        [SerializeField] private State state;
+    [SerializeField] private State state;
 
-    
+
     void Start()
     {
         movement = GetComponent<Movement>();
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         {
 
             combat.StartCoroutine(combat.ResetAttackBools());
-            
+
         }
         animator.SetTrigger("HitBlocked"); // z. B. kleine Rückzuck-Animation
 

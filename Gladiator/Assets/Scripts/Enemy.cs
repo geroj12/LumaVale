@@ -46,7 +46,6 @@ public class Enemy : MonoBehaviour
     public Player player;
     public Transform finisherAnchor;
 
-
     [SerializeField] private float maxHP = 100f;
     [SerializeField] private float currentHP = 100f;
 
@@ -64,6 +63,7 @@ public class Enemy : MonoBehaviour
         {
             rb.isKinematic = true;
         }
+       
     }
     void Start()
     {
@@ -280,7 +280,8 @@ public class Enemy : MonoBehaviour
         string trigger = Mathf.Abs(angle) <= 90f ? "HitFront" : "HitBack";
         animator.SetTrigger(trigger);
     }
-
+   
+   
     private void Die()
     {
         controller.enabled = false;
