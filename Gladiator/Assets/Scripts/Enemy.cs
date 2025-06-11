@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     public GameObject bloodEmitterPrefab;
     private GameObject activeBloodEmitter;
     [SerializeField] private GameObject attachedBloodDecals;
-    
+
     public bool isStunned = false;
     [SerializeField] private Transform damageCanvasTransform;
 
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
     // =====================
     public void StartFinisher(string finisherTrigger)
     {
-
+        statemachine.enabled = false;
         if (isDead) return;
 
         float hpPercent = GetHealthPercent();
@@ -123,6 +123,7 @@ public class Enemy : MonoBehaviour
     // =============================
     public void EnableRagdoll()
     {
+        DropWeapons();
 
         isDead = true;
         statemachine.enabled = false;
@@ -170,7 +171,6 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float amount, Vector3 attackerPosition, bool hitShield = false, WeaponDamage.AttackType attackType = WeaponDamage.AttackType.Normal)
     {
         if (isDead) return;
-
         if (hitShield)
         {
             animator.SetTrigger("ShieldImpact");
@@ -233,7 +233,6 @@ public class Enemy : MonoBehaviour
         controller.enabled = false;
 
         EnableRagdoll();
-        DropWeapons();
         // ggf. weitere Tod-Logik
     }
 

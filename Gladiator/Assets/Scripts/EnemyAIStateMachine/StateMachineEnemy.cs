@@ -27,6 +27,8 @@ public class StateMachineEnemy : MonoBehaviour
 
     public Animator animator;
     private bool isRunning;
+
+    
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -58,6 +60,22 @@ public class StateMachineEnemy : MonoBehaviour
             Quaternion rot = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, 10f * Time.deltaTime);
             controller.Move(direction * speed * Time.deltaTime);
+        }
+    }
+    public void RetreatMove(Vector3 retreatTarget, float speed, Transform player)
+    {
+        // Bewegung: Vom Ziel weg
+        Vector3 moveDir = (retreatTarget - transform.position).normalized;
+        moveDir.y = 0;
+        controller.Move(moveDir * speed * Time.deltaTime);
+
+        // Rotation: Zum Spieler schauen
+        Vector3 lookDir = (player.position - transform.position).normalized;
+        lookDir.y = 0;
+        if (lookDir.sqrMagnitude > 0.001f)
+        {
+            Quaternion rot = Quaternion.LookRotation(lookDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, 10f * Time.deltaTime);
         }
     }
     public void FaceTarget(Transform target)

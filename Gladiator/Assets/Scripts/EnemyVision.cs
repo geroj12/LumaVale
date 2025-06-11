@@ -13,6 +13,8 @@ public class EnemyVision : MonoBehaviour
     private bool targetInSight = false;
     private SphereCollider sensorCollider;
     public FMODMusic music;
+    [SerializeField] private FMODAlert alertSound;
+    private bool alertTriggered = false;
 
     private void Start()
     {
@@ -41,6 +43,7 @@ public class EnemyVision : MonoBehaviour
                     {
                         // Sicht frei
                         targetInSight = true;
+
                         continue;
                     }
                 }
@@ -53,6 +56,8 @@ public class EnemyVision : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         OnTriggerStay(other);
+
+
     }
     private void OnTriggerStay(Collider other)
     {
@@ -68,9 +73,16 @@ public class EnemyVision : MonoBehaviour
                 {
                     if (!targetInSight)
                     {
+
                         Debug.Log("Ziel  sichtbar");
                         music.SetCombatLevel(1f);
 
+                    }
+
+                    if (!alertTriggered)
+                    {
+                        alertSound.PlayAlertSound();
+                        alertTriggered = true;
                     }
                     targetInSight = true;
                     return;
@@ -82,6 +94,7 @@ public class EnemyVision : MonoBehaviour
                 Debug.Log("Ziel nicht  sichtbar");
             }
             targetInSight = false;
+
         }
     }
     private void OnTriggerExit(Collider other)
@@ -91,6 +104,7 @@ public class EnemyVision : MonoBehaviour
             targetInSight = false;
             Debug.Log("Ziel außer Reichweite");
             music.SetCombatLevel(0f);
+            alertTriggered = false;
 
         }
     }

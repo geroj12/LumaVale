@@ -17,14 +17,14 @@ public class EnemyCombatRetreatState : EnemyState
         retreatTarget.y = enemy.transform.position.y;
 
         exitTime = Time.time + maxRetreatTime;
-        //enemy.animator.SetTrigger("Retreat");
-        enemy.animator.SetBool("IsWalking", true);
+        enemy.animator.SetBool("isRetreating",true);
+        //enemy.animator.SetBool("IsWalking", true);
 
     }
 
     public override void Tick(StateMachineEnemy enemy)
     {
-        enemy.MoveTo(retreatTarget, retreatSpeed);
+        enemy.RetreatMove(retreatTarget, retreatSpeed, enemy.target);
 
         float dist = Vector3.Distance(enemy.transform.position, retreatTarget);
         if (dist < 0.5f || Time.time >= exitTime)
@@ -35,7 +35,7 @@ public class EnemyCombatRetreatState : EnemyState
 
     public override void Exit(StateMachineEnemy enemy)
     {
-        enemy.animator.SetBool("IsWalking", false);
+        enemy.animator.SetBool("isRetreating", false);
         // Optionale Aufräumarbeiten
     }
 }

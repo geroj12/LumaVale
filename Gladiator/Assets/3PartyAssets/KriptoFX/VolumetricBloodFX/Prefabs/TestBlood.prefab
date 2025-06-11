@@ -187,7 +187,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2135828144338373093}
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b8a788ff17aab40b283e664f0304da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimationSpeed: 2
+  AnimationSpeed: 3
   AutomaticGroundHeightDetection: 1
   GroundHeight: 0.5
   LightIntensityMultiplier: 1

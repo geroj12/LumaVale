@@ -56,6 +56,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 189473
+--- !u!114 &-5926170585092071783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/Enemy/Alert
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/Enemy/Alert
+  Guid:
+    Data1: 1433295740
+    Data2: 1220774287
+    Data3: 1235621291
+    Data4: -2075326153
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2246
 --- !u!114 &-5846664706956646027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +244,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 891
+  Length: 1056
 --- !u!114 &-1446230748620904711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,12 +294,13 @@ MonoBehaviour:
   - {fileID: -6335893368153759323}
   - {fileID: 723391868468284198}
   - {fileID: -1658188413075195031}
+  - {fileID: -5926170585092071783}
   EditorParameters: []
   MasterBanks:
   - {fileID: 295523176594350469}
   StringsBanks:
   - {fileID: 4501806437844525808}
-  cacheTime: 638850943184737725
+  cacheTime: 638852454993761797
   cacheVersion: 131605
 --- !u!114 &295523176594350469
 MonoBehaviour:
@@ -289,10 +317,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638850943184456898
+  lastModified: 638852454993214284
   FileSizes:
   - Name: Desktop
-    Value: 5332448
+    Value: 5429440
   Exists: 1
 --- !u!114 &723391868468284198
 MonoBehaviour:
@@ -320,7 +348,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1608
+  Length: 1289
 --- !u!114 &4501806437844525808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,10 +364,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638850943184737725
+  lastModified: 638852454993761797
   FileSizes:
   - Name: Desktop
-    Value: 1408
+    Value: 1456
   Exists: 1
 --- !u!114 &5397636632080141615
 MonoBehaviour:
