@@ -18,17 +18,20 @@ public class StateMachineEnemy : MonoBehaviour
     public EnemyState combatIdleState;
     public EnemyState combatRetreatState;
 
+    public EnemyState aggressiveIdleState;
+
     [HideInInspector] public Transform target;
     [HideInInspector] public CharacterController controller;
     [HideInInspector] public Vector3 startPosition;
 
     private EnemyState currentState;
+
     private int patrolIndex = 0;
 
     public Animator animator;
     private bool isRunning;
 
-    
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -61,6 +64,18 @@ public class StateMachineEnemy : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, 10f * Time.deltaTime);
             controller.Move(direction * speed * Time.deltaTime);
         }
+    }
+    public void TemporarilyDisableFSM(float duration)
+    {
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(DisableFSMCoroutine(duration));
+    }
+    
+    private IEnumerator DisableFSMCoroutine(float duration)
+    {
+        enabled = false;
+        yield return new WaitForSeconds(duration);
+        enabled = true;
     }
     public void RetreatMove(Vector3 retreatTarget, float speed, Transform player)
     {

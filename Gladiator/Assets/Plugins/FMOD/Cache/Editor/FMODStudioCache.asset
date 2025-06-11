@@ -295,12 +295,13 @@ MonoBehaviour:
   - {fileID: 723391868468284198}
   - {fileID: -1658188413075195031}
   - {fileID: -5926170585092071783}
+  - {fileID: 406760312076197136}
   EditorParameters: []
   MasterBanks:
   - {fileID: 295523176594350469}
   StringsBanks:
   - {fileID: 4501806437844525808}
-  cacheTime: 638852454993761797
+  cacheTime: 638852533177059981
   cacheVersion: 131605
 --- !u!114 &295523176594350469
 MonoBehaviour:
@@ -317,11 +318,38 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638852454993214284
+  lastModified: 638852533176755073
   FileSizes:
   - Name: Desktop
-    Value: 5429440
+    Value: 5463456
   Exists: 1
+--- !u!114 &406760312076197136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Impacts/Shieldbreak
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Impacts/Shieldbreak
+  Guid:
+    Data1: -1082343728
+    Data2: 1164451292
+    Data3: 503934594
+    Data4: -1600849079
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 626
 --- !u!114 &723391868468284198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,10 +392,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638852454993761797
+  lastModified: 638852533177059981
   FileSizes:
   - Name: Desktop
-    Value: 1456
+    Value: 1504
   Exists: 1
 --- !u!114 &5397636632080141615
 MonoBehaviour:

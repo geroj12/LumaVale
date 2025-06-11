@@ -79,7 +79,7 @@ public class WeaponDamage : MonoBehaviour
             if (enemy != null && !damagedEnemies.Contains(enemy))
             {
                 damagedEnemies.Add(enemy);
-                enemy.TakeDamage(finalDamage, player.transform.position,false,currentAttackType);
+                enemy.TakeDamage(finalDamage, player.transform.position, false, currentAttackType);
                 canDealDamage = false; // Nur 1x pro Schlag
             }
         }
@@ -88,7 +88,8 @@ public class WeaponDamage : MonoBehaviour
             Enemy enemy = other.GetComponentInParent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(0f, player.transform.position, true);
+                float shieldDamage = finalDamage * 0.5f; // z.B. nur 50% Schaden auf Schild
+                enemy.TakeDamage(shieldDamage, player.transform.position, true, currentAttackType);
                 player.InterruptAttack(); // Bricht Angriffsanimation ab
                 DisableDamage();
             }

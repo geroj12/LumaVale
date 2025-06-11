@@ -8915,7 +8915,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 560817215}
   swordObject: {fileID: 1698201175}
+  hasShield: 1
+  maxShieldDurability: 5
+  currentShieldDurability: 0
   shieldObject: {fileID: 5350832732001559978}
+  shieldRigidbody: {fileID: 8549504711118762167}
+  shieldCollider: {fileID: 8549504711118762166}
   damageTextPrefab: {fileID: 4478206686024956061, guid: 1224a1a819a0e694381919a39f44e92e, type: 3}
   damageTextSpawnPoint: {fileID: 206777368}
   controller: {fileID: 560817218}
@@ -9031,6 +9036,7 @@ MonoBehaviour:
   dodgeState: {fileID: 11400000, guid: d6d47362a2731bc4ba273a002991dd49, type: 2}
   combatIdleState: {fileID: 11400000, guid: f60497491d4a4da429e8a6312bf6a1fc, type: 2}
   combatRetreatState: {fileID: 11400000, guid: 2de6023fbeab1284a9f61fa00c3dc915, type: 2}
+  aggressiveIdleState: {fileID: 11400000, guid: aa286dc1f3bf2e447ba715774350d400, type: 2}
   target: {fileID: 0}
   controller: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
@@ -34209,6 +34215,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1164730458897752541, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1328127290825078433, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_Name
       value: Player
@@ -34223,6 +34233,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6193288042113578271, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247125694515961286, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7159711427784044357, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
