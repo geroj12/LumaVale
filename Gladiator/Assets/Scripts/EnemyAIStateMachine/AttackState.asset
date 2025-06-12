@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackState
   m_EditorClassIdentifier: 
   attackRange: 1.5
-  attackCooldown: 1
+  attackCooldown: 1.5
   attackAnimations:
   - Attack_Left
   - Attack_Right

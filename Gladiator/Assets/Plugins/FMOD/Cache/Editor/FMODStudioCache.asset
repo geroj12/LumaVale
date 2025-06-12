@@ -111,6 +111,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5314429692774118410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Impacts/BodyFallsOnGround
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Impacts/BodyFallsOnGround
+  Guid:
+    Data1: -1461778194
+    Data2: 1183376547
+    Data3: -223380844
+    Data4: 2003537913
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 890
 --- !u!114 &-4835544243851429964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +271,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1056
+  Length: 744
+--- !u!114 &-1644858086652079338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Impacts/StabbingKife
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Impacts/StabbingKife
+  Guid:
+    Data1: -1616148603
+    Data2: 1240339292
+    Data3: 1891624074
+    Data4: -1822083479
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1536
 --- !u!114 &-1446230748620904711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +323,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-293464672228012862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/Enemy/Diying
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/Enemy/Diying
+  Guid:
+    Data1: 1430742268
+    Data2: 1281444802
+    Data3: 135019665
+    Data4: -558402612
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,12 +377,16 @@ MonoBehaviour:
   - {fileID: -1658188413075195031}
   - {fileID: -5926170585092071783}
   - {fileID: 406760312076197136}
+  - {fileID: 4143126330529840842}
+  - {fileID: -1644858086652079338}
+  - {fileID: -5314429692774118410}
+  - {fileID: -293464672228012862}
   EditorParameters: []
   MasterBanks:
   - {fileID: 295523176594350469}
   StringsBanks:
   - {fileID: 4501806437844525808}
-  cacheTime: 638852533177059981
+  cacheTime: 638853607577100436
   cacheVersion: 131605
 --- !u!114 &295523176594350469
 MonoBehaviour:
@@ -318,10 +403,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638852533176755073
+  lastModified: 638853607576745332
   FileSizes:
   - Name: Desktop
-    Value: 5463456
+    Value: 5568992
   Exists: 1
 --- !u!114 &406760312076197136
 MonoBehaviour:
@@ -377,6 +462,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1289
+--- !u!114 &4143126330529840842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Impacts/ShieldFallOnGround
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Impacts/ShieldFallOnGround
+  Guid:
+    Data1: -1018147271
+    Data2: 1272159599
+    Data3: 1398802589
+    Data4: -915841694
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 456
 --- !u!114 &4501806437844525808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,34 +504,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638852533177059981
+  lastModified: 638853607577100436
   FileSizes:
   - Name: Desktop
-    Value: 1504
-  Exists: 1
---- !u!114 &5397636632080141615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SwordWoosh/MoanVolume
-  m_EditorClassIdentifier: 
-  Name: MoanVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 110037213
-    data2: 1073913197
-  Type: 0
-  IsGlobal: 0
-  Labels: []
+    Value: 1656
   Exists: 1
 --- !u!114 &6481298104830338655
 MonoBehaviour:
@@ -471,11 +559,10 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters:
-  - {fileID: 5397636632080141615}
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1000
+  Length: 574
 --- !u!114 &7998115881338737281
 MonoBehaviour:
   m_ObjectHideFlags: 0

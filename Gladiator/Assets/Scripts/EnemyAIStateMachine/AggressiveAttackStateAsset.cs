@@ -5,7 +5,7 @@ public class AggressiveAttackStateAsset : EnemyState
 {
     public float attackRange = 1.8f;
     public float attackCooldown = 0.75f;  // schneller als normal
-    public float closeDistanceThreshold = 1f;
+    private float lastAttackTime = -Mathf.Infinity;
 
     public string[] aggressiveAttackAnimations = {
         "Aggressive_Stab",
@@ -13,7 +13,6 @@ public class AggressiveAttackStateAsset : EnemyState
         "Aggressive_Kick"
     };
 
-    private float lastAttackTime = -Mathf.Infinity;
 
     public override void Enter(StateMachineEnemy enemy)
     {
@@ -33,24 +32,26 @@ public class AggressiveAttackStateAsset : EnemyState
         // Optional aggressives Nachrücken
         if (dist > attackRange)
         {
-            enemy.MoveTo(enemy.target.position, 1f); // z. B. aggressives Zuschreiten
+            enemy.TransitionTo(enemy.combatIdleState);
             return;
         }
-        else
-        {
-            enemy.StopMovement(); // stehen bleiben, wenn Abstand passt
-        }
+        enemy.StopMovement(); // stehen bleiben, wenn Abstand passt
+
 
         if (Time.time - lastAttackTime >= attackCooldown)
         {
+            PerformAttack(enemy);
+
             lastAttackTime = Time.time;
-
-            // Animation zufällig auswählen
-            int index = Random.Range(0, aggressiveAttackAnimations.Length);
-            string anim = aggressiveAttackAnimations[index];
-
-            enemy.animator.SetTrigger(anim);
         }
+    }
+
+    private void PerformAttack(StateMachineEnemy enemy)
+    {
+        int index = Random.Range(0, aggressiveAttackAnimations.Length);
+        string anim = aggressiveAttackAnimations[index];
+
+        enemy.animator.SetTrigger(anim);
     }
 
     public override void Exit(StateMachineEnemy enemy)

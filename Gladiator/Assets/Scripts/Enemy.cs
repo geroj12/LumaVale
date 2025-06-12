@@ -37,7 +37,6 @@ public class Enemy : MonoBehaviour
     public bool isStunned = false;
     [SerializeField] private Transform damageCanvasTransform;
 
-
     [Header("Finisher Einstellungen")]
     public float fatalFinisherThreshold = 10f; // Prozent
     public bool isDead = false;
@@ -63,7 +62,7 @@ public class Enemy : MonoBehaviour
         {
             rb.isKinematic = true;
         }
-       
+
     }
     void Start()
     {
@@ -280,13 +279,13 @@ public class Enemy : MonoBehaviour
         string trigger = Mathf.Abs(angle) <= 90f ? "HitFront" : "HitBack";
         animator.SetTrigger(trigger);
     }
-   
-   
+
+
     private void Die()
     {
         controller.enabled = false;
-
         EnableRagdoll();
+
         // ggf. weitere Tod-Logik
     }
 

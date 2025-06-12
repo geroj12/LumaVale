@@ -5908,7 +5908,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188058224}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24020845, y: -0.004579762, z: 0.0011332917, w: 0.9707099}
+  m_LocalRotation: {x: 0.24020866, y: -0.004579761, z: 0.0011332926, w: 0.97070986}
   m_LocalPosition: {x: 64.47, y: 51.854942, z: 125.52398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6756,10 +6756,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0419872
-  m_Height: 0.1679488
+  m_Radius: 0.078
+  m_Height: 0.25
   m_Direction: 1
-  m_Center: {x: 0, y: 0.0839744, z: 0}
+  m_Center: {x: 0, y: 0.12, z: 0}
 --- !u!4 &243284090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7002314000158102595, guid: e8788378ef175954ba4e89860199b2ad, type: 3}
@@ -7285,7 +7285,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24020846, y: -0.004579763, z: 0.001133292, w: 0.9707099}
+  m_LocalRotation: {x: 0.24020867, y: -0.0045797625, z: 0.001133293, w: 0.97070986}
   m_LocalPosition: {x: 64.47, y: 51.854942, z: 125.52398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7910,7 +7910,7 @@ CapsuleCollider:
   m_Radius: 0.078671575
   m_Height: 0.39335787
   m_Direction: 1
-  m_Center: {x: 0, y: 0.19667894, z: 0}
+  m_Center: {x: 0.02, y: 0.3, z: -0.01}
 --- !u!1 &397406315
 GameObject:
   m_ObjectHideFlags: 0
@@ -8916,7 +8916,7 @@ MonoBehaviour:
   animator: {fileID: 560817215}
   swordObject: {fileID: 1698201175}
   hasShield: 1
-  maxShieldDurability: 35
+  maxShieldDurability: 5
   currentShieldDurability: 0
   shieldObject: {fileID: 5350832732001559978}
   shieldRigidbody: {fileID: 8549504711118762167}
@@ -8936,8 +8936,8 @@ MonoBehaviour:
   isDead: 0
   player: {fileID: 0}
   finisherAnchor: {fileID: 1180025929}
-  maxHP: 100
-  currentHP: 55
+  maxHP: 55
+  currentHP: 25
   hitReactionCooldown: 0.5
 --- !u!95 &560817215
 Animator:
@@ -9041,6 +9041,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 560817215}
+  isTurning: 0
 --- !u!114 &560817220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15290,10 +15291,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.03890178
-  m_Height: 0.15560712
+  m_Radius: 0.078
+  m_Height: 0.25
   m_Direction: 1
-  m_Center: {x: 0, y: 0.07780356, z: 0}
+  m_Center: {x: 0, y: 0.12, z: 0}
 --- !u!1001 &868708031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16571,7 +16572,7 @@ GameObject:
   - component: {fileID: 1167297868}
   m_Layer: 19
   m_Name: Terrain (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -18043,6 +18044,7 @@ GameObject:
   - component: {fileID: 1392836115}
   - component: {fileID: 1392836117}
   - component: {fileID: 1392836118}
+  - component: {fileID: 1392836119}
   m_Layer: 7
   m_Name: FMODAudioHandler
   m_TagString: Untagged
@@ -18186,6 +18188,18 @@ MonoBehaviour:
       Data3: 1235621291
       Data4: -2075326153
     Path: event:/Events/Characters/Enemy/Alert
+--- !u!114 &1392836119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafe666e79188f047897010f3fa88431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1416871268
 GameObject:
   m_ObjectHideFlags: 0
@@ -19562,6 +19576,7 @@ GameObject:
   - component: {fileID: 1683252441}
   - component: {fileID: 1683252443}
   - component: {fileID: 1683252442}
+  - component: {fileID: 1683252444}
   m_Layer: 7
   m_Name: Hips
   m_TagString: Untagged
@@ -19633,8 +19648,27 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.21631384, y: 0.3060776, z: 0.23438583}
+  m_Size: {x: 0.34, y: 0.3060776, z: 0.27}
   m_Center: {x: -0.0018271059, y: 0.05737552, z: -0.05005052}
+--- !u!114 &1683252444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683252440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95ee6d7f0001c448a7df6c463578a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyFallsOnGroundEvent:
+    Guid:
+      Data1: -1461778194
+      Data2: 1183376547
+      Data3: -223380844
+      Data4: 2003537913
+    Path: event:/Events/Impacts/BodyFallsOnGround
 --- !u!1 &1683964603
 GameObject:
   m_ObjectHideFlags: 0
@@ -26149,10 +26183,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.089509405
-  m_Height: 0.44754702
+  m_Radius: 0.078671575
+  m_Height: 0.39335787
   m_Direction: 1
-  m_Center: {x: 0, y: 0.22377351, z: 0}
+  m_Center: {x: -0.02, y: 0.3, z: -0.01}
 --- !u!1 &1998126189
 GameObject:
   m_ObjectHideFlags: 0
@@ -29166,6 +29200,7 @@ GameObject:
   - component: {fileID: 5854968090773931135}
   - component: {fileID: 8549504711118762166}
   - component: {fileID: 8549504711118762167}
+  - component: {fileID: 8549504711118762168}
   m_Layer: 7
   m_Name: ScutumShield_C
   m_TagString: EnemyShield
@@ -40172,6 +40207,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8549504711118762168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5350832732001559978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c5f1ab7b4363543a27849c3990c466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldFallsOnGroundEvent:
+    Guid:
+      Data1: -1018147271
+      Data2: 1272159599
+      Data3: 1398802589
+      Data4: -915841694
+    Path: event:/Events/Impacts/ShieldFallOnGround
 --- !u!23 &8561244046520244965
 MeshRenderer:
   m_ObjectHideFlags: 0

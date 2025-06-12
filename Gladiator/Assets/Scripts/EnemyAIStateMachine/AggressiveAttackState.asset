@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: AggressiveAttackState
   m_EditorClassIdentifier: 
   attackRange: 1.5
-  attackCooldown: 0.75
-  closeDistanceThreshold: 0.1
+  attackCooldown: 1
   aggressiveAttackAnimations:
   - Aggressive_Stab
   - Aggressive_Slash
