@@ -19,12 +19,14 @@ public class ChaseStateAsset : EnemyState
             return;
         }
 
-      
+
 
         float distance = Vector3.Distance(enemy.transform.position, enemy.target.position);
         if (distance <= attackRange)
         {
             enemy.TransitionTo(enemy.attackState);
+            //enemy.FaceTarget(enemy.target);
+
             return;
         }
 

@@ -30,6 +30,7 @@ public class StateMachineEnemy : MonoBehaviour
 
     public Animator animator;
     private bool isRunning;
+    public bool isTurning = false;
 
 
     private void Start()
@@ -70,7 +71,7 @@ public class StateMachineEnemy : MonoBehaviour
         if (gameObject.activeInHierarchy)
             StartCoroutine(DisableFSMCoroutine(duration));
     }
-    
+
     private IEnumerator DisableFSMCoroutine(float duration)
     {
         enabled = false;
@@ -93,16 +94,53 @@ public class StateMachineEnemy : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, 10f * Time.deltaTime);
         }
     }
-    public void FaceTarget(Transform target)
+    public bool TryPlayTurnAnimation(Transform target)
     {
-        Vector3 direction = (target.position - transform.position).normalized;
-        direction.y = 0;
+        if (isTurning || target == null)
+            return false; // Bereits im Turn oder kein Ziel
 
-        if (direction.magnitude > 0.01f)
+        Vector3 directionToTarget = target.position - transform.position;
+        directionToTarget.y = 0;
+
+        if (directionToTarget.sqrMagnitude < 0.01f)
+            return false; // Kein sinnvoller Richtungsvektor
+
+        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget.normalized);
+        float angle = Quaternion.Angle(transform.rotation, targetRotation);
+
+        if (angle < 40f)
+            return false; // Kein Turn notwendig bei geringem Winkel
+
+        string triggerToPlay = null;
+
+        if (Vector3.SignedAngle(transform.forward, directionToTarget.normalized, Vector3.up) > 0f)
         {
-            Quaternion lookRot = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, 10f * Time.deltaTime);
+            // Player ist rechts
+            if (angle < 67.5f) triggerToPlay = "Turn_Right_45";
+            else if (angle < 112.5f) triggerToPlay = "Turn_Right_90";
+            else if (angle < 157.5f) triggerToPlay = "Turn_Right_135";
+            else triggerToPlay = "Turn_Right_180";
         }
+        else
+        {
+            // Player ist links
+            if (angle < 67.5f) triggerToPlay = "Turn_Left_45";
+            else if (angle < 112.5f) triggerToPlay = "Turn_Left_90";
+            else if (angle < 157.5f) triggerToPlay = "Turn_Left_135";
+            else triggerToPlay = "Turn_Left_180";
+        }
+
+        if (string.IsNullOrEmpty(triggerToPlay))
+            return false;
+
+        animator.SetTrigger(triggerToPlay);
+        isTurning = true;
+
+        return true;
+    }
+    public void TurnFinished()
+    {
+        isTurning = false;
     }
     public void SetRunning(bool running)
     {

@@ -18,4 +18,3 @@ MonoBehaviour:
   - Attack_Left
   - Attack_Right
   - Attack_Overhead
-  tooCloseDistance: 0.5

@@ -1,7 +1,14 @@
 fileFormatVersion: 2
 guid: 952a4b5fd2f161047a9725d9f20d2eb6
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301499
+  packageName: Female Runner Animset - Free Walk&Jog
+  packageVersion: 1.0
+  assetPath: Assets/FemaleRunnerAnimset/Animations/TurnInplace/TurnIP_R90.fbx
+  uploadId: 708217
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       74: 3607286912995577064
@@ -19,8 +26,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: root
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -59,7 +64,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 1
+        functionName: TurnFinished
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -72,6 +84,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -99,6 +112,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -767,8 +781,7 @@ ModelImporter:
     - name: lowerarm_twist_01_r
       parentName: lowerarm_r
       position: {x: -0.119404025, y: 0, z: -0.00000015258789}
-      rotation: {x: -0.00095770514, y: -0.000000044685613, z: -0.000000018669251,
-        w: 0.9999996}
+      rotation: {x: -0.00095770514, y: -0.000000044685613, z: -0.000000018669251, w: 0.9999996}
       scale: {x: 1, y: 1, z: 1}
     - name: upperarm_twist_01_r
       parentName: upperarm_r
@@ -843,8 +856,7 @@ ModelImporter:
     - name: thigh_twist_01_r
       parentName: thigh_r
       position: {x: -0.22478591, y: 0, z: -0.000000042915342}
-      rotation: {x: -0.0000000033178367, y: 0.000000039115545, z: 0.000000032596287,
-        w: 1}
+      rotation: {x: -0.0000000033178367, y: 0.000000039115545, z: 0.000000032596287, w: 1}
       scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
@@ -858,22 +870,15 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: f5b9e4759016d1c4e9c470e0f1d48847,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: f5b9e4759016d1c4e9c470e0f1d48847, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 301499
-  packageName: Female Runner Animset - Free Walk&Jog
-  packageVersion: 1.0
-  assetPath: Assets/FemaleRunnerAnimset/Animations/TurnInplace/TurnIP_R90.fbx
-  uploadId: 708217

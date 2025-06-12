@@ -9,20 +9,34 @@ public class EnemyCombatIdleState : EnemyState
 
     public override void Enter(StateMachineEnemy enemy)
     {
+        enemy.StopMovement();
         nextDecisionTime = Time.time + decisionInterval;
-        enemy.SetRunning(false);
-        enemy.animator.SetBool("IsBlocking", false);
+
     }
 
     public override void Tick(StateMachineEnemy enemy)
     {
-        if (Time.time >= nextDecisionTime)
+        if (enemy.target == null)
+            return;
+
+        if (enemy.isTurning)
+            return;
+
+        // Versuche Turn auszuführen
+        if (enemy.TryPlayTurnAnimation(enemy.target))
         {
-            DecideNextCombatAction(enemy);
-            nextDecisionTime = Time.time + decisionInterval;
+            enemy.isTurning = true;
+            return;
         }
 
-        enemy.FaceTarget(enemy.target);
+        // Warte auf nächste Entscheidungsphase
+        if (Time.time < nextDecisionTime)
+            return;
+
+        // Entscheide nächste Aktion
+        DecideNextCombatAction(enemy);
+        nextDecisionTime = Time.time + decisionInterval;
+
     }
 
     private void DecideNextCombatAction(StateMachineEnemy enemy)
@@ -32,16 +46,24 @@ public class EnemyCombatIdleState : EnemyState
 
         if (dist > 2f)
         {
-            enemy.TransitionTo(enemy.chaseState); // Repositionieren
+            enemy.TransitionTo(enemy.chaseState);
         }
         else if (rand < 0.3f)
+        {
             enemy.TransitionTo(enemy.attackState);
+        }
         else if (rand < 0.55f)
+        {
             enemy.TransitionTo(enemy.blockState);
+        }
         else if (rand < 0.8f)
+        {
             enemy.TransitionTo(enemy.dodgeState);
+        }
         else
+        {
             enemy.TransitionTo(enemy.combatRetreatState);
+        }
     }
 
     public override void Exit(StateMachineEnemy enemy)

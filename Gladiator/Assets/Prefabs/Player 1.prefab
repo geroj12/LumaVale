@@ -237,7 +237,6 @@ GameObject:
   - component: {fileID: 3342247972556952074}
   - component: {fileID: 5303213052083163190}
   - component: {fileID: 5959511225186472596}
-  - component: {fileID: 2996473374516642074}
   m_Layer: 13
   m_Name: Player 1
   m_TagString: Player
@@ -307,7 +306,6 @@ MonoBehaviour:
   animator: {fileID: 8075385664443808935}
   combat: {fileID: 5715105754577012175}
   state: {fileID: 3971556074646984906}
-  isBlocking: 0
 --- !u!114 &3971556074646984906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +324,7 @@ MonoBehaviour:
   blocking: 0
   isAttacking: 0
   canMove: 0
-  strength: 0
+  strength: 5
   currentEnergy: 100
   maxEnergy: 100
   normalAttackCost: 15
@@ -500,33 +498,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.1, z: 0}
---- !u!54 &2996473374516642074
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328127290825078433}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1667023076728047453
 GameObject:
   m_ObjectHideFlags: 0

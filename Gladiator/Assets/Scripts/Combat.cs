@@ -168,7 +168,7 @@ public class Combat : MonoBehaviour
     {
         if (!state.equipped) return;
 
-        bool isHoldingBlock = Input.GetAxis("Fire2") > 0.1f;
+        bool isHoldingBlock = Input.GetAxisRaw("Fire2") > 0.1f;
 
         if (isHoldingBlock)
         {

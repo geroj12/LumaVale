@@ -11,9 +11,7 @@ public class AttackStateAsset : EnemyState
     public string[] attackAnimations = { "Attack_Left", "Attack_Right", "Attack_Overhead" };
     public override void Enter(StateMachineEnemy enemy)
     {
-        lastAttackTime = Time.time - attackCooldown; // Sofortiger Angriff möglich
-        //enemy.animator.applyRootMotion = false;
-
+        lastAttackTime = Time.time - attackCooldown;
     }
 
     public override void Tick(StateMachineEnemy enemy)
@@ -32,24 +30,28 @@ public class AttackStateAsset : EnemyState
             return;
         }
 
-        enemy.FaceTarget(enemy.target);
-        enemy.StopMovement(); // stehen bleiben, wenn Abstand passt
-
+        enemy.StopMovement();
 
         if (Time.time - lastAttackTime >= attackCooldown)
         {
+
+            PerformAttack(enemy);
+
+
             lastAttackTime = Time.time;
-            int index = Random.Range(0, attackAnimations.Length);
-            string anim = attackAnimations[index];
-            enemy.animator.SetTrigger(anim);
         }
     }
 
+    private void PerformAttack(StateMachineEnemy enemy)
+    {
+        int index = Random.Range(0, attackAnimations.Length);
+        string anim = attackAnimations[index];
+        enemy.animator.SetTrigger(anim);
+    }
 
     public override void Exit(StateMachineEnemy enemy)
     {
-        //isAttacking = false; // Sicherheit, falls unterbrochen
-        //enemy.animator.applyRootMotion = true;
+
 
     }
 }

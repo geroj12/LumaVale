@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
     public Transform finisherAnchor;
 
     [SerializeField] private float maxHP = 100f;
-    [SerializeField] private float currentHP = 100f;
+    [SerializeField] private float currentHP;
 
     [Header("Hit Reaction Settings")]
     public float hitReactionCooldown = 0.5f;
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         currentShieldDurability = maxShieldDurability;
-
+        currentHP = maxHP;
     }
     void FixedUpdate()
     {

@@ -22,7 +22,7 @@ public class EnemyCombatBlockState : EnemyState
 
     public override void Tick(StateMachineEnemy enemy)
     {
-        enemy.FaceTarget(enemy.target);
+        //enemy.FaceTarget(enemy.target);
 
         if (Time.time >= exitTime)
         {

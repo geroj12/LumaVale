@@ -29,7 +29,6 @@ public class AggressiveAttackStateAsset : EnemyState
         }
 
         float dist = Vector3.Distance(enemy.transform.position, enemy.target.position);
-        enemy.FaceTarget(enemy.target);
 
         // Optional aggressives Nachrücken
         if (dist > attackRange)
@@ -39,7 +38,7 @@ public class AggressiveAttackStateAsset : EnemyState
         }
         else
         {
-            enemy.MoveTo(enemy.transform.position, 0f); // stehen bleiben
+            enemy.StopMovement(); // stehen bleiben, wenn Abstand passt
         }
 
         if (Time.time - lastAttackTime >= attackCooldown)
@@ -49,12 +48,14 @@ public class AggressiveAttackStateAsset : EnemyState
             // Animation zufällig auswählen
             int index = Random.Range(0, aggressiveAttackAnimations.Length);
             string anim = aggressiveAttackAnimations[index];
+
             enemy.animator.SetTrigger(anim);
         }
     }
 
     public override void Exit(StateMachineEnemy enemy)
     {
+
         // ggf. Reset
     }
 }

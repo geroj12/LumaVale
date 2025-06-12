@@ -8916,7 +8916,7 @@ MonoBehaviour:
   animator: {fileID: 560817215}
   swordObject: {fileID: 1698201175}
   hasShield: 1
-  maxShieldDurability: 5
+  maxShieldDurability: 35
   currentShieldDurability: 0
   shieldObject: {fileID: 5350832732001559978}
   shieldRigidbody: {fileID: 8549504711118762167}
@@ -8936,9 +8936,8 @@ MonoBehaviour:
   isDead: 0
   player: {fileID: 0}
   finisherAnchor: {fileID: 1180025929}
-  enemyWeapon: {fileID: 0}
   maxHP: 100
-  currentHP: 35
+  currentHP: 55
   hitReactionCooldown: 0.5
 --- !u!95 &560817215
 Animator:
@@ -8999,18 +8998,18 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.5
-  m_Radius: 0.25
+  m_Height: 1.8
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.8, z: 0.12}
+  m_Center: {x: 0, y: 1, z: 0.2}
 --- !u!114 &560817219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34220,14 +34219,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2996473374516642074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
+    - target: {fileID: 2514439552197198374, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3342247972556952074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3342247972556952074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: cinemachineFreelook
       value: 
       objectReference: {fileID: 188058224}
+    - target: {fileID: 3971556074646984906, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: strength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3971556074646984906, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: energyRegenRate
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264708964014174712, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5959511225186472596, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: m_Height
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5959511225186472596, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5959511225186472596, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6193288042113578271, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -34280,8 +34307,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2996473374516642074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
