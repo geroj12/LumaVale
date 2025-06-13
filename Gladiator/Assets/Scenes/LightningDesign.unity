@@ -5908,7 +5908,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188058224}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24020866, y: -0.004579761, z: 0.0011332926, w: 0.97070986}
+  m_LocalRotation: {x: 0.24020767, y: -0.0053717084, z: 0.0013292653, w: 0.9707058}
   m_LocalPosition: {x: 64.47, y: 51.854942, z: 125.52398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7285,7 +7285,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24020867, y: -0.0045797625, z: 0.001133293, w: 0.97070986}
+  m_LocalRotation: {x: 0.24020769, y: -0.0053717084, z: 0.0013292655, w: 0.97070575}
   m_LocalPosition: {x: 64.47, y: 51.854942, z: 125.52398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27610,6 +27610,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8124436766070144346, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
   m_PrefabInstance: {fileID: 5934365408662714934}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2514369599949965170 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1397612208756018104, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+  m_PrefabInstance: {fileID: 5934365408662714934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c687533e857b2f43bb72d4a43bd5697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2630055384305408067
 GameObject:
   m_ObjectHideFlags: 0
@@ -34255,9 +34266,9 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3342247972556952074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: cinemachineFreelook
+      propertyPath: weaponHolster
       value: 
-      objectReference: {fileID: 188058224}
+      objectReference: {fileID: 2514369599949965170}
     - target: {fileID: 6193288042113578271, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -34310,6 +34321,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8402396676917265715, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: cameraObject
+      value: 
+      objectReference: {fileID: 188058224}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c42cee7abdbf9749b799533d6d29220, type: 3}
+  m_Name: WeaponFinishers
+  m_EditorClassIdentifier: 
+  finishers:
+  - {fileID: 11400000, guid: 26518a3a4215a6f49874ba4748479691, type: 2}
+  - {fileID: 11400000, guid: e8e576ce331633e48824b211f9975777, type: 2}
+  - {fileID: 11400000, guid: 69181946772aba445bfe27bd0e4bd9a6, type: 2}
+  - {fileID: 11400000, guid: 1ba4c00e77b695d4692a9ca6ea489b5d, type: 2}
+  - {fileID: 11400000, guid: 15608cefb6a1b2a4e9181d25c7de12e8, type: 2}
+  - {fileID: 11400000, guid: ee792edbbc9bdfe4dbf856ebb377b4a5, type: 2}

@@ -56,7 +56,7 @@ public class Combat : MonoBehaviour
     private void HandleAttack()
     {
         if (Time.time < nextAttackTime) return; // Cooldown aktiv
-        if (weaponHolster.IsBusy() || finisherController.IsFinishing()) return;
+        if (weaponHolster.IsBusy()) return;
         if (state.blocking)
             state.ResetMouseDirections();
 

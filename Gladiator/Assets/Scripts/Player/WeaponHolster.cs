@@ -13,7 +13,7 @@ public class WeaponHolster : MonoBehaviour
     [SerializeField] private GameObject twoHandedWeapon;
     public Combat combatScript;
     State state;
-    [SerializeField]private Animator anim;
+    [SerializeField] private Animator anim;
 
     [SerializeField] private Transform rightHandTransform;
     [SerializeField] private Transform holsterTransform;
@@ -32,15 +32,17 @@ public class WeaponHolster : MonoBehaviour
     {
         state = GetComponent<State>();
     }
-    void LateUpdate()
+    void Update()
     {
         HandleEquipInput();
     }
+    void LateUpdate()
+    {
+
+    }
     void HandleEquipInput()
     {
-        if (currentWeaponState != WeaponState.Idle && currentWeaponState != WeaponState.Equipped ||
-        (finisherController != null && finisherController.IsFinishing()))
-            return;
+        if (currentWeaponState != WeaponState.Idle && currentWeaponState != WeaponState.Equipped) return;
 
         if (Input.GetKeyDown(KeyCode.Q))
         {

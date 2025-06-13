@@ -237,6 +237,8 @@ GameObject:
   - component: {fileID: 1397612208756018104}
   - component: {fileID: 3342247972556952074}
   - component: {fileID: 5303213052083163190}
+  - component: {fileID: 7425534695958836661}
+  - component: {fileID: 8402396676917265715}
   m_Layer: 13
   m_Name: Player 1
   m_TagString: Player
@@ -454,33 +456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72caf99f3b22cf44a9f0f5d45534d172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 8075385664443808935}
-  weaponHolster: {fileID: 1397612208756018104}
-  playerState: {fileID: 3971556074646984906}
-  cinemachineFreelook: {fileID: 0}
-  weaponCollider: {fileID: 7106130540988722939}
-  player: {fileID: 4437621691067550523}
-  twoHandedFinishers:
-    fatalFinishers:
-    - Fatal_Longsword01
-    nonFatalFinishers: []
-  oneHandedFinishers:
-    fatalFinishers:
-    - Fatal_OneHanded01
-    - Fatal_OneHanded02
-    nonFatalFinishers:
-    - NonFatal_OneHanded01
-    - NonFatal_OneHanded02
-  unarmedFinishers:
-    fatalFinishers:
-    - Fatal_Unarmed01
-    nonFatalFinishers:
-    - NonFatal_OneHanded02
-  enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  finisherRange: 1.4
-  finisherAngle: 60
+  currentWeaponFinishers: {fileID: 11400000, guid: 040a7c2e6efe5c347b8835f827847881, type: 2}
+  detector: {fileID: 7425534695958836661}
+  executor: {fileID: 8402396676917265715}
 --- !u!114 &5303213052083163190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +476,40 @@ MonoBehaviour:
   swordWoosh: {fileID: 1091973986698834181}
   fMODHurt: {fileID: 0}
   fMODShield: {fileID: 0}
+--- !u!114 &7425534695958836661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328127290825078433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27deb6775c6119e4f9d1544a801497ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finisherRange: 1.8
+  finisherAngle: 60
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &8402396676917265715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328127290825078433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4645a2132e9394bb5be5cb2ea1c698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 8075385664443808935}
+  cameraObject: {fileID: 0}
+  weaponCollider: {fileID: 7106130540988722939}
+  player: {fileID: 4437621691067550523}
+  playerState: {fileID: 3971556074646984906}
 --- !u!1 &1667023076728047453
 GameObject:
   m_ObjectHideFlags: 0
