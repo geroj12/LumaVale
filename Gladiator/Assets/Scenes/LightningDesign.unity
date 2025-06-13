@@ -34254,42 +34254,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2514439552197198374, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3342247972556952074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3342247972556952074, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: cinemachineFreelook
       value: 
       objectReference: {fileID: 188058224}
-    - target: {fileID: 3971556074646984906, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: strength
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3971556074646984906, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: energyRegenRate
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4264708964014174712, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5959511225186472596, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_Height
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5959511225186472596, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_Center.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5959511225186472596, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
-      propertyPath: m_Center.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6193288042113578271, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
