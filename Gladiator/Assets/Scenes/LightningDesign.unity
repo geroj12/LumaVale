@@ -8879,6 +8879,7 @@ GameObject:
   - component: {fileID: 560817211}
   - component: {fileID: 560817219}
   - component: {fileID: 560817220}
+  - component: {fileID: 560817221}
   m_Layer: 7
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -8926,17 +8927,14 @@ MonoBehaviour:
   controller: {fileID: 560817218}
   gravity: 9.81
   statemachine: {fileID: 560817219}
-  finisherDuration: 3
-  IsFinisherReady: 0
   bloodEmitterPrefab: {fileID: 2200741100250280157, guid: 6801d3351bc4a304aace69eeb10a56e6, type: 3}
   attachedBloodDecals: {fileID: 4946809851148356764}
-  isStunned: 0
   damageCanvasTransform: {fileID: 680024683}
   fatalFinisherThreshold: 10
   isDead: 0
   player: {fileID: 0}
   finisherAnchor: {fileID: 1180025929}
-  maxHP: 55
+  maxHP: 20
   currentHP: 25
   hitReactionCooldown: 0.5
 --- !u!95 &560817215
@@ -9059,6 +9057,21 @@ MonoBehaviour:
   swordWoosh: {fileID: 1392836113}
   fMODHurt: {fileID: 1392836116}
   fMODShield: {fileID: 1392836115}
+--- !u!114 &560817221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560817209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80684f545846954bae5be1054d99b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anchorPoint: {fileID: 1180025929}
+  idealDistance: 1.8
+  minDistance: 0.6
 --- !u!1001 &564842237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16876,13 +16889,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180025928}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.100003004, y: 0, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 560817216}
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1196394296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34281,6 +34294,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585549}
+    - target: {fileID: 8075385664443808935, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8124436766070144346, guid: bda90ec6de4cc354188712791e2390fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 64.47

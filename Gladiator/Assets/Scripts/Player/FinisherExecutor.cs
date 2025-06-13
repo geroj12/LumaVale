@@ -1,4 +1,5 @@
 using UnityEngine;
+using static FinisherData;
 
 public class FinisherExecutor : MonoBehaviour
 {
@@ -16,18 +17,40 @@ public class FinisherExecutor : MonoBehaviour
         weaponCollider.isTrigger = true;
         player.enabled = false;
 
-        // Position korrigieren
         if (enemy.finisherAnchor != null)
         {
             transform.position = enemy.finisherAnchor.position;
-            transform.rotation = enemy.finisherAnchor.rotation;
+
+            switch (finisher.rotationMode)
+            {
+                case FinisherRotationMode.FaceTarget:
+                    RotateTowards(enemy.transform, transform);       // Spieler
+                    RotateTowards(transform, enemy.transform);       // Gegner
+                    break;
+
+                case FinisherRotationMode.CustomRotation:
+                    transform.rotation = Quaternion.Euler(finisher.playerRotationEuler);
+                    enemy.transform.rotation = Quaternion.Euler(finisher.enemyRotationEuler);
+                    break;
+
+                case FinisherRotationMode.Ignore:
+                    // Kein Eingriff – z. B. RootMotion oder bereits durch Animation geregelt
+                    break;
+
+
+            }
+            // Animation triggern
+            playerAnimator.SetTrigger(finisher.animation.name);
+            enemy.StartFinisher(finisher.animation.name);
         }
-
-        // Animation triggern
-        playerAnimator.SetTrigger(finisher.animation.name);
-        enemy.StartFinisher(finisher.animation.name);
     }
-
+    private void RotateTowards(Transform target, Transform self)
+    {
+        Vector3 dir = (target.position - self.position).normalized;
+        dir.y = 0;
+        if (dir != Vector3.zero)
+            self.rotation = Quaternion.LookRotation(dir);
+    }
     public void ResetFinisherState()
     {
         playerState.canMove = true;

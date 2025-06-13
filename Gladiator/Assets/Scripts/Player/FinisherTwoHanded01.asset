@@ -15,3 +15,6 @@ MonoBehaviour:
   animation: {fileID: 7400000, guid: b919cbd75a4e22b47bcf0c8c37b6d751, type: 3}
   isFatal: 1
   weaponType: 2
+  rotationMode: 0
+  playerRotationEuler: {x: 0, y: 0, z: 0}
+  enemyRotationEuler: {x: 0, y: 0, z: 0}

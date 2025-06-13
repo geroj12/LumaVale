@@ -21,6 +21,12 @@ public class FinisherController : MonoBehaviour
         {
             if (detector.TryGetFinisherTarget(out Enemy enemy))
             {
+                var dynamicAnchor = enemy.GetComponent<DynamicFinisherAnchor>();
+                if (dynamicAnchor != null)
+                {
+                    dynamicAnchor.UpdateAnchorToPlayer(transform); // "transform" = Spieler
+                }
+                
                 bool isFatal = enemy.GetHealthPercent() <= enemy.fatalFinisherThreshold;
                 FinisherData finisher = GetValidFinisher(isFatal);
                 if (finisher != null)

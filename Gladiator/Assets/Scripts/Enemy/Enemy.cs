@@ -27,14 +27,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private StateMachineEnemy statemachine;
 
     [Header("Settings")]
-    public float finisherDuration = 3f;
-    public bool IsFinisherReady = false;
     private bool isFatalFinisher = false;
     public GameObject bloodEmitterPrefab;
     private GameObject activeBloodEmitter;
     [SerializeField] private GameObject attachedBloodDecals;
 
-    public bool isStunned = false;
     [SerializeField] private Transform damageCanvasTransform;
 
     [Header("Finisher Einstellungen")]
@@ -87,21 +84,9 @@ public class Enemy : MonoBehaviour
 
         animator.SetTrigger(finisherTrigger);
 
-        StartCoroutine(HandleFinisher());
     }
 
-    private IEnumerator HandleFinisher()
-    {
-        IsFinisherReady = false;
-
-        // Spieler anschauen
-        Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-        lookDirection.y = 0;
-        transform.rotation = Quaternion.LookRotation(lookDirection);
-
-        yield return new WaitForSeconds(finisherDuration);
-
-    }
+   
     public float GetHealthPercent()
     {
         return (float)currentHP / maxHP * 100f;
