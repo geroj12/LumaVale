@@ -1,16 +1,8 @@
-using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
-    [Header("UI")]
-    public Image strafeHoldImage;
-    [SerializeField] private float holdDuration = 1.5f;
 
-    private float holdTimer = 0f;
-    private bool strafeToggled = false;
 
     [Header("Movement Settings")]
     [SerializeField] private float movementSpeed = 2f;
@@ -31,6 +23,7 @@ public class Movement : MonoBehaviour
     private State playerState;
     private CharacterController controller;
     private Vector3 velocity;
+    public float inputMagnitude { get; private set; }
 
     void Start()
     {
@@ -49,6 +42,7 @@ public class Movement : MonoBehaviour
 
     public void HandleMovement()
     {
+
         if (playerState.Strafe)
         {
             StrafeMovement();
@@ -56,32 +50,6 @@ public class Movement : MonoBehaviour
         else
         {
             FreeLookMovement(); // neue Methode ersetzt NormalMovement()
-        }
-
-        if (Input.GetKey(KeyCode.V))
-        {
-            holdTimer += Time.deltaTime;
-            float progress = Mathf.Clamp01(holdTimer / holdDuration);
-
-            if (strafeHoldImage != null)
-                strafeHoldImage.fillAmount = progress;
-
-            if (!strafeToggled && holdTimer >= holdDuration)
-            {
-                playerState.Strafe = !playerState.Strafe;
-                anim.SetBool("Strafe", playerState.Strafe);
-                strafeToggled = true;
-                
-            }
-        }
-        // Wenn Taste losgelassen wird, Timer zurücksetzen
-        if (Input.GetKeyUp(KeyCode.V))
-        {
-            holdTimer = 0f;
-            strafeToggled = false;
-
-            if (strafeHoldImage != null)
-                strafeHoldImage.fillAmount = 0f;
         }
     }
 
@@ -97,7 +65,7 @@ public class Movement : MonoBehaviour
 
         // Magnitude berechnen (für Blendtree)
         Vector2 inputVector = new Vector2(inputX, inputY);
-        float inputMagnitude = Mathf.Clamp01(inputVector.magnitude);
+        inputMagnitude = Mathf.Clamp01(inputVector.magnitude);
 
 
         float currentSpeed = movementSpeed;
@@ -175,26 +143,6 @@ public class Movement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
 
-        if (rightFoot != null && leftFoot != null)
-        {
-            // IsRightLegUp setzen (einfach: wer hat höheren y-Wert)
-            bool isRightLegUp = rightFoot.position.y > leftFoot.position.y;
-            anim.SetBool("IsRightLegUp", isRightLegUp);
-
-            // LegSwitch steuern (nur bei Bewegung sinnvoll)
-            if (inputMagnitude > 0.1f)
-            {
-                float targetLegSwitch = isRightLegUp ? 1f : 0f;
-                // Nur wechseln, wenn Beine "auseinander" sind – einfache Bedingung:
-                float legDistance = Mathf.Abs(rightFoot.position.x - leftFoot.position.x);
-                if (legDistance > 0.1f) // Schwelle zum Wechsel
-                {
-                    legSwitch = Mathf.MoveTowards(legSwitch, targetLegSwitch, Time.deltaTime * 5f);
-                }
-            }
-
-            anim.SetFloat("LegSwitch", legSwitch);
-        }
     }
 
     private void ApplyGravity()
