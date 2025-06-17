@@ -74,7 +74,6 @@ public class EnemyVision : MonoBehaviour
                     if (!targetInSight)
                     {
 
-                        Debug.Log("Ziel  sichtbar");
                         music.SetCombatLevel(1f);
 
                     }
@@ -89,10 +88,6 @@ public class EnemyVision : MonoBehaviour
                 }
             }
 
-            if (targetInSight)
-            {
-                Debug.Log("Ziel nicht  sichtbar");
-            }
             targetInSight = false;
 
         }
@@ -102,7 +97,6 @@ public class EnemyVision : MonoBehaviour
         if (other.transform == target)
         {
             targetInSight = false;
-            Debug.Log("Ziel außer Reichweite");
             music.SetCombatLevel(0f);
             alertTriggered = false;
 

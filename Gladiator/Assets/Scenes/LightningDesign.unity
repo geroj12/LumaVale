@@ -8934,7 +8934,7 @@ MonoBehaviour:
   isDead: 0
   player: {fileID: 0}
   finisherAnchor: {fileID: 1180025929}
-  maxHP: 20
+  maxHP: 16
   currentHP: 25
   hitReactionCooldown: 0.5
 --- !u!95 &560817215
@@ -42386,7 +42386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4b30ddfb5e37d4dab1d08e90102dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0.35
+  movementSpeed: 0.15
   smoothValue: 0.4
   gravity: 9.81
   rotationSpeed: 10

@@ -92,17 +92,12 @@ public class Combat : MonoBehaviour
         if (state.currentEnergy < state.heavyAttackCost) return;
 
         state.UseEnergy(state.heavyAttackCost);
-        weaponDamage.SetAttackType(WeaponDamage.AttackType.Thrust);
-
         state.attackThrust = true;
-        nextAttackTime = Time.time + attackCooldown;
 
-        switch (weaponHolster.currentWeaponType)
-        {
-            case 2: anim.SetBool("AttackThrust_TwoHanded01", true); break;
-            case 1: anim.SetBool("Attack_Thrust_OneHanded01", true); break;
-            case 0: anim.SetBool("Attack_Thrust_Unarmed", true); break;
-        }
+        weaponDamage.SetAttackType(WeaponDamage.AttackType.Thrust);
+        PlayAttackAnimation("Thrust");
+
+        nextAttackTime = Time.time + attackCooldown;
         StartCoroutine(ResetAttackBools());
     }
 
@@ -110,19 +105,14 @@ public class Combat : MonoBehaviour
     {
 
         if (state.currentEnergy < state.heavyAttackCost) return;
+
         state.UseEnergy(state.heavyAttackCost);
+        state.attackUp = true;
 
         weaponDamage.SetAttackType(WeaponDamage.AttackType.HeavyOverhead);
+        PlayAttackAnimation("Overhead");
 
-        state.attackUp = true;
         nextAttackTime = Time.time + attackCooldown;
-
-        switch (weaponHolster.currentWeaponType)
-        {
-            case 2: anim.SetBool("AttackUp_TwoHanded01", true); break;
-            case 1: anim.SetBool("Attack_UP_OneHanded01", true); break;
-            case 0: anim.SetBool("Attack_UP_Unarmed", true); break;
-        }
         StartCoroutine(ResetAttackBools());
     }
 
@@ -133,27 +123,12 @@ public class Combat : MonoBehaviour
         state.UseEnergy(state.normalAttackCost);
         weaponDamage.SetAttackType(WeaponDamage.AttackType.Normal);
 
-        nextAttackTime = Time.time + attackCooldown;
-
-        int weapon = weaponHolster.currentWeaponType;
         if (state.mouseOnLeftSide)
-        {
-            switch (weapon)
-            {
-                case 2: anim.SetBool("Attack_LEFT_TwoHanded01", true); break;
-                case 1: anim.SetBool("Attack_LEFT_OneHanded01", true); break;
-                case 0: anim.SetBool("Attack_LEFT_Unarmed", true); break;
-            }
-        }
+            PlayAttackAnimation("Left");
         else if (state.mouseOnRightSide)
-        {
-            switch (weapon)
-            {
-                case 2: anim.SetBool("Attack_RIGHT_TwoHanded01", true); break;
-                case 1: anim.SetBool("Attack_RIGHT_OneHanded01", true); break;
-                case 0: anim.SetBool("Attack_RIGHT_Unarmed", true); break;
-            }
-        }
+            PlayAttackAnimation("Right");
+
+        nextAttackTime = Time.time + attackCooldown;
     }
 
     #endregion
@@ -269,6 +244,39 @@ public class Combat : MonoBehaviour
         anim.SetBool("Attack_UP_Unarmed", false);
 
         state.ResetMouseDirections();
+    }
+
+
+    private void PlayAttackAnimation(string type)
+    {
+        int weapon = weaponHolster.currentWeaponType;
+
+        switch (type)
+        {
+            case "Thrust":
+                if (weapon == 2) anim.SetBool("AttackThrust_TwoHanded01", true);
+                else if (weapon == 1) anim.SetBool("Attack_Thrust_OneHanded01", true);
+                else anim.SetBool("Attack_Thrust_Unarmed", true);
+                break;
+
+            case "Overhead":
+                if (weapon == 2) anim.SetBool("AttackUp_TwoHanded01", true);
+                else if (weapon == 1) anim.SetBool("Attack_UP_OneHanded01", true);
+                else anim.SetBool("Attack_UP_Unarmed", true);
+                break;
+
+            case "Left":
+                if (weapon == 2) anim.SetBool("Attack_LEFT_TwoHanded01", true);
+                else if (weapon == 1) anim.SetBool("Attack_LEFT_OneHanded01", true);
+                else anim.SetBool("Attack_LEFT_Unarmed", true);
+                break;
+
+            case "Right":
+                if (weapon == 2) anim.SetBool("Attack_RIGHT_TwoHanded01", true);
+                else if (weapon == 1) anim.SetBool("Attack_RIGHT_OneHanded01", true);
+                else anim.SetBool("Attack_RIGHT_Unarmed", true);
+                break;
+        }
     }
 
     #endregion
