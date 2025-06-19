@@ -6026,7 +6026,7 @@ Transform:
   m_GameObject: {fileID: 188058224}
   serializedVersion: 2
   m_LocalRotation: {x: 0.24020867, y: -0.004579761, z: 0.0011332927, w: 0.97070986}
-  m_LocalPosition: {x: 64.47, y: 51.854942, z: 125.52398}
+  m_LocalPosition: {x: 64.47, y: 52.004944, z: 125.52398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7078,7 +7078,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2402087, y: -0.0045797625, z: 0.001133293, w: 0.97070986}
-  m_LocalPosition: {x: 64.47, y: 51.854942, z: 125.52398}
+  m_LocalPosition: {x: 64.47, y: 52.004944, z: 125.52398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26903,7 +26903,7 @@ Transform:
   m_GameObject: {fileID: 5689192206365028972}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.434, z: 0}
+  m_LocalPosition: {x: 0, y: 1.446, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29585,7 +29585,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7671952, z: -0, w: 0.6414137}
   m_LocalPosition: {x: 64.47, y: 47.4, z: 132.2}
-  m_LocalScale: {x: 0.90000004, y: 0.9, z: 0.90000004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5361008593468658351}
@@ -42818,6 +42818,7 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 6893959338305874638}
   isTurning: 0
+  playerRecentlySeen: 0
 --- !u!114 &6893959338305874642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43160,6 +43161,7 @@ GameObject:
   - component: {fileID: 8737865528686721284}
   - component: {fileID: 4796814626729691111}
   - component: {fileID: 32109052032899603}
+  - component: {fileID: 8737865528686721285}
   m_Layer: 7
   m_Name: ScutumShield_C
   m_TagString: EnemyShield
@@ -48526,13 +48528,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7057780295456530257}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7923262, y: -0.11241199, z: 0.15366153, w: 0.57962996}
-  m_LocalPosition: {x: 0.071, y: 0.061, z: 0.071}
+  m_LocalRotation: {x: -0.6003986, y: -0.35982877, z: 0.337965, w: 0.6291459}
+  m_LocalPosition: {x: 0.102, y: 0.044, z: 0.104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2440120756115327173}
-  m_LocalEulerAnglesHint: {x: -117.876, y: 53.084, z: -49.639008}
+  m_LocalEulerAnglesHint: {x: -149.186, y: 91.34, z: -93.37799}
 --- !u!205 &7714813997908550084
 LODGroup:
   m_ObjectHideFlags: 0
@@ -49970,6 +49972,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8737865528686721285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080747229558806737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c5f1ab7b4363543a27849c3990c466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldFallsOnGroundEvent:
+    Guid:
+      Data1: -1018147271
+      Data2: 1272159599
+      Data3: 1398802589
+      Data4: -915841694
+    Path: event:/Events/Impacts/ShieldFallOnGround
 --- !u!1 &8752228069146849172
 GameObject:
   m_ObjectHideFlags: 0

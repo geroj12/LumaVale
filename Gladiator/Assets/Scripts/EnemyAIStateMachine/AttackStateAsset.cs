@@ -6,7 +6,7 @@ public class AttackStateAsset : EnemyState
 {
     public float attackRange = 2f;
     public float attackCooldown = 1.5f;
-
+    public float playerNotInSightDuration = 2f;
     private float lastAttackTime = -Mathf.Infinity;
     public string[] attackAnimations = { "Attack_Left", "Attack_Right", "Attack_Overhead" };
     public override void Enter(StateMachineEnemy enemy)
@@ -17,7 +17,11 @@ public class AttackStateAsset : EnemyState
     public override void Tick(StateMachineEnemy enemy)
     {
 
-        if (!enemy.vision.CanSeeTarget())
+        if (enemy.vision.CanSeeTarget())
+        {
+            enemy.NotifyPlayerSeen(); // Spieler wurde gesehen → Zeit merken
+        }
+        else if (!enemy.HasRecentlySeenPlayer(playerNotInSightDuration)) // 2s Kulanz
         {
             enemy.TransitionTo(enemy.investigateState);
             return;
@@ -32,6 +36,8 @@ public class AttackStateAsset : EnemyState
 
         enemy.StopMovement();
 
+
+
         if (Time.time - lastAttackTime >= attackCooldown)
         {
 
@@ -39,15 +45,20 @@ public class AttackStateAsset : EnemyState
 
 
             lastAttackTime = Time.time;
+
         }
     }
 
     private void PerformAttack(StateMachineEnemy enemy)
     {
+
         int index = Random.Range(0, attackAnimations.Length);
         string anim = attackAnimations[index];
         enemy.animator.SetTrigger(anim);
+
+
     }
+
 
     public override void Exit(StateMachineEnemy enemy)
     {

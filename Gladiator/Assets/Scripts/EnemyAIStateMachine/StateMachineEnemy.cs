@@ -32,6 +32,8 @@ public class StateMachineEnemy : MonoBehaviour
     private bool isRunning;
     public bool isTurning = false;
 
+    [HideInInspector] public bool playerRecentlySeen = false;
+    private float playerLastSeenTime = -Mathf.Infinity;
 
     private void Start()
     {
@@ -53,7 +55,15 @@ public class StateMachineEnemy : MonoBehaviour
         currentState = newState;
         currentState?.Enter(this);
     }
-
+    public bool HasRecentlySeenPlayer(float duration)
+    {
+        return Time.time - playerLastSeenTime <= duration;
+    }
+    public void NotifyPlayerSeen()
+    {
+        playerRecentlySeen = true;
+        playerLastSeenTime = Time.time;
+    }
     public void MoveTo(Vector3 destination, float speed)
     {
         Vector3 direction = (destination - transform.position).normalized;
@@ -61,9 +71,12 @@ public class StateMachineEnemy : MonoBehaviour
 
         if (direction.magnitude > 0.1f)
         {
+
             Quaternion rot = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, 10f * Time.deltaTime);
             controller.Move(direction * speed * Time.deltaTime);
+
+
         }
     }
     public void TemporarilyDisableFSM(float duration)

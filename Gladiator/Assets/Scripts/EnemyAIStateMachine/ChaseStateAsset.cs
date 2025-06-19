@@ -5,7 +5,7 @@ public class ChaseStateAsset : EnemyState
 {
     public float chaseSpeed = 5f;
     public float attackRange = 2f;
-
+    public float playerNotInSightDuration = 2f;
     public override void Enter(StateMachineEnemy enemy)
     {
         enemy.SetRunning(true);
@@ -13,9 +13,13 @@ public class ChaseStateAsset : EnemyState
 
     public override void Tick(StateMachineEnemy enemy)
     {
-        if (!enemy.vision.CanSeeTarget())
+        if (enemy.vision.CanSeeTarget())
         {
-            enemy.TransitionTo(enemy.investigateState); // z. B. zurück zur Patrouille
+            enemy.NotifyPlayerSeen();
+        }
+        else if (!enemy.HasRecentlySeenPlayer(playerNotInSightDuration))
+        {
+            enemy.TransitionTo(enemy.investigateState);
             return;
         }
 

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3c3061804e70e4aaab85a622f2ed38, type: 3}
   m_Name: ChaseState
   m_EditorClassIdentifier: 
-  chaseSpeed: 0.4
+  chaseSpeed: 0.3
   attackRange: 1.5
+  playerNotInSightDuration: 2
