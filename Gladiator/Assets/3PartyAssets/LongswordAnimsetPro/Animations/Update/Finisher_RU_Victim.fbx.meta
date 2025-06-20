@@ -848,8 +848,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5979673
-        functionName: EnableRagdoll
+      - time: 0
+        functionName: DropWeapons
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.28664687
+        functionName: PlayHurtSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -862,8 +869,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.28664687
-        functionName: PlayHurtSound
+      - time: 0.5979673
+        functionName: EnableRagdoll
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

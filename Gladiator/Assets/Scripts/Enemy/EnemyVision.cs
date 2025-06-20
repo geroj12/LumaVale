@@ -14,6 +14,7 @@ public class EnemyVision : MonoBehaviour
     private SphereCollider sensorCollider;
     public FMODMusic music;
     [SerializeField] private FMODAlert alertSound;
+    [SerializeField] private GameObject alertVfx;
     private bool alertTriggered = false;
 
     private void Start()
@@ -71,7 +72,7 @@ public class EnemyVision : MonoBehaviour
                 float distToTarget = Vector3.Distance(transform.position, target.position);
                 if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
                 {
-                    if (!targetInSight)
+                    if (targetInSight)
                     {
 
                         music.SetCombatLevel(1f);
@@ -82,6 +83,8 @@ public class EnemyVision : MonoBehaviour
                     {
                         alertSound.PlayAlertSound();
                         alertTriggered = true;
+                        alertVfx.SetActive(true);
+
                     }
                     targetInSight = true;
                     return;
@@ -99,6 +102,7 @@ public class EnemyVision : MonoBehaviour
             targetInSight = false;
             music.SetCombatLevel(0f);
             alertTriggered = false;
+            alertVfx.SetActive(false);
 
         }
     }
