@@ -6,6 +6,7 @@ public class EnemyCombatIdleState : EnemyState
 {
     public float decisionInterval = 1.5f;
     private float nextDecisionTime;
+  
 
     public override void Enter(StateMachineEnemy enemy)
     {
@@ -28,6 +29,7 @@ public class EnemyCombatIdleState : EnemyState
             enemy.isTurning = true;
             return;
         }
+       
 
         // Warte auf nächste Entscheidungsphase
         if (Time.time < nextDecisionTime)
@@ -65,7 +67,7 @@ public class EnemyCombatIdleState : EnemyState
             enemy.TransitionTo(enemy.combatRetreatState);
         }
     }
-
+  
     public override void Exit(StateMachineEnemy enemy)
     {
 

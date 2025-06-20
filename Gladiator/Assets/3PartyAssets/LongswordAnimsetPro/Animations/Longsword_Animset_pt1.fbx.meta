@@ -3405,23 +3405,9 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.16599023
-        functionName: SendEvent
-        data: toLP
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.56594867
-        functionName: SendEvent
-        data: toRP
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.1996106
-        functionName: SendEvent
-        data: ImpactKO
+      - time: 1
+        functionName: NotifyAttackFinished
+        data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

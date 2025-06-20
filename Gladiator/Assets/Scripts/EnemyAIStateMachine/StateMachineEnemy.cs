@@ -41,9 +41,14 @@ public class StateMachineEnemy : MonoBehaviour
         target = vision.target;
         startPosition = transform.position;
 
+        CombatManager.Instance?.Register(this); // Registrieren
+
         TransitionTo(initialState);
     }
-
+    private void OnDestroy()
+    {
+        CombatManager.Instance?.Unregister(this);
+    }
     private void Update()
     {
         currentState?.Tick(this);
@@ -84,7 +89,10 @@ public class StateMachineEnemy : MonoBehaviour
         if (gameObject.activeInHierarchy)
             StartCoroutine(DisableFSMCoroutine(duration));
     }
-
+    public void OnAttackAnimationFinished()
+    {
+        CombatManager.Instance?.NotifyAttackFinished(this);
+    }
     private IEnumerator DisableFSMCoroutine(float duration)
     {
         enabled = false;

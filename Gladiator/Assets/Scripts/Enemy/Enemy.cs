@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-   
+
     public float GetHealthPercent()
     {
         return (float)currentHP / maxHP * 100f;
@@ -269,6 +269,8 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         controller.enabled = false;
+        CombatManager.Instance?.NotifyAttackFinished(statemachine);
+
         EnableRagdoll();
 
         // ggf. weitere Tod-Logik

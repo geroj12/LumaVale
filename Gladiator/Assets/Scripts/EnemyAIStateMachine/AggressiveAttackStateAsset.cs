@@ -6,7 +6,7 @@ public class AggressiveAttackStateAsset : EnemyState
     public float attackRange = 1.8f;
     public float attackCooldown = 0.75f;  // schneller als normal
     private float lastAttackTime = -Mathf.Infinity;
-
+    public float playerNotInSightDuration = 3f;
     public string[] aggressiveAttackAnimations = {
         "Aggressive_Stab",
         "Aggressive_Slash",
@@ -16,12 +16,16 @@ public class AggressiveAttackStateAsset : EnemyState
 
     public override void Enter(StateMachineEnemy enemy)
     {
-        lastAttackTime = Time.time - attackCooldown; // sofortiger Angriff möglich
+        lastAttackTime = Time.time - attackCooldown; 
     }
 
     public override void Tick(StateMachineEnemy enemy)
     {
-        if (!enemy.vision.CanSeeTarget())
+         if (enemy.vision.CanSeeTarget())
+        {
+            enemy.NotifyPlayerSeen(); 
+        }
+        else if (!enemy.HasRecentlySeenPlayer(playerNotInSightDuration))
         {
             enemy.TransitionTo(enemy.investigateState);
             return;
