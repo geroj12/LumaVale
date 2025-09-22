@@ -7,7 +7,7 @@ public class AudioHook : MonoBehaviour
     [SerializeField] private FMODSwordWoosh swordWoosh;
     [SerializeField] private FMODHurt fMODHurt;
     [SerializeField] private FMODShield fMODShield;
-    [SerializeField] private FMODFinisher fMODFinisher;
+   
 
     public void AudioOnFootStep()
     {
@@ -39,8 +39,5 @@ public class AudioHook : MonoBehaviour
         fMODShield.PlayShieldImpact();
     }
 
-    public void PlayerFinisherSound()
-    {
-        fMODFinisher.PlayFinisher();
-    }
+    
 }

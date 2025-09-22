@@ -76,7 +76,6 @@ public class Enemy : MonoBehaviour
     // =====================
     public void StartFinisher(string finisherTrigger)
     {
-        
         if (isDead) return;
         InterruptAnimations();
         statemachine?.TemporarilyDisableFSM(1f);
@@ -84,6 +83,7 @@ public class Enemy : MonoBehaviour
         isFatalFinisher = hpPercent <= fatalFinisherThreshold;
 
         animator.SetTrigger(finisherTrigger);
+
     }
 
 
@@ -118,7 +118,7 @@ public class Enemy : MonoBehaviour
     // =============================
     public void EnableRagdoll()
     {
-
+        DropWeapons();
 
         isDead = true;
         statemachine.enabled = false;
@@ -140,7 +140,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void DropWeapons()
+    private void DropWeapons()
     {
         ApplyPhysics(swordObject);
         ApplyPhysics(shieldObject);
@@ -155,7 +155,8 @@ public class Enemy : MonoBehaviour
             rb.isKinematic = false;
             rb.useGravity = true;
         }
-        if (obj.TryGetComponent<Collider>(out var collider)) collider.isTrigger = false;
+        var collider = obj.GetComponent<Collider>();
+        if (collider != null) collider.isTrigger = false;
 
     }
 
@@ -196,9 +197,6 @@ public class Enemy : MonoBehaviour
 
         if (currentHP <= 0f)
         {
-            DropWeapons();
-            CombatManager.Instance?.NotifyAttackFinished(statemachine);
-            CombatManager.Instance.Unregister(statemachine);
             Die();
         }
     }
@@ -271,6 +269,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         controller.enabled = false;
+        CombatManager.Instance?.NotifyAttackFinished(statemachine);
 
         EnableRagdoll();
 

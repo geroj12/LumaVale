@@ -16,7 +16,6 @@ public class ChaseStateAsset : EnemyState
         if (enemy.vision.CanSeeTarget())
         {
             enemy.NotifyPlayerSeen();
-            
         }
         else if (!enemy.HasRecentlySeenPlayer(playerNotInSightDuration))
         {

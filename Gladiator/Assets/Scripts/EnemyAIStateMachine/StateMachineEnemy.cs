@@ -7,10 +7,6 @@ public class StateMachineEnemy : MonoBehaviour
     public EnemyVision vision;
     public Transform[] patrolPoints;
 
-    [ReadOnly]
-    public string currentStateName;
-    private EnemyState currentState;
-
     public EnemyState initialState;
     public EnemyState patrolState;
     public EnemyState chaseState;
@@ -28,6 +24,7 @@ public class StateMachineEnemy : MonoBehaviour
     [HideInInspector] public CharacterController controller;
     [HideInInspector] public Vector3 startPosition;
 
+    private EnemyState currentState;
 
     private int patrolIndex = 0;
 
@@ -61,8 +58,6 @@ public class StateMachineEnemy : MonoBehaviour
     {
         currentState?.Exit(this);
         currentState = newState;
-        currentStateName = currentState.GetType().Name; // Update sichtbarer State
-
         currentState?.Enter(this);
     }
     public bool HasRecentlySeenPlayer(float duration)
@@ -178,6 +173,7 @@ public class StateMachineEnemy : MonoBehaviour
     {
         controller.Move(Vector3.zero); // verhindert Restbewegung
     }
+
 
     public Transform GetNextPatrolPoint()
     {

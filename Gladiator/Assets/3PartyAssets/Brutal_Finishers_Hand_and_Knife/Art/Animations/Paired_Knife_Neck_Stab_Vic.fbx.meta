@@ -73,13 +73,6 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: DropWeapons
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.4380431
         functionName: StartBloodEffect
         data: 
@@ -87,15 +80,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.50474775
-        functionName: PlayHurtSound
+      - time: 0.9030612
+        functionName: EnableRagdoll
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9030612
-        functionName: EnableRagdoll
+      - time: 0.50474775
+        functionName: PlayHurtSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

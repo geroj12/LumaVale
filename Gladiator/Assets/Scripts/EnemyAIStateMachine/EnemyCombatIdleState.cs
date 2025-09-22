@@ -6,7 +6,7 @@ public class EnemyCombatIdleState : EnemyState
 {
     public float decisionInterval = 1.5f;
     private float nextDecisionTime;
-
+  
 
     public override void Enter(StateMachineEnemy enemy)
     {
@@ -17,10 +17,11 @@ public class EnemyCombatIdleState : EnemyState
 
     public override void Tick(StateMachineEnemy enemy)
     {
-        if (enemy.target == null || enemy.isTurning)
+        if (enemy.target == null)
             return;
 
-        
+        if (enemy.isTurning)
+            return;
 
         // Versuche Turn auszuführen
         if (enemy.TryPlayTurnAnimation(enemy.target))
@@ -28,6 +29,7 @@ public class EnemyCombatIdleState : EnemyState
             enemy.isTurning = true;
             return;
         }
+       
 
         // Warte auf nächste Entscheidungsphase
         if (Time.time < nextDecisionTime)
@@ -48,7 +50,7 @@ public class EnemyCombatIdleState : EnemyState
         {
             enemy.TransitionTo(enemy.chaseState);
         }
-        else if (CombatManager.Instance.CanAttack(enemy))
+        else if (rand < 0.3f)
         {
             enemy.TransitionTo(enemy.attackState);
         }
@@ -65,7 +67,7 @@ public class EnemyCombatIdleState : EnemyState
             enemy.TransitionTo(enemy.combatRetreatState);
         }
     }
-   
+  
     public override void Exit(StateMachineEnemy enemy)
     {
 
