@@ -429,7 +429,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 3
+  m_Time: 0.3
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -14222,10 +14222,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.14
-  m_Height: 0.4
+  m_Radius: 0.16
+  m_Height: 0.42
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.03, z: -0.05}
 --- !u!1001 &811963354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27565,6 +27565,7 @@ GameObject:
   - component: {fileID: 6893959338305874641}
   - component: {fileID: 6893959338305874640}
   - component: {fileID: 6893959338305874639}
+  - component: {fileID: 6893959338305874645}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -29940,6 +29941,8 @@ MonoBehaviour:
   animator: {fileID: 4898614681539123697}
   combat: {fileID: 4898614681539123690}
   state: {fileID: 4898614681539123695}
+  maxHP: 100
+  currentHP: 0
 --- !u!114 &4898614681539123695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31619,10 +31622,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.14
-  m_Height: 0.7
+  m_Radius: 0.16
+  m_Height: 0.72
   m_Direction: 1
-  m_Center: {x: 0.0000013551739, y: -0.17, z: -0.01}
+  m_Center: {x: 0.0000013551739, y: -0.2, z: -0.028}
 --- !u!1 &5364158055786641787
 GameObject:
   m_ObjectHideFlags: 0
@@ -43047,6 +43050,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6893959338305874645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967941917593627346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7b0181df32a874f9dd837c8be400be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDamage: {fileID: 8859347620202528389}
+  anim: {fileID: 6893959338305874638}
 --- !u!33 &6910777112568814290
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43271,7 +43288,8 @@ GameObject:
   - component: {fileID: 8859347620202528388}
   - component: {fileID: 6173107849974464272}
   - component: {fileID: 2734392266763060830}
-  m_Layer: 7
+  - component: {fileID: 8859347620202528389}
+  m_Layer: 10
   m_Name: Gladius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50413,6 +50431,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8859347620202528389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7057780295456530257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c87873379b71e4298a87b3202581ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  weaponTrail: {fileID: 0}
 --- !u!144 &8885133735274768557
 CharacterJoint:
   m_ObjectHideFlags: 0

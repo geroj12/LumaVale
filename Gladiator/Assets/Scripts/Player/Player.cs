@@ -35,4 +35,10 @@ public class Player : MonoBehaviour
         animator.SetTrigger("HitBlocked"); // z. B. kleine Rückzuck-Animation
 
     }
+
+    public void TakeDamage(float amount, bool hitShield = false)
+    {
+        currentHP -= amount;
+
+    }
 }
