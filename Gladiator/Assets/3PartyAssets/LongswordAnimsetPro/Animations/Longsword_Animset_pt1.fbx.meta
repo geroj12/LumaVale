@@ -3404,14 +3404,7 @@ ModelImporter:
           preInfinity: 3
           postInfinity: 3
           rotationOrder: 0
-      events:
-      - time: 1
-        functionName: NotifyAttackFinished
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1

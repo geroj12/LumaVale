@@ -7,11 +7,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Combat combat;
     [SerializeField] private State state;
 
-
+    [SerializeField] private float maxHP = 100f;
+    [SerializeField] private float currentHP;
     void Start()
     {
         movement = GetComponent<Movement>();
         animator = GetComponent<Animator>();
+        currentHP = maxHP;
     }
 
     void Update()

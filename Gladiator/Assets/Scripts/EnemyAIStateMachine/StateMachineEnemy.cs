@@ -18,8 +18,6 @@ public class StateMachineEnemy : MonoBehaviour
     public EnemyState combatIdleState;
     public EnemyState combatRetreatState;
 
-    public EnemyState aggressiveIdleState;
-
     [HideInInspector] public Transform target;
     [HideInInspector] public CharacterController controller;
     [HideInInspector] public Vector3 startPosition;
