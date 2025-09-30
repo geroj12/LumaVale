@@ -269,7 +269,6 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         controller.enabled = false;
-        CombatManager.Instance?.NotifyAttackFinished(statemachine);
 
         EnableRagdoll();
 

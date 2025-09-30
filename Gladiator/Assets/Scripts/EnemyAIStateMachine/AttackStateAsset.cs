@@ -36,8 +36,7 @@ public class AttackStateAsset : EnemyState
 
         enemy.StopMovement();
 
-        if (Time.time - lastAttackTime >= attackCooldown &&
-        CombatManager.Instance.CanAttack(enemy))
+        if (Time.time - lastAttackTime >= attackCooldown)
         {
 
             PerformAttack(enemy);
