@@ -42956,11 +42956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vision: {fileID: 250189969}
-  patrolPoints:
-  - {fileID: 76326588}
-  - {fileID: 1295544509}
-  initialState: {fileID: 11400000, guid: 865be84a915decb4eb2b1bd0f8e9af42, type: 2}
-  patrolState: {fileID: 11400000, guid: 865be84a915decb4eb2b1bd0f8e9af42, type: 2}
+  initialState: {fileID: 11400000, guid: 2f9e8f99dbb30e8468f8b34df1d86839, type: 2}
   chaseState: {fileID: 11400000, guid: 17a5d5697995cb049b8721c71844360d, type: 2}
   attackState: {fileID: 11400000, guid: 94591efa6ed035048a0175c420105af5, type: 2}
   investigateState: {fileID: 11400000, guid: fe5f845d1ab183c45b99959bdc4fce28, type: 2}

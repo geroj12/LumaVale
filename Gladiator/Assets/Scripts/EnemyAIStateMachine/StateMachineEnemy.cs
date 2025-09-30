@@ -5,10 +5,8 @@ using UnityEngine;
 public class StateMachineEnemy : MonoBehaviour
 {
     public EnemyVision vision;
-    public Transform[] patrolPoints;
 
     public EnemyState initialState;
-    public EnemyState patrolState;
     public EnemyState chaseState;
     public EnemyState attackState;
     public EnemyState investigateState;
@@ -24,7 +22,6 @@ public class StateMachineEnemy : MonoBehaviour
 
     private EnemyState currentState;
 
-    private int patrolIndex = 0;
 
     public Animator animator;
     private bool isRunning;
@@ -165,12 +162,4 @@ public class StateMachineEnemy : MonoBehaviour
         controller.Move(Vector3.zero); // verhindert Restbewegung
     }
 
-
-    public Transform GetNextPatrolPoint()
-    {
-        if (patrolPoints.Length == 0) return null;
-        Transform point = patrolPoints[patrolIndex];
-        patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
-        return point;
-    }
 }

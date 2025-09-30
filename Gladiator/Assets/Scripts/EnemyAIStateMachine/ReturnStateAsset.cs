@@ -21,15 +21,14 @@ public class ReturnStateAsset : EnemyState
             return;
         }
 
+        enemy.MoveTo(enemy.startPosition, returnSpeed);
+
         float dist = Vector3.Distance(enemy.transform.position, enemy.startPosition);
         if (dist < closeEnoughDistance)
         {
-            enemy.TransitionTo(enemy.patrolState);
+            enemy.TransitionTo(enemy.initialState);
             return;
         }
-
-        enemy.MoveTo(enemy.startPosition, returnSpeed);
-
 
 
 

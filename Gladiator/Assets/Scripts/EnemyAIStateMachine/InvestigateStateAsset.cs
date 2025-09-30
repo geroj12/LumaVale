@@ -4,6 +4,7 @@ using UnityEngine;
 public class InvestigateStateAsset : EnemyState
 {
     public float investigateDuration = 3f;
+    public float investigationSpeed = 1f;
 
     private Vector3 lastKnownPosition;
     public override void Enter(StateMachineEnemy enemy)
@@ -27,7 +28,7 @@ public class InvestigateStateAsset : EnemyState
 
             return;
         }
-        enemy.MoveTo(lastKnownPosition, enemy.patrolState is PatrolStateAsset patrol ? patrol.patrolSpeed : 3f);
+        enemy.MoveTo(lastKnownPosition,investigationSpeed);
 
     }
 
