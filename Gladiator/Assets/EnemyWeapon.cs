@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyWeapon : MonoBehaviour
 {
     public float damage = 20f;
+    public Enemy enemy;
     [SerializeField] private TrailRenderer weaponTrail;
     private bool canDealDamage = false;
 
@@ -31,16 +32,18 @@ public class EnemyWeapon : MonoBehaviour
     {
         if (!canDealDamage) return;
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerHitbox"))
         {
-            Player player = other.GetComponent<Player>();
-            player.TakeDamage(damage, false);
+            Player player = other.GetComponentInParent<Player>();
+            player.TakeDamage(damage, enemy.transform.position, false);
             Debug.Log("Player hit");
         }
         else if (other.CompareTag("PlayerShield"))
         {
-            Player player = other.GetComponentInChildren<Player>();
-            player.TakeDamage(damage, true);
+            Player player = other.GetComponentInParent<Player>();
+            player.TakeDamage(damage, enemy.transform.position, true);
+            enemy.InterruptAttack(); // Bricht Angriffsanimation ab
+
             Debug.Log("Player shield hit");
 
         }

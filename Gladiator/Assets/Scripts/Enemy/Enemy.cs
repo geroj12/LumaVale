@@ -9,15 +9,16 @@ public class Enemy : MonoBehaviour
     [Header("Setup")]
     public Animator animator;
     [SerializeField] private GameObject swordObject;
+    [SerializeField] private EnemyCombat combat;
 
     [Header("Shield System")]
     public bool hasShield = true;
     public float maxShieldDurability = 100f;
     public float currentShieldDurability;
 
-    public GameObject shieldObject;          
-    public Rigidbody shieldRigidbody;        
-    public Collider shieldCollider;         
+    public GameObject shieldObject;
+    public Rigidbody shieldRigidbody;
+    public Collider shieldCollider;
 
     public GameObject damageTextPrefab;
     public Transform damageTextSpawnPoint;
@@ -69,7 +70,7 @@ public class Enemy : MonoBehaviour
     {
         ApplyGravity();
     }
-   
+
     public void StartFinisher(string finisherTrigger)
     {
         if (isDead) return;
@@ -107,7 +108,7 @@ public class Enemy : MonoBehaviour
     {
         attachedBloodDecals.SetActive(true);
     }
-   
+
 
     public void EnableRagdoll()
     {
@@ -187,6 +188,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void InterruptAttack()
+    {
+        combat = GetComponent<EnemyCombat>();
+        if (combat != null)
+        {
+
+            combat.StartCoroutine(combat.ResetAttackBools());
+
+        }
+        animator.SetTrigger("HitBlocked"); // z. B. kleine Rückzuck-Animation
+
+    }
+
     private void BreakShield()
     {
         if (!hasShield || shieldObject == null) return;
@@ -213,14 +227,14 @@ public class Enemy : MonoBehaviour
         switch (attackType)
         {
             case WeaponDamage.AttackType.HeavyOverhead:
-                color = Color.red; 
+                color = Color.red;
                 break;
             case WeaponDamage.AttackType.Thrust:
-                color = Color.yellow; 
+                color = Color.yellow;
                 break;
             case WeaponDamage.AttackType.Normal:
             default:
-                color = Color.white; 
+                color = Color.white;
                 break;
         }
 

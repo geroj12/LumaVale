@@ -8,7 +8,7 @@ public class Combat : MonoBehaviour
 
     [SerializeField] private Animator anim;
     private State state;
-
+    [SerializeField] private Player player;
     [SerializeField] private CombatDirectionHandler directionHandler;
 
     [SerializeField] private WeaponHolster weaponHolster;
@@ -26,6 +26,9 @@ public class Combat : MonoBehaviour
     [SerializeField] private float attackCooldown = 1f;
     private float nextAttackTime = 0f;
     #endregion
+
+    [SerializeField] private CapsuleCollider blockCollider;
+    [SerializeField] private CapsuleCollider hitCollider;
 
     #region Unity Methods
 
@@ -147,6 +150,9 @@ public class Combat : MonoBehaviour
 
         if (isHoldingBlock)
         {
+            blockCollider.enabled = true;
+            hitCollider.enabled = false;
+            player.hasShield = true;
             blockTimer += Time.deltaTime;
             if (blockTimer > blockDelay)
             {
@@ -156,6 +162,11 @@ public class Combat : MonoBehaviour
         }
         else
         {
+            blockCollider.enabled = false;
+            hitCollider.enabled = true;
+
+            player.hasShield = false;
+
             DeactivateBlock();
             blockTimer = 0;
         }

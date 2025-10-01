@@ -11,6 +11,8 @@ TagManager:
   - Interactive
   - Walkable
   - Ground
+  - PlayerShield
+  - PlayerHitbox
   layers:
   - Default
   - TransparentFX
@@ -20,13 +22,13 @@ TagManager:
   - UI
   - 
   - Enemy
-  - 
+  - PlayerMovementCol
   - PlayerWeapon
   - EnemyWeapon
   - Ground
   - 
   - Player
-  - 
+  - PlayerBlock
   - Interactive
   - 
   - 
