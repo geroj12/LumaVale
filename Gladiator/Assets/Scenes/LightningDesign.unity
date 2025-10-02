@@ -27668,7 +27668,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.08027181, y: 0.70345557, z: 0.04910369}
+  m_Size: {x: 0.09, y: 0.75, z: 0.065}
   m_Center: {x: -0.0000007572349, y: 0.35172778, z: -0.0000003006687}
 --- !u!4 &2741972375781340796
 Transform:
@@ -28552,6 +28552,8 @@ GameObject:
   - component: {fileID: 6313349518993182394}
   - component: {fileID: 9085088073272709983}
   - component: {fileID: 6736366258781047603}
+  - component: {fileID: 9085088073272709984}
+  - component: {fileID: 9085088073272709985}
   m_Layer: 0
   m_Name: FMODAudioHandler
   m_TagString: Untagged
@@ -30351,8 +30353,8 @@ MonoBehaviour:
   fmodFootstepsAudio: {fileID: 6313349518993182394}
   fmodEquipUnequip: {fileID: 9085088073272709983}
   swordWoosh: {fileID: 6736366258781047603}
-  fMODHurt: {fileID: 0}
-  fMODShield: {fileID: 0}
+  fMODHurt: {fileID: 9085088073272709984}
+  fMODShield: {fileID: 9085088073272709985}
 --- !u!114 &4898614681539123687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56030,6 +56032,44 @@ MonoBehaviour:
       Data3: -339242103
       Data4: 875401260
     Path: event:/Events/Characters/EquipingUnequiping
+--- !u!114 &9085088073272709984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3414829577360995688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96609f1f7ca2a54096565b0fb4fb599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtEvent:
+    Guid:
+      Data1: 846001084
+      Data2: 1222566765
+      Data3: -1230008165
+      Data4: 837920032
+    Path: event:/Events/Characters/Enemy/Hurt
+--- !u!114 &9085088073272709985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3414829577360995688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765e0af293e7700478b4e646d5f022a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldImpactEvent:
+    Guid:
+      Data1: -1281523853
+      Data2: 1117571443
+      Data3: -156656996
+      Data4: 1083342789
+    Path: event:/Events/Impacts/ShieldHit
 --- !u!225 &9097630469464471331
 CanvasGroup:
   m_ObjectHideFlags: 0
