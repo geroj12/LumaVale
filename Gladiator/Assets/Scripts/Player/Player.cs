@@ -6,7 +6,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Combat combat;
     [SerializeField] private State state;
+    public GameObject damageTextPrefab;
+    public Transform damageTextSpawnPoint;
+    [SerializeField] private Transform damageCanvasTransform;
+    [SerializeField] private GameObject[] smallBloodEmitters;
+    private GameObject activeBloodEmitter;
 
+    [SerializeField] private GameObject attachedBloodDecals;
     [SerializeField] private float maxHP = 100f;
     [SerializeField] private float currentHP;
 
@@ -46,7 +52,47 @@ public class Player : MonoBehaviour
         animator.SetTrigger("HitBlocked"); // z. B. kleine Rückzuck-Animation
 
     }
+    public void StartBloodEffect()
+    {
+        DeactivateBloodDecal();
+        SpawnRandomBloodEmitter(smallBloodEmitters);
+    }
+    private void SpawnRandomBloodEmitter(GameObject[] emitterPool)
+    {
+        if (emitterPool == null || emitterPool.Length == 0)
+        {
+            Debug.LogWarning("No blood emitter prefabs assigned for this pool!");
+            return;
+        }
 
+        Transform bloodSpawnPoint = transform.Find("BloodPoint");
+        if (bloodSpawnPoint == null)
+        {
+            Debug.LogWarning("Missing BloodPoint child on enemy!");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, emitterPool.Length);
+        GameObject chosenEmitter = emitterPool[randomIndex];
+
+        activeBloodEmitter = Instantiate(
+            chosenEmitter,
+            bloodSpawnPoint.position,
+            bloodSpawnPoint.rotation
+        );
+
+        ActivateBloodDecal();
+    }
+    private void ActivateBloodDecal()
+    {
+        attachedBloodDecals.SetActive(true);
+    }
+
+    private void DeactivateBloodDecal()
+    {
+        attachedBloodDecals.SetActive(false);
+
+    }
     public void TakeDamage(float amount, Vector3 attackerPosition, bool hitShield = false)
     {
         InterruptAnimations();
@@ -69,6 +115,7 @@ public class Player : MonoBehaviour
             lastHitTime = Time.time;
             PlayHitReaction(attackerPosition);
         }
+        ShowDamageText(amount);
     }
 
 
@@ -101,5 +148,15 @@ public class Player : MonoBehaviour
         animator.SetBool("Attack_UP_OneHanded01", false);
 
         animator.Play("Empty", 0); // ersetzt aktuelle Base-Layer-Animation sofort
+    }
+
+    private void ShowDamageText(float amount)
+    {
+        if (damageTextPrefab == null || damageTextSpawnPoint == null) return;
+
+        GameObject go = Instantiate(damageTextPrefab, damageTextSpawnPoint.position, Quaternion.identity, damageCanvasTransform);
+        DamageText dmg = go.GetComponent<DamageText>();
+
+        dmg.ShowDamage(amount, Color.red);
     }
 }

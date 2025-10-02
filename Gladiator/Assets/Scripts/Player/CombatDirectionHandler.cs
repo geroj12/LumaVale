@@ -3,6 +3,14 @@ using UnityEngine.UI;
 
 public class CombatDirectionHandler : MonoBehaviour
 {
+    public Image strafeHoldImage;
+    [SerializeField] private float holdDuration = 1.5f;
+
+    private float holdTimer = 0f;
+    private bool isHolding = false;
+    private bool isSpawned = false; 
+
+
     public float minSwipeDistance = 50f;
 
     private Vector2 swipeStartPos;
@@ -16,13 +24,43 @@ public class CombatDirectionHandler : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private State playerState;
-    [SerializeField] private Transform visualAnchor; // ← setz im Inspector den Anchor vom Spieler
+    [SerializeField] private Transform visualAnchor;
 
     void Update()
     {
         HandleSwipeInput();
-        HandleVisualFollower();
 
+        if (Input.GetKey(KeyCode.V))
+        {
+            holdTimer += Time.deltaTime;
+            float progress = Mathf.Clamp01(holdTimer / holdDuration);
+
+            if (strafeHoldImage) strafeHoldImage.fillAmount = progress;
+
+            if (!isHolding && holdTimer >= holdDuration)
+            {
+                // Toggle Logik
+                if (!isSpawned)
+                {
+                    SpawnVisualFollower();
+                    isSpawned = true;
+                }
+                else
+                {
+                    DespawnVisualFollower();
+                    isSpawned = false;
+                }
+
+                isHolding = true; 
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.V))
+        {
+            holdTimer = 0f;
+            isHolding = false;
+            if (strafeHoldImage) strafeHoldImage.fillAmount = 0f;
+        }
 
     }
 
@@ -88,37 +126,36 @@ public class CombatDirectionHandler : MonoBehaviour
                 spawnedVisual.EndCharge(); // → Ladeanzeige aus
         }
     }
-    private void HandleVisualFollower()
+
+    private void SpawnVisualFollower()
     {
-        if (playerState.Strafe && !playerState.blocking)
+        if (spawnedVisual == null)
         {
 
-            if (spawnedVisual == null)
-            {
-
-                spawnedVisual = Instantiate(visualFollowerPrefab, visualAnchor.position, Quaternion.identity);
-                spawnVfxInstance = Instantiate(spawnVfxPrefab, visualAnchor.position, Quaternion.identity, visualAnchor);
-                spawnedVisual.anchorTransform = visualAnchor;
-            }
-
-            // Optional: Blickrichtung übergeben
-            bool facingRight = visualAnchor.localScale.x > 0f;
-            spawnedVisual.SetFacingDirection(facingRight);
+            spawnedVisual = Instantiate(visualFollowerPrefab, visualAnchor.position, Quaternion.identity);
+            spawnVfxInstance = Instantiate(spawnVfxPrefab, visualAnchor.position, Quaternion.identity);
+            spawnedVisual.anchorTransform = visualAnchor;
         }
-        else
+
+        // Optional: Blickrichtung übergeben
+        bool facingRight = visualAnchor.localScale.x > 0f;
+        spawnedVisual.SetFacingDirection(facingRight);
+    }
+
+    private void DespawnVisualFollower()
+    {
+        if (spawnedVisual != null)
         {
-            if (spawnedVisual != null)
-            {
-                Destroy(spawnedVisual.gameObject);
-                spawnedVisual = null;
-            }
-            if (spawnVfxInstance != null)
-            {
-                Destroy(spawnVfxInstance);
-                spawnVfxInstance = null;
-            }
+            Destroy(spawnedVisual.gameObject);
+            spawnedVisual = null;
+        }
+        if (spawnVfxInstance != null)
+        {
+            Destroy(spawnVfxInstance);
+            spawnVfxInstance = null;
         }
     }
+
     private void ResetMouseStates()
     {
         playerState.mouseOnLeftSide = false;

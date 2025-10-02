@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2266793120009945099}
   - component: {fileID: 2266793120009945098}
   - component: {fileID: 5022267792987354479}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2266793120009945103}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 2.052, y: -2, z: -0.437}
   m_LocalScale: {x: 3.446618, y: 1, z: 2.536083}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6122868367958573710}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: -180, z: 0}
 --- !u!114 &2266793120009945099
 MonoBehaviour:
@@ -173,6 +173,7 @@ MonoBehaviour:
   m_EndAngleFade: 180
   m_UVScale: {x: 1, y: 1}
   m_UVBias: {x: 0, y: 0}
+  m_DecalLayerMask: 2
   m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 0}
   m_Size: {x: 1, y: 1, z: 1}
@@ -189,7 +190,7 @@ GameObject:
   - component: {fileID: 6113261778006612830}
   - component: {fileID: 6113261778007742878}
   - component: {fileID: 6524686131120050092}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,13 +204,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6113261778009671518}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.012, y: 0.012, z: 0.012}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6122868367958573710}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &6113261778006612830
 MeshFilter:
@@ -236,7 +237,10 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 2
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b785b71e49ce5d742a627be9f301aa15, type: 2}
@@ -311,7 +315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6122868367958573710}
   - component: {fileID: 8975717317865013593}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,6 +329,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6463355840203370170}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -333,7 +338,6 @@ Transform:
   - {fileID: 2266793120009945096}
   - {fileID: 6113261778009512830}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8975717317865013593
 MonoBehaviour:
@@ -351,7 +355,6 @@ MonoBehaviour:
   AutomaticGroundHeightDetection: 1
   GroundHeight: 0
   LightIntensityMultiplier: 1
-  FreezeDecalDisappearance: 0
-  DecalRenderinMode: 0
-  ClampDecalSideSurface: 0
+  DecalLifeTimeSeconds: 30
+  DecalRenderingMode: 0
   DebugAnimationTime: 0.25

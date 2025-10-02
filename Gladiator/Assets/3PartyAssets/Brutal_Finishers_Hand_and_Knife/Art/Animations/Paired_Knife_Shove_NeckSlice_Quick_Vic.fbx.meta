@@ -73,7 +73,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.44727612
-        functionName: StartBloodEffect
+        functionName: StartFinisherBloodEffect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

@@ -2418,6 +2418,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.09214976
+        functionName: StartBloodEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -3158,6 +3165,13 @@ ModelImporter:
       events:
       - time: 0
         functionName: PlayHurtSound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.09293269
+        functionName: StartBloodEffect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

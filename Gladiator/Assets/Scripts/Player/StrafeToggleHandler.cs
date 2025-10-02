@@ -1,13 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StrafeToggleHandler : MonoBehaviour
 {
-    public Image strafeHoldImage;
-    [SerializeField] private float holdDuration = 1.5f;
-
-    private float holdTimer = 0f;
-    private bool toggled = false;
+    
     private State state;
     private Animator anim;
 
@@ -19,26 +14,14 @@ public class StrafeToggleHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.V))
+        if (state.equipped)
         {
-            holdTimer += Time.deltaTime;
-            float progress = Mathf.Clamp01(holdTimer / holdDuration);
-
-            if (strafeHoldImage) strafeHoldImage.fillAmount = progress;
-
-            if (!toggled && holdTimer >= holdDuration)
-            {
-                state.Strafe = !state.Strafe;
-                anim.SetBool("Strafe", state.Strafe);
-                toggled = true;
-            }
+            anim.SetBool("Strafe", state.Strafe = true);
         }
-
-        if (Input.GetKeyUp(KeyCode.V))
+        else if (!state.equipped)
         {
-            holdTimer = 0f;
-            toggled = false;
-            if (strafeHoldImage) strafeHoldImage.fillAmount = 0f;
+            anim.SetBool("Strafe", state.Strafe = false);
         }
+       
     }
 }

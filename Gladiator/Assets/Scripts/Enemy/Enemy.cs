@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using Unity.Cinemachine;
+
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -29,10 +27,11 @@ public class Enemy : MonoBehaviour
 
     [Header("Settings")]
     private bool isFatalFinisher = false;
-    public GameObject bloodEmitterPrefab;
+    [SerializeField] private GameObject[] smallBloodEmitters;
+    [SerializeField] private GameObject[] finisherBloodEmitters;
     private GameObject activeBloodEmitter;
-    [SerializeField] private GameObject attachedBloodDecals;
 
+    [SerializeField] private GameObject attachedBloodDecals;
     [SerializeField] private Transform damageCanvasTransform;
 
     [Header("Finisher Einstellungen")]
@@ -88,27 +87,55 @@ public class Enemy : MonoBehaviour
     {
         return (float)currentHP / maxHP * 100f;
     }
-
     public void StartBloodEffect()
     {
-        if (bloodEmitterPrefab != null)
-        {
-            Transform bloodSpawnPoint = transform.Find("BloodPoint");
-            if (bloodSpawnPoint == null)
-            {
-                Debug.LogWarning("Missing BloodPoint child on enemy!");
-                return;
-            }
+        DeactivateBloodDecal();
+        SpawnRandomBloodEmitter(smallBloodEmitters);
+    }
 
-            activeBloodEmitter = Instantiate(bloodEmitterPrefab, bloodSpawnPoint.position, bloodSpawnPoint.rotation, bloodSpawnPoint);
-            ActivateBloodDecal();
+    public void StartFinisherBloodEffect()
+    {
+        DeactivateBloodDecal();
+
+        SpawnRandomBloodEmitter(finisherBloodEmitters);
+    }
+
+    private void SpawnRandomBloodEmitter(GameObject[] emitterPool)
+    {
+        if (emitterPool == null || emitterPool.Length == 0)
+        {
+            Debug.LogWarning("No blood emitter prefabs assigned for this pool!");
+            return;
         }
+
+        Transform bloodSpawnPoint = transform.Find("BloodPoint");
+        if (bloodSpawnPoint == null)
+        {
+            Debug.LogWarning("Missing BloodPoint child on enemy!");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, emitterPool.Length);
+        GameObject chosenEmitter = emitterPool[randomIndex];
+
+        activeBloodEmitter = Instantiate(
+            chosenEmitter,
+            bloodSpawnPoint.position,
+            bloodSpawnPoint.rotation
+        );
+
+        ActivateBloodDecal();
     }
     private void ActivateBloodDecal()
     {
         attachedBloodDecals.SetActive(true);
     }
 
+    private void DeactivateBloodDecal()
+    {
+        attachedBloodDecals.SetActive(false);
+
+    }
 
     public void EnableRagdoll()
     {
@@ -159,7 +186,6 @@ public class Enemy : MonoBehaviour
         if (isDead) return;
         statemachine?.TemporarilyDisableFSM(1f);
         InterruptAnimations();
-
         if (hitShield)
         {
             animator.SetTrigger("ShieldImpact");
@@ -227,7 +253,7 @@ public class Enemy : MonoBehaviour
         switch (attackType)
         {
             case WeaponDamage.AttackType.HeavyOverhead:
-                color = Color.red;
+                color = Color.blue;
                 break;
             case WeaponDamage.AttackType.Thrust:
                 color = Color.yellow;

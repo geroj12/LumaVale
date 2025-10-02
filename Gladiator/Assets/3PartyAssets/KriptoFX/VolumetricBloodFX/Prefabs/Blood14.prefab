@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 41434090657563501}
   - component: {fileID: 41434090657563500}
   - component: {fileID: 4843401008150887072}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EndAngleFade: 180
   m_UVScale: {x: 1, y: 1}
   m_UVBias: {x: 0, y: 0}
-  m_DecalLayerMask: 1
+  m_DecalLayerMask: 2
   m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 0}
   m_Size: {x: 1, y: 1, z: 1}
@@ -187,7 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2989739788812379529}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 2977960289127398489}
   - component: {fileID: 2977960289128496793}
   - component: {fileID: 2812827133350701227}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4438403772007547714}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 4446750283013855890}
   - component: {fileID: 4446750283014985810}
   - component: {fileID: 3741642018992033376}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5412970612486816232}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 5418071635729897528}
   - component: {fileID: 5418071635730995960}
   - component: {fileID: 5001853454836452554}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5494213943435191860}
   - component: {fileID: 4531911481417455445}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blood14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -684,7 +684,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5412970612486816232}
@@ -704,12 +704,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b8a788ff17aab40b283e664f0304da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimationSpeed: 2
+  AnimationSpeed: 3
   AutomaticGroundHeightDetection: 1
-  GroundHeight: 0
+  GroundHeight: 0.5
   LightIntensityMultiplier: 1
-  DecalLifeTimeSeconds: 30
-  DecalRenderingMode: 0
+  DecalLifeTimeSeconds: 200
+  DecalRenderingMode: 1
   DebugAnimationTime: 0.25
 --- !u!1 &8508962936140071363
 GameObject:
@@ -723,7 +723,7 @@ GameObject:
   - component: {fileID: 8508962936140071367}
   - component: {fileID: 8508962936140071366}
   - component: {fileID: 7607997808639283015}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_EndAngleFade: 180
   m_UVScale: {x: 1, y: 1}
   m_UVBias: {x: 0, y: 0}
-  m_DecalLayerMask: 1
+  m_DecalLayerMask: 2
   m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 0}
   m_Size: {x: 1, y: 1, z: 1}
