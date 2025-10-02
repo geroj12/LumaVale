@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -24,6 +25,9 @@ public class Player : MonoBehaviour
     public bool hasShield = true;
     public float maxShieldDurability = 100f;
     public float currentShieldDurability;
+
+    [SerializeField] private CombatDirectionHandler visualFollower;
+    [SerializeField] private CinemachineCamera cinemachineCamera;
     void Start()
     {
         movement = GetComponent<Movement>();
@@ -93,6 +97,8 @@ public class Player : MonoBehaviour
         attachedBloodDecals.SetActive(false);
 
     }
+
+
     public void TakeDamage(float amount, Vector3 attackerPosition, bool hitShield = false)
     {
         InterruptAnimations();
@@ -116,6 +122,10 @@ public class Player : MonoBehaviour
             PlayHitReaction(attackerPosition);
         }
         ShowDamageText(amount);
+        if (currentHP <= 0f)
+        {
+            animator.SetTrigger("isDead");
+        }
     }
 
 
@@ -148,6 +158,15 @@ public class Player : MonoBehaviour
         animator.SetBool("Attack_UP_OneHanded01", false);
 
         animator.Play("Empty", 0); // ersetzt aktuelle Base-Layer-Animation sofort
+    }
+
+    public void OnPlayerDeath()
+    {
+        visualFollower.SpawnVisualFollower();
+        Debug.Log("Player dead");
+        cinemachineCamera.GetComponent<CinemachineCamera>().Priority = 0;
+        gameObject.SetActive(false);
+
     }
 
     private void ShowDamageText(float amount)

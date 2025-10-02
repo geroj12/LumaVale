@@ -25,7 +25,6 @@ public class CombatDirectionHandler : MonoBehaviour
     [Header("References")]
     [SerializeField] private State playerState;
     [SerializeField] private Transform visualAnchor;
-
     void Update()
     {
         HandleSwipeInput();
@@ -64,6 +63,7 @@ public class CombatDirectionHandler : MonoBehaviour
 
     }
 
+    
     public void StartSwipe(Vector2 startPosition)
     {
         swipeStartPos = startPosition;
@@ -127,7 +127,7 @@ public class CombatDirectionHandler : MonoBehaviour
         }
     }
 
-    private void SpawnVisualFollower()
+    public void SpawnVisualFollower()
     {
         if (spawnedVisual == null)
         {
