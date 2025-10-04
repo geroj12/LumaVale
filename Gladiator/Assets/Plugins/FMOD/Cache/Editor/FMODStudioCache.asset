@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6823622930557566631
+--- !u!114 &-8802800615787120453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,25 +10,48 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/Footsteps
+  m_Name: event:/Events/Characters/PlayerCreature/Hyped
   m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/Footsteps
+  Path: event:/Events/Characters/PlayerCreature/Hyped
   Guid:
-    Data1: -1363382289
-    Data2: 1253784701
-    Data3: 1273491587
-    Data4: -1928796056
+    Data1: -2022797833
+    Data2: 1329060512
+    Data3: -2112364901
+    Data4: -715977198
   Banks:
   - {fileID: 295523176594350469}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters:
-  - {fileID: -3898688077901585469}
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
---- !u!114 &-6335893368153759323
+  Length: 3000
+--- !u!114 &-7899433218107045667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainTheme/Combat
+  m_EditorClassIdentifier: 
+  Name: Combat
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 43744662
+    data2: 2903225956
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-3480785122614085532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38,25 +61,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Music/MainTheme
+  m_Name: event:/Events/Impacts/ShieldHit
   m_EditorClassIdentifier: 
-  Path: event:/Events/Music/MainTheme
+  Path: event:/Events/Impacts/ShieldHit
   Guid:
-    Data1: -1447258224
-    Data2: 1284908372
-    Data3: -608047182
-    Data4: 777023352
+    Data1: -1281523853
+    Data2: 1117571443
+    Data3: -156656996
+    Data4: 1083342789
   Banks:
   - {fileID: 295523176594350469}
-  IsStream: 1
-  Is3D: 0
+  IsStream: 0
+  Is3D: 1
   IsOneShot: 1
-  Parameters:
-  - {fileID: -1446230748620904711}
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 189473
---- !u!114 &-5926170585092071783
+  Length: 1289
+--- !u!114 &-3451411168288881770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,7 +105,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2246
---- !u!114 &-5846664706956646027
+--- !u!114 &-2547566748035118966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,25 +115,164 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Ambience/Campfire
+  m_Name: event:/Events/Characters/Enemy/Hurt
   m_EditorClassIdentifier: 
-  Path: event:/Events/Ambience/Campfire
+  Path: event:/Events/Characters/Enemy/Hurt
   Guid:
-    Data1: -369300558
-    Data2: 1149586464
-    Data3: 1877951902
-    Data4: 603448894
+    Data1: 846001084
+    Data2: 1222566765
+    Data3: -1230008165
+    Data4: 837920032
   Banks:
   - {fileID: 295523176594350469}
-  IsStream: 1
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 552
+--- !u!114 &-915100739559422188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/EquipingUnequiping/EquipUnequip
+  m_EditorClassIdentifier: 
+  Name: EquipUnequip
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 505351248
+    data2: 704311577
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Equiping
+  - Unequiping
+  Exists: 1
+--- !u!114 &-383598140911782364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/Footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/Footsteps
+  Guid:
+    Data1: -1363382289
+    Data2: 1253784701
+    Data3: 1273491587
+    Data4: -1928796056
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: -2866697277472930651}
+  - {fileID: 8969586631253556306}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-5314429692774118410
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 4501806437844525808}
+  - {fileID: 295523176594350469}
+  EditorEvents:
+  - {fileID: 7838116762675559715}
+  - {fileID: 2120320682545435830}
+  - {fileID: -3480785122614085532}
+  - {fileID: 3544026944920695351}
+  - {fileID: -3451411168288881770}
+  - {fileID: 86074894296582766}
+  - {fileID: 6137072874944846968}
+  - {fileID: 9029936217350985891}
+  - {fileID: 2419277069421619198}
+  - {fileID: -2547566748035118966}
+  - {fileID: 5048257862141497737}
+  - {fileID: 9068358662066014545}
+  - {fileID: 1176227974348820875}
+  - {fileID: -383598140911782364}
+  - {fileID: -8802800615787120453}
+  - {fileID: 7407092504386576873}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 295523176594350469}
+  StringsBanks:
+  - {fileID: 4501806437844525808}
+  cacheTime: 638951764641888018
+  cacheVersion: 131605
+--- !u!114 &86074894296582766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Impacts/StabbingKife
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Impacts/StabbingKife
+  Guid:
+    Data1: -1616148603
+    Data2: 1240339292
+    Data3: 1891624074
+    Data4: -1822083479
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1484
+--- !u!114 &295523176594350469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638951764641584336
+  FileSizes:
+  - Name: Desktop
+    Value: 5585792
+  Exists: 1
+--- !u!114 &1176227974348820875
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +299,31 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 890
---- !u!114 &-4835544243851429964
+--- !u!114 &1794021407713731078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Campfire/Proximity
+  m_EditorClassIdentifier: 
+  Name: Proximity
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2754124009
+    data2: 1433532883
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &2120320682545435830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,25 +333,208 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/EquipingUnequiping
+  m_Name: event:/Events/Impacts/SwordHit
   m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/EquipingUnequiping
+  Path: event:/Events/Impacts/SwordHit
   Guid:
-    Data1: 1748633811
-    Data2: 1219696117
-    Data3: -339242103
-    Data4: 875401260
+    Data1: 863636068
+    Data2: 1314658679
+    Data3: 679640199
+    Data4: -877087617
   Banks:
   - {fileID: 295523176594350469}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 679
+--- !u!114 &2419277069421619198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Ambience/Campfire
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Ambience/Campfire
+  Guid:
+    Data1: -369300558
+    Data2: 1149586464
+    Data3: 1877951902
+    Data4: 603448894
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
   Parameters:
-  - {fileID: 7998115881338737281}
+  - {fileID: 1794021407713731078}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-3898688077901585469
+--- !u!114 &3544026944920695351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/SwordWoosh
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/SwordWoosh
+  Guid:
+    Data1: -527021190
+    Data2: 1337569992
+    Data3: 608867209
+    Data4: -1171707420
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 574
+--- !u!114 &4501806437844525808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638951764641888018
+  FileSizes:
+  - Name: Desktop
+    Value: 1694
+  Exists: 1
+--- !u!114 &5048257862141497737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Impacts/Shieldbreak
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Impacts/Shieldbreak
+  Guid:
+    Data1: -1082343728
+    Data2: 1164451292
+    Data3: 503934594
+    Data4: -1600849079
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 626
+--- !u!114 &6137072874944846968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Music/MainTheme
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Music/MainTheme
+  Guid:
+    Data1: -1447258224
+    Data2: 1284908372
+    Data3: -608047182
+    Data4: 777023352
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -7899433218107045667}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 189473
+--- !u!114 &7407092504386576873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/Enemy/Diying
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/Enemy/Diying
+  Guid:
+    Data1: 1430742268
+    Data2: 1281444802
+    Data3: 135019665
+    Data4: -558402612
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &7838116762675559715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Impacts/ShieldFallOnGround
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Impacts/ShieldFallOnGround
+  Guid:
+    Data1: -1018147271
+    Data2: 1272159599
+    Data3: 1398802589
+    Data4: -915841694
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 456
+--- !u!114 &8969586631253556306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,7 +562,7 @@ MonoBehaviour:
   - Mud
   - Gravel
   Exists: 1
---- !u!114 &-3551579079460854756
+--- !u!114 &9029936217350985891
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,31 +589,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 35260
---- !u!114 &-2866697277472930651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Campfire/Proximity
-  m_EditorClassIdentifier: 
-  Name: Proximity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2754124009
-    data2: 1433532883
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-1658188413075195031
+--- !u!114 &9068358662066014545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,337 +599,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/Enemy/Hurt
+  m_Name: event:/Events/Characters/EquipingUnequiping
   m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/Enemy/Hurt
+  Path: event:/Events/Characters/EquipingUnequiping
   Guid:
-    Data1: 846001084
-    Data2: 1222566765
-    Data3: -1230008165
-    Data4: 837920032
+    Data1: 1748633811
+    Data2: 1219696117
+    Data3: -339242103
+    Data4: 875401260
   Banks:
   - {fileID: 295523176594350469}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -915100739559422188}
   MinDistance: 1
   MaxDistance: 20
-  Length: 552
---- !u!114 &-1644858086652079338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Impacts/StabbingKife
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Impacts/StabbingKife
-  Guid:
-    Data1: -1616148603
-    Data2: 1240339292
-    Data3: 1891624074
-    Data4: -1822083479
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1484
---- !u!114 &-1446230748620904711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MainTheme/Combat
-  m_EditorClassIdentifier: 
-  Name: Combat
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 43744662
-    data2: 2903225956
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-293464672228012862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/Enemy/Diying
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/Enemy/Diying
-  Guid:
-    Data1: 1430742268
-    Data2: 1281444802
-    Data3: 135019665
-    Data4: -558402612
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 500
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: 4501806437844525808}
-  - {fileID: 295523176594350469}
-  EditorEvents:
-  - {fileID: -6823622930557566631}
-  - {fileID: -5846664706956646027}
-  - {fileID: -4835544243851429964}
-  - {fileID: 7127282614387132191}
-  - {fileID: -3551579079460854756}
-  - {fileID: 6481298104830338655}
-  - {fileID: -6335893368153759323}
-  - {fileID: 723391868468284198}
-  - {fileID: -1658188413075195031}
-  - {fileID: -5926170585092071783}
-  - {fileID: 406760312076197136}
-  - {fileID: 4143126330529840842}
-  - {fileID: -1644858086652079338}
-  - {fileID: -5314429692774118410}
-  - {fileID: -293464672228012862}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 295523176594350469}
-  StringsBanks:
-  - {fileID: 4501806437844525808}
-  cacheTime: 638860401978432441
-  cacheVersion: 131605
---- !u!114 &295523176594350469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638860401978137137
-  FileSizes:
-  - Name: Desktop
-    Value: 5562080
-  Exists: 1
---- !u!114 &406760312076197136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Impacts/Shieldbreak
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Impacts/Shieldbreak
-  Guid:
-    Data1: -1082343728
-    Data2: 1164451292
-    Data3: 503934594
-    Data4: -1600849079
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 626
---- !u!114 &723391868468284198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Impacts/ShieldHit
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Impacts/ShieldHit
-  Guid:
-    Data1: -1281523853
-    Data2: 1117571443
-    Data3: -156656996
-    Data4: 1083342789
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1289
---- !u!114 &4143126330529840842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Impacts/ShieldFallOnGround
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Impacts/ShieldFallOnGround
-  Guid:
-    Data1: -1018147271
-    Data2: 1272159599
-    Data3: 1398802589
-    Data4: -915841694
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 456
---- !u!114 &4501806437844525808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638860401978432441
-  FileSizes:
-  - Name: Desktop
-    Value: 1656
-  Exists: 1
---- !u!114 &6481298104830338655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/PlayerCreature/Hyped
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/PlayerCreature/Hyped
-  Guid:
-    Data1: -2022797833
-    Data2: 1329060512
-    Data3: -2112364901
-    Data4: -715977198
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 3000
---- !u!114 &7127282614387132191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/SwordWoosh
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/SwordWoosh
-  Guid:
-    Data1: -527021190
-    Data2: 1337569992
-    Data3: 608867209
-    Data4: -1171707420
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 574
---- !u!114 &7998115881338737281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/EquipingUnequiping/EquipUnequip
-  m_EditorClassIdentifier: 
-  Name: EquipUnequip
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 505351248
-    data2: 704311577
-  Type: 2
-  IsGlobal: 0
-  Labels:
-  - Equiping
-  - Unequiping
-  Exists: 1
+  Length: 0

@@ -1,10 +1,11 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using static FinisherData;
 
 public class FinisherExecutor : MonoBehaviour
 {
     [SerializeField] private Animator playerAnimator;
-    [SerializeField] private GameObject cameraObject;
+    [SerializeField] private CinemachineCamera cameraObject;
     [SerializeField] private BoxCollider weaponCollider;
     [SerializeField] private Player player;
     [SerializeField] private State playerState;
@@ -13,7 +14,7 @@ public class FinisherExecutor : MonoBehaviour
     {
         // Bewegung & Kontrolle abschalten
         playerState.canMove = false;
-        cameraObject.SetActive(false);
+        cameraObject.enabled = false;
         weaponCollider.isTrigger = true;
         player.enabled = false;
 
@@ -54,7 +55,7 @@ public class FinisherExecutor : MonoBehaviour
     public void ResetFinisherState()
     {
         playerState.canMove = true;
-        cameraObject.SetActive(true);
+        cameraObject.enabled = true;
         weaponCollider.isTrigger = true;
         player.enabled = true;
     }

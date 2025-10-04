@@ -1104,8 +1104,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.037769783
-        functionName: PlayShieldImpactSound
+      - time: 0.0469231
+        functionName: PlayOnSwordHitImpactSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

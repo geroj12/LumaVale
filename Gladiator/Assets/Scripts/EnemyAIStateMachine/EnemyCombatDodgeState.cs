@@ -20,14 +20,13 @@ public class EnemyCombatDodgeState : EnemyState
         {
             case 0:
                 dodgeDirection = -enemy.transform.right; enemy.animator.SetTrigger("DodgeLeft");
-                break; // links
+                break; 
             case 1:
                 dodgeDirection = enemy.transform.right; enemy.animator.SetTrigger("DodgeRight");
-                break;  // rechts
-            default: dodgeDirection = -enemy.transform.forward; enemy.animator.SetTrigger("DodgeBack"); break; // zurück
+                break;  
+            default: dodgeDirection = -enemy.transform.forward; enemy.animator.SetTrigger("DodgeBack"); break; 
         }
 
-        // Optionale Animation
 
         // sofort ein kleines Stück bewegen
         enemy.controller.Move(dodgeDirection * dodgeDistance * Time.deltaTime);

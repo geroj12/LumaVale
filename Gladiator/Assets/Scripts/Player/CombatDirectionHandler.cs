@@ -8,7 +8,7 @@ public class CombatDirectionHandler : MonoBehaviour
 
     private float holdTimer = 0f;
     private bool isHolding = false;
-    private bool isSpawned = false; 
+    private bool isSpawned = false;
 
 
     public float minSwipeDistance = 50f;
@@ -25,10 +25,26 @@ public class CombatDirectionHandler : MonoBehaviour
     [Header("References")]
     [SerializeField] private State playerState;
     [SerializeField] private Transform visualAnchor;
+
+    [Header("Radial UI")]
+    [SerializeField] private GameObject radialUI;
+    [SerializeField] private Image radialImage;
+
+    [SerializeField] private Color leftColor = Color.yellow;
+    [SerializeField] private Color rightColor = Color.blue;
+    
+
+    private Vector2 startPos;
+    private float currentAngle;
     void Update()
     {
         HandleSwipeInput();
+        HandleHoldInput();
+        HandleRadialUI();
 
+    }
+    private void HandleHoldInput()
+    {
         if (Input.GetKey(KeyCode.V))
         {
             holdTimer += Time.deltaTime;
@@ -50,7 +66,7 @@ public class CombatDirectionHandler : MonoBehaviour
                     isSpawned = false;
                 }
 
-                isHolding = true; 
+                isHolding = true;
             }
         }
 
@@ -60,10 +76,8 @@ public class CombatDirectionHandler : MonoBehaviour
             isHolding = false;
             if (strafeHoldImage) strafeHoldImage.fillAmount = 0f;
         }
-
     }
 
-    
     public void StartSwipe(Vector2 startPosition)
     {
         swipeStartPos = startPosition;
@@ -114,7 +128,7 @@ public class CombatDirectionHandler : MonoBehaviour
             swipeStartPos = Input.mousePosition;
 
             if (spawnedVisual != null)
-                spawnedVisual.BeginCharge(); // → Ladeanzeige
+                spawnedVisual.BeginCharge();
         }
 
         if (Input.GetMouseButtonUp(0) && isSwiping)
@@ -123,10 +137,47 @@ public class CombatDirectionHandler : MonoBehaviour
             EndSwipe(Input.mousePosition);
 
             if (spawnedVisual != null)
-                spawnedVisual.EndCharge(); // → Ladeanzeige aus
+                spawnedVisual.EndCharge();
         }
     }
+    private void HandleRadialUI()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            startPos = Input.mousePosition;
+            if (radialUI != null) radialUI.SetActive(true);
+        }
 
+        if (Input.GetMouseButton(0))
+        {
+            Vector2 currentPos = Input.mousePosition;
+            Vector2 direction = currentPos - startPos;
+
+            if (direction.sqrMagnitude > 10f) // Deadzone
+            {
+                currentAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+                // Sprite rotieren
+                radialUI.transform.rotation = Quaternion.Euler(0, currentAngle, 0);
+
+                // Farbe setzen
+                UpdateColor(currentAngle);
+            }
+        }
+
+       
+    }
+    private void UpdateColor(float angle)
+    {
+        if (angle < 0) angle += 360f;
+
+        if (angle > 135 && angle <= 225)
+            radialImage.color = leftColor;
+        else
+            radialImage.color = rightColor;
+    }
+
+    
     public void SpawnVisualFollower()
     {
         if (spawnedVisual == null)

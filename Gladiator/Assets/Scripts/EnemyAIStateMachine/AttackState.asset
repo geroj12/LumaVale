@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72c74cacd6728b42ac7f897287ceaf0, type: 3}
   m_Name: AttackState
   m_EditorClassIdentifier: 
-  attackRange: 1.5
+  attackRange: 1.7
   attackCooldown: 1.5
+  playerNotInSightDuration: 3
   attackAnimations:
   - Attack_Left
   - Attack_Right

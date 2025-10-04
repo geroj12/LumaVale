@@ -1,9 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 public class EnemyVision : MonoBehaviour
 {
+    [SerializeField] private Enemy enemy;
     public Transform target;
     public float viewDistance = 10f;
     public float viewAngle = 90f;
@@ -16,15 +18,24 @@ public class EnemyVision : MonoBehaviour
     [SerializeField] private FMODAlert alertSound;
     private bool alertTriggered = false;
 
+    [SerializeField] private ParticleSystem spawnedAlertVFX;
+
     private void Start()
     {
         sensorCollider = GetComponent<SphereCollider>();
         sensorCollider.isTrigger = true;
         sensorCollider.radius = viewDistance;
-
         StartCoroutine(CheckSightRoutine());
     }
 
+    private void Update()
+    {
+        if (enemy.isDead)
+        {
+            music.SetCombatLevel(0f);
+
+        }
+    }
     IEnumerator CheckSightRoutine()
     {
         while (true)
@@ -33,6 +44,7 @@ public class EnemyVision : MonoBehaviour
 
             if (targetInSight)
             {
+
                 Vector3 dirToTarget = (target.position - transform.position).normalized;
                 float distToTarget = Vector3.Distance(transform.position, target.position);
                 float angle = Vector3.Angle(transform.forward, dirToTarget);
@@ -82,6 +94,8 @@ public class EnemyVision : MonoBehaviour
                     {
                         alertSound.PlayAlertSound();
                         alertTriggered = true;
+                        spawnedAlertVFX.Play();
+
                     }
                     targetInSight = true;
                     return;
@@ -89,7 +103,6 @@ public class EnemyVision : MonoBehaviour
             }
 
             targetInSight = false;
-
         }
     }
     private void OnTriggerExit(Collider other)
@@ -99,6 +112,7 @@ public class EnemyVision : MonoBehaviour
             targetInSight = false;
             music.SetCombatLevel(0f);
             alertTriggered = false;
+            spawnedAlertVFX.Stop();
 
         }
     }

@@ -13,3 +13,20 @@ MonoBehaviour:
   m_Name: EnemyCombatIdle
   m_EditorClassIdentifier: 
   decisionInterval: 2
+  attackRange: 2.2
+  attack:
+    weight: 4
+    cooldown: 3
+    nextAvailableTime: 0
+  block:
+    weight: 2
+    cooldown: 3
+    nextAvailableTime: 0
+  dodge:
+    weight: 3
+    cooldown: 2
+    nextAvailableTime: 0
+  retreat:
+    weight: 1
+    cooldown: 5
+    nextAvailableTime: 0
