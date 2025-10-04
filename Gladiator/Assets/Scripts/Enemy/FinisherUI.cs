@@ -4,8 +4,6 @@ public class FinisherUI : MonoBehaviour
 {
     public GameObject iconObject;
     private Enemy enemy;
-    public CanvasGroup canvasGroup;
-    public float blinkSpeed = 2f;
     private Transform camTransform;
     void Start()
     {
@@ -25,7 +23,6 @@ public class FinisherUI : MonoBehaviour
         if (hpPercent <= enemy.fatalFinisherThreshold)
         {
             iconObject.SetActive(true);
-            BlinkIcon();
         }
         else if (hpPercent >= enemy.fatalFinisherThreshold)
         {
@@ -39,10 +36,6 @@ public class FinisherUI : MonoBehaviour
 
     }
 
-    private void BlinkIcon()
-    {
-        float alpha = Mathf.PingPong(Time.time * blinkSpeed, 1f);
-        canvasGroup.alpha = alpha;
-    }
+   
 }
 

@@ -7,6 +7,7 @@ public class State : MonoBehaviour
     public bool equipped = false;
     public bool blocking = false;
     public bool isAttacking = false;
+    public bool holdingAttack = false;
     public bool canMove = false;
 
     [Header("Energy & Combat")]

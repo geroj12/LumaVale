@@ -26,21 +26,12 @@ public class CombatDirectionHandler : MonoBehaviour
     [SerializeField] private State playerState;
     [SerializeField] private Transform visualAnchor;
 
-    [Header("Radial UI")]
-    [SerializeField] private GameObject radialUI;
-    [SerializeField] private Image radialImage;
 
-    [SerializeField] private Color leftColor = Color.yellow;
-    [SerializeField] private Color rightColor = Color.blue;
-    
-
-    private Vector2 startPos;
-    private float currentAngle;
     void Update()
     {
+
         HandleSwipeInput();
         HandleHoldInput();
-        HandleRadialUI();
 
     }
     private void HandleHoldInput()
@@ -77,9 +68,10 @@ public class CombatDirectionHandler : MonoBehaviour
             if (strafeHoldImage) strafeHoldImage.fillAmount = 0f;
         }
     }
-
+    
     public void StartSwipe(Vector2 startPosition)
     {
+
         swipeStartPos = startPosition;
         isSwiping = true;
     }
@@ -100,7 +92,6 @@ public class CombatDirectionHandler : MonoBehaviour
             ResetMouseStates();
             return;
         }
-
         ResetMouseStates();
 
         bool fromRight = swipeDelta.x < 0f;
@@ -110,7 +101,6 @@ public class CombatDirectionHandler : MonoBehaviour
         else
             playerState.mouseOnLeftSide = true;
 
-        // ➕ Das Wesen auf den Swipe reagieren lassen
         if (spawnedVisual != null)
         {
             Vector2 swipeDir = swipeDelta.normalized;
@@ -140,44 +130,9 @@ public class CombatDirectionHandler : MonoBehaviour
                 spawnedVisual.EndCharge();
         }
     }
-    private void HandleRadialUI()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            startPos = Input.mousePosition;
-            if (radialUI != null) radialUI.SetActive(true);
-        }
 
-        if (Input.GetMouseButton(0))
-        {
-            Vector2 currentPos = Input.mousePosition;
-            Vector2 direction = currentPos - startPos;
 
-            if (direction.sqrMagnitude > 10f) // Deadzone
-            {
-                currentAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-                // Sprite rotieren
-                radialUI.transform.rotation = Quaternion.Euler(0, currentAngle, 0);
-
-                // Farbe setzen
-                UpdateColor(currentAngle);
-            }
-        }
-
-       
-    }
-    private void UpdateColor(float angle)
-    {
-        if (angle < 0) angle += 360f;
-
-        if (angle > 135 && angle <= 225)
-            radialImage.color = leftColor;
-        else
-            radialImage.color = rightColor;
-    }
-
-    
     public void SpawnVisualFollower()
     {
         if (spawnedVisual == null)

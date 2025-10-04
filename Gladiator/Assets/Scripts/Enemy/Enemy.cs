@@ -248,23 +248,9 @@ public class Enemy : MonoBehaviour
 
         GameObject go = Instantiate(damageTextPrefab, damageTextSpawnPoint.position, Quaternion.identity, damageCanvasTransform);
         DamageText dmg = go.GetComponent<DamageText>();
-        // Farbe abhängig vom Angriffstyp
-        Color color = Color.white;
-        switch (attackType)
-        {
-            case WeaponDamage.AttackType.HeavyOverhead:
-                color = Color.blue;
-                break;
-            case WeaponDamage.AttackType.Thrust:
-                color = Color.yellow;
-                break;
-            case WeaponDamage.AttackType.Normal:
-            default:
-                color = Color.white;
-                break;
-        }
+        
 
-        dmg.ShowDamage(amount, color);
+        dmg.ShowDamage(amount, Color.white);
     }
     private void PlayHitReaction(Vector3 attackerPosition)
     {

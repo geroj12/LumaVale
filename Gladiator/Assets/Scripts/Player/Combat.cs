@@ -30,6 +30,7 @@ public class Combat : MonoBehaviour
     [SerializeField] private CapsuleCollider blockCollider;
     [SerializeField] private CapsuleCollider hitCollider;
 
+
     #region Unity Methods
 
     void Start()
@@ -77,6 +78,11 @@ public class Combat : MonoBehaviour
 
         lastScrollValue = scroll;
 
+        if (Input.GetMouseButton(0))
+        {
+            state.holdingAttack = true;
+
+        }
         // Directional Swipe Attack (mouse click & drag)
         if (Input.GetMouseButtonDown(0))
             directionHandler.StartSwipe(Input.mousePosition);
@@ -85,7 +91,10 @@ public class Combat : MonoBehaviour
         {
             directionHandler.EndSwipe(Input.mousePosition);
             TriggerSwipeAttack();
+            state.holdingAttack = false;
+
             StartCoroutine(ResetAttackBools());
+
         }
     }
 
