@@ -6,7 +6,6 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField] private EnemyWeapon weaponDamage;
     [SerializeField] private Animator anim;
 
-
     public void StartAttack()
     {
         weaponDamage.EnableDamage();

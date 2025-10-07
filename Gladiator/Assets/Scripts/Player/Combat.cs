@@ -30,6 +30,10 @@ public class Combat : MonoBehaviour
     [SerializeField] private CapsuleCollider blockCollider;
     [SerializeField] private CapsuleCollider hitCollider;
 
+    [Header("Hold Attack Settings")]
+    public float maxHoldTime = 5f;
+    public float holdAttackTimer = 0f;
+    public bool isOvercharged = false;
 
     #region Unity Methods
 
@@ -48,6 +52,7 @@ public class Combat : MonoBehaviour
     {
         HandleAttack();
         HandleBlocking();
+        HandleHoldAttackTimer();
     }
 
     #endregion
@@ -59,42 +64,67 @@ public class Combat : MonoBehaviour
     /// </summary>
     private void HandleAttack()
     {
-        if (Time.time < nextAttackTime) return; // Cooldown aktiv
+        if (Time.time < nextAttackTime) return;
         if (weaponHolster.IsBusy()) return;
-        if (state.blocking)
-            state.ResetMouseDirections();
-
+        if (state.blocking) state.ResetMouseDirections();
         if (state.isAttacking) return;
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
-        // Thrust (scroll down)
         if (scroll < 0f && lastScrollValue == 0f)
             TriggerThrustAttack();
 
-        // Overhead (scroll up)
         if (scroll > 0f && lastScrollValue == 0f)
             TriggerOverheadAttack();
 
         lastScrollValue = scroll;
 
-        if (Input.GetMouseButton(0))
-        {
-            state.holdingAttack = true;
-
-        }
-        // Directional Swipe Attack (mouse click & drag)
-        if (Input.GetMouseButtonDown(0))
-            directionHandler.StartSwipe(Input.mousePosition);
 
         if (Input.GetMouseButtonUp(0))
         {
             directionHandler.EndSwipe(Input.mousePosition);
             TriggerSwipeAttack();
             state.holdingAttack = false;
-
+            holdAttackTimer = 0f;
             StartCoroutine(ResetAttackBools());
 
+        }
+
+        if (Input.GetMouseButtonDown(0))
+            directionHandler.StartSwipe(Input.mousePosition);
+
+
+    }
+
+    private void HandleHoldAttackTimer()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            state.holdingAttack = true;
+            holdAttackTimer += Time.deltaTime;
+
+            // Overcharge prüfen
+            if (holdAttackTimer >= maxHoldTime)
+            {
+                holdAttackTimer = maxHoldTime;
+
+                if (!isOvercharged)
+                {
+                    // Nur beim ersten Eintritt Overcharge aktivieren
+                    isOvercharged = true;
+                    Debug.Log("Overcharged!");
+                }
+            }
+        }
+        else
+        {
+            // Maus losgelassen → resetten
+            if (isOvercharged)
+                Debug.Log("Overcharge Reset");
+
+            state.holdingAttack = false;
+            holdAttackTimer = 0f;
+            isOvercharged = false;
         }
     }
 
@@ -155,7 +185,7 @@ public class Combat : MonoBehaviour
     {
         if (!state.equipped) return;
 
-        bool isHoldingBlock = Input.GetAxisRaw("Fire2") > 0.00000001f;
+        bool isHoldingBlock = Input.GetAxisRaw("Fire2") > .01f;
 
         if (isHoldingBlock)
         {
@@ -173,9 +203,7 @@ public class Combat : MonoBehaviour
         {
             blockCollider.enabled = false;
             hitCollider.enabled = true;
-
             player.hasShield = false;
-
             DeactivateBlock();
             blockTimer = 0;
         }

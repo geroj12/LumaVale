@@ -1,89 +1,82 @@
 using Assets.SimpleSpinner;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandleSwipeUI : MonoBehaviour
 {
     [SerializeField] private State playerState;
+    [SerializeField] private Combat combat;
+
     [SerializeField] private GameObject leftSwipeUI;
     [SerializeField] private GameObject rightSwipeUI;
     [SerializeField] private GameObject blockUI;
     [SerializeField] private GameObject holdAttackUI;
 
-    private Camera mainCamera;
 
-    [Header("Hold Attack Settings")]
-    [SerializeField] private float maxHoldTime = 5f;
-    [SerializeField] private float minSpinnerSpeed = .5f;
-    [SerializeField] private float maxSpinnerSpeed = 1f;
-    private float holdTimer = 0f;
-    private SpinnerSwipeUI spinner;
+    private RotateUI spinner;
+
+    [SerializeField] private HoldAttack_ChangeColor changeColorOnAttackHolding;
+    [SerializeField] private ParticleSystem overloadAttackVFX;
+    private bool vfxPlayed = false;
+
     void Start()
     {
-        mainCamera = Camera.main;
         if (holdAttackUI != null)
-            spinner = holdAttackUI.GetComponent<SpinnerSwipeUI>();
+            spinner = holdAttackUI.GetComponent<RotateUI>();
     }
     void Update()
     {
-        if (mainCamera == null) return;
 
-        if (playerState.blocking)
-        {
-            blockUI.SetActive(true);
-        }
-        else
-        {
-            blockUI.SetActive(false);
-        }
-
-        if (playerState.mouseOnLeftSide)
-        {
-            leftSwipeUI.SetActive(true);
-            rightSwipeUI.SetActive(false);
-
-        }
-        else if (playerState.mouseOnRightSide)
-        {
-            leftSwipeUI.SetActive(false);
-            rightSwipeUI.SetActive(true);
-        }
-        else
-        {
-            leftSwipeUI.SetActive(false);
-            rightSwipeUI.SetActive(false);
-        }
+        blockUI.SetActive(playerState.blocking);
 
 
+        leftSwipeUI.SetActive(playerState.mouseOnLeftSide);
+        rightSwipeUI.SetActive(playerState.mouseOnRightSide);
+
+
+        // Hold-Attack-UI
         if (playerState.holdingAttack)
         {
+            if (combat.isOvercharged)
+            {
+                holdAttackUI.SetActive(false);
+
+                if (!vfxPlayed && overloadAttackVFX != null)
+                {
+                    overloadAttackVFX.Play();
+                    vfxPlayed = true;
+                }
+
+                return; 
+            }
+
             holdAttackUI.SetActive(true);
 
-            // Timer hochzählen, max. maxHoldTime
-            holdTimer += Time.deltaTime;
-            holdTimer = Mathf.Min(holdTimer, maxHoldTime);
+            float t = Mathf.Clamp01(combat.holdAttackTimer / combat.maxHoldTime);
 
-            // Spinner-Geschwindigkeit dynamisch anpassen
             if (spinner != null)
             {
-                float t = holdTimer / maxHoldTime; // 0..1
-                float speed = Mathf.Lerp(minSpinnerSpeed, maxSpinnerSpeed, t);
+                float speed = Mathf.Lerp(0.5f, 1f, t);
                 spinner.SetRotationSpeed(speed);
             }
+
+            // Farbe anpassen
+            if (changeColorOnAttackHolding != null)
+                changeColorOnAttackHolding.UpdateColor(t);
         }
         else
         {
             holdAttackUI.SetActive(false);
-            holdTimer = 0f;
 
-            // Spinner zurücksetzen
             if (spinner != null)
-            {
-                spinner.SetRotationSpeed(minSpinnerSpeed);
-            }
+                spinner.SetRotationSpeed(0.5f);
+
+            if (overloadAttackVFX != null && overloadAttackVFX.isPlaying)
+                overloadAttackVFX.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+            vfxPlayed = false;
         }
 
 
     }
-
-
 }

@@ -6,6 +6,7 @@ public class EnemyWeapon : MonoBehaviour
     public Enemy enemy;
     [SerializeField] private TrailRenderer weaponTrail;
     private bool canDealDamage = false;
+    [SerializeField] private BoxCollider weaponCollider;
 
 
     public void EnableDamage()
@@ -36,6 +37,7 @@ public class EnemyWeapon : MonoBehaviour
         {
             Player player = other.GetComponentInParent<Player>();
             player.TakeDamage(damage, enemy.transform.position, false);
+            weaponCollider.isTrigger = true; //um eventuelle doppel kollisionen zu vermeiden
             Debug.Log("Player hit");
         }
         else if (other.CompareTag("PlayerShield"))
@@ -43,10 +45,16 @@ public class EnemyWeapon : MonoBehaviour
             Player player = other.GetComponentInParent<Player>();
             player.TakeDamage(damage, enemy.transform.position, true);
             enemy.InterruptAttack(); // Bricht Angriffsanimation ab
+            weaponCollider.isTrigger = true;  //um eventuelle doppel kollisionen zu vermeiden
 
             Debug.Log("Player shield hit");
 
         }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        weaponCollider.isTrigger = false;
 
     }
 }

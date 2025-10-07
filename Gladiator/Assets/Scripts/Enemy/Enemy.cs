@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject attachedBloodDecals;
     [SerializeField] private Transform damageCanvasTransform;
 
+    [SerializeField] private ParticleSystem shieldBreakVFX;
+
     [Header("Finisher Einstellungen")]
     public float fatalFinisherThreshold = 10f; // Prozent
     public bool isDead = false;
@@ -206,7 +208,7 @@ public class Enemy : MonoBehaviour
             PlayHitReaction(attackerPosition);
         }
 
-        ShowDamageText(amount, attackType);
+        ShowDamageText(amount);
 
         if (currentHP <= 0f)
         {
@@ -229,26 +231,26 @@ public class Enemy : MonoBehaviour
 
     private void BreakShield()
     {
+
         if (!hasShield || shieldObject == null) return;
+        shieldBreakVFX.Play();
 
         shieldObject.transform.SetParent(null); // Deparenten
         ApplyPhysics(shieldObject);
         hasShield = false;
         currentShieldDurability = 0;
 
-        // 3. Eventuell Audio oder VFX abspielen
-        // shieldBreakVFX.Play(); etc. (optional)
 
         //animator.SetTrigger("ShieldBreak");
     }
 
-    private void ShowDamageText(float amount, WeaponDamage.AttackType attackType)
+    private void ShowDamageText(float amount)
     {
         if (damageTextPrefab == null || damageTextSpawnPoint == null) return;
 
         GameObject go = Instantiate(damageTextPrefab, damageTextSpawnPoint.position, Quaternion.identity, damageCanvasTransform);
         DamageText dmg = go.GetComponent<DamageText>();
-        
+
 
         dmg.ShowDamage(amount, Color.white);
     }
