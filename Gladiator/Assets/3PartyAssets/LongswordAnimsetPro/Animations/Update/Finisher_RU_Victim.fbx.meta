@@ -856,14 +856,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.41771114
-        functionName: StartFinisherBloodEffect
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.28664687
-        functionName: PlayHurtSound
+        functionName: StartBloodEffect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

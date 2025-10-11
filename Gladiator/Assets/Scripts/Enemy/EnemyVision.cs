@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class EnemyVision : MonoBehaviour
 {
-    [SerializeField] private Enemy enemy;
+    [SerializeField] private EnemyHealth enemyHealth;
     public Transform target;
     public float viewDistance = 10f;
     public float viewAngle = 90f;
@@ -30,7 +30,7 @@ public class EnemyVision : MonoBehaviour
 
     private void Update()
     {
-        if (enemy.isDead)
+        if (enemyHealth.IsDead)
         {
             music.SetCombatLevel(0f);
 

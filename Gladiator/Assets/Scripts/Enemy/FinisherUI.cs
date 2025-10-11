@@ -3,28 +3,27 @@ using UnityEngine;
 public class FinisherUI : MonoBehaviour
 {
     public GameObject iconObject;
-    private Enemy enemy;
+    [SerializeField]private EnemyHealth enemyHealth;
     private Transform camTransform;
     void Start()
     {
-        enemy = GetComponent<Enemy>();
         if (Camera.main != null)
             camTransform = Camera.main.transform;
     }
     void Update()
     {
-        if (enemy.isDead)
+        if (enemyHealth.IsDead)
         {
             iconObject.SetActive(false);
             return;
         }
-        float hpPercent = enemy.GetHealthPercent(); // z. B. 5 = 5%
+        float hpPercent = enemyHealth.HealthPercent; // z. B. 5 = 5%
 
-        if (hpPercent <= enemy.fatalFinisherThreshold)
+        if (hpPercent <= enemyHealth.fatalFinisherThreshold)
         {
             iconObject.SetActive(true);
         }
-        else if (hpPercent >= enemy.fatalFinisherThreshold)
+        else if (hpPercent >= enemyHealth.fatalFinisherThreshold)
         {
             iconObject.SetActive(false);
 
