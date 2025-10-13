@@ -4,7 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Movement movement;
-    [SerializeField] private Animator animator;
+    public Animator animator;
     [SerializeField] private Combat combat;
     [SerializeField] private State state;
     public GameObject damageTextPrefab;

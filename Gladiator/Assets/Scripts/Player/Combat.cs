@@ -10,7 +10,7 @@ public class Combat : MonoBehaviour
     private State state;
     [SerializeField] private Player player;
     [SerializeField] private CombatDirectionHandler directionHandler;
-
+    [SerializeField] private PlayerCounterWindow playerCounterWindow;
     [SerializeField] private WeaponHolster weaponHolster;
     [SerializeField] private FinisherController finisherController;
 
@@ -178,34 +178,38 @@ public class Combat : MonoBehaviour
 
     #region Combat - Blocking
 
-    /// <summary>
-    /// Behandelt das Blockverhalten mit Verzögerung.
-    /// </summary>
+   
     private void HandleBlocking()
     {
         if (!state.equipped) return;
 
-        bool isHoldingBlock = Input.GetAxisRaw("Fire2") > .01f;
+        bool blockPressed = Input.GetMouseButtonDown(1);    
+        bool blockHeld = Input.GetMouseButton(1);            
+        bool blockReleased = Input.GetMouseButtonUp(1);      
 
-        if (isHoldingBlock)
+        if (blockPressed)
+        {
+            playerCounterWindow.TryActivate();
+            ActivateBlock();
+            blockTimer = 0f;
+        }
+
+        if (blockHeld)
         {
             blockCollider.enabled = true;
             hitCollider.enabled = false;
             player.hasShield = true;
+
             blockTimer += Time.deltaTime;
-            if (blockTimer > blockDelay)
-            {
-                ActivateBlock();
-                blockTimer = 0;
-            }
         }
-        else
+
+        if (blockReleased)
         {
             blockCollider.enabled = false;
             hitCollider.enabled = true;
             player.hasShield = false;
             DeactivateBlock();
-            blockTimer = 0;
+            blockTimer = 0f;
         }
     }
 

@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
         enemyHealth.OnDeath += HandleDeath;
         enemyHealth.OnShieldBreak += HandleShieldBreak;
         enemyHealth.OnShieldImpact += HandleShieldImpact;
+        
     }
 
 
@@ -103,7 +104,7 @@ public class Enemy : MonoBehaviour
             shieldObject.transform.SetParent(null);
         }
     }
-
+   
     // ------------------------------
     // VISUALS
     // ------------------------------
@@ -148,7 +149,7 @@ public class Enemy : MonoBehaviour
         statemachine?.TemporarilyDisableFSM(1f);
 
         isFatalFinisher = enemyHealth.HealthPercent <= fatalFinisherThreshold;
-        
+
         animator.SetTrigger(trigger);
     }
 
@@ -202,7 +203,7 @@ public class Enemy : MonoBehaviour
     {
         DropWeapons();
         animator.enabled = false;
-        
+
         foreach (var rb in ragdollRigidbodies)
         {
             rb.isKinematic = false;
