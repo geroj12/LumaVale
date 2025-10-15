@@ -79,7 +79,6 @@ public class Enemy : MonoBehaviour
     {
         if (enemyHealth.IsDead) return;
         ShowDamageText(amount);
-        StartBloodEffect();
     }
 
     private void HandleDeath()
@@ -87,6 +86,7 @@ public class Enemy : MonoBehaviour
         if (enemyHealth.IsDead)
         {
             EnableRagdoll();
+            SpawnRandomBloodEmitter(finisherBloodEmitters);
             animator.enabled = false;
 
             DeactivateOnDeath();
@@ -138,6 +138,12 @@ public class Enemy : MonoBehaviour
     {
         DeactivateBloodDecal();
         SpawnRandomBloodEmitter(smallBloodEmitters);
+    }
+
+    public void StartFinisherBloodEffect()
+    {
+        DeactivateBloodDecal();
+        SpawnRandomBloodEmitter(finisherBloodEmitters);
     }
 
     private void SpawnRandomBloodEmitter(GameObject[] pool)

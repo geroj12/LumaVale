@@ -35,14 +35,18 @@ public class EnemyCombat : MonoBehaviour
         if (!counterWindow) counterWindow = GetComponent<EnemyCounterWindow>();
     }
 
-    public void TelegraphAttackUI()
+    public void TelegraphAttackUI() => counterWindow?.TryActivate();
+   
+    public void StartAttack()
     {
-        counterWindow?.TryActivate();
+        weapon.EnableDamage();
     }
-    public void StartAttack() => weapon?.EnableDamage();
 
 
-    public void EndAttack() => weapon?.DisableDamage();
+    public void EndAttack()
+    {
+        weapon.DisableDamage();
+    }
 
     private void HandleCounterTriggered()
     {
@@ -72,6 +76,6 @@ public class EnemyCombat : MonoBehaviour
     public void ApplyStun()
     {
         animator.SetTrigger(StunnedTrigger);
-       
+
     }
 }

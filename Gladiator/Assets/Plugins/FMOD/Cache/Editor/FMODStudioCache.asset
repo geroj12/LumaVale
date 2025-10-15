@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8802800615787120453
+--- !u!114 &-8474292654374554149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/PlayerCreature/Hyped
+  m_Name: event:/Events/UI/ButtonClick
   m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/PlayerCreature/Hyped
+  Path: event:/Events/UI/ButtonClick
   Guid:
-    Data1: -2022797833
-    Data2: 1329060512
-    Data3: -2112364901
-    Data4: -715977198
+    Data1: 496540416
+    Data2: 1177540704
+    Data3: 1644710074
+    Data4: 1006188889
   Banks:
   - {fileID: 295523176594350469}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3000
+  Length: 0
 --- !u!114 &-7899433218107045667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,6 +51,34 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-4136857446192000208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/Player_EquipingUnequiping
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/Player_EquipingUnequiping
+  Guid:
+    Data1: 1748633811
+    Data2: 1219696117
+    Data3: -339242103
+    Data4: 875401260
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -303367391591392713}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3480785122614085532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +106,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1289
---- !u!114 &-3451411168288881770
+--- !u!114 &-2621816207810760625
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,9 +116,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/Enemy/Alert
+  m_Name: event:/Events/Characters/Player_SwordWoosh
   m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/Enemy/Alert
+  Path: event:/Events/Characters/Player_SwordWoosh
+  Guid:
+    Data1: -527021190
+    Data2: 1337569992
+    Data3: 608867209
+    Data4: -1171707420
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 574
+--- !u!114 &-2586237447158282661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/Enemy/Enemy_Alert
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/Enemy/Enemy_Alert
   Guid:
     Data1: 1433295740
     Data2: 1220774287
@@ -105,7 +160,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2246
---- !u!114 &-2547566748035118966
+--- !u!114 &-1462873010344048270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,14 +170,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/Enemy/Hurt
+  m_Name: event:/Events/Characters/PlayerCreature/Player_Hyped
   m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/Enemy/Hurt
+  Path: event:/Events/Characters/PlayerCreature/Player_Hyped
   Guid:
-    Data1: 846001084
-    Data2: 1222566765
-    Data3: -1230008165
-    Data4: 837920032
+    Data1: -2022797833
+    Data2: 1329060512
+    Data3: -2112364901
+    Data4: -715977198
   Banks:
   - {fileID: 295523176594350469}
   IsStream: 0
@@ -131,8 +186,8 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 552
---- !u!114 &-915100739559422188
+  Length: 3000
+--- !u!114 &-407044409315820193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,23 +196,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/EquipingUnequiping/EquipUnequip
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/Enemy/Enemy_Diying
   m_EditorClassIdentifier: 
-  Name: EquipUnequip
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 505351248
-    data2: 704311577
-  Type: 2
-  IsGlobal: 0
-  Labels:
-  - Equiping
-  - Unequiping
-  Exists: 1
+  Path: event:/Events/Characters/Enemy/Enemy_Diying
+  Guid:
+    Data1: 1430742268
+    Data2: 1281444802
+    Data3: 135019665
+    Data4: -558402612
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1044
 --- !u!114 &-383598140911782364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +242,32 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-303367391591392713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Player_EquipingUnequiping/EquipUnequip
+  m_EditorClassIdentifier: 
+  Name: EquipUnequip
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 505351248
+    data2: 704311577
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Equiping
+  - Unequiping
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,53 +287,29 @@ MonoBehaviour:
   - {fileID: 7838116762675559715}
   - {fileID: 2120320682545435830}
   - {fileID: -3480785122614085532}
-  - {fileID: 3544026944920695351}
-  - {fileID: -3451411168288881770}
-  - {fileID: 86074894296582766}
   - {fileID: 6137072874944846968}
-  - {fileID: 9029936217350985891}
   - {fileID: 2419277069421619198}
-  - {fileID: -2547566748035118966}
   - {fileID: 5048257862141497737}
-  - {fileID: 9068358662066014545}
   - {fileID: 1176227974348820875}
   - {fileID: -383598140911782364}
-  - {fileID: -8802800615787120453}
-  - {fileID: 7407092504386576873}
+  - {fileID: 4602627736677844580}
+  - {fileID: -2621816207810760625}
+  - {fileID: -2586237447158282661}
+  - {fileID: 6115222733652259747}
+  - {fileID: 400277550188216800}
+  - {fileID: 5984497584385651997}
+  - {fileID: -4136857446192000208}
+  - {fileID: -1462873010344048270}
+  - {fileID: -407044409315820193}
+  - {fileID: -8474292654374554149}
+  - {fileID: 5499938919553229528}
   EditorParameters: []
   MasterBanks:
   - {fileID: 295523176594350469}
   StringsBanks:
   - {fileID: 4501806437844525808}
-  cacheTime: 638958074711581948
+  cacheTime: 638961559581027125
   cacheVersion: 131605
---- !u!114 &86074894296582766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Impacts/StabbingKife
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Impacts/StabbingKife
-  Guid:
-    Data1: -1616148603
-    Data2: 1240339292
-    Data3: 1891624074
-    Data4: -1822083479
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1484
 --- !u!114 &295523176594350469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,11 +325,38 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638958074711260588
+  lastModified: 638961559579758891
   FileSizes:
   - Name: Desktop
-    Value: 5585792
+    Value: 5594688
   Exists: 1
+--- !u!114 &400277550188216800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/PlayerCreature/Player_Prepare
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/PlayerCreature/Player_Prepare
+  Guid:
+    Data1: 1611226513
+    Data2: 1224956686
+    Data3: -1683371628
+    Data4: 1294953958
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 35260
 --- !u!114 &1176227974348820875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,33 +463,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &3544026944920695351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/SwordWoosh
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/SwordWoosh
-  Guid:
-    Data1: -527021190
-    Data2: 1337569992
-    Data3: 608867209
-    Data4: -1171707420
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 574
 --- !u!114 &4501806437844525808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,11 +478,38 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638958074711581948
+  lastModified: 638961559581027125
   FileSizes:
   - Name: Desktop
-    Value: 1694
+    Value: 1872
   Exists: 1
+--- !u!114 &4602627736677844580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Impacts/SwordHitsBody
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Impacts/SwordHitsBody
+  Guid:
+    Data1: -1298951377
+    Data2: 1173512812
+    Data3: 407846545
+    Data4: -1338159236
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 760
 --- !u!114 &5048257862141497737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +537,87 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 626
+--- !u!114 &5499938919553229528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/PlayerCreature/EnemyInRange
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/PlayerCreature/EnemyInRange
+  Guid:
+    Data1: -52450990
+    Data2: 1192842737
+    Data3: -1111610711
+    Data4: -1470881521
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &5984497584385651997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/Enemy/Enemy_Hurt
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/Enemy/Enemy_Hurt
+  Guid:
+    Data1: 846001084
+    Data2: 1222566765
+    Data3: -1230008165
+    Data4: 837920032
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 552
+--- !u!114 &6115222733652259747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Impacts/Enemy_Finisher
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Impacts/Enemy_Finisher
+  Guid:
+    Data1: -1616148603
+    Data2: 1240339292
+    Data3: 1891624074
+    Data4: -1822083479
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1484
 --- !u!114 &6137072874944846968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,33 +646,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 189473
---- !u!114 &7407092504386576873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/Enemy/Diying
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/Enemy/Diying
-  Guid:
-    Data1: 1430742268
-    Data2: 1281444802
-    Data3: 135019665
-    Data4: -558402612
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 500
 --- !u!114 &7838116762675559715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,58 +701,3 @@ MonoBehaviour:
   - Mud
   - Gravel
   Exists: 1
---- !u!114 &9029936217350985891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/PlayerCreature/Prepare
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/PlayerCreature/Prepare
-  Guid:
-    Data1: 1611226513
-    Data2: 1224956686
-    Data3: -1683371628
-    Data4: 1294953958
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 35260
---- !u!114 &9068358662066014545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Characters/EquipingUnequiping
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Characters/EquipingUnequiping
-  Guid:
-    Data1: 1748633811
-    Data2: 1219696117
-    Data3: -339242103
-    Data4: 875401260
-  Banks:
-  - {fileID: 295523176594350469}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -915100739559422188}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0

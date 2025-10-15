@@ -2,19 +2,18 @@ using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
-public class FMODEnemyDying : MonoBehaviour
+public class FMODFinisher : MonoBehaviour
 {
     [SerializeField]
-    private EventReference dyingEvent; 
+    private EventReference finisherEvent; // NEU: korrektes EventReference-Feld
     private EventInstance instance;
 
-    internal void PlayDyingSFX()
+    internal void PlayerFinisherSFX()
     {
-        instance = RuntimeManager.CreateInstance(dyingEvent);
+        instance = RuntimeManager.CreateInstance(finisherEvent);
         instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
         instance.start();
         instance.release();
     }
-
 
 }

@@ -2,19 +2,17 @@ using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
-public class FMODEnemyDying : MonoBehaviour
+public class FMODSwordHitsBody : MonoBehaviour
 {
     [SerializeField]
-    private EventReference dyingEvent; 
+    private EventReference swordHitsBodyEvent; // NEU: korrektes EventReference-Feld
     private EventInstance instance;
 
-    internal void PlayDyingSFX()
+    internal void PlaySwordHitsBodySFX()
     {
-        instance = RuntimeManager.CreateInstance(dyingEvent);
+        instance = RuntimeManager.CreateInstance(swordHitsBodyEvent);
         instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
         instance.start();
         instance.release();
     }
-
-
 }

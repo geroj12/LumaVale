@@ -848,15 +848,29 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5979673
-        functionName: EnableRagdoll
+      - time: 0
+        functionName: PlayerFinisherSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.41771114
-        functionName: StartBloodEffect
+      - time: 0.16172507
+        functionName: PlayDyingSound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3826707
+        functionName: StartFinisherBloodEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5979673
+        functionName: EnableRagdoll
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

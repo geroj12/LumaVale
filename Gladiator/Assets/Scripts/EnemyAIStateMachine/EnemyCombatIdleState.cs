@@ -56,7 +56,6 @@ public class EnemyCombatIdleState : EnemyState
 
         if (enemy.TryPlayTurnAnimation(enemy.target))
         {
-            enemy.isTurning = true;
             return;
         }
 

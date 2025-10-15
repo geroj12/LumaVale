@@ -1955,18 +1955,6 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Counter
-    m_StateMachine: {fileID: -3985573368051094086}
-    m_Mask: {fileID: 31900000, guid: 4ff47765d80971d4891eccce4a6a60da, type: 2}
-    m_Motions: []
-    m_Behaviours: []
-    m_BlendingMode: 0
-    m_SyncedLayerIndex: -1
-    m_DefaultWeight: 1
-    m_IKPass: 1
-    m_SyncedLayerAffectsTiming: 0
-    m_Controller: {fileID: 9100000}
-  - serializedVersion: 5
     m_Name: AttackReactionsFULLBODY
     m_StateMachine: {fileID: -5752058041125452105}
     m_Mask: {fileID: 31900000, guid: 4ff47765d80971d4891eccce4a6a60da, type: 2}
@@ -1981,6 +1969,18 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: HitReactionsTOPBODY
     m_StateMachine: {fileID: 5487176666914865209}
+    m_Mask: {fileID: 31900000, guid: 4ff47765d80971d4891eccce4a6a60da, type: 2}
+    m_Motions: []
+    m_Behaviours: []
+    m_BlendingMode: 0
+    m_SyncedLayerIndex: -1
+    m_DefaultWeight: 1
+    m_IKPass: 1
+    m_SyncedLayerAffectsTiming: 0
+    m_Controller: {fileID: 9100000}
+  - serializedVersion: 5
+    m_Name: Counter
+    m_StateMachine: {fileID: -3985573368051094086}
     m_Mask: {fileID: 31900000, guid: 4ff47765d80971d4891eccce4a6a60da, type: 2}
     m_Motions: []
     m_Behaviours: []

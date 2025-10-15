@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class AudioHook : MonoBehaviour
+public class AudioHookPlayer : MonoBehaviour
 {
     [SerializeField] private FMODFootsteps fmodFootstepsAudio;
     [SerializeField] private FMODEquipUnequip fmodEquipUnequip;
     [SerializeField] private FMODSwordWoosh swordWoosh;
     [SerializeField] private FMODHurt fMODHurt;
-    [SerializeField] private FMODShield fMODShield;
     [SerializeField] private FMODSwordHit fMODSwordHit;
-    [SerializeField] private FMODEnemyDying fMODEnemyDying;
-    [SerializeField] private FMODFinisher fMODFinisher;
-
+    [SerializeField] private FMODSwordHitsBody swordHitsBody;
 
 
     public void AudioOnFootStep()
@@ -37,23 +34,13 @@ public class AudioHook : MonoBehaviour
     {
         fMODHurt.PlayHurt();
     }
-
-    public void PlayShieldImpactSound()
-    {
-        fMODShield.PlayShieldImpact();
-    }
-
     public void PlayOnSwordHitImpactSound()
     {
         fMODSwordHit.PlayOnSwordHitSFX();
     }
-    public void PlayDyingSound()
-    {
-        fMODEnemyDying.PlayDyingSFX();
-    }
 
-    public void PlayerFinisherSound()
+    public void PlaySwordHitsBodySound()
     {
-        fMODFinisher.PlayerFinisherSFX();
+        swordHitsBody.PlaySwordHitsBodySFX();
     }
 }

@@ -18189,9 +18189,10 @@ GameObject:
   - component: {fileID: 1392836113}
   - component: {fileID: 1392836116}
   - component: {fileID: 1392836115}
-  - component: {fileID: 1392836117}
   - component: {fileID: 1392836118}
   - component: {fileID: 1392836119}
+  - component: {fileID: 1392836121}
+  - component: {fileID: 1392836120}
   m_Layer: 7
   m_Name: FMODAudioHandler
   m_TagString: Untagged
@@ -18232,7 +18233,7 @@ MonoBehaviour:
       Data2: 1337569992
       Data3: 608867209
       Data4: -1171707420
-    Path: event:/Events/Characters/SwordWoosh
+    Path: event:/Events/Characters/Player_SwordWoosh
   moanVolume: 0.5
 --- !u!114 &1392836114
 MonoBehaviour:
@@ -18296,26 +18297,7 @@ MonoBehaviour:
       Data2: 1222566765
       Data3: -1230008165
       Data4: 837920032
-    Path: event:/Events/Characters/Enemy/Hurt
---- !u!114 &1392836117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392836111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ac55cdee8090ed46865302148fd0cd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipUnequipEvent:
-    Guid:
-      Data1: 1748633811
-      Data2: 1219696117
-      Data3: -339242103
-      Data4: 875401260
-    Path: event:/Events/Characters/EquipingUnequiping
+    Path: event:/Events/Characters/Enemy/Enemy_Hurt
 --- !u!114 &1392836118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18334,7 +18316,7 @@ MonoBehaviour:
       Data2: 1220774287
       Data3: 1235621291
       Data4: -2075326153
-    Path: event:/Events/Characters/Enemy/Alert
+    Path: event:/Events/Characters/Enemy/Enemy_Alert
 --- !u!114 &1392836119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18347,6 +18329,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafe666e79188f047897010f3fa88431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dyingEvent:
+    Guid:
+      Data1: 1430742268
+      Data2: 1281444802
+      Data3: 135019665
+      Data4: -558402612
+    Path: event:/Events/Characters/Enemy/Enemy_Diying
+--- !u!114 &1392836120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785bf0fecbffec34a9bb5ff3782e9c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finisherEvent:
+    Guid:
+      Data1: -1616148603
+      Data2: 1240339292
+      Data3: 1891624074
+      Data4: -1822083479
+    Path: event:/Events/Impacts/Enemy_Finisher
+--- !u!114 &1392836121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6814f8819840a040aaaab200f814bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordHitsBodyEvent:
+    Guid:
+      Data1: -1298951377
+      Data2: 1173512812
+      Data3: 407846545
+      Data4: -1338159236
+    Path: event:/Events/Impacts/SwordHitsBody
 --- !u!1 &1416871268
 GameObject:
   m_ObjectHideFlags: 0
@@ -27118,7 +27145,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -29950,10 +29977,10 @@ GameObject:
   - component: {fileID: 6060479014484293989}
   - component: {fileID: 6893959338305874638}
   - component: {fileID: 6893959338305874644}
+  - component: {fileID: 6893959338305874648}
   - component: {fileID: 6893959338305874643}
   - component: {fileID: 6893959338305874646}
   - component: {fileID: 6893959338305874641}
-  - component: {fileID: 6893959338305874640}
   - component: {fileID: 6893959338305874639}
   - component: {fileID: 6893959338305874645}
   - component: {fileID: 6893959338305874647}
@@ -30368,8 +30395,8 @@ GameObject:
   - component: {fileID: 9085088073272709983}
   - component: {fileID: 6736366258781047603}
   - component: {fileID: 9085088073272709984}
-  - component: {fileID: 9085088073272709985}
   - component: {fileID: 9085088073272709986}
+  - component: {fileID: 9085088073272709987}
   m_Layer: 0
   m_Name: FMODAudioHandler
   m_TagString: Untagged
@@ -32075,6 +32102,7 @@ GameObject:
   - component: {fileID: 4898614681539123683}
   - component: {fileID: 4898614681539123697}
   - component: {fileID: 4898614681539123696}
+  - component: {fileID: 4898614681539123699}
   - component: {fileID: 4898614681539123695}
   - component: {fileID: 4898614681539123694}
   - component: {fileID: 4898614681539123693}
@@ -32084,7 +32112,6 @@ GameObject:
   - component: {fileID: 4898614681539123689}
   - component: {fileID: 4898614681539123688}
   - component: {fileID: 4898614681539123687}
-  - component: {fileID: 4898614681539123686}
   - component: {fileID: 4898614681539123685}
   - component: {fileID: 4898614681539123684}
   - component: {fileID: 4898614681539123698}
@@ -32157,24 +32184,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &4898614681539123686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4898614681538836253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca491bc4019f07c438358c470fe7ebfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fmodFootstepsAudio: {fileID: 6313349518993182394}
-  fmodEquipUnequip: {fileID: 9085088073272709983}
-  swordWoosh: {fileID: 6736366258781047603}
-  fMODHurt: {fileID: 9085088073272709984}
-  fMODShield: {fileID: 9085088073272709985}
-  fMODSwordHit: {fileID: 9085088073272709986}
 --- !u!114 &4898614681539123687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32423,6 +32432,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeDuration: 1.2
   cooldown: 5
+--- !u!114 &4898614681539123699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4898614681538836253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4415c1a05321f5945b5e88a4773a5e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodFootstepsAudio: {fileID: 6313349518993182394}
+  fmodEquipUnequip: {fileID: 9085088073272709983}
+  swordWoosh: {fileID: 6736366258781047603}
+  fMODHurt: {fileID: 9085088073272709984}
+  fMODSwordHit: {fileID: 9085088073272709986}
+  swordHitsBody: {fileID: 9085088073272709987}
 --- !u!4 &4909424234290693374
 Transform:
   m_ObjectHideFlags: 0
@@ -45145,7 +45172,7 @@ MonoBehaviour:
       Data2: 1337569992
       Data3: 608867209
       Data4: -1171707420
-    Path: event:/Events/Characters/SwordWoosh
+    Path: event:/Events/Characters/Player_SwordWoosh
   moanVolume: 0.5
 --- !u!33 &6736651893426686529
 MeshFilter:
@@ -45413,24 +45440,6 @@ MonoBehaviour:
   anchorPoint: {fileID: 1180025929}
   idealDistance: 1.8
   minDistance: 0.6
---- !u!114 &6893959338305874640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2967941917593627346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca491bc4019f07c438358c470fe7ebfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fmodFootstepsAudio: {fileID: 1392836114}
-  fmodEquipUnequip: {fileID: 1392836117}
-  swordWoosh: {fileID: 1392836113}
-  fMODHurt: {fileID: 1392836116}
-  fMODShield: {fileID: 1392836115}
-  fMODSwordHit: {fileID: 0}
 --- !u!114 &6893959338305874641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45569,6 +45578,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeDuration: 1.2
   cooldown: 5
+--- !u!114 &6893959338305874648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967941917593627346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a9515e528e79b468209c1137cdb66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodFootstepsAudio: {fileID: 1392836114}
+  swordWoosh: {fileID: 1392836113}
+  fMODHurt: {fileID: 1392836116}
+  fMODEnemyDying: {fileID: 1392836119}
+  fMODFinisher: {fileID: 1392836120}
+  fMODShield: {fileID: 1392836115}
+  swordHitsBody: {fileID: 1392836121}
 --- !u!33 &6910777112568814290
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -45819,7 +45847,7 @@ GameObject:
   - component: {fileID: 4796814626729691111}
   - component: {fileID: 32109052032899603}
   - component: {fileID: 8737865528686721285}
-  m_Layer: 1
+  m_Layer: 7
   m_Name: ScutumShield_C
   m_TagString: EnemyShield
   m_Icon: {fileID: 0}
@@ -57939,7 +57967,7 @@ MonoBehaviour:
       Data2: 1219696117
       Data3: -339242103
       Data4: 875401260
-    Path: event:/Events/Characters/EquipingUnequiping
+    Path: event:/Events/Characters/Player_EquipingUnequiping
 --- !u!114 &9085088073272709984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57958,26 +57986,7 @@ MonoBehaviour:
       Data2: 1222566765
       Data3: -1230008165
       Data4: 837920032
-    Path: event:/Events/Characters/Enemy/Hurt
---- !u!114 &9085088073272709985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3414829577360995688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 765e0af293e7700478b4e646d5f022a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldImpactEvent:
-    Guid:
-      Data1: -1281523853
-      Data2: 1117571443
-      Data3: -156656996
-      Data4: 1083342789
-    Path: event:/Events/Impacts/ShieldHit
+    Path: event:/Events/Characters/Enemy/Enemy_Hurt
 --- !u!114 &9085088073272709986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57997,6 +58006,25 @@ MonoBehaviour:
       Data3: 679640199
       Data4: -877087617
     Path: event:/Events/Impacts/SwordHit
+--- !u!114 &9085088073272709987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3414829577360995688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6814f8819840a040aaaab200f814bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordHitsBodyEvent:
+    Guid:
+      Data1: -1298951377
+      Data2: 1173512812
+      Data3: 407846545
+      Data4: -1338159236
+    Path: event:/Events/Impacts/SwordHitsBody
 --- !u!225 &9097630469464471331
 CanvasGroup:
   m_ObjectHideFlags: 0
