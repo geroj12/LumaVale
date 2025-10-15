@@ -1,55 +1,77 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class EnemyCombat : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private EnemyWeapon weapon;
-    [SerializeField] private Animator anim;
+    [SerializeField] private Animator animator;
     [SerializeField] private EnemyCounterWindow counterWindow;
-    [SerializeField] private StateMachineEnemy stateMachineEnemy;
+    [SerializeField] private StateMachineEnemy stateMachine;
 
-    void Start()
+    [Header("Counter Settings")]
+    [SerializeField, Range(0f, 1f)] private float counterChance = 0.25f;
+    [SerializeField] private float stunDuration = 2f;
+
+    private static readonly int CounteredTrigger = Animator.StringToHash("Countered");
+    private static readonly int PrepareCounterTrigger = Animator.StringToHash("PrepareCounter");
+    private static readonly int StunnedTrigger = Animator.StringToHash("Stunned");
+
+    private void Awake()
+    {
+        CacheComponents();
+    }
+
+    private void Start()
     {
         if (counterWindow != null)
             counterWindow.OnCounterTriggered += HandleCounterTriggered;
     }
+    private void CacheComponents()
+    {
+        if (!weapon) weapon = GetComponentInChildren<EnemyWeapon>();
+        if (!animator) animator = GetComponent<Animator>();
+        if (!stateMachine) stateMachine = GetComponent<StateMachineEnemy>();
+        if (!counterWindow) counterWindow = GetComponent<EnemyCounterWindow>();
+    }
 
     public void TelegraphAttackUI()
     {
-        counterWindow.TryActivate();
+        counterWindow?.TryActivate();
     }
-    public void StartAttack()
-    {
-        weapon.EnableDamage();
-    }
+    public void StartAttack() => weapon?.EnableDamage();
 
-    public void EndAttack()
-    {
-        weapon.DisableDamage();
-    }
+
+    public void EndAttack() => weapon?.DisableDamage();
+
     private void HandleCounterTriggered()
     {
-        // Wenn Konter erfolgreich: Stun oder Animation spielen
-        anim.SetTrigger("Countered");
-        stateMachineEnemy.TemporarilyDisableFSM(2f);
+        animator.SetTrigger(CounteredTrigger);
+        stateMachine?.TemporarilyDisableFSM(stunDuration);
     }
+
+    public void TryCounterPlayerAttack()
+    {
+        if (counterWindow == null || counterWindow.IsActive || counterWindow.IsOnCooldown)
+            return;
+
+        if (Random.value > counterChance)
+            return;
+
+        counterWindow.TryActivate();
+        animator.SetTrigger(PrepareCounterTrigger);
+    }
+
     public IEnumerator ResetAttackBools()
     {
         yield return new WaitForSeconds(1f);
-
-        anim.SetBool("Attack_Right", false);
-        anim.SetBool("Attack_Left", false);
-        anim.SetBool("Attack_Overhead", false);
-
-
+        animator.SetBool("Attack_Right", false);
+        animator.SetBool("Attack_Left", false);
+        animator.SetBool("Attack_Overhead", false);
     }
-
-    internal void ApplyStun()
+    public void ApplyStun()
     {
-        Debug.Log("Enemy stunned");
-        anim.SetTrigger("Stunned");
-        //stateMachineEnemy.TemporarilyDisableFSM(5f);
-
+        animator.SetTrigger(StunnedTrigger);
+       
     }
 }

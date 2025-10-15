@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyHealth enemyHealth;
     [SerializeField] private StateMachineEnemy statemachine;
     [SerializeField] private CharacterController controller;
+    [SerializeField] private GameObject modelRoot;
+
 
     [Header("Equipment")]
     [SerializeField] private GameObject swordObject;
@@ -60,7 +62,7 @@ public class Enemy : MonoBehaviour
         enemyHealth.OnDeath += HandleDeath;
         enemyHealth.OnShieldBreak += HandleShieldBreak;
         enemyHealth.OnShieldImpact += HandleShieldImpact;
-        
+
     }
 
 
@@ -85,10 +87,25 @@ public class Enemy : MonoBehaviour
         if (enemyHealth.IsDead)
         {
             EnableRagdoll();
-            statemachine.enabled = false;
             animator.enabled = false;
+
+            DeactivateOnDeath();
+
         }
     }
+
+    private void DeactivateOnDeath()
+    {
+        // Alles außer dem Modell deaktivieren
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject == modelRoot) continue; // Modell bleibt aktiv
+            child.gameObject.SetActive(false);
+        }
+
+
+    }
+
     private void HandleShieldImpact()
     {
         animator.SetTrigger("ShieldImpact");
@@ -104,7 +121,7 @@ public class Enemy : MonoBehaviour
             shieldObject.transform.SetParent(null);
         }
     }
-   
+
     // ------------------------------
     // VISUALS
     // ------------------------------

@@ -12,16 +12,20 @@ Material:
   m_Parent: {fileID: 2100000, guid: 35e87ae7b60997348aa73843b1fbdd3d, type: 2}
   m_ModifiedSerializedProperties: 10
   m_ValidKeywords:
+  - _ALPHAPREMULTIPLY_ON
   - _SPECULAR_SETUP
+  - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap:
-    RenderType: Opaque
+    RenderType: Transparent
   disabledShaderPasses:
   - MOTIONVECTORS
+  - DepthOnly
+  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3

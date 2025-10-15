@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponHolster : MonoBehaviour
 {
-    public delegate void WeaponChangedDelegate(WeaponDamage newDamage);
+    public delegate void WeaponChangedDelegate(PlayerWeapon newDamage);
     public event WeaponChangedDelegate OnWeaponChanged;
     public enum WeaponState { Idle, Equipping, Equipped, Unequipping }
     [SerializeField] private FinisherController finisherController;
@@ -148,7 +148,7 @@ public class WeaponHolster : MonoBehaviour
 
     private void NotifyWeaponChanged()
     {
-        WeaponDamage newDamage = GetCurrentWeaponDamage();
+        PlayerWeapon newDamage = GetCurrentWeaponDamage();
         combatScript.UpdateWeaponDamage(newDamage);
         OnWeaponChanged?.Invoke(newDamage);
     }
@@ -156,7 +156,7 @@ public class WeaponHolster : MonoBehaviour
     {
         return currentWeaponState == WeaponState.Equipping || currentWeaponState == WeaponState.Unequipping;
     }
-    public WeaponDamage GetCurrentWeaponDamage()
+    public PlayerWeapon GetCurrentWeaponDamage()
     {
         GameObject activeWeapon = null;
 
@@ -171,7 +171,7 @@ public class WeaponHolster : MonoBehaviour
         }
 
         if (activeWeapon != null)
-            return activeWeapon.GetComponentInChildren<WeaponDamage>();
+            return activeWeapon.GetComponentInChildren<PlayerWeapon>();
 
         return null;
     }

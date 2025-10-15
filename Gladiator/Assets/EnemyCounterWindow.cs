@@ -6,8 +6,11 @@ using UnityEngine;
 public class EnemyCounterWindow : MonoBehaviour
 {
     [Header("Counter Settings")]
-    [SerializeField] private float activeDuration = 1.5f; // wie lange das Konterfenster offen ist
-    [SerializeField] private float cooldown = 1.0f;       // Cooldown, bevor wieder konterbar
+    [SerializeField, Tooltip("Wie lange das Konterfenster aktiv bleibt.")]
+    private float activeDuration = 1.5f;
+
+    [SerializeField, Tooltip("Cooldown, bevor das Fenster erneut geöffnet werden kann.")]
+    private float cooldown = 1.0f;
 
     public bool IsActive { get; private set; }
     public bool IsOnCooldown { get; private set; }
@@ -32,6 +35,22 @@ public class EnemyCounterWindow : MonoBehaviour
         counterRoutine = StartCoroutine(CounterRoutine());
     }
 
+    /// <summary>
+    /// Wird vom EnemyWeapon aufgerufen, wenn der Spieler erfolgreich kontert.
+    /// </summary>
+    public void TriggerCounter()
+    {
+        if (!IsActive) return;
+
+        IsActive = false;
+        OnCounterTriggered?.Invoke();
+        OnCounterWindowClosed?.Invoke();
+
+        // Direkt Cooldown starten
+        if (counterRoutine != null)
+            StopCoroutine(counterRoutine);
+        StartCoroutine(CooldownRoutine());
+    }
     private IEnumerator CounterRoutine()
     {
         // Fenster öffnen
@@ -50,24 +69,6 @@ public class EnemyCounterWindow : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         IsOnCooldown = false;
     }
-
-    /// <summary>
-    /// Wird vom EnemyWeapon aufgerufen, wenn der Spieler erfolgreich kontert.
-    /// </summary>
-    public void TriggerCounter()
-    {
-        if (!IsActive) return;
-
-        IsActive = false;
-        OnCounterTriggered?.Invoke();
-        OnCounterWindowClosed?.Invoke();
-
-        // Direkt Cooldown starten
-        if (counterRoutine != null)
-            StopCoroutine(counterRoutine);
-        StartCoroutine(CooldownRoutine());
-    }
-
     private IEnumerator CooldownRoutine()
     {
         IsOnCooldown = true;

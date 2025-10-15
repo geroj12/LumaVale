@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
         currentHP = maxHP;
         currentShieldDurability = maxShieldDurability;
     }
-    public void ApplyDamage(float amount, Vector3 attackerPosition, bool hitShield = false, WeaponDamage.AttackType attackType = WeaponDamage.AttackType.Normal)
+    public void ApplyDamage(float amount, Vector3 attackerPosition, bool hitShield = false, PlayerWeapon.AttackType attackType = PlayerWeapon.AttackType.Normal)
     {
         if (IsDead) return;
 

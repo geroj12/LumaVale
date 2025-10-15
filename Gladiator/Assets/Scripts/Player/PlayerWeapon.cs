@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponDamage : MonoBehaviour
+public class PlayerWeapon : MonoBehaviour
 {
     [Header("Damage Settings")]
     [SerializeField] private float baseDamage = 20f;
@@ -88,21 +88,38 @@ public class WeaponDamage : MonoBehaviour
         damagedEnemies.Add(enemy);
 
 
+        var enemyCombat = enemy.GetComponent<EnemyCombat>();
+        var enemyCounter = enemy.GetComponent<EnemyCounterWindow>();
 
-        // Normales Trefferverhalten
+        enemyCombat.TryCounterPlayerAttack();
+        bool enemyCanCounter = enemyCounter != null && enemyCounter.IsActive;
+
+
+        if (enemyCanCounter)
+        {
+            // Enemy kontert erfolgreich!
+            Debug.Log("<color=red>Enemy COUNTERED the player!</color>");
+            var playerCounter = player.GetComponent<PlayerCounterWindow>();
+            playerCounter.TriggerCounter();
+            player.GetComponent<Animator>()?.SetTrigger("CounteredByEnemy");
+
+            return;
+        }
+
         if (enemy.TryGetComponent(out EnemyHealth health))
         {
             health.ApplyDamage(finalDamage, player.transform.position, false, currentAttackType);
         }
-      
-        // Optional: Nur ein Treffer pro Schwung
+
         canDealDamage = false;
     }
 
     private void HandleShieldHit(Collider other)
     {
+
         Enemy enemy = other.GetComponentInParent<Enemy>();
         if (enemy == null) return;
+
 
         float shieldDamage = finalDamage * 0.5f; // z. B. nur 50% Schaden auf Schilde
 
@@ -111,6 +128,9 @@ public class WeaponDamage : MonoBehaviour
 
         // Bricht Spielerangriff bei Schildblock ab
         player.InterruptAttack();
+
         DisableDamage();
+
+
     }
 }

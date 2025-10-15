@@ -61,6 +61,8 @@ public class EnemyWeapon : MonoBehaviour
         player.TakeDamage(damage, enemy.transform.position, false);
         weaponCollider.isTrigger = true; //um eventuelle doppel kollisionen zu vermeiden
         Debug.Log("Player hit");
+        player.InterruptAttack();
+
     }
 
     private void HandlePlayerBlockHit(Collider other)
@@ -79,8 +81,8 @@ public class EnemyWeapon : MonoBehaviour
         if (playerCanCounter && enemyIsInCounterWindow)
         {
             enemyCounterWindow.TriggerCounter();
-            player.TakeDamage(damage, enemy.transform.position, true);
             enemy.InterruptAttack();
+            player.InterruptAttack();
 
             if (enemy.TryGetComponent(out EnemyCombat combat))
                 combat.ApplyStun();
@@ -92,6 +94,8 @@ public class EnemyWeapon : MonoBehaviour
             // Normales Blocken (kein Counter)
             player.TakeDamage(damage, enemy.transform.position, true);
             enemy.InterruptAttack();
+            player.InterruptAttack();
+
             Debug.Log("Player shield hit (no counter)");
         }
 

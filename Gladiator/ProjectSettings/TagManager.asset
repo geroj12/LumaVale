@@ -31,7 +31,7 @@ TagManager:
   - PlayerBlock
   - Interactive
   - 
-  - 
+  - Environment
   - Grass
   - Mud
   - Dirt
@@ -43,7 +43,7 @@ TagManager:
   - Obstacle
   - ClothPhysic
   - 
-  - 
+  - FoliageTransparent
   - 
   - 
   m_SortingLayers:

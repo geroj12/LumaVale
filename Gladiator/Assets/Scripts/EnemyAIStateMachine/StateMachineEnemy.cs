@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -26,7 +27,9 @@ public class StateMachineEnemy : MonoBehaviour
     public Animator animator;
     private bool isRunning;
     public bool isTurning = false;
-
+    public bool IsBrainDisabled { get; private set; }
+    private float turnStartTime;
+    private const float maxTurnDuration = 2f;
     [HideInInspector] public bool playerRecentlySeen = false;
     private float playerLastSeenTime = -Mathf.Infinity;
 
@@ -39,14 +42,30 @@ public class StateMachineEnemy : MonoBehaviour
 
         TransitionTo(initialState);
     }
-   
+
     private void Update()
     {
+        if (target == null)
+        {
+            if (currentState != returnState)
+                TransitionTo(returnState);
+            return;
+        }
+
+        if (IsBrainDisabled)
+            return;
+
+        // failsafe für Drehungen
+        if (isTurning && Time.time - turnStartTime > maxTurnDuration)
+            isTurning = false;
+
         currentState?.Tick(this);
     }
 
     public void TransitionTo(EnemyState newState)
     {
+        if (currentState == newState) return;
+        if (isTurning) return; // während Drehung blockieren
         currentState?.Exit(this);
         currentState = newState;
         currentState?.Enter(this);
@@ -78,15 +97,15 @@ public class StateMachineEnemy : MonoBehaviour
     public void TemporarilyDisableFSM(float duration)
     {
         if (gameObject.activeInHierarchy)
-            StartCoroutine(DisableFSMCoroutine(duration));
+            StartCoroutine(DisableFSMBrain(duration));
     }
-  
-    private IEnumerator DisableFSMCoroutine(float duration)
+    private IEnumerator DisableFSMBrain(float duration)
     {
-        enabled = false;
+        IsBrainDisabled = true;
         yield return new WaitForSeconds(duration);
-        enabled = true;
+        IsBrainDisabled = false;
     }
+
     public void RetreatMove(Vector3 retreatTarget, float speed, Transform player)
     {
         // Bewegung: Vom Ziel weg
@@ -105,8 +124,8 @@ public class StateMachineEnemy : MonoBehaviour
     }
     public bool TryPlayTurnAnimation(Transform target)
     {
-        if (isTurning || target == null)
-            return false; // Bereits im Turn oder kein Ziel
+        if (isTurning) return false;
+
 
         Vector3 directionToTarget = target.position - transform.position;
         directionToTarget.y = 0;
@@ -144,13 +163,11 @@ public class StateMachineEnemy : MonoBehaviour
 
         animator.SetTrigger(triggerToPlay);
         isTurning = true;
-
+        turnStartTime = Time.time;
         return true;
     }
-    public void TurnFinished()
-    {
-        isTurning = false;
-    }
+    public void TurnFinished() => isTurning = false;
+
     public void SetRunning(bool running)
     {
         if (isRunning == running) return;
@@ -162,4 +179,10 @@ public class StateMachineEnemy : MonoBehaviour
         controller.Move(Vector3.zero); // verhindert Restbewegung
     }
 
+    internal void PlayIdleAnimation()
+    {
+        animator.SetBool("IsRunning", false);
+        animator.SetBool("IsWalking", false);
+
+    }
 }

@@ -12,21 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97820104f6a4393458be19815619fc13, type: 3}
   m_Name: EnemyCombatIdle
   m_EditorClassIdentifier: 
-  decisionInterval: 2
+  minDecisionDelay: 0.5
+  maxDecisionDelay: 1.2
   attackRange: 2.2
   attack:
-    weight: 4
-    cooldown: 3
-    nextAvailableTime: 0
-  block:
-    weight: 2
-    cooldown: 3
-    nextAvailableTime: 0
-  dodge:
-    weight: 3
+    name: Attack
+    baseWeight: 3
     cooldown: 2
-    nextAvailableTime: 0
+    nextAvailableTime: 79.7314
+    currentWeight: 160
+  block:
+    name: Block
+    baseWeight: 2
+    cooldown: 2
+    nextAvailableTime: 76.7277
+    currentWeight: 12
+  dodge:
+    name: Dodge
+    baseWeight: 2
+    cooldown: 2
+    nextAvailableTime: 73.31554
+    currentWeight: 18
   retreat:
-    weight: 1
-    cooldown: 5
-    nextAvailableTime: 0
+    name: Retreat
+    baseWeight: 1
+    cooldown: 2
+    nextAvailableTime: 70.05715
+    currentWeight: 0

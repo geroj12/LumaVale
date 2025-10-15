@@ -7,10 +7,8 @@ using UnityEngine;
 public class EnemyCombatIdleState : EnemyState
 {
     [Header("Decision Settings")]
-    [Tooltip("Wie oft der Gegner überlegt, eine neue Aktion zu machen (Sekunden).")]
-    [SerializeField] private float decisionInterval = 1.5f;
-
-    [Tooltip("Maximale Distanz, ab der der Gegner in Chase geht.")]
+    [SerializeField] private float minDecisionDelay = 0.5f;
+    [SerializeField] private float maxDecisionDelay = 1.2f;
     [SerializeField] private float attackRange = 2f;
 
     private float nextDecisionTime;
@@ -18,30 +16,27 @@ public class EnemyCombatIdleState : EnemyState
     [System.Serializable]
     public class ActionOption
     {
-        [Tooltip("Wie stark diese Aktion bevorzugt wird (relatives Gewicht).")]
-        [Range(0, 10)] public int weight = 1;
-
-        [Tooltip("Mindestzeit (Sekunden) zwischen zwei Einsätzen dieser Aktion.")]
+        public string name;
+        [Range(0, 10)] public int baseWeight = 1;
         public float cooldown = 2f;
 
         [HideInInspector] public float nextAvailableTime = 0f;
         public System.Action<StateMachineEnemy> Execute;
+        [HideInInspector] public int currentWeight;
     }
 
-    [Header("Action Weights & Cooldowns")]
-    [SerializeField] private ActionOption attack = new ActionOption { weight = 3, cooldown = 2f };
-    [SerializeField] private ActionOption block = new ActionOption { weight = 2, cooldown = 2f };
-    [SerializeField] private ActionOption dodge = new ActionOption { weight = 2, cooldown = 3f };
-    [SerializeField] private ActionOption retreat = new ActionOption { weight = 1, cooldown = 5f };
+    [Header("Action Options")]
+    [SerializeField] private ActionOption attack = new ActionOption { name = "Attack", baseWeight = 3, cooldown = 2f };
+    [SerializeField] private ActionOption block = new ActionOption { name = "Block", baseWeight = 2, cooldown = 2f };
+    [SerializeField] private ActionOption dodge = new ActionOption { name = "Dodge", baseWeight = 2, cooldown = 3f };
+    [SerializeField] private ActionOption retreat = new ActionOption { name = "Retreat", baseWeight = 1, cooldown = 5f };
     private List<ActionOption> actions;
 
     public override void Enter(StateMachineEnemy enemy)
     {
         enemy.StopMovement();
-        nextDecisionTime = Time.time + decisionInterval;
 
-        // Initialisiere Aktionen (nur einmal)
-        if (actions == null || actions.Count == 0)
+        if (actions == null)
         {
             actions = new List<ActionOption> { attack, block, dodge, retreat };
 
@@ -50,14 +45,13 @@ public class EnemyCombatIdleState : EnemyState
             dodge.Execute = e => e.TransitionTo(e.dodgeState);
             retreat.Execute = e => e.TransitionTo(e.combatRetreatState);
         }
+
+        ScheduleNextDecision();
     }
 
     public override void Tick(StateMachineEnemy enemy)
     {
-        if (enemy.target == null || enemy.isTurning)
-            return;
-
-        if (enemy.isTurning)
+        if (!enemy.target || enemy.isTurning)
             return;
 
         if (enemy.TryPlayTurnAnimation(enemy.target))
@@ -66,43 +60,62 @@ public class EnemyCombatIdleState : EnemyState
             return;
         }
 
-        if (Time.time < nextDecisionTime)
-            return;
-
-        DecideNextCombatAction(enemy);
-        nextDecisionTime = Time.time + decisionInterval;
+        if (Time.time >= nextDecisionTime)
+        {
+            DecideNextAction(enemy);
+            ScheduleNextDecision();
+        }
     }
-
-    private void DecideNextCombatAction(StateMachineEnemy enemy)
+    private void ScheduleNextDecision()
+    {
+        nextDecisionTime = Time.time + Random.Range(minDecisionDelay, maxDecisionDelay);
+    }
+    private void DecideNextAction(StateMachineEnemy enemy)
     {
         float currentTime = Time.time;
         float dist = Vector3.Distance(enemy.transform.position, enemy.target.position);
 
-        if (dist > attackRange)
+        if (dist > attackRange + 0.5f)
         {
             enemy.TransitionTo(enemy.chaseState);
             return;
         }
 
-        // Gefilterte Liste verfügbarer Aktionen
+        // Dynamische Gewichtsanpassung
+        foreach (var action in actions)
+            action.currentWeight = action.baseWeight;
+
+        if (dist < 1.2f)
+        {
+            dodge.currentWeight += 3;
+            block.currentWeight += 2;
+        }
+        else if (dist < 2.5f)
+        {
+            attack.currentWeight += 4;
+        }
+        else
+        {
+            retreat.currentWeight += 3;
+        }
+
         var availableActions = actions
-            .Where(a => currentTime >= a.nextAvailableTime && a.weight > 0)
+            .Where(a => currentTime >= a.nextAvailableTime && a.currentWeight > 0)
             .ToList();
 
         if (availableActions.Count == 0)
         {
-            Debug.Log("⚠ Keine Aktion verfügbar, bleibe idle.");
+            enemy.PlayIdleAnimation(); // kleine Idle Bewegung
             return;
         }
 
-        int totalWeight = availableActions.Sum(a => a.weight);
+        int totalWeight = availableActions.Sum(a => a.currentWeight);
         int roll = Random.Range(0, totalWeight);
 
-        // Auswahl per kumulativer Wahrscheinlichkeit
         int cumulative = 0;
         foreach (var action in availableActions)
         {
-            cumulative += action.weight;
+            cumulative += action.currentWeight;
             if (roll < cumulative)
             {
                 action.Execute?.Invoke(enemy);
@@ -112,9 +125,5 @@ public class EnemyCombatIdleState : EnemyState
         }
     }
 
-
-    public override void Exit(StateMachineEnemy enemy)
-    {
-
-    }
+    public override void Exit(StateMachineEnemy enemy) { }
 }
