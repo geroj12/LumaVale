@@ -10,7 +10,7 @@ public class EnemyCombatRetreatState : EnemyState
     private Vector3 retreatTarget;
     private float exitTime;
 
-    public override void Enter(StateMachineEnemy enemy)
+    public override void Enter()
     {
         Vector3 awayFromPlayer = (enemy.transform.position - enemy.target.position).normalized;
         retreatTarget = enemy.transform.position + awayFromPlayer * retreatDistance;
@@ -22,7 +22,7 @@ public class EnemyCombatRetreatState : EnemyState
 
     }
 
-    public override void Tick(StateMachineEnemy enemy)
+    public override void Tick()
     {
         enemy.RetreatMove(retreatTarget, retreatSpeed, enemy.target);
 
@@ -33,7 +33,7 @@ public class EnemyCombatRetreatState : EnemyState
         }
     }
 
-    public override void Exit(StateMachineEnemy enemy)
+    public override void Exit()
     {
         enemy.animator.SetBool("isRetreating", false);
         // Optionale Aufräumarbeiten

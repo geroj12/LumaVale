@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72c74cacd6728b42ac7f897287ceaf0, type: 3}
   m_Name: AttackState
   m_EditorClassIdentifier: 
-  attackRange: 1.7
-  attackCooldown: 1.5
-  playerNotInSightDuration: 3
-  attackAnimations:
-  - Attack_Left
-  - Attack_Right
-  - Attack_Overhead
+  transitions:
+  - targetState: {fileID: 11400000, guid: 17a5d5697995cb049b8721c71844360d, type: 2}
+    conditions:
+    - {fileID: 11400000, guid: e5ecc68d22704cd4c8024f4c24c6487e, type: 2}
+    transitionCooldown: 0.3
+  - targetState: {fileID: 11400000, guid: fe5f845d1ab183c45b99959bdc4fce28, type: 2}
+    conditions:
+    - {fileID: 11400000, guid: 1be4162e7b54fef40a212b8899026c9d, type: 2}
+    - {fileID: 11400000, guid: e5ecc68d22704cd4c8024f4c24c6487e, type: 2}
+    transitionCooldown: 0.3

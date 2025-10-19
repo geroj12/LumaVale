@@ -45462,8 +45462,9 @@ MonoBehaviour:
   dodgeState: {fileID: 11400000, guid: d6d47362a2731bc4ba273a002991dd49, type: 2}
   combatIdleState: {fileID: 11400000, guid: f60497491d4a4da429e8a6312bf6a1fc, type: 2}
   combatRetreatState: {fileID: 11400000, guid: 2de6023fbeab1284a9f61fa00c3dc915, type: 2}
-  target: {fileID: 0}
-  controller: {fileID: 0}
+  combat: {fileID: 6893959338305874645}
+  target: {fileID: 4898614681539123683}
+  controller: {fileID: 6893959338305874644}
   startPosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 6893959338305874638}
   isTurning: 0

@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e428b3fee90ae8145b6292d20d081aee, type: 3}
   m_Name: EnemyCombatDodge
   m_EditorClassIdentifier: 
+  transitions:
+  - targetState: {fileID: 11400000, guid: f60497491d4a4da429e8a6312bf6a1fc, type: 2}
+    conditions:
+    - {fileID: 11400000, guid: dba2b30272025e84c8d5bbfd4756366f, type: 2}
+    cooldown: 0.5
+  - targetState: {fileID: 11400000, guid: 17a5d5697995cb049b8721c71844360d, type: 2}
+    conditions:
+    - {fileID: 11400000, guid: 1be4162e7b54fef40a212b8899026c9d, type: 2}
+    cooldown: 0.5
   dodgeDistance: 0.5
-  dodgeSpeed: 1
   dodgeDuration: 0.4

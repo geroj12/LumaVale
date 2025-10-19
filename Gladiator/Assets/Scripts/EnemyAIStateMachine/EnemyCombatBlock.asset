@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ec52863942cd6499b062d39ca1582d, type: 3}
   m_Name: EnemyCombatBlock
   m_EditorClassIdentifier: 
+  transitions:
+  - targetState: {fileID: 11400000, guid: f60497491d4a4da429e8a6312bf6a1fc, type: 2}
+    conditions:
+    - {fileID: 11400000, guid: 071c65e4b75851b4e99d928899019e78, type: 2}
+    cooldown: 0.5
+  - targetState: {fileID: 11400000, guid: 17a5d5697995cb049b8721c71844360d, type: 2}
+    conditions:
+    - {fileID: 11400000, guid: 720c4239d4d497c40a0096905a644699, type: 2}
+    cooldown: 0.5
   blockDuration: 1

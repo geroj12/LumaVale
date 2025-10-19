@@ -7,13 +7,13 @@ public class InvestigateStateAsset : EnemyState
     public float investigationSpeed = 1f;
 
     private Vector3 lastKnownPosition;
-    public override void Enter(StateMachineEnemy enemy)
+    public override void Enter()
     {
         lastKnownPosition = enemy.target.position;
         enemy.animator.SetBool("InvestigateWalk", true);
     }
 
-    public override void Tick(StateMachineEnemy enemy)
+    public override void Tick()
     {
 
         if (enemy.vision.CanSeeTarget())
@@ -32,7 +32,7 @@ public class InvestigateStateAsset : EnemyState
 
     }
 
-    public override void Exit(StateMachineEnemy enemy)
+    public override void Exit()
     {
         enemy.animator.SetBool("InvestigateWalk", false);
 

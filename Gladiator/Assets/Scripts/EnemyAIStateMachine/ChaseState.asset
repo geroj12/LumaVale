@@ -12,6 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3c3061804e70e4aaab85a622f2ed38, type: 3}
   m_Name: ChaseState
   m_EditorClassIdentifier: 
-  chaseSpeed: 0.2
-  attackRange: 1.6
-  playerNotInSightDuration: 3
+  transitions:
+  - targetState: {fileID: 11400000, guid: 94591efa6ed035048a0175c420105af5, type: 2}
+    conditions:
+    - {fileID: 11400000, guid: 12e1c8cdaf398644781ddcdc810e081a, type: 2}
+    - {fileID: 11400000, guid: 720c4239d4d497c40a0096905a644699, type: 2}
+    transitionCooldown: 0.3
+  - targetState: {fileID: 11400000, guid: fe5f845d1ab183c45b99959bdc4fce28, type: 2}
+    conditions:
+    - {fileID: 11400000, guid: 1be4162e7b54fef40a212b8899026c9d, type: 2}
+    transitionCooldown: 0.3
+  - targetState: {fileID: 11400000, guid: 224a681b111d29c49b2b68351cab9d4e, type: 2}
+    conditions:
+    - {fileID: 11400000, guid: e5ecc68d22704cd4c8024f4c24c6487e, type: 2}
+    - {fileID: 11400000, guid: 1be4162e7b54fef40a212b8899026c9d, type: 2}
+    transitionCooldown: 0.3
+  chaseSpeed: 0.005

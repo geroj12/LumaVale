@@ -4,61 +4,52 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "EnemyStates/Attack")]
 public class AttackStateAsset : EnemyState
 {
-    public float attackRange = 2f;
-    public float attackCooldown = 1.5f;
-    public float playerNotInSightDuration = 2f;
-    private float lastAttackTime = -Mathf.Infinity;
-    public string[] attackAnimations = { "Attack_Left", "Attack_Right", "Attack_Overhead" };
-    public override void Enter(StateMachineEnemy enemy)
+
+    private bool attackFinished;
+
+    public override void Enter()
     {
-        lastAttackTime = Time.time - attackCooldown;
+        attackFinished = false;
+
+        // 🔹 Zufällige Attack auswählen
+        int index = Random.Range(0, 3);
+        string trigger = index switch
+        {
+            0 => "Attack_Right",
+            1 => "Attack_Left",
+            _ => "Attack_Overhead"
+        };
+
+        Debug.Log($"[AttackState] {enemy.name} startet Angriff: {trigger}");
+
+        // Angriff aktivieren
+        enemy.animator.SetTrigger(trigger);
+
+        // Coroutine starten, die auf Attack-Ende wartet
+        enemy.StartCoroutine(WaitForAttackEnd());
     }
 
-    public override void Tick(StateMachineEnemy enemy)
+    private System.Collections.IEnumerator WaitForAttackEnd()
     {
+        // Warte bis Combat meldet, dass der Angriff vorbei ist
+        yield return new WaitUntil(() => enemy.Combat.IsAttackFinished);
 
-        if (enemy.vision.CanSeeTarget())
-        {
-            enemy.NotifyPlayerSeen(); // Spieler wurde gesehen → Zeit merken
-        }
-        else if (!enemy.HasRecentlySeenPlayer(playerNotInSightDuration)) // 2s Kulanz
-        {
-            enemy.TransitionTo(enemy.investigateState);
-            return;
-        }
+        attackFinished = true;
+        Debug.Log($"[AttackState] {enemy.name} Angriff beendet ✅");
 
-        float dist = Vector3.Distance(enemy.transform.position, enemy.target.position);
-        if (dist > attackRange)
+        // Danach zurück in CombatIdleState
+        if (enemy.combatIdleState != null)
         {
             enemy.TransitionTo(enemy.combatIdleState);
-            return;
         }
-
-        enemy.StopMovement();
-
-        if (Time.time - lastAttackTime >= attackCooldown)
+        else
         {
-
-            PerformAttack(enemy);
-            lastAttackTime = Time.time;
-
+            Debug.LogWarning("[AttackState] Kein CombatIdleState gesetzt!");
         }
     }
 
-    private void PerformAttack(StateMachineEnemy enemy)
+    public override void Exit()
     {
-
-        int index = Random.Range(0, attackAnimations.Length);
-        string anim = attackAnimations[index];
-        enemy.animator.SetTrigger(anim);
-
-
-    }
-
-
-    public override void Exit(StateMachineEnemy enemy)
-    {
-
-
+        Debug.Log($"[AttackState] {enemy.name} verlässt AttackState");
     }
 }

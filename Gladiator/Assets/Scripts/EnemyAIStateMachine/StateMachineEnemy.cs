@@ -1,12 +1,16 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
 public class StateMachineEnemy : MonoBehaviour
 {
+    [Header("References")]
     public EnemyVision vision;
+    [SerializeField] private EnemyCombat combat;
+    public EnemyCombat Combat => combat;
+    public Animator animator;
+    public CharacterController controller;
 
+    [Header("States")]
     public EnemyState initialState;
     public EnemyState chaseState;
     public EnemyState attackState;
@@ -18,57 +22,77 @@ public class StateMachineEnemy : MonoBehaviour
     public EnemyState combatRetreatState;
 
     [HideInInspector] public Transform target;
-    [HideInInspector] public CharacterController controller;
     [HideInInspector] public Vector3 startPosition;
 
     private EnemyState currentState;
-
-
-    public Animator animator;
     private bool isRunning;
     public bool isTurning = false;
     public bool IsBrainDisabled { get; private set; }
+
     private float turnStartTime;
     private const float maxTurnDuration = 2f;
+
     [HideInInspector] public bool playerRecentlySeen = false;
     private float playerLastSeenTime = -Mathf.Infinity;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        target = vision.target;
+        if (vision != null)
+            target = vision.target;
+
         startPosition = transform.position;
 
-
-        TransitionTo(initialState);
+        if (initialState != null)
+        {
+            SetState(initialState);
+        }
+        else
+        {
+            Debug.LogError("[StateMachineEnemy] Kein Initial State gesetzt!");
+        }
     }
 
     private void Update()
     {
-        if (target == null)
-        {
-            if (currentState != returnState)
-                TransitionTo(returnState);
-            return;
-        }
-
-        if (IsBrainDisabled)
+        if (IsBrainDisabled || currentState == null)
             return;
 
         // failsafe für Drehungen
         if (isTurning && Time.time - turnStartTime > maxTurnDuration)
             isTurning = false;
 
-        currentState?.Tick(this);
+        currentState.Tick();
     }
 
     public void TransitionTo(EnemyState newState)
     {
-        if (currentState == newState) return;
-        if (isTurning) return; // während Drehung blockieren
-        currentState?.Exit(this);
-        currentState = newState;
-        currentState?.Enter(this);
+        if (newState == null)
+        {
+            Debug.LogWarning("[StateMachineEnemy] Target state is null!");
+            return;
+        }
+
+        if (currentState != null && currentState.name == newState.name)
+            return; // keine Selbsttransition
+
+        if (isTurning)
+            return; // blockiere Wechsel während Drehung
+
+        Debug.Log($"[FSM] Transition: {name} -> {newState.name}");
+
+        currentState?.Exit();
+
+        // Wichtig: ScriptableObject instanziieren, sonst shared data!
+        currentState = Instantiate(newState);
+        currentState.Initialize(this);
+        currentState.Enter();
+    }
+    private void SetState(EnemyState newState)
+    {
+        currentState = Instantiate(newState);
+        currentState.Initialize(this);
+        currentState.Enter();
     }
     public bool HasRecentlySeenPlayer(float duration)
     {

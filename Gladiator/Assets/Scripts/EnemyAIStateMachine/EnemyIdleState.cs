@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyState
 {
-    public override void Enter(StateMachineEnemy enemy)
+    public override void Enter()
     {
       
 
     }
 
-    public override void Tick(StateMachineEnemy enemy)
+    public override void Tick()
     {
         if (enemy.vision.CanSeeTarget())
         {
@@ -20,7 +20,7 @@ public class EnemyIdleState : EnemyState
         }
     }
 
-    public override void Exit(StateMachineEnemy enemy)
+    public override void Exit()
     {
 
     }

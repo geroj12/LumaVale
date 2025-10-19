@@ -6,38 +6,25 @@ public class ReturnStateAsset : EnemyState
     public float returnSpeed = 3f;
     public float closeEnoughDistance = 1f;
 
-    public override void Enter(StateMachineEnemy enemy)
+    public override void Enter()
     {
-        Debug.Log("Enter RETURN");
         enemy.animator.SetBool("IsRunning", true);
-
     }
 
-    public override void Tick(StateMachineEnemy enemy)
+    public override void Tick()
     {
-        if (enemy.vision.CanSeeTarget())
-        {
-            enemy.TransitionTo(enemy.chaseState);
-            return;
-        }
+        base.Tick(); // prüft Transitions
 
         enemy.MoveTo(enemy.startPosition, returnSpeed);
 
-        float dist = Vector3.Distance(enemy.transform.position, enemy.startPosition);
-        if (dist < closeEnoughDistance)
+        if (Vector3.Distance(enemy.transform.position, enemy.startPosition) < closeEnoughDistance)
         {
             enemy.TransitionTo(enemy.initialState);
-            return;
         }
-
-
-
     }
 
-    public override void Exit(StateMachineEnemy enemy)
+    public override void Exit()
     {
-        Debug.Log("Exit RETURN");
         enemy.animator.SetBool("IsRunning", false);
-
     }
 }

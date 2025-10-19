@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a859a3fe0cfc1348b1210b36ee08a2c, type: 3}
+  m_Name: Combat Decision
+  m_EditorClassIdentifier: 
+  attackRange: 2
+  actions:
+  - name: Attack
+    baseWeight: 2
+    cooldown: 2
+    targetState: {fileID: 11400000, guid: 94591efa6ed035048a0175c420105af5, type: 2}
+    nextAvailableTime: 0
+    currentWeight: 2
+  - name: Block
+    baseWeight: 2
+    cooldown: 2
+    targetState: {fileID: 11400000, guid: cd83976bdc379054b8c9bd55b1c38e76, type: 2}
+    nextAvailableTime: 0
+    currentWeight: 2
+  - name: Dodge
+    baseWeight: 3
+    cooldown: 3
+    targetState: {fileID: 11400000, guid: d6d47362a2731bc4ba273a002991dd49, type: 2}
+    nextAvailableTime: 36.876945
+    currentWeight: 3
+  - name: Retreat
+    baseWeight: 5
+    cooldown: 5
+    targetState: {fileID: 11400000, guid: 2de6023fbeab1284a9f61fa00c3dc915, type: 2}
+    nextAvailableTime: 0
+    currentWeight: 5

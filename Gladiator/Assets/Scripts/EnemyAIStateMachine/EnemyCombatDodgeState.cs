@@ -4,13 +4,12 @@ using UnityEngine;
 public class EnemyCombatDodgeState : EnemyState
 {
     public float dodgeDistance = 2f;
-    public float dodgeSpeed = 6f;
     public float dodgeDuration = 0.4f;
 
     private Vector3 dodgeDirection;
     private float exitTime;
 
-    public override void Enter(StateMachineEnemy enemy)
+    public override void Enter()
     {
         exitTime = Time.time + dodgeDuration;
 
@@ -32,18 +31,12 @@ public class EnemyCombatDodgeState : EnemyState
         enemy.controller.Move(dodgeDirection * dodgeDistance * Time.deltaTime);
     }
 
-    public override void Tick(StateMachineEnemy enemy)
+    public override void Tick()
     {
-        // Weiterbewegen während Dodge
-        enemy.controller.Move(dodgeDirection * dodgeSpeed * Time.deltaTime);
-
-        if (Time.time >= exitTime)
-        {
-            enemy.TransitionTo(enemy.combatIdleState);
-        }
+       
     }
 
-    public override void Exit(StateMachineEnemy enemy)
+    public override void Exit()
     {
         // Optionales Aufräumen
     }

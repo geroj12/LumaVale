@@ -17,6 +17,13 @@ public class EnemyCombat : MonoBehaviour
     private static readonly int PrepareCounterTrigger = Animator.StringToHash("PrepareCounter");
     private static readonly int StunnedTrigger = Animator.StringToHash("Stunned");
 
+    private bool isAttacking;
+    private bool isAttackFinished;
+
+    public bool IsAttacking => isAttacking;
+    public bool IsAttackFinished => isAttackFinished;
+
+
     private void Awake()
     {
         CacheComponents();
@@ -36,16 +43,33 @@ public class EnemyCombat : MonoBehaviour
     }
 
     public void TelegraphAttackUI() => counterWindow?.TryActivate();
-   
+
     public void StartAttack()
     {
+        isAttacking = true;
         weapon.EnableDamage();
     }
 
 
     public void EndAttack()
     {
+        isAttacking = false;
         weapon.DisableDamage();
+
+
+    }
+
+    public void AttackFinished()
+    {
+        isAttackFinished = true;
+        // sorgt dafür, dass bei neuem Angriff wieder auf false gesetzt wird
+        StartCoroutine(ResetAttackFlag());
+
+    }
+    private IEnumerator ResetAttackFlag()
+    {
+        yield return new WaitForSeconds(1f);
+        isAttackFinished = false;
     }
 
     private void HandleCounterTriggered()
