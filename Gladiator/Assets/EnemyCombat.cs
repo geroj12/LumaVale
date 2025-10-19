@@ -24,6 +24,11 @@ public class EnemyCombat : MonoBehaviour
     public bool IsAttackFinished => isAttackFinished;
 
 
+    private bool isDodging;
+    private bool isDodgingFinished;
+
+    public bool IsDodging => isDodging;
+    public bool IsDodgingFinished => isDodgingFinished;
     private void Awake()
     {
         CacheComponents();
@@ -58,7 +63,16 @@ public class EnemyCombat : MonoBehaviour
 
 
     }
+    public void DodgeStart()
+    {
+        isDodging = true;
+    }
 
+    public void DodgeEnd()
+    {
+        isDodging = false;
+
+    }
     public void AttackFinished()
     {
         isAttackFinished = true;

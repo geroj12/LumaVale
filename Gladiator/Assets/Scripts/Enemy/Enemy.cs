@@ -181,11 +181,7 @@ public class Enemy : MonoBehaviour
     // ------------------------------
     public void InterruptAttack()
     {
-        if (!combat)
-            combat = GetComponent<EnemyCombat>();
-
-        if (combat)
-            combat.StartCoroutine(combat.ResetAttackBools());
+        InterruptAnimations();
 
         animator.SetTrigger("HitBlocked");
     }
@@ -210,7 +206,7 @@ public class Enemy : MonoBehaviour
     public void PlayHitReaction(Vector3 attackerPosition)
     {
         if (enemyHealth.IsDead) return;
-
+        InterruptAnimations();
         Vector3 toAttacker = (attackerPosition - transform.position).normalized;
         toAttacker.y = 0;
 

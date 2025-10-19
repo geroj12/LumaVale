@@ -9,7 +9,7 @@ public class AudioHookEnemy : MonoBehaviour
     [SerializeField] private FMODFinisher fMODFinisher;
     [SerializeField] private FMODShield fMODShield;
     [SerializeField] private FMODSwordHitsBody swordHitsBody;
-
+    [SerializeField] private EnemyCombat enemyCombat;
 
     public void AudioOnFootStep()
     {
@@ -17,7 +17,10 @@ public class AudioHookEnemy : MonoBehaviour
     }
     public void PlaySwordWooshSound()
     {
+        if (!enemyCombat.IsAttacking) return;
+
         swordWoosh.PlaySwordWoosh();
+
     }
 
     public void PlayHurtSound()

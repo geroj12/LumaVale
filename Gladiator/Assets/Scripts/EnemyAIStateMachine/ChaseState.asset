@@ -25,6 +25,5 @@ MonoBehaviour:
   - targetState: {fileID: 11400000, guid: 224a681b111d29c49b2b68351cab9d4e, type: 2}
     conditions:
     - {fileID: 11400000, guid: e5ecc68d22704cd4c8024f4c24c6487e, type: 2}
-    - {fileID: 11400000, guid: 1be4162e7b54fef40a212b8899026c9d, type: 2}
     transitionCooldown: 0.3
-  chaseSpeed: 0.005
+  chaseSpeed: 1.5

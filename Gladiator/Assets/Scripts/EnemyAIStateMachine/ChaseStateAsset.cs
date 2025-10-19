@@ -12,7 +12,12 @@ public class ChaseStateAsset : EnemyState
 
     public override void Tick()
     {
-        base.Tick(); // prüft Transitions
+        base.Tick(); 
+        if (!enemy.target || enemy.isTurning)
+            return;
+
+        if (enemy.TryPlayTurnAnimation(enemy.target))
+            return;
 
         if (enemy.target != null)
             enemy.MoveTo(enemy.target.position, chaseSpeed);

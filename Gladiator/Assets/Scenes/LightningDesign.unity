@@ -45453,6 +45453,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vision: {fileID: 250189969}
+  combat: {fileID: 6893959338305874645}
+  animator: {fileID: 6893959338305874638}
+  controller: {fileID: 6893959338305874644}
   initialState: {fileID: 11400000, guid: 2f9e8f99dbb30e8468f8b34df1d86839, type: 2}
   chaseState: {fileID: 11400000, guid: 17a5d5697995cb049b8721c71844360d, type: 2}
   attackState: {fileID: 11400000, guid: 94591efa6ed035048a0175c420105af5, type: 2}
@@ -45462,11 +45465,8 @@ MonoBehaviour:
   dodgeState: {fileID: 11400000, guid: d6d47362a2731bc4ba273a002991dd49, type: 2}
   combatIdleState: {fileID: 11400000, guid: f60497491d4a4da429e8a6312bf6a1fc, type: 2}
   combatRetreatState: {fileID: 11400000, guid: 2de6023fbeab1284a9f61fa00c3dc915, type: 2}
-  combat: {fileID: 6893959338305874645}
   target: {fileID: 4898614681539123683}
-  controller: {fileID: 6893959338305874644}
   startPosition: {x: 0, y: 0, z: 0}
-  animator: {fileID: 6893959338305874638}
   isTurning: 0
   playerRecentlySeen: 0
 --- !u!114 &6893959338305874643
@@ -45598,6 +45598,7 @@ MonoBehaviour:
   fMODFinisher: {fileID: 1392836120}
   fMODShield: {fileID: 1392836115}
   swordHitsBody: {fileID: 1392836121}
+  enemyCombat: {fileID: 6893959338305874645}
 --- !u!33 &6910777112568814290
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ MonoBehaviour:
   - targetState: {fileID: 11400000, guid: 94591efa6ed035048a0175c420105af5, type: 2}
     conditions:
     - {fileID: 11400000, guid: 12e1c8cdaf398644781ddcdc810e081a, type: 2}
+    - {fileID: 11400000, guid: 720c4239d4d497c40a0096905a644699, type: 2}
     transitionCooldown: 0.3
   - targetState: {fileID: 11400000, guid: fe5f845d1ab183c45b99959bdc4fce28, type: 2}
     conditions:
