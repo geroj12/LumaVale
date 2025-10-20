@@ -16,10 +16,10 @@ MonoBehaviour:
   - targetState: {fileID: 11400000, guid: 17a5d5697995cb049b8721c71844360d, type: 2}
     conditions:
     - {fileID: 11400000, guid: 720c4239d4d497c40a0096905a644699, type: 2}
-    cooldown: 0.5
+    transitionCooldown: 0.3
   - targetState: {fileID: 11400000, guid: 2f9e8f99dbb30e8468f8b34df1d86839, type: 2}
     conditions:
     - {fileID: 11400000, guid: bd21ee1e56d47834eb702c7cca43664a, type: 2}
-    cooldown: 0.5
+    transitionCooldown: 0.3
   returnSpeed: 0.7
   closeEnoughDistance: 1

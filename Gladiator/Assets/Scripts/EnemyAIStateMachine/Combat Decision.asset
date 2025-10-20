@@ -18,23 +18,23 @@ MonoBehaviour:
     baseWeight: 2
     cooldown: 2
     targetState: {fileID: 11400000, guid: 94591efa6ed035048a0175c420105af5, type: 2}
-    nextAvailableTime: 0
+    nextAvailableTime: 39.58164
     currentWeight: 2
   - name: Block
     baseWeight: 2
     cooldown: 2
     targetState: {fileID: 11400000, guid: cd83976bdc379054b8c9bd55b1c38e76, type: 2}
-    nextAvailableTime: 0
+    nextAvailableTime: 50.302494
     currentWeight: 2
   - name: Dodge
     baseWeight: 3
     cooldown: 3
     targetState: {fileID: 11400000, guid: d6d47362a2731bc4ba273a002991dd49, type: 2}
-    nextAvailableTime: 36.876945
+    nextAvailableTime: 52.375153
     currentWeight: 3
   - name: Retreat
     baseWeight: 5
     cooldown: 5
     targetState: {fileID: 11400000, guid: 2de6023fbeab1284a9f61fa00c3dc915, type: 2}
-    nextAvailableTime: 0
+    nextAvailableTime: 57.048046
     currentWeight: 5

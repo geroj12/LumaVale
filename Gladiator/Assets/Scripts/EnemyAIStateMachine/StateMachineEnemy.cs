@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StateMachineEnemy : MonoBehaviour
@@ -25,15 +26,17 @@ public class StateMachineEnemy : MonoBehaviour
     [HideInInspector] public Vector3 startPosition;
 
     private EnemyState currentState;
+    public EnemyState CurrentState => currentState;
+
     private bool isRunning;
     public bool isTurning = false;
     public bool IsBrainDisabled { get; private set; }
-
     private float turnStartTime;
     private const float maxTurnDuration = 2f;
 
     [HideInInspector] public bool playerRecentlySeen = false;
     private float playerLastSeenTime = -Mathf.Infinity;
+    private Dictionary<string, float> transitionLastTriggerTimes = new Dictionary<string, float>();
 
     private void Start()
     {
@@ -64,26 +67,45 @@ public class StateMachineEnemy : MonoBehaviour
 
         currentState.Tick();
     }
+    public bool IsTransitionCooldownActive(string key, float cooldown)
+    {
+        if (string.IsNullOrEmpty(key)) return false;
 
+        if (!transitionLastTriggerTimes.TryGetValue(key, out float last))
+            return false;
+
+        return Time.time - last < cooldown;
+    }
+    public void RegisterTransitionTrigger(string key)
+    {
+        if (string.IsNullOrEmpty(key)) return;
+        transitionLastTriggerTimes[key] = Time.time;
+    }
+    public string BuildTransitionKey(EnemyState fromState, EnemyState toState)
+    {
+        // Nutze Asset-Namen (ScriptableObject.name) – stabil über Instanzen
+        string fromName = fromState != null ? fromState.name : "null";
+        string toName = toState != null ? toState.name : "null";
+        // zusätzlich GameObject-InstanceId, falls mehrere Gegner gleich benannte States haben
+        return $"{gameObject.GetInstanceID()}_{fromName}_to_{toName}";
+    }
     public void TransitionTo(EnemyState newState)
     {
         if (newState == null)
         {
-            Debug.LogWarning("[StateMachineEnemy] Target state is null!");
             return;
         }
 
         if (currentState != null && currentState.name == newState.name)
-            return; // keine Selbsttransition
+            return;
 
         if (isTurning)
-            return; // blockiere Wechsel während Drehung
+            return;
 
         Debug.Log($"[FSM] Transition: {name} -> {newState.name}");
 
         currentState?.Exit();
 
-        // Wichtig: ScriptableObject instanziieren, sonst shared data!
         currentState = Instantiate(newState);
         currentState.Initialize(this);
         currentState.Enter();
@@ -132,12 +154,10 @@ public class StateMachineEnemy : MonoBehaviour
 
     public void RetreatMove(Vector3 retreatTarget, float speed, Transform player)
     {
-        // Bewegung: Vom Ziel weg
         Vector3 moveDir = (retreatTarget - transform.position).normalized;
         moveDir.y = 0;
         controller.Move(moveDir * speed * Time.deltaTime);
 
-        // Rotation: Zum Spieler schauen
         Vector3 lookDir = (player.position - transform.position).normalized;
         lookDir.y = 0;
         if (lookDir.sqrMagnitude > 0.001f)
@@ -155,13 +175,13 @@ public class StateMachineEnemy : MonoBehaviour
         directionToTarget.y = 0;
 
         if (directionToTarget.sqrMagnitude < 0.01f)
-            return false; // Kein sinnvoller Richtungsvektor
+            return false;
 
         Quaternion targetRotation = Quaternion.LookRotation(directionToTarget.normalized);
         float angle = Quaternion.Angle(transform.rotation, targetRotation);
 
         if (angle < 40f)
-            return false; // Kein Turn notwendig bei geringem Winkel
+            return false;
 
         string triggerToPlay = null;
 
@@ -200,7 +220,7 @@ public class StateMachineEnemy : MonoBehaviour
     }
     public void StopMovement()
     {
-        controller.Move(Vector3.zero); // verhindert Restbewegung
+        controller.Move(Vector3.zero);
     }
 
     internal void PlayIdleAnimation()

@@ -4,9 +4,8 @@ using UnityEngine;
 public class Transition
 {
     [SerializeField] private EnemyState targetState;
-    [SerializeField] private Condition[] conditions; // <-- changed
-    [SerializeField, Tooltip("Mindestabstand zwischen zwei Transition-Auslösungen.")]
-    private float transitionCooldown = 0.3f;
+    [SerializeField] private Condition[] conditions;
+    [SerializeField] private float transitionCooldown = 1f;
 
     private StateMachineEnemy enemy;
     private float lastTriggerTime = -Mathf.Infinity;
@@ -28,7 +27,8 @@ public class Transition
     {
         if (enemy == null || targetState == null) return false;
 
-        if (Time.time - lastTriggerTime < transitionCooldown)
+        string key = enemy.BuildTransitionKey(enemy.CurrentState, targetState);
+        if (enemy.IsTransitionCooldownActive(key, transitionCooldown))
             return false;
 
         if (conditions == null || conditions.Length == 0)
@@ -40,8 +40,8 @@ public class Transition
             if (!condition.Evaluate(enemy)) return false;
         }
 
-        Debug.Log($"[Transition] triggered: {enemy.name} -> {targetState.name}");
-        lastTriggerTime = Time.time;
+        // Wenn wir hier sind: Transition wird ausgelöst -> registriere Zeit
+        enemy.RegisterTransitionTrigger(key);
         return true;
     }
 }

@@ -60,9 +60,7 @@ public class EnemyWeapon : MonoBehaviour
     {
         Player player = other.GetComponentInParent<Player>();
         player.TakeDamage(damage, enemy.transform.position, false);
-        weaponCollider.isTrigger = true; //um eventuelle doppel kollisionen zu vermeiden
-        Debug.Log("Player hit");
-
+        weaponCollider.isTrigger = true; 
     }
 
     private void HandlePlayerBlockHit(Collider other)
@@ -71,13 +69,11 @@ public class EnemyWeapon : MonoBehaviour
         Player player = other.GetComponentInParent<Player>();
         if (player == null) return;
 
-        // Zugriff auf das PlayerCounterWindow
         var playerCounterWindow = player.GetComponent<PlayerCounterWindow>();
 
         bool playerCanCounter = playerCounterWindow != null && playerCounterWindow.IsActive;
         bool enemyIsInCounterWindow = enemyCounterWindow != null && enemyCounterWindow.IsActive;
 
-        // Perfekter Counter: Beide Fenster aktiv
         if (playerCanCounter && enemyIsInCounterWindow)
         {
             enemyCounterWindow.TriggerCounter();
@@ -85,16 +81,11 @@ public class EnemyWeapon : MonoBehaviour
 
             if (enemy.TryGetComponent(out EnemyCombat combat))
                 combat.ApplyStun();
-
-            Debug.Log("<color=lime>PERFECT COUNTER!</color>");
         }
         else
         {
-            // Normales Blocken (kein Counter)
             player.TakeDamage(damage, enemy.transform.position, true);
             enemy.InterruptAttack();
-
-            Debug.Log("Player shield hit (no counter)");
         }
 
         weaponCollider.isTrigger = true;

@@ -13,7 +13,6 @@ public abstract class EnemyState : ScriptableObject
 
         if (transitions == null || transitions.Length == 0)
         {
-            Debug.Log($"[{name}] hat keine Transitions.");
             return;
         }
 
@@ -23,23 +22,17 @@ public abstract class EnemyState : ScriptableObject
 
     public virtual void Enter()
     {
-        Debug.Log($"[State Enter] {enemy.name} entered {name}");
     }
 
     public virtual void Exit()
     {
-        Debug.Log($"[State Exit] {enemy.name} exited {name}");
     }
 
     public virtual void Tick()
     {
-        // Standardverhalten: prüfe jede Transition
         CheckTransitions();
     }
 
-    /// <summary>
-    /// Prüft, ob eine Transition ausgelöst werden soll.
-    /// </summary>
     protected void CheckTransitions()
     {
         if (transitions == null || transitions.Length == 0)
@@ -51,7 +44,6 @@ public abstract class EnemyState : ScriptableObject
 
             if (should)
             {
-                Debug.Log($"[Transition Triggered] {enemy.name} -> {t.TargetState.name} (from {name})");
                 enemy.TransitionTo(t.TargetState);
                 return;
             }

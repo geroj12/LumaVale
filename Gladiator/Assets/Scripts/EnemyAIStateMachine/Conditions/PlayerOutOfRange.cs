@@ -13,7 +13,6 @@ public class PlayerOutOfRangeCondition : Condition
 
         float dist = Vector3.Distance(enemy.transform.position, enemy.vision.target.position);
 
-        // Spieler ist zu weit für Attacke, aber noch sichtbar → Chasen
         return dist > attackRange && dist < chaseRange;
     }
 }
