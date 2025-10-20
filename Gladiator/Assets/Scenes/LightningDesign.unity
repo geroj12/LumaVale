@@ -45023,7 +45023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53574dff68fb795489c171cd49fb0be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 20
+  baseDamage: 15
   heavyAttackModifier: 1.5
   player: {fileID: 4898614681539123694}
   weaponTrail: {fileID: 162842967}
@@ -52972,7 +52972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c87873379b71e4298a87b3202581ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 40
+  damage: 15
   enemy: {fileID: 6893959338305874643}
   weaponTrail: {fileID: 159644944}
   weaponCollider: {fileID: 2734392266763060830}

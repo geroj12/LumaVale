@@ -24,6 +24,9 @@ public class EnemyCombat : MonoBehaviour
     public bool IsAttackFinished => isAttackFinished;
 
 
+    private bool isStunned;
+    public bool IsStunned => isStunned;
+
     private bool isDodging;
     private bool isDodgingFinished;
 
@@ -80,6 +83,17 @@ public class EnemyCombat : MonoBehaviour
         StartCoroutine(ResetAttackFlag());
 
     }
+    public void ApplyStun()
+    {
+        animator.SetTrigger(StunnedTrigger);
+        isStunned = true;
+    }
+
+    public void IsStunnedFinished()
+    {
+        isStunned = false;
+
+    }
     private IEnumerator ResetAttackFlag()
     {
         yield return new WaitForSeconds(1f);
@@ -102,18 +116,5 @@ public class EnemyCombat : MonoBehaviour
 
         counterWindow.TryActivate();
         animator.SetTrigger(PrepareCounterTrigger);
-    }
-
-    public IEnumerator ResetAttackBools()
-    {
-        yield return new WaitForSeconds(1f);
-        animator.SetBool("Attack_Right", false);
-        animator.SetBool("Attack_Left", false);
-        animator.SetBool("Attack_Overhead", false);
-    }
-    public void ApplyStun()
-    {
-        animator.SetTrigger(StunnedTrigger);
-
     }
 }

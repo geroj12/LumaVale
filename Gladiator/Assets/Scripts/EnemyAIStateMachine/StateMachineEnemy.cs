@@ -50,15 +50,12 @@ public class StateMachineEnemy : MonoBehaviour
         {
             SetState(initialState);
         }
-        else
-        {
-            Debug.LogError("[StateMachineEnemy] Kein Initial State gesetzt!");
-        }
+      
     }
 
     private void Update()
     {
-        if (IsBrainDisabled || currentState == null)
+        if (IsBrainDisabled || currentState == null || combat.IsStunned)
             return;
 
         // failsafe für Drehungen
@@ -102,7 +99,6 @@ public class StateMachineEnemy : MonoBehaviour
         if (isTurning)
             return;
 
-        Debug.Log($"[FSM] Transition: {name} -> {newState.name}");
 
         currentState?.Exit();
 

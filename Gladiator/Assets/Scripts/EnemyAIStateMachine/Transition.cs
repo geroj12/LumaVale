@@ -8,7 +8,6 @@ public class Transition
     [SerializeField] private float transitionCooldown = 1f;
 
     private StateMachineEnemy enemy;
-    private float lastTriggerTime = -Mathf.Infinity;
 
     public EnemyState TargetState => targetState;
 
