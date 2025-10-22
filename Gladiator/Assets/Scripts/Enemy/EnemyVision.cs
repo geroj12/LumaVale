@@ -17,7 +17,9 @@ public class EnemyVision : MonoBehaviour
     public FMODMusic music;
     [SerializeField] private FMODAlert alertSound;
     private bool alertTriggered = false;
+    [SerializeField] private float fadeSpeed = 1.5f;
 
+    private Coroutine fadeRoutine;
     [SerializeField] private ParticleSystem spawnedAlertVFX;
 
     private void Start()
@@ -32,7 +34,7 @@ public class EnemyVision : MonoBehaviour
     {
         if (enemyHealth.IsDead)
         {
-            music.SetCombatLevel(0f);
+            StartFade(0f);
 
         }
     }
@@ -86,7 +88,7 @@ public class EnemyVision : MonoBehaviour
                     if (!targetInSight)
                     {
 
-                        music.SetCombatLevel(1f);
+                        StartFade(1f);
 
                     }
 
@@ -110,10 +112,27 @@ public class EnemyVision : MonoBehaviour
         if (other.transform == target)
         {
             targetInSight = false;
-            music.SetCombatLevel(0f);
+            StartFade(0f);
             alertTriggered = false;
             spawnedAlertVFX.Stop();
 
+        }
+    }
+
+    private void StartFade(float targetLevel)
+    {
+        if (fadeRoutine != null) StopCoroutine(fadeRoutine);
+        fadeRoutine = StartCoroutine(FadeMusic(targetLevel));
+    }
+
+    private IEnumerator FadeMusic(float targetLevel)
+    {
+        float current = music.GetCombatLevel();
+        while (!Mathf.Approximately(current, targetLevel))
+        {
+            current = Mathf.MoveTowards(current, targetLevel, Time.deltaTime * fadeSpeed);
+            music.SetCombatLevel(current);
+            yield return null;
         }
     }
     public bool CanSeeTarget()

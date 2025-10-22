@@ -7081,7 +7081,6 @@ GameObject:
   - component: {fileID: 250189965}
   - component: {fileID: 250189966}
   - component: {fileID: 250189969}
-  - component: {fileID: 250189970}
   m_Layer: 0
   m_Name: Vision
   m_TagString: Untagged
@@ -7138,7 +7137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 6893959338305874646}
-  alertHandler: {fileID: 250189970}
   target: {fileID: 4898614681539123683}
   viewDistance: 10
   viewAngle: 130
@@ -7148,23 +7146,9 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 8192
-  targetInSight: 0
---- !u!114 &250189970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250189963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e0f87066f11ef74d8b55bc6b334ad5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   music: {fileID: 1685733586}
   alertSound: {fileID: 1392836118}
   spawnedAlertVFX: {fileID: 1902054941}
-  fadeSpeed: 0.8
 --- !u!1 &256344858
 GameObject:
   m_ObjectHideFlags: 0
