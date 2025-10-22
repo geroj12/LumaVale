@@ -1,7 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using Unity.Cinemachine;
-using static FinisherData;
 using System.Linq;
 
 
@@ -21,15 +18,18 @@ public class FinisherController : MonoBehaviour
                 var dynamicAnchor = enemy.GetComponent<DynamicFinisherAnchor>();
                 if (dynamicAnchor != null)
                 {
-                    dynamicAnchor.UpdateAnchorToPlayer(transform); // "transform" = Spieler
+                    dynamicAnchor.UpdateAnchorToPlayer(transform); 
                 }
                 
                 bool isFatal = enemy.GetComponent<EnemyHealth>().HealthPercent <= enemy.GetComponent<EnemyHealth>().fatalFinisherThreshold;
                 FinisherData finisher = GetValidFinisher(isFatal);
                 if (finisher != null)
+                {
                     executor.ExecuteFinisher(enemy, finisher);
-                else
-                    Debug.LogWarning("Kein gültiger Finisher gefunden für aktuellen Waffentyp.");
+                    enemy.GetComponent<EnemyHealth>().currentHP = 0f;
+                    enemy.GetComponent<StateMachineEnemy>().enabled = false;
+                    
+                }            
             }
         }
     }

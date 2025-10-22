@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     [Header("Health Settings")]
     [SerializeField] private float maxHP = 100f;
-    [SerializeField] private float currentHP;
+    public float currentHP;
     public float fatalFinisherThreshold = 10f;
 
     [Header("Shield Settings")]
@@ -17,7 +17,6 @@ public class EnemyHealth : MonoBehaviour
     public float HealthPercent => (currentHP / maxHP) * 100f;
     public bool IsDead => currentHP <= 0f;
 
-    // --- Events ---
     public event Action<float> OnDamaged;
     public event Action OnDeath;
     public event Action OnShieldBreak;
@@ -32,7 +31,6 @@ public class EnemyHealth : MonoBehaviour
     }
     public void ApplyDamage(float amount, Vector3 attackerPosition, bool hitShield = false, PlayerWeapon.AttackType attackType = PlayerWeapon.AttackType.Normal)
     {
-        if (IsDead) return;
 
         if (hitShield && hasShield)
         {
@@ -51,13 +49,12 @@ public class EnemyHealth : MonoBehaviour
 
         OnDamaged?.Invoke(amount);
         enemy.PlayHitReaction(attackerPosition);
-        if (IsDead)
-            OnDeath?.Invoke();
-    }
 
-    public void Heal(float amount)
-    {
-        if (IsDead) return;
-        currentHP = Mathf.Min(currentHP + amount, maxHP);
+        if (IsDead)
+        {
+            OnDeath?.Invoke();
+        }
+
+
     }
 }

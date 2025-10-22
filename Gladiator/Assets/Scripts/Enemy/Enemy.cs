@@ -6,7 +6,6 @@ public class Enemy : MonoBehaviour
 
     [Header("Setup")]
     [SerializeField] private Animator animator;
-    [SerializeField] private EnemyCombat combat;
     [SerializeField] private EnemyHealth enemyHealth;
     [SerializeField] private StateMachineEnemy statemachine;
     [SerializeField] private CharacterController controller;
@@ -65,16 +64,14 @@ public class Enemy : MonoBehaviour
 
     }
 
-
+   
 
     void FixedUpdate()
     {
         ApplyGravity();
     }
 
-    // ------------------------------
-    // EVENT HANDLERS
-    // ------------------------------
+   
     private void HandleDamage(float amount)
     {
         if (enemyHealth.IsDead) return;
@@ -87,25 +84,11 @@ public class Enemy : MonoBehaviour
         {
             EnableRagdoll();
             SpawnRandomBloodEmitter(finisherBloodEmitters);
-            animator.enabled = false;
-
-            DeactivateOnDeath();
-
+            
         }
     }
 
-    private void DeactivateOnDeath()
-    {
-        // Alles außer dem Modell deaktivieren
-        foreach (Transform child in transform)
-        {
-            if (child.gameObject == modelRoot) continue; // Modell bleibt aktiv
-            child.gameObject.SetActive(false);
-        }
-
-
-    }
-
+   
     private void HandleShieldImpact()
     {
         animator.SetTrigger("ShieldImpact");

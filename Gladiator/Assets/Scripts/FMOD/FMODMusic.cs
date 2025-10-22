@@ -15,7 +15,12 @@ public class FMODMusic : MonoBehaviour
     }
 
 
-
+    public float GetCombatLevel()
+    {
+        float value;
+        instance.getParameterByName("Combat", out value);
+        return value;
+    }
     public void SetCombatLevel(float value)
     {
         instance.setParameterByName("Combat", Mathf.Clamp01(value));
