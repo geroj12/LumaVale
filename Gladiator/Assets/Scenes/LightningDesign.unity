@@ -18193,6 +18193,8 @@ GameObject:
   - component: {fileID: 1392836119}
   - component: {fileID: 1392836121}
   - component: {fileID: 1392836120}
+  - component: {fileID: 1392836122}
+  - component: {fileID: 1392836123}
   m_Layer: 7
   m_Name: FMODAudioHandler
   m_TagString: Untagged
@@ -18374,6 +18376,44 @@ MonoBehaviour:
       Data3: 407846545
       Data4: -1338159236
     Path: event:/Events/Impacts/SwordHitsBody
+--- !u!114 &1392836122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4401c1dc9858a0641b64087bd03efa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterBashEvent:
+    Guid:
+      Data1: 1051735914
+      Data2: 1297374027
+      Data3: -962657146
+      Data4: 1887691244
+    Path: event:/Events/Impacts/EnemyCounterBash
+--- !u!114 &1392836123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0f672881bbc9734d8ff258761186ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPlayerCounterEvent:
+    Guid:
+      Data1: -633274457
+      Data2: 1312343143
+      Data3: -1154570608
+      Data4: -360205823
+    Path: event:/Events/Impacts/OnPlayerCounter
 --- !u!1 &1416871268
 GameObject:
   m_ObjectHideFlags: 0
@@ -45598,6 +45638,8 @@ MonoBehaviour:
   fMODFinisher: {fileID: 1392836120}
   fMODShield: {fileID: 1392836115}
   swordHitsBody: {fileID: 1392836121}
+  enemyCounterBash: {fileID: 1392836122}
+  playerOnCounter: {fileID: 1392836123}
   enemyCombat: {fileID: 6893959338305874645}
 --- !u!33 &6910777112568814290
 MeshFilter:

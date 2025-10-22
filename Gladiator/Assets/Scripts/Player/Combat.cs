@@ -33,7 +33,7 @@ public class Combat : MonoBehaviour
     public float maxHoldTime = 5f;
     public float holdAttackTimer = 0f;
     public bool isOvercharged = false;
-
+    
     #region Unity Methods
 
     private void Start()
@@ -128,7 +128,7 @@ public class Combat : MonoBehaviour
         holdAttackTimer = 0f;
         isOvercharged = false;
     }
-   
+
     private void TriggerSwipeAttack()
     {
         if (state.currentEnergy < state.normalAttackCost) return;

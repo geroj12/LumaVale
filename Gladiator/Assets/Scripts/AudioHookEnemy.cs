@@ -9,6 +9,9 @@ public class AudioHookEnemy : MonoBehaviour
     [SerializeField] private FMODFinisher fMODFinisher;
     [SerializeField] private FMODShield fMODShield;
     [SerializeField] private FMODSwordHitsBody swordHitsBody;
+    [SerializeField] private FMODEnemyCounterBash enemyCounterBash;
+    [SerializeField] private FMODPlayerOnCounter playerOnCounter;
+
     [SerializeField] private EnemyCombat enemyCombat;
 
     public void AudioOnFootStep()
@@ -46,5 +49,14 @@ public class AudioHookEnemy : MonoBehaviour
     public void PlaySwordHitsBodySound()
     {
         swordHitsBody.PlaySwordHitsBodySFX();
+    }
+
+    public void PlayEnemyCounterBashSound()
+    {
+        enemyCounterBash.PlayCounterBashSFX();
+    }
+    public void PlayPlayerOnCounterSound()
+    {
+        playerOnCounter.OnPlayerCounterSFX();
     }
 }

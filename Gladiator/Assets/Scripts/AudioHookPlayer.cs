@@ -8,7 +8,7 @@ public class AudioHookPlayer : MonoBehaviour
     [SerializeField] private FMODHurt fMODHurt;
     [SerializeField] private FMODSwordHit fMODSwordHit;
     [SerializeField] private FMODSwordHitsBody swordHitsBody;
-
+    [SerializeField] private State state;
 
     public void AudioOnFootStep()
     {
@@ -43,4 +43,5 @@ public class AudioHookPlayer : MonoBehaviour
     {
         swordHitsBody.PlaySwordHitsBodySFX();
     }
+
 }

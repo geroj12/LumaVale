@@ -63,13 +63,6 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: PlaySwordWooshSound
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0
         functionName: TelegraphAttackUI
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -78,6 +71,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.22238098
         functionName: StartAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.2425876
+        functionName: PlaySwordWooshSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
