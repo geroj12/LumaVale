@@ -18195,6 +18195,8 @@ GameObject:
   - component: {fileID: 1392836120}
   - component: {fileID: 1392836122}
   - component: {fileID: 1392836123}
+  - component: {fileID: 1392836124}
+  - component: {fileID: 1392836125}
   m_Layer: 7
   m_Name: FMODAudioHandler
   m_TagString: Untagged
@@ -18414,6 +18416,44 @@ MonoBehaviour:
       Data3: -1154570608
       Data4: -360205823
     Path: event:/Events/Impacts/OnPlayerCounter
+--- !u!114 &1392836124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a06abbb96343e4e99f5b5561f82289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTelegraphRoarEvent:
+    Guid:
+      Data1: 1644864304
+      Data2: 1170310329
+      Data3: -192122465
+      Data4: 1477016717
+    Path: event:/Events/Characters/Enemy/Enemy_Telegraph_Roar
+--- !u!114 &1392836125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392836111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14f8f07bac3ee54b893220907b6753d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCounterRoarEvent:
+    Guid:
+      Data1: 805916603
+      Data2: 1247543443
+      Data3: 1536199581
+      Data4: 686148350
+    Path: event:/Events/Characters/Enemy/Enemy_CounterBash_Roar
 --- !u!1 &1416871268
 GameObject:
   m_ObjectHideFlags: 0
@@ -32307,7 +32347,7 @@ MonoBehaviour:
   attackCooldown: 1
   blockCollider: {fileID: 1162385561}
   hitCollider: {fileID: 109006641}
-  maxHoldTime: 5
+  maxHoldTime: 2
   holdAttackTimer: 0
   isOvercharged: 0
 --- !u!114 &4898614681539123691
@@ -32490,6 +32530,7 @@ MonoBehaviour:
   fMODHurt: {fileID: 9085088073272709984}
   fMODSwordHit: {fileID: 9085088073272709986}
   swordHitsBody: {fileID: 9085088073272709987}
+  state: {fileID: 4898614681539123695}
 --- !u!4 &4909424234290693374
 Transform:
   m_ObjectHideFlags: 0
@@ -45640,6 +45681,8 @@ MonoBehaviour:
   swordHitsBody: {fileID: 1392836121}
   enemyCounterBash: {fileID: 1392836122}
   playerOnCounter: {fileID: 1392836123}
+  enemyTelegraphRoar: {fileID: 1392836124}
+  enemyCounterRoar: {fileID: 1392836125}
   enemyCombat: {fileID: 6893959338305874645}
 --- !u!33 &6910777112568814290
 MeshFilter:
@@ -58026,11 +58069,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtEvent:
     Guid:
-      Data1: 846001084
-      Data2: 1222566765
-      Data3: -1230008165
-      Data4: 837920032
-    Path: event:/Events/Characters/Enemy/Enemy_Hurt
+      Data1: 258274449
+      Data2: 1077649460
+      Data3: -1242852956
+      Data4: -1794013102
+    Path: event:/Events/Characters/Player/Player_Hurt
 --- !u!114 &9085088073272709986
 MonoBehaviour:
   m_ObjectHideFlags: 0

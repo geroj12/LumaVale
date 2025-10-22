@@ -373,6 +373,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-703337983163542817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/Enemy/Enemy_Telegraph_Roar
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/Enemy/Enemy_Telegraph_Roar
+  Guid:
+    Data1: 1644864304
+    Data2: 1170310329
+    Data3: -192122465
+    Data4: 1477016717
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 731
 --- !u!114 &-607791218967145849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,12 +464,15 @@ MonoBehaviour:
   - {fileID: -3946642625289987557}
   - {fileID: 596351980410305040}
   - {fileID: 3780474208327399238}
+  - {fileID: -703337983163542817}
+  - {fileID: 656055151977007389}
+  - {fileID: 7059067412306437373}
   EditorParameters: []
   MasterBanks:
   - {fileID: 295523176594350469}
   StringsBanks:
   - {fileID: 4501806437844525808}
-  cacheTime: 638966619987247224
+  cacheTime: 638967372429673786
   cacheVersion: 131605
 --- !u!114 &295523176594350469
 MonoBehaviour:
@@ -459,10 +489,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638966619986954858
+  lastModified: 638967372429313657
   FileSizes:
   - Name: Desktop
-    Value: 5618144
+    Value: 5678176
   Exists: 1
 --- !u!114 &322569372274337003
 MonoBehaviour:
@@ -519,6 +549,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3000
+--- !u!114 &656055151977007389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/Enemy/Enemy_CounterBash_Roar
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/Enemy/Enemy_CounterBash_Roar
+  Guid:
+    Data1: 805916603
+    Data2: 1247543443
+    Data3: 1536199581
+    Data4: 686148350
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 820
 --- !u!114 &1818242346665042664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,10 +727,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638966619987247224
+  lastModified: 638967372429673786
   FileSizes:
   - Name: Desktop
-    Value: 1972
+    Value: 2106
   Exists: 1
 --- !u!114 &5142774963877048005
 MonoBehaviour:
@@ -720,6 +777,33 @@ MonoBehaviour:
     Data2: 1222566765
     Data3: -1230008165
     Data4: 837920032
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 552
+--- !u!114 &7059067412306437373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/Player/Player_Hurt
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/Player/Player_Hurt
+  Guid:
+    Data1: 258274449
+    Data2: 1077649460
+    Data3: -1242852956
+    Data4: -1794013102
   Banks:
   - {fileID: 295523176594350469}
   IsStream: 0

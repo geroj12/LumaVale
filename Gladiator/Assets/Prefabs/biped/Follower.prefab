@@ -183,14 +183,14 @@ MonoBehaviour:
       Data2: 1224956686
       Data3: -1683371628
       Data4: 1294953958
-    Path: event:/Events/Characters/PlayerCreature/Prepare
+    Path: event:/Events/Characters/PlayerCreature/Player_Prepare
   hypedSound:
     Guid:
       Data1: -2022797833
       Data2: 1329060512
       Data3: -2112364901
       Data4: -715977198
-    Path: event:/Events/Characters/PlayerCreature/Hyped
+    Path: event:/Events/Characters/PlayerCreature/Player_Hyped
 --- !u!114 &838577147935087536
 MonoBehaviour:
   m_ObjectHideFlags: 0

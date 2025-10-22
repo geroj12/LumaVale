@@ -1203,7 +1203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149037214}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24020793, y: -0.0051662587, z: 0.0012784252, w: 0.97070694}
+  m_LocalRotation: {x: 0.24020867, y: -0.004579762, z: 0.0011332927, w: 0.97070986}
   m_LocalPosition: {x: 64.47, y: 52.004944, z: 125.52398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2544,6 +2544,9 @@ MonoBehaviour:
   swordWoosh: {fileID: 1940940534}
   fMODHurt: {fileID: 1940940533}
   fMODShield: {fileID: 1940940529}
+  fMODSwordHit: {fileID: 0}
+  fMODEnemyDying: {fileID: 0}
+  fMODFinisher: {fileID: 0}
 --- !u!114 &300635355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2557,11 +2560,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vision: {fileID: 796560375}
-  patrolPoints:
-  - {fileID: 1320208670}
-  - {fileID: 953700148}
+  combat: {fileID: 0}
+  animator: {fileID: 300635359}
+  controller: {fileID: 0}
   initialState: {fileID: 11400000, guid: 865be84a915decb4eb2b1bd0f8e9af42, type: 2}
-  patrolState: {fileID: 11400000, guid: 865be84a915decb4eb2b1bd0f8e9af42, type: 2}
   chaseState: {fileID: 11400000, guid: 17a5d5697995cb049b8721c71844360d, type: 2}
   attackState: {fileID: 11400000, guid: 94591efa6ed035048a0175c420105af5, type: 2}
   investigateState: {fileID: 11400000, guid: fe5f845d1ab183c45b99959bdc4fce28, type: 2}
@@ -2570,11 +2572,8 @@ MonoBehaviour:
   dodgeState: {fileID: 11400000, guid: d6d47362a2731bc4ba273a002991dd49, type: 2}
   combatIdleState: {fileID: 11400000, guid: f60497491d4a4da429e8a6312bf6a1fc, type: 2}
   combatRetreatState: {fileID: 11400000, guid: 2de6023fbeab1284a9f61fa00c3dc915, type: 2}
-  aggressiveIdleState: {fileID: 11400000, guid: aa286dc1f3bf2e447ba715774350d400, type: 2}
   target: {fileID: 0}
-  controller: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
-  animator: {fileID: 300635359}
   isTurning: 0
   playerRecentlySeen: 0
 --- !u!114 &300635356
@@ -2590,8 +2589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconObject: {fileID: 15177436}
-  canvasGroup: {fileID: 15177437}
-  blinkSpeed: 2
+  enemyHealth: {fileID: 0}
 --- !u!114 &300635357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2605,28 +2603,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 300635359}
+  combat: {fileID: 0}
+  enemyHealth: {fileID: 0}
+  statemachine: {fileID: 300635355}
+  controller: {fileID: 300635358}
+  modelRoot: {fileID: 0}
   swordObject: {fileID: 300635352}
-  hasShield: 1
-  maxShieldDurability: 15
-  currentShieldDurability: 0
   shieldObject: {fileID: 680140358}
-  shieldRigidbody: {fileID: 680140361}
-  shieldCollider: {fileID: 680140360}
+  shieldBreakVFX: {fileID: 0}
   damageTextPrefab: {fileID: 4478206686024956061, guid: 1224a1a819a0e694381919a39f44e92e, type: 3}
   damageTextSpawnPoint: {fileID: 79048824}
-  controller: {fileID: 300635358}
-  gravity: 9.81
-  statemachine: {fileID: 300635355}
-  bloodEmitterPrefab: {fileID: 2200741100250280157, guid: 6801d3351bc4a304aace69eeb10a56e6, type: 3}
-  attachedBloodDecals: {fileID: 1989902983}
   damageCanvasTransform: {fileID: 1057256088}
+  attachedBloodDecals: {fileID: 1989902983}
+  smallBloodEmitters: []
+  finisherBloodEmitters: []
   fatalFinisherThreshold: 10
-  isDead: 0
-  player: {fileID: 0}
   finisherAnchor: {fileID: 19251968}
-  maxHP: 100
-  currentHP: 25
-  hitReactionCooldown: 0.5
+  player: {fileID: 0}
+  gravity: 9.81
 --- !u!143 &300635358
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5098,6 +5092,7 @@ MonoBehaviour:
   equipped: 0
   blocking: 0
   isAttacking: 0
+  holdingAttack: 0
   canMove: 0
   strength: 0
   currentEnergy: 100
@@ -5124,6 +5119,19 @@ MonoBehaviour:
   animator: {fileID: 531696992}
   combat: {fileID: 531696995}
   state: {fileID: 531696993}
+  damageTextPrefab: {fileID: 0}
+  damageTextSpawnPoint: {fileID: 0}
+  damageCanvasTransform: {fileID: 0}
+  smallBloodEmitters: []
+  attachedBloodDecals: {fileID: 0}
+  maxHP: 100
+  currentHP: 0
+  hitReactionCooldown: 0.5
+  hasShield: 1
+  maxShieldDurability: 100
+  currentShieldDurability: 0
+  visualFollower: {fileID: 0}
+  cinemachineCamera: {fileID: 0}
 --- !u!114 &531696995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5137,13 +5145,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 531696992}
+  player: {fileID: 0}
   directionHandler: {fileID: 531697000}
+  playerCounterWindow: {fileID: 0}
   weaponHolster: {fileID: 531696999}
   finisherController: {fileID: 531696996}
   blockDelay: 0.5
-  unarmedWeaponDamageLeftFist: {fileID: 0}
-  unarmedWeaponDamageRightFist: {fileID: 0}
   attackCooldown: 1
+  blockCollider: {fileID: 0}
+  hitCollider: {fileID: 0}
+  maxHoldTime: 5
+  holdAttackTimer: 0
+  isOvercharged: 0
 --- !u!114 &531696996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5173,7 +5186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 531696992}
-  cameraObject: {fileID: 149037214}
+  cameraObject: {fileID: 149037220}
   weaponCollider: {fileID: 1858057197}
   player: {fileID: 531696994}
   playerState: {fileID: 531696993}
@@ -5232,6 +5245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109e341caba14a4ebc0b7d53a6705e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strafeHoldImage: {fileID: 0}
+  holdDuration: 1.5
   minSwipeDistance: 50
   visualFollowerPrefab: {fileID: 6681898802405439928, guid: dba5e432baeab894ab2481707024c57c, type: 3}
   spawnVfxPrefab: {fileID: 725748389856807714, guid: 1b14cd1a36079fc409e3368c8f82c52a, type: 3}
@@ -5254,6 +5269,9 @@ MonoBehaviour:
   swordWoosh: {fileID: 885227311}
   fMODHurt: {fileID: 0}
   fMODShield: {fileID: 0}
+  fMODSwordHit: {fileID: 0}
+  fMODEnemyDying: {fileID: 0}
+  fMODFinisher: {fileID: 0}
 --- !u!114 &531697002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5278,8 +5296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b136cfd90e977459b8ba6d85316f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strafeHoldImage: {fileID: 788083786}
-  holdDuration: 0.7
 --- !u!114 &531697004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7044,6 +7060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199d06bd96eda45468e51da423f391f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 0}
   target: {fileID: 531696991}
   viewDistance: 10
   viewAngle: 130
@@ -7055,6 +7072,7 @@ MonoBehaviour:
     m_Bits: 8192
   music: {fileID: 461046915}
   alertSound: {fileID: 1940940531}
+  spawnedAlertVFX: {fileID: 0}
 --- !u!135 &796560376
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7550,7 +7568,7 @@ MonoBehaviour:
       Data2: 1337569992
       Data3: 608867209
       Data4: -1171707420
-    Path: event:/Events/Characters/SwordWoosh
+    Path: event:/Events/Characters/Player_SwordWoosh
   moanVolume: 0.5
 --- !u!114 &885227312
 MonoBehaviour:
@@ -7570,7 +7588,7 @@ MonoBehaviour:
       Data2: 1219696117
       Data3: -339242103
       Data4: 875401260
-    Path: event:/Events/Characters/EquipingUnequiping
+    Path: event:/Events/Characters/Player_EquipingUnequiping
 --- !u!114 &885227313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11230,7 +11248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477789992}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24020794, y: -0.005166259, z: 0.0012784255, w: 0.9707069}
+  m_LocalRotation: {x: 0.2402087, y: -0.0045797634, z: 0.0011332933, w: 0.97070986}
   m_LocalPosition: {x: 64.47, y: 52.004944, z: 125.52398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11837,10 +11855,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53574dff68fb795489c171cd49fb0be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 6
+  baseDamage: 20
+  heavyAttackModifier: 1.5
   player: {fileID: 531696994}
   weaponTrail: {fileID: 1998446067}
-  heavyAttackDmgModifier: 1.2
 --- !u!65 &1637291290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13011,10 +13029,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53574dff68fb795489c171cd49fb0be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 12
+  baseDamage: 20
+  heavyAttackModifier: 1.5
   player: {fileID: 531696994}
   weaponTrail: {fileID: 2082424210}
-  heavyAttackDmgModifier: 1.5
 --- !u!65 &1858057197
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13869,6 +13887,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafe666e79188f047897010f3fa88431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dyingEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &1940940531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13887,7 +13912,7 @@ MonoBehaviour:
       Data2: 1220774287
       Data3: 1235621291
       Data4: -2075326153
-    Path: event:/Events/Characters/Enemy/Alert
+    Path: event:/Events/Characters/Enemy/Enemy_Alert
 --- !u!4 &1940940532
 Transform:
   m_ObjectHideFlags: 0
@@ -13921,7 +13946,7 @@ MonoBehaviour:
       Data2: 1222566765
       Data3: -1230008165
       Data4: 837920032
-    Path: event:/Events/Characters/Enemy/Hurt
+    Path: event:/Events/Characters/Enemy/Enemy_Hurt
 --- !u!114 &1940940534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13940,7 +13965,7 @@ MonoBehaviour:
       Data2: 1337569992
       Data3: 608867209
       Data4: -1171707420
-    Path: event:/Events/Characters/SwordWoosh
+    Path: event:/Events/Characters/Player_SwordWoosh
   moanVolume: 0.5
 --- !u!114 &1940940535
 MonoBehaviour:
@@ -13960,7 +13985,7 @@ MonoBehaviour:
       Data2: 1219696117
       Data3: -339242103
       Data4: 875401260
-    Path: event:/Events/Characters/EquipingUnequiping
+    Path: event:/Events/Characters/Player_EquipingUnequiping
 --- !u!114 &1940940536
 MonoBehaviour:
   m_ObjectHideFlags: 0

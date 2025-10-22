@@ -26,4 +26,4 @@ MonoBehaviour:
     conditions:
     - {fileID: 11400000, guid: 996802b2d098301468b262cf57142902, type: 2}
     transitionCooldown: 0.3
-  chaseSpeed: 1
+  chaseSpeed: 0.5

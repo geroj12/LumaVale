@@ -58,15 +58,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: PlaySwordWooshSound
+      - time: 0.35988066
+        functionName: StartAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.35988066
-        functionName: StartAttack
+      - time: 0.37466308
+        functionName: PlaySwordWooshSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
