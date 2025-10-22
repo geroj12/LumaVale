@@ -64,14 +64,14 @@ public class Enemy : MonoBehaviour
 
     }
 
-   
+
 
     void FixedUpdate()
     {
         ApplyGravity();
     }
 
-   
+
     private void HandleDamage(float amount)
     {
         if (enemyHealth.IsDead) return;
@@ -84,11 +84,11 @@ public class Enemy : MonoBehaviour
         {
             EnableRagdoll();
             SpawnRandomBloodEmitter(finisherBloodEmitters);
-            
+
         }
     }
 
-   
+
     private void HandleShieldImpact()
     {
         animator.SetTrigger("ShieldImpact");
@@ -205,7 +205,8 @@ public class Enemy : MonoBehaviour
     {
         DropWeapons();
         animator.enabled = false;
-
+        enemyHealth.currentHP = 0f;
+        statemachine.enabled = false;
         foreach (var rb in ragdollRigidbodies)
         {
             rb.isKinematic = false;

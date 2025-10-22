@@ -205,11 +205,6 @@ public class Combat : MonoBehaviour
     {
         state.isAttacking = true;
 
-        // Gegner haben die Chance zu kontern, wenn Spieler angreift
-        foreach (Enemy enemy in FindObjectsOfType<Enemy>())
-            enemy.GetComponent<EnemyCombat>()?.TryCounterPlayerAttack();
-
-
         weaponDamage?.EnableDamage(state);
 
     }

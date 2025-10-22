@@ -9,7 +9,7 @@ public class FinisherExecutor : MonoBehaviour
     [SerializeField] private BoxCollider weaponCollider;
     [SerializeField] private Player player;
     [SerializeField] private State playerState;
-
+    
     public void ExecuteFinisher(Enemy enemy, FinisherData finisher)
     {
         // Bewegung & Kontrolle abschalten
@@ -58,5 +58,7 @@ public class FinisherExecutor : MonoBehaviour
         cameraObject.enabled = true;
         weaponCollider.isTrigger = true;
         player.enabled = true;
+       
+
     }
 }

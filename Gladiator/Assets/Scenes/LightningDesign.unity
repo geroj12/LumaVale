@@ -7148,6 +7148,7 @@ MonoBehaviour:
     m_Bits: 8192
   music: {fileID: 1685733586}
   alertSound: {fileID: 1392836118}
+  fadeSpeed: 0.8
   spawnedAlertVFX: {fileID: 1902054941}
 --- !u!1 &256344858
 GameObject:
@@ -15711,7 +15712,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 2.048}
-  m_SizeDelta: {x: 0.3, y: 0.3}
+  m_SizeDelta: {x: 0.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911631142
 MonoBehaviour:
@@ -19405,7 +19406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counterWindow: {fileID: 6893959338305874647}
   telegraphIcon: {fileID: 911631143}
-  activeColor: {r: 0.99178314, g: 1, b: 0, a: 1}
+  activeColor: {r: 1, g: 0.7995195, b: 0, a: 1}
   fadeInTime: 0.2
   fadeOutTime: 0.3
 --- !u!114 &1578883160
@@ -32386,11 +32387,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4b30ddfb5e37d4dab1d08e90102dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0.15
+  movementSpeed: 0.2
   smoothValue: 0.4
   gravity: 9.81
   rotationSpeed: 10
-  sprintMultiplier: 3
+  sprintMultiplier: 3.5
   sprintKey: 304
 --- !u!114 &4898614681539123694
 MonoBehaviour:

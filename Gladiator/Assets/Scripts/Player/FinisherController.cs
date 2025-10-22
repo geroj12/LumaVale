@@ -26,8 +26,7 @@ public class FinisherController : MonoBehaviour
                 if (finisher != null)
                 {
                     executor.ExecuteFinisher(enemy, finisher);
-                    enemy.GetComponent<EnemyHealth>().currentHP = 0f;
-                    enemy.GetComponent<StateMachineEnemy>().enabled = false;
+                    
                     
                 }            
             }

@@ -53,6 +53,7 @@ public class EnemyHealth : MonoBehaviour
         if (IsDead)
         {
             OnDeath?.Invoke();
+            
         }
 
 
