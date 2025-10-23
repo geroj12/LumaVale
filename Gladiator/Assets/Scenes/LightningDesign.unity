@@ -32348,7 +32348,7 @@ MonoBehaviour:
   attackCooldown: 1
   blockCollider: {fileID: 1162385561}
   hitCollider: {fileID: 109006641}
-  maxHoldTime: 2
+  maxHoldTime: 1.5
   holdAttackTimer: 0
   isOvercharged: 0
 --- !u!114 &4898614681539123691
@@ -45567,7 +45567,6 @@ MonoBehaviour:
   enemyHealth: {fileID: 6893959338305874646}
   statemachine: {fileID: 6893959338305874641}
   controller: {fileID: 6893959338305874644}
-  modelRoot: {fileID: 4777924610035051913}
   swordObject: {fileID: 2967941917593627346}
   shieldObject: {fileID: 7080747229558806737}
   shieldBreakVFX: {fileID: 5269419910757535805}
@@ -45644,7 +45643,7 @@ MonoBehaviour:
   currentHP: 0
   fatalFinisherThreshold: 10
   hasShield: 1
-  maxShieldDurability: 30
+  maxShieldDurability: 100
   currentShieldDurability: 0
 --- !u!114 &6893959338305874647
 MonoBehaviour:

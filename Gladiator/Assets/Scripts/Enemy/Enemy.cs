@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyHealth enemyHealth;
     [SerializeField] private StateMachineEnemy statemachine;
     [SerializeField] private CharacterController controller;
-    [SerializeField] private GameObject modelRoot;
 
 
     [Header("Equipment")]
@@ -64,7 +63,13 @@ public class Enemy : MonoBehaviour
 
     }
 
-
+    void Update()
+    {
+        if (enemyHealth.IsDead)
+        {
+            controller.enabled = false;
+        }
+    }
 
     void FixedUpdate()
     {
@@ -243,7 +248,7 @@ public class Enemy : MonoBehaviour
     // ------------------------------
     private void ApplyGravity()
     {
-        if (!controller || !controller.enabled || enemyHealth.IsDead) return;
+        if (enemyHealth.IsDead) return;
 
         velocity.y = controller.isGrounded ? -1f : velocity.y - gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
