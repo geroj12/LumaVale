@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float currentHP;
     private Rigidbody[] ragdollRigidbodies;
     private Collider[] ragdollColliders;
+    [SerializeField] private FollowerStateHandler followerHandler;
+
 
     [Header("Hit Reaction Settings")]
     public float hitReactionCooldown = 0.5f;
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private CombatDirectionHandler visualFollower;
     [SerializeField] private CinemachineCamera cinemachineCamera;
+    [SerializeField] private CharacterController controller;
+
 
     void Awake()
     {
@@ -176,6 +180,11 @@ public class Player : MonoBehaviour
         EnableRagdoll();
         Debug.Log("Player dead");
         cinemachineCamera.GetComponent<CinemachineCamera>().Priority = 0;
+        state.isDead = true;
+        followerHandler.SetPlayerDead(state.isDead);
+        enabled = false;
+        controller.enabled = false;
+        
 
     }
     private void EnableRagdoll()

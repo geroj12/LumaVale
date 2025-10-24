@@ -32,7 +32,7 @@ public class EnemyVision : MonoBehaviour
 
     private void Update()
     {
-        if (enemyHealth.IsDead)
+        if (enemyHealth.IsDead ||target.GetComponent<State>().isDead)
         {
             StartFade(0f);
 

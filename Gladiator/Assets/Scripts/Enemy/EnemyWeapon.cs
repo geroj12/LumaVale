@@ -8,7 +8,6 @@ public class EnemyWeapon : MonoBehaviour
     [Header("References")]
     public Enemy enemy;
     [SerializeField] private TrailRenderer weaponTrail;
-    [SerializeField] private BoxCollider weaponCollider;
 
     private EnemyCounterWindow enemyCounterWindow;
     private bool canDealDamage = false;
@@ -27,8 +26,8 @@ public class EnemyWeapon : MonoBehaviour
 
         if (weaponTrail != null)
         {
-            weaponTrail.Clear();          // Trail-Cache löschen (verhindert Artefakte)
-            weaponTrail.emitting = true; // ⬅️ Trail aktivieren
+            weaponTrail.Clear();         
+            weaponTrail.emitting = true;
         }
 
     }
@@ -38,7 +37,7 @@ public class EnemyWeapon : MonoBehaviour
 
         canDealDamage = false;
         if (weaponTrail != null)
-            weaponTrail.emitting = false; // ⬅️ Trail deaktivieren
+            weaponTrail.emitting = false; 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,7 +59,6 @@ public class EnemyWeapon : MonoBehaviour
     {
         Player player = other.GetComponentInParent<Player>();
         player.TakeDamage(damage, enemy.transform.position, false);
-        weaponCollider.isTrigger = true; 
     }
 
     private void HandlePlayerBlockHit(Collider other)
@@ -88,12 +86,10 @@ public class EnemyWeapon : MonoBehaviour
             enemy.InterruptAttack();
         }
 
-        weaponCollider.isTrigger = true;
     }
 
     void OnTriggerExit(Collider other)
     {
-        weaponCollider.isTrigger = false;
 
     }
 }
