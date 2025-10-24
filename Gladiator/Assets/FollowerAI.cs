@@ -12,6 +12,7 @@ public class FollowerAI : MonoBehaviour
     private FollowerAnimator followerAnimator;
     private FollowerState state = FollowerState.Idle;
     private Transform targetEnergy;
+    [SerializeField] private OrbsHandler orbsHandler;
 
     private void Awake()
     {
@@ -64,7 +65,10 @@ public class FollowerAI : MonoBehaviour
         float distance = Vector3.Distance(transform.position, targetEnergy.position);
         if (distance < 1f)
         {
-            // Energie eingesammelt (du kannst hier Effekte abspielen)
+            // Energie eingesammelt
+            if (orbsHandler != null)
+                orbsHandler.AddOrb();
+
             Destroy(targetEnergy.gameObject);
             targetEnergy = null;
             state = FollowerState.Returning;
