@@ -26,11 +26,11 @@ TagManager:
   - PlayerWeapon
   - EnemyWeapon
   - Ground
-  - 
+  - EnemyRagdoll
   - Player
   - PlayerBlock
   - Interactive
-  - 
+  - PlayerRagdoll
   - Environment
   - Grass
   - Mud
@@ -45,7 +45,7 @@ TagManager:
   - 
   - FoliageTransparent
   - 
-  - 
+  - EnergyCollectable
   m_SortingLayers:
   - name: Default
     uniqueID: 0

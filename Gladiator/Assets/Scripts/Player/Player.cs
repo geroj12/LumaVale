@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject attachedBloodDecals;
     [SerializeField] private float maxHP = 100f;
     [SerializeField] private float currentHP;
+    private Rigidbody[] ragdollRigidbodies;
+    private Collider[] ragdollColliders;
 
     [Header("Hit Reaction Settings")]
     public float hitReactionCooldown = 0.5f;
@@ -28,6 +30,15 @@ public class Player : MonoBehaviour
 
     [SerializeField] private CombatDirectionHandler visualFollower;
     [SerializeField] private CinemachineCamera cinemachineCamera;
+
+    void Awake()
+    {
+        ragdollRigidbodies = GetComponentsInChildren<Rigidbody>(true);
+        ragdollColliders = GetComponentsInChildren<Collider>(true);
+
+        foreach (var rb in ragdollRigidbodies)
+            rb.isKinematic = true;
+    }
     void Start()
     {
         movement = GetComponent<Movement>();
@@ -162,11 +173,24 @@ public class Player : MonoBehaviour
 
     public void OnPlayerDeath()
     {
-        visualFollower.SpawnVisualFollower();
+        EnableRagdoll();
         Debug.Log("Player dead");
         cinemachineCamera.GetComponent<CinemachineCamera>().Priority = 0;
-        gameObject.SetActive(false);
 
+    }
+    private void EnableRagdoll()
+    {
+        animator.enabled = false;
+        currentHP = 0f;
+        foreach (var rb in ragdollRigidbodies)
+        {
+            rb.isKinematic = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        foreach (var col in ragdollColliders)
+            col.enabled = true;
     }
 
     private void ShowDamageText(float amount)

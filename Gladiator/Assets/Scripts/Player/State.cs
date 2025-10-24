@@ -9,6 +9,7 @@ public class State : MonoBehaviour
     public bool isAttacking = false;
     public bool holdingAttack = false;
     public bool canMove = false;
+    public bool isDead = false;
 
     [Header("Energy & Combat")]
     public float strength = 1f;
