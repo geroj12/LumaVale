@@ -27,6 +27,7 @@ public class State : MonoBehaviour
     public float energyRegenRate = 10f;
     public void UseEnergy(float amount)
     {
+        if (!equipped) return;
         currentEnergy = Mathf.Max(0f, currentEnergy - amount);
     }
 

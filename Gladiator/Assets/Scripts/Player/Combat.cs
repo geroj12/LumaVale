@@ -1,40 +1,30 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
+[RequireComponent(typeof(State))]
 public class Combat : MonoBehaviour
 {
-    #region Fields and References
-
+    [Header("References")]
     [SerializeField] private Animator anim;
-    private State state;
     [SerializeField] private Player player;
     [SerializeField] private CombatDirectionHandler directionHandler;
     [SerializeField] private PlayerCounterWindow playerCounterWindow;
     [SerializeField] private WeaponHolster weaponHolster;
-    [SerializeField] private FinisherController finisherController;
-
-    [Header("Settings")]
-    [Range(0.1f, 1f)] public float blockDelay = 0.5f;
-
-    private float blockTimer = 0f;
-    private float lastScrollValue = 0f;
-    private PlayerWeapon weaponDamage;
-
-    [SerializeField] private float attackCooldown = 1f;
-    private float nextAttackTime = 0f;
-    #endregion
-
     [SerializeField] private CapsuleCollider blockCollider;
     [SerializeField] private CapsuleCollider hitCollider;
 
-    [Header("Hold Attack Settings")]
+    [Header("Settings")]
+    [Range(0.1f, 1f)] public float blockDelay = 0.5f;
+    [SerializeField] private float attackCooldown = 1f;
     public float maxHoldTime = 5f;
-    public float holdAttackTimer = 0f;
-    public bool isOvercharged = false;
-    
-    #region Unity Methods
+
+    private float nextAttackTime = 0f;
+    private float blockTimer = 0f;
+
+    private State state;
+    private PlayerWeapon weaponDamage;
+    private AttackAnimator attackAnimator;
+    private CombatInputHandler inputHandler;
 
     private void Start()
     {
@@ -42,66 +32,87 @@ public class Combat : MonoBehaviour
         directionHandler = GetComponent<CombatDirectionHandler>();
         weaponHolster = GetComponent<WeaponHolster>();
 
+        attackAnimator = new AttackAnimator(anim, weaponHolster);
+        inputHandler = new CombatInputHandler();
+
         weaponHolster.OnWeaponChanged += UpdateWeaponDamage;
         weaponDamage = weaponHolster.GetCurrentWeaponDamage();
     }
 
     private void Update()
     {
-        HandleAttackInput();
+        if (weaponHolster.IsBusy() || state.isAttacking) return;
+
+        inputHandler.UpdateInput();
+
+        if (Time.time >= nextAttackTime)
+        {
+            HandleAttacks();
+        }
+
         HandleBlocking();
-        UpdateHoldAttackTimer();
+        HandleHoldAttack();
     }
 
-    #endregion
+    #region Attacking
 
-    #region Combat - Attacking
-
-    private void HandleAttackInput()
+    private void HandleAttacks()
     {
-        if (Time.time < nextAttackTime || state.isAttacking || weaponHolster.IsBusy())
-            return;
+        if (inputHandler.ScrollDown)
+            TryAttack("Thrust", state.heavyAttackCost, PlayerWeapon.AttackType.Thrust);
 
-        if (state.blocking)
-            state.ResetMouseDirections();
+        if (inputHandler.ScrollUp)
+            TryAttack("Overhead", state.heavyAttackCost, PlayerWeapon.AttackType.HeavyOverhead);
 
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-
-        if (scroll < 0f && lastScrollValue == 0f)
-            TriggerAttack("Thrust", state.heavyAttackCost, PlayerWeapon.AttackType.Thrust);
-
-        if (scroll > 0f && lastScrollValue == 0f)
-            TriggerAttack("Overhead", state.heavyAttackCost, PlayerWeapon.AttackType.HeavyOverhead);
-
-        lastScrollValue = scroll;
-
-        if (Input.GetMouseButtonDown(0))
+        if (inputHandler.MouseLeftDown)
             directionHandler.StartSwipe(Input.mousePosition);
 
-        if (Input.GetMouseButtonUp(0))
+        if (inputHandler.MouseLeftUp)
         {
             directionHandler.EndSwipe(Input.mousePosition);
-            TriggerSwipeAttack();
+            TrySwipeAttack();
             ResetHoldAttack();
             StartCoroutine(ResetAttackBools());
         }
     }
 
-    private void TriggerAttack(string animType, float energyCost, PlayerWeapon.AttackType attackType)
+    private void TryAttack(string animType, float energyCost, PlayerWeapon.AttackType attackType)
     {
-        if (state.currentEnergy < energyCost)
-            return;
+        if (state.currentEnergy < energyCost || state.isAttacking) return;
 
         state.UseEnergy(energyCost);
         weaponDamage.SetAttackType(attackType);
-        PlayAttackAnimation(animType);
+        attackAnimator.PlayAttackAnimation(animType);
 
         nextAttackTime = Time.time + attackCooldown;
         StartCoroutine(ResetAttackBools());
     }
-    private void UpdateHoldAttackTimer()
+
+    private void TrySwipeAttack()
     {
-        if (Input.GetMouseButton(0))
+        if (state.currentEnergy < state.normalAttackCost) return;
+
+        state.UseEnergy(state.normalAttackCost);
+        weaponDamage.SetAttackType(PlayerWeapon.AttackType.Normal);
+
+        if (state.mouseOnLeftSide)
+            attackAnimator.PlayAttackAnimation("Left");
+        else if (state.mouseOnRightSide)
+            attackAnimator.PlayAttackAnimation("Right");
+
+        nextAttackTime = Time.time + attackCooldown;
+    }
+
+    #endregion
+
+    #region  Holding Attacks 
+
+    public float holdAttackTimer = 0f;
+    public bool isOvercharged { get; private set; }
+
+    private void HandleHoldAttack()
+    {
+        if (inputHandler.MouseLeftHeld)
         {
             state.holdingAttack = true;
             holdAttackTimer += Time.deltaTime;
@@ -110,7 +121,7 @@ public class Combat : MonoBehaviour
             {
                 holdAttackTimer = maxHoldTime;
                 isOvercharged = true;
-                Debug.Log("⚡ Overcharged!");
+                Debug.Log("Overcharged!");
             }
         }
         else
@@ -121,60 +132,37 @@ public class Combat : MonoBehaviour
 
     private void ResetHoldAttack()
     {
-        if (isOvercharged)
-            Debug.Log("Overcharge Reset");
+        if (isOvercharged) Debug.Log("Overcharge Reset");
 
         state.holdingAttack = false;
         holdAttackTimer = 0f;
         isOvercharged = false;
     }
 
-    private void TriggerSwipeAttack()
-    {
-        if (state.currentEnergy < state.normalAttackCost) return;
-
-        state.UseEnergy(state.normalAttackCost);
-        weaponDamage.SetAttackType(PlayerWeapon.AttackType.Normal);
-
-        if (state.mouseOnLeftSide)
-            PlayAttackAnimation("Left");
-        else if (state.mouseOnRightSide)
-            PlayAttackAnimation("Right");
-
-        nextAttackTime = Time.time + attackCooldown;
-    }
-
     #endregion
 
-
-    #region Combat - Blocking
-
+    #region  Blocking 
 
     private void HandleBlocking()
     {
         if (!state.equipped) return;
 
-        bool blockPressed = Input.GetMouseButtonDown(1);
-        bool blockHeld = Input.GetMouseButton(1);
-        bool blockReleased = Input.GetMouseButtonUp(1);
-
-        if (blockPressed)
+        if (inputHandler.BlockPressed)
         {
             playerCounterWindow.TryActivate();
             ActivateBlock();
             blockTimer = 0f;
         }
 
-        if (blockHeld)
+        if (inputHandler.BlockHeld)
         {
             blockCollider.enabled = true;
             hitCollider.enabled = false;
             player.hasShield = true;
-
             blockTimer += Time.deltaTime;
         }
 
-        if (blockReleased)
+        if (inputHandler.BlockReleased)
         {
             blockCollider.enabled = false;
             hitCollider.enabled = true;
@@ -197,84 +185,28 @@ public class Combat : MonoBehaviour
     }
 
     #endregion
-    #region Animation Helpers
 
-
+    #region  Animation Helpers 
 
     public void StartAttack()
     {
         state.isAttacking = true;
-
         weaponDamage?.EnableDamage(state);
-
     }
 
-    /// <summary>
-    /// Wird durch Animation Event oder Timing ausgelöst, um Angriffsstatus zurückzusetzen.
-    /// </summary>
     public void EndAttack()
     {
         state.isAttacking = false;
-
-
         weaponDamage?.DisableDamage();
-
-
     }
-    public void UpdateWeaponDamage(PlayerWeapon newDamage)
-    {
-        weaponDamage = newDamage;
-    }
+
+    public void UpdateWeaponDamage(PlayerWeapon newDamage) => weaponDamage = newDamage;
 
     public IEnumerator ResetAttackBools()
     {
         yield return new WaitForSeconds(1f);
-        ResetAllAttackAnimationBools();
+        attackAnimator.ResetAllAttackBools();
         state.ResetMouseDirections();
-    }
-    private void ResetAllAttackAnimationBools()
-    {
-        string[] bools =
-        {
-            "Attack_LEFT_TwoHanded01", "AttackThrust_TwoHanded01", "Attack_RIGHT_TwoHanded01", "AttackUp_TwoHanded01",
-            "Attack_LEFT_OneHanded01", "Attack_Thrust_OneHanded01", "Attack_RIGHT_OneHanded01", "Attack_UP_OneHanded01",
-            "Attack_LEFT_Unarmed", "Attack_Thrust_Unarmed", "Attack_RIGHT_Unarmed", "Attack_UP_Unarmed"
-        };
-
-        foreach (var b in bools)
-            anim.SetBool(b, false);
-    }
-
-    private void PlayAttackAnimation(string type)
-    {
-        int weapon = weaponHolster.currentWeaponType;
-
-        switch (type)
-        {
-            case "Thrust":
-                if (weapon == 2) anim.SetBool("AttackThrust_TwoHanded01", true);
-                else if (weapon == 1) anim.SetBool("Attack_Thrust_OneHanded01", true);
-                else anim.SetBool("Attack_Thrust_Unarmed", true);
-                break;
-
-            case "Overhead":
-                if (weapon == 2) anim.SetBool("AttackUp_TwoHanded01", true);
-                else if (weapon == 1) anim.SetBool("Attack_UP_OneHanded01", true);
-                else anim.SetBool("Attack_UP_Unarmed", true);
-                break;
-
-            case "Left":
-                if (weapon == 2) anim.SetBool("Attack_LEFT_TwoHanded01", true);
-                else if (weapon == 1) anim.SetBool("Attack_LEFT_OneHanded01", true);
-                else anim.SetBool("Attack_LEFT_Unarmed", true);
-                break;
-
-            case "Right":
-                if (weapon == 2) anim.SetBool("Attack_RIGHT_TwoHanded01", true);
-                else if (weapon == 1) anim.SetBool("Attack_RIGHT_OneHanded01", true);
-                else anim.SetBool("Attack_RIGHT_Unarmed", true);
-                break;
-        }
     }
 
     #endregion

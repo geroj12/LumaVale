@@ -32183,19 +32183,21 @@ GameObject:
   - component: {fileID: 4898614681539123683}
   - component: {fileID: 4898614681539123697}
   - component: {fileID: 4898614681539123696}
-  - component: {fileID: 4898614681539123699}
   - component: {fileID: 4898614681539123695}
   - component: {fileID: 4898614681539123694}
   - component: {fileID: 4898614681539123693}
   - component: {fileID: 4898614681539123692}
   - component: {fileID: 4898614681539123691}
+  - component: {fileID: 4898614681539123700}
   - component: {fileID: 4898614681539123690}
+  - component: {fileID: 4898614681539123701}
   - component: {fileID: 4898614681539123689}
   - component: {fileID: 4898614681539123688}
   - component: {fileID: 4898614681539123687}
   - component: {fileID: 4898614681539123685}
   - component: {fileID: 4898614681539123684}
   - component: {fileID: 4898614681539123698}
+  - component: {fileID: 4898614681539123699}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -32344,13 +32346,12 @@ MonoBehaviour:
   playerCounterWindow: {fileID: 4898614681539123698}
   weaponHolster: {fileID: 4898614681539123688}
   finisherController: {fileID: 4898614681539123687}
-  blockDelay: 0.5
-  attackCooldown: 1
   blockCollider: {fileID: 1162385561}
   hitCollider: {fileID: 109006641}
+  blockDelay: 0.5
+  attackCooldown: 1
   maxHoldTime: 1.5
   holdAttackTimer: 0
-  isOvercharged: 0
 --- !u!114 &4898614681539123691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32445,13 +32446,13 @@ MonoBehaviour:
   strength: 0
   currentEnergy: 100
   maxEnergy: 100
-  normalAttackCost: 20
-  heavyAttackCost: 40
+  normalAttackCost: 10
+  heavyAttackCost: 30
   mouseOnLeftSide: 0
   mouseOnRightSide: 0
   attackUp: 0
   attackThrust: 0
-  energyRegenRate: 8
+  energyRegenRate: 5
 --- !u!143 &4898614681539123696
 CharacterController:
   m_ObjectHideFlags: 0
@@ -32532,6 +32533,30 @@ MonoBehaviour:
   fMODSwordHit: {fileID: 9085088073272709986}
   swordHitsBody: {fileID: 9085088073272709987}
   state: {fileID: 4898614681539123695}
+--- !u!114 &4898614681539123700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4898614681538836253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f6796648745fc439cc5e04b920931e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4898614681539123701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4898614681538836253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965b5b54d462ded48a9e0b9bc9d23ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4909424234290693374
 Transform:
   m_ObjectHideFlags: 0
@@ -45105,8 +45130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53574dff68fb795489c171cd49fb0be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 30
-  heavyAttackModifier: 1.5
+  baseDamage: 10
+  heavyAttackModifier: 2
   player: {fileID: 4898614681539123694}
   weaponTrail: {fileID: 162842967}
 --- !u!33 &6498562426649277596
@@ -45643,7 +45668,7 @@ MonoBehaviour:
   currentHP: 0
   fatalFinisherThreshold: 10
   hasShield: 1
-  maxShieldDurability: 100
+  maxShieldDurability: 30
   currentShieldDurability: 0
 --- !u!114 &6893959338305874647
 MonoBehaviour:
@@ -52561,8 +52586,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53574dff68fb795489c171cd49fb0be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 20
-  heavyAttackModifier: 1.5
+  baseDamage: 5
+  heavyAttackModifier: 2
   player: {fileID: 4898614681539123694}
   weaponTrail: {fileID: 78309575}
 --- !u!4 &8575475677453615319
@@ -53056,7 +53081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c87873379b71e4298a87b3202581ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 35
+  damage: 10
   enemy: {fileID: 6893959338305874643}
   weaponTrail: {fileID: 159644944}
   weaponCollider: {fileID: 2734392266763060830}
