@@ -13,6 +13,7 @@ TagManager:
   - Ground
   - PlayerShield
   - PlayerHitbox
+  - EnergyOrb
   layers:
   - Default
   - TransparentFX

@@ -2,5 +2,7 @@ public enum FollowerState
 {
     Idle,
     Collecting,
-    Returning
+    Returning,
+    Delivering // neu
+
 }

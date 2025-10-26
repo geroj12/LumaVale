@@ -3,20 +3,31 @@ using UnityEngine;
 public class FollowerAI : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform player; // Referenz zum Spieler
+    [SerializeField] private Transform player;
+    [SerializeField] private OrbsHandler orbsHandler;
+    [SerializeField] private FollowerVision vision;
+    [SerializeField] private FollowerAnimator followerAnimator;
+    [SerializeField] private ParticleSystem stateParticles;
+
+    [Header("Settings")]
     [SerializeField] private float followRadius = 2.5f;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float detectionRadius = 10f;
-    [SerializeField] private LayerMask energyLayer; // Layer für Energieobjekte
+    [SerializeField] private float baseOrbitSpeed = 30f;
+    [SerializeField] private float orbitBoostMultiplier = 1.5f;
 
-    private FollowerAnimator followerAnimator;
     private FollowerState state = FollowerState.Idle;
-    private Transform targetEnergy;
-    [SerializeField] private OrbsHandler orbsHandler;
+    private Transform currentTarget;
+
+    private ParticleSystem.MainModule particleMain;
+    private ParticleSystem.EmissionModule particleEmission;
 
     private void Awake()
     {
-        followerAnimator = GetComponent<FollowerAnimator>();
+        if (stateParticles != null)
+        {
+            particleMain = stateParticles.main;
+            particleEmission = stateParticles.emission;
+        }
     }
 
     private void Update()
@@ -24,61 +35,60 @@ public class FollowerAI : MonoBehaviour
         switch (state)
         {
             case FollowerState.Idle:
-                IdleBehaviour();
+                HandleIdle();
                 break;
-
             case FollowerState.Collecting:
-                CollectBehaviour();
+                HandleCollecting();
                 break;
-
             case FollowerState.Returning:
-                ReturnBehaviour();
+                HandleReturning();
                 break;
         }
+
+        UpdateParticleVisuals();
     }
 
-    private void IdleBehaviour()
+    private void HandleIdle()
     {
-        // Kreist locker um den Spieler
         OrbitAroundPlayer();
 
-        // Suche nach Energie
-        Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, energyLayer);
-        if (hits.Length > 0)
+        if (vision.detectedEnergy != null)
         {
-            targetEnergy = hits[0].transform;
+            currentTarget = vision.detectedEnergy;
             state = FollowerState.Collecting;
             followerAnimator.SetMoving(true);
         }
     }
 
-    private void CollectBehaviour()
+    private void HandleCollecting()
     {
-        if (targetEnergy == null)
+        if (currentTarget == null)
         {
             state = FollowerState.Returning;
             return;
         }
 
-        MoveTowards(targetEnergy.position);
+        MoveTowards(currentTarget.position);
 
-        float distance = Vector3.Distance(transform.position, targetEnergy.position);
+        float distance = Vector3.Distance(transform.position, currentTarget.position);
         if (distance < 1f)
         {
-            // Energie eingesammelt
-            if (orbsHandler != null)
-                orbsHandler.AddOrb();
+            if (currentTarget.CompareTag("EnergyOrb"))
+            {
+                if (orbsHandler != null)
+                    orbsHandler.AddOrb();
 
-            Destroy(targetEnergy.gameObject);
-            targetEnergy = null;
+                Destroy(currentTarget.gameObject);
+            }
+
+            currentTarget = null;
             state = FollowerState.Returning;
         }
     }
 
-    private void ReturnBehaviour()
+    private void HandleReturning()
     {
-        if (player == null)
-            return;
+        if (player == null) return;
 
         MoveTowards(player.position);
 
@@ -90,9 +100,9 @@ public class FollowerAI : MonoBehaviour
         }
     }
 
-    private void MoveTowards(Vector3 target)
+    private void MoveTowards(Vector3 targetPos)
     {
-        Vector3 dir = (target - transform.position).normalized;
+        Vector3 dir = (targetPos - transform.position).normalized;
         transform.position += dir * moveSpeed * Time.deltaTime;
         transform.forward = dir;
     }
@@ -101,13 +111,51 @@ public class FollowerAI : MonoBehaviour
     {
         if (player == null) return;
 
-        // einfache Kreisbewegung um den Spieler
-        float orbitSpeed = 30f;
+        float orbitSpeed = baseOrbitSpeed;
+
+        // 🔥 Boost wenn Max Orbs erreicht sind
+        if (orbsHandler != null && orbsHandler.CurrentOrbs >= orbsHandler.MaxOrbs)
+            orbitSpeed *= orbitBoostMultiplier;
+
         transform.RotateAround(player.position, Vector3.up, orbitSpeed * Time.deltaTime);
 
-        // leichte Hoverbewegung
         float hover = Mathf.Sin(Time.time * 2f) * 0.5f;
         Vector3 desiredPos = (transform.position - player.position).normalized * followRadius + player.position + new Vector3(0, hover, 0);
         transform.position = Vector3.Lerp(transform.position, desiredPos, Time.deltaTime * 2f);
+    }
+
+    private void UpdateParticleVisuals()
+    {
+        if (stateParticles == null) return;
+
+        Color color = Color.cyan; // default Idle
+        float emissionRate = 15f; // base emission
+
+        // 1️⃣ Feind in Sicht → Rot leuchten
+        if (vision != null && vision.detectedEnemy != null)
+        {
+            color = Color.red;
+            emissionRate = 40f;
+        }
+        else
+        {
+            // 2️⃣ Beim Sammeln → Weiß
+            if (state == FollowerState.Collecting)
+            {
+                color = Color.white;
+                emissionRate = 30f;
+            }
+
+            // 3️⃣ Max Orbs → Pulsieren (Emission schwankt)
+            if (orbsHandler != null && orbsHandler.CurrentOrbs >= orbsHandler.MaxOrbs)
+            {
+                float pulse = (Mathf.Sin(Time.time * 4f) + 1f) * 0.5f; // 0..1
+                emissionRate = Mathf.Lerp(15f, 60f, pulse); // pulsierende Stärke
+                color = Color.cyan; // Farbe bleibt, nur Stärke pulsiert
+            }
+        }
+
+        particleMain.startColor = color;
+        particleEmission.rateOverTime = emissionRate;
     }
 }

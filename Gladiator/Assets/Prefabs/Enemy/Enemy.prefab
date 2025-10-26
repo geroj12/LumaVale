@@ -1669,10 +1669,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c87873379b71e4298a87b3202581ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 55
   enemy: {fileID: 8224715882379992504}
   weaponTrail: {fileID: 8643825436420442095}
-  weaponCollider: {fileID: 4588223042192165004}
 --- !u!1 &2043685965492384759
 GameObject:
   m_ObjectHideFlags: 0
@@ -2645,7 +2644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 3258918412657728384}
   target: {fileID: 0}
-  viewDistance: 10
+  viewDistance: 7
   viewAngle: 130
   obstacleMask:
     serializedVersion: 2

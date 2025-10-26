@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001FADE648558 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000136D3594768 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -16,79 +16,8 @@
 [LOG] Manager::init                            : done.
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 5618304
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 59872
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000006F41FBF2B8
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8C09E3CA0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8C09E3C60
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8C09E3D80
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8C09E3E40
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001F9A80E0528
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='cute-character-wee-1-188162', format=5, channels=2, frequency=48000, lengthbytes=13856, lengthpcm=64512, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.866516.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 5618304
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 59872
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000006F41FBF2B8
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8C09E3CA0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8C09E3C60
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8C09E3D80
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8C09E3E40
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001F9A80E0528
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='cute-character-wee-4-188164', format=5, channels=2, frequency=48000, lengthbytes=28896, lengthpcm=126720, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.914490.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 5618304
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 59872
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000006F41FBF2B8
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8C09E3CA0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8C09E3C60
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8C09E3D80
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8C09E3E40
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001F9A80E0528
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='cute-character-wee-2-188161', format=5, channels=2, frequency=48000, lengthbytes=10208, lengthpcm=48384, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.808472.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 5618304
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 59872
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000006F41FBF2B8
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8C09E3CA0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8C09E3C60
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8C09E3D80
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8C09E3E40
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001F9A80E0528
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='cute-character-wee-3-188163', format=5, channels=2, frequency=48000, lengthbytes=32928, lengthpcm=144000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.754913.
-[LOG] SoundI::release                          :  (000001FAD5D1A388)
-[LOG] SoundI::release                          :     cute-character-wee-2-188161 (000001F8F136EBD8)
-[LOG] SoundI::release                          :  (000001FAD5D1AD98)
-[LOG] SoundI::release                          :     cute-character-wee-3-188163 (000001F8F1370AB8)
-[LOG] SoundI::release                          :  (000001FAD5D1A948)
-[LOG] SoundI::release                          :     cute-character-wee-4-188164 (000001F8F136FDB8)
-[LOG] SoundI::release                          :  (000001FAD5D1A4F8)
-[LOG] SoundI::release                          :     cute-character-wee-1-188162 (000001F8F136E218)
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 

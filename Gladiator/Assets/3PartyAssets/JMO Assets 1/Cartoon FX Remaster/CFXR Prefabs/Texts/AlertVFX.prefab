@@ -4327,7 +4327,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0, a: 1}
+      maxColor: {r: 1, g: 0, b: 0.06987047, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9874,7 +9874,7 @@ MonoBehaviour:
   size: 1
   letterSpacing: 0.35
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  color1: {r: 1, g: 0, b: 0, a: 1}
+  color1: {r: 1, g: 0, b: 0.06987047, a: 1}
   color2: {r: 0.509434, g: 0.06371957, b: 0, a: 1}
   delay: 0
   cumulativeDelay: 0

@@ -373,6 +373,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-879655683730970734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Characters/PlayerCreature/FollowerAlertSFX
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Characters/PlayerCreature/FollowerAlertSFX
+  Guid:
+    Data1: -952089532
+    Data2: 1331432636
+    Data3: -506445148
+    Data4: -1278465620
+  Banks:
+  - {fileID: 295523176594350469}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1032
 --- !u!114 &-703337983163542817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,12 +494,13 @@ MonoBehaviour:
   - {fileID: -703337983163542817}
   - {fileID: 656055151977007389}
   - {fileID: 7059067412306437373}
+  - {fileID: -879655683730970734}
   EditorParameters: []
   MasterBanks:
   - {fileID: 295523176594350469}
   StringsBanks:
   - {fileID: 4501806437844525808}
-  cacheTime: 638969299004882225
+  cacheTime: 638970815620131312
   cacheVersion: 131605
 --- !u!114 &295523176594350469
 MonoBehaviour:
@@ -489,10 +517,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638969299004574621
+  lastModified: 638970815619724871
   FileSizes:
   - Name: Desktop
-    Value: 5678176
+    Value: 5681600
   Exists: 1
 --- !u!114 &322569372274337003
 MonoBehaviour:
@@ -727,10 +755,10 @@ MonoBehaviour:
   Path: ../../../../FMODProjekte/Gladiator/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638969299004882225
+  lastModified: 638970815620131312
   FileSizes:
   - Name: Desktop
-    Value: 2106
+    Value: 2154
   Exists: 1
 --- !u!114 &5142774963877048005
 MonoBehaviour:
