@@ -26494,10 +26494,18 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 220421718736133205}
+    - target: {fileID: 6889408424988195959, guid: 60731c1a08508494db767b15f79a08ea, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7054044634190579680, guid: 60731c1a08508494db767b15f79a08ea, type: 3}
       propertyPath: enemy
       value: 
       objectReference: {fileID: 799710474}
+    - target: {fileID: 7236112628052548399, guid: 60731c1a08508494db767b15f79a08ea, type: 3}
+      propertyPath: cooldown
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7508435911589760617, guid: 60731c1a08508494db767b15f79a08ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 76.291

@@ -8,7 +8,11 @@ public class StateMachineEnemy : MonoBehaviour
     [Header("References")]
     public EnemyVision vision;
     [SerializeField] private EnemyCombat combat;
-    public EnemyCombat Combat => combat;
+
+    public EnemyCombat Combat
+    {
+        get { return combat; }
+    }
 
     public Animator animator;
     public CharacterController controller;
@@ -28,14 +32,23 @@ public class StateMachineEnemy : MonoBehaviour
     [HideInInspector] public Vector3 startPosition;
 
     private EnemyState currentState;
-    public EnemyState CurrentState => currentState;
+
+    public EnemyState CurrentState
+    {
+        get { return currentState; }
+    }
 
     private bool isRunning;
-    public bool isTurning;
-    public bool IsBrainDisabled { get; private set; }
+    public bool isTurning = false;
+
+    public bool IsBrainDisabled
+    {
+        get;
+        private set;
+    }
 
     private float turnStartTime;
-    private const float maxTurnDuration = 2f;
+    private float maxTurnDuration = 2f;
 
     [HideInInspector] public bool playerRecentlySeen;
 
@@ -44,28 +57,78 @@ public class StateMachineEnemy : MonoBehaviour
     private Dictionary<string, float> transitionLastTriggerTimes =
         new Dictionary<string, float>();
 
+    // Setup
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
 
         if (vision != null)
+        {
             target = vision.target;
+        }
 
         startPosition = transform.position;
 
         if (initialState != null)
+        {
             SetState(initialState);
+        }
     }
 
     private void Update()
     {
-        if (IsBrainDisabled || currentState == null || combat.IsStunned)
+        if (IsBrainDisabled)
             return;
 
-        if (isTurning && Time.time - turnStartTime > maxTurnDuration)
-            isTurning = false;
+        if (currentState == null)
+            return;
+
+        if (combat != null && combat.IsStunned)
+            return;
+
+        // Drehung absichern
+        if (isTurning)
+        {
+            if (Time.time - turnStartTime > maxTurnDuration)
+            {
+                isTurning = false;
+            }
+        }
 
         currentState.Tick();
+    }
+
+    // State Management
+
+    public void TransitionTo(EnemyState newState)
+    {
+        if (newState == null)
+            return;
+
+        if (isTurning)
+            return;
+
+        if (currentState != null)
+        {
+            if (currentState.name == newState.name)
+                return;
+
+            currentState.Exit();
+        }
+
+        currentState = Instantiate(newState);
+
+        currentState.Initialize(this);
+        currentState.Enter();
+    }
+
+    private void SetState(EnemyState newState)
+    {
+        currentState = Instantiate(newState);
+
+        currentState.Initialize(this);
+        currentState.Enter();
     }
 
     // Transition Cooldowns
@@ -93,37 +156,22 @@ public class StateMachineEnemy : MonoBehaviour
 
     public string BuildTransitionKey(EnemyState fromState, EnemyState toState)
     {
-        string fromName = fromState != null ? fromState.name : "null";
-        string toName = toState != null ? toState.name : "null";
+        string fromName = "null";
+        string toName = "null";
 
-        return gameObject.GetInstanceID() + "_" + fromName + "_to_" + toName;
-    }
+        if (fromState != null)
+        {
+            fromName = fromState.name;
+        }
 
-    // State Management
+        if (toState != null)
+        {
+            toName = toState.name;
+        }
 
-    public void TransitionTo(EnemyState newState)
-    {
-        if (newState == null || isTurning)
-            return;
+        string key = gameObject.GetInstanceID() + "_" + fromName + "_to_" + toName;
 
-        if (currentState != null && currentState.name == newState.name)
-            return;
-
-        if (currentState != null)
-            currentState.Exit();
-
-        currentState = Instantiate(newState);
-
-        currentState.Initialize(this);
-        currentState.Enter();
-    }
-
-    private void SetState(EnemyState newState)
-    {
-        currentState = Instantiate(newState);
-
-        currentState.Initialize(this);
-        currentState.Enter();
+        return key;
     }
 
     // Player Detection
@@ -146,7 +194,7 @@ public class StateMachineEnemy : MonoBehaviour
         Vector3 direction = destination - transform.position;
         direction.y = 0;
 
-        direction = direction.normalized;
+        direction.Normalize();
 
         if (direction.magnitude < 0.1f)
             return;
@@ -167,9 +215,12 @@ public class StateMachineEnemy : MonoBehaviour
         Vector3 moveDirection = retreatTarget - transform.position;
         moveDirection.y = 0;
 
-        moveDirection = moveDirection.normalized;
+        moveDirection.Normalize();
 
         controller.Move(moveDirection * speed * Time.deltaTime);
+
+        if (player == null)
+            return;
 
         Vector3 lookDirection = player.position - transform.position;
         lookDirection.y = 0;
@@ -188,14 +239,17 @@ public class StateMachineEnemy : MonoBehaviour
 
     public void StopMovement()
     {
-        controller.Move(Vector3.zero);
+        if (controller != null)
+        {
+            controller.Move(Vector3.zero);
+        }
     }
 
     // Turning
 
     public bool TryPlayTurnAnimation(Transform target)
     {
-        if (isTurning)
+        if (isTurning || target == null)
             return false;
 
         Vector3 direction = target.position - transform.position;
@@ -212,8 +266,6 @@ public class StateMachineEnemy : MonoBehaviour
         if (angle < 40f)
             return false;
 
-        string animationName;
-
         float directionAngle = Vector3.SignedAngle(
             transform.forward,
             direction,
@@ -222,14 +274,36 @@ public class StateMachineEnemy : MonoBehaviour
 
         bool playerIsOnRight = directionAngle > 0f;
 
+        string animationName;
+
         if (angle < 67.5f)
-            animationName = playerIsOnRight ? "Turn_Right_45" : "Turn_Left_45";
+        {
+            if (playerIsOnRight)
+                animationName = "Turn_Right_45";
+            else
+                animationName = "Turn_Left_45";
+        }
         else if (angle < 112.5f)
-            animationName = playerIsOnRight ? "Turn_Right_90" : "Turn_Left_90";
+        {
+            if (playerIsOnRight)
+                animationName = "Turn_Right_90";
+            else
+                animationName = "Turn_Left_90";
+        }
         else if (angle < 157.5f)
-            animationName = playerIsOnRight ? "Turn_Right_135" : "Turn_Left_135";
+        {
+            if (playerIsOnRight)
+                animationName = "Turn_Right_135";
+            else
+                animationName = "Turn_Left_135";
+        }
         else
-            animationName = playerIsOnRight ? "Turn_Right_180" : "Turn_Left_180";
+        {
+            if (playerIsOnRight)
+                animationName = "Turn_Right_180";
+            else
+                animationName = "Turn_Left_180";
+        }
 
         animator.SetTrigger(animationName);
 
@@ -252,13 +326,16 @@ public class StateMachineEnemy : MonoBehaviour
             return;
 
         isRunning = running;
+
         animator.SetBool("IsRunning", running);
     }
 
-    internal void PlayIdleAnimation()
+    public void PlayIdleAnimation()
     {
         animator.SetBool("IsRunning", false);
         animator.SetBool("IsWalking", false);
+
+        isRunning = false;
     }
 
     // Disable State Machine
@@ -266,7 +343,9 @@ public class StateMachineEnemy : MonoBehaviour
     public void TemporarilyDisableFSM(float duration)
     {
         if (gameObject.activeInHierarchy)
+        {
             StartCoroutine(DisableFSMBrain(duration));
+        }
     }
 
     private IEnumerator DisableFSMBrain(float duration)

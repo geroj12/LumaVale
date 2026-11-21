@@ -1,15 +1,12 @@
-
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     [Header("Setup")]
     [SerializeField] private Animator animator;
     [SerializeField] private EnemyHealth enemyHealth;
     [SerializeField] private StateMachineEnemy statemachine;
     [SerializeField] private CharacterController controller;
-
 
     [Header("Equipment")]
     [SerializeField] private GameObject swordObject;
@@ -31,6 +28,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Physics")]
     [SerializeField] private float gravity = 9.81f;
+
     private Vector3 velocity;
 
     // Internal State
@@ -39,49 +37,74 @@ public class Enemy : MonoBehaviour
     private Collider[] ragdollColliders;
 
 
-    void Awake()
+    private void Awake()
     {
-        if (!enemyHealth)
+        if (enemyHealth == null)
+        {
             enemyHealth = GetComponent<EnemyHealth>();
+        }
 
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>(true);
         ragdollColliders = GetComponentsInChildren<Collider>(true);
 
-        foreach (var rb in ragdollRigidbodies)
-            rb.isKinematic = true;
-
-    }
-    void Start()
-    {
-        player = FindFirstObjectByType<Player>();
-
-        // Event subscriptions
-        enemyHealth.OnDamaged += HandleDamage;
-        enemyHealth.OnDeath += HandleDeath;
-        enemyHealth.OnShieldBreak += HandleShieldBreak;
-        enemyHealth.OnShieldImpact += HandleShieldImpact;
-
-    }
-
-    void Update()
-    {
-        if (enemyHealth.IsDead)
+        foreach (Rigidbody rb in ragdollRigidbodies)
         {
-            controller.enabled = false;
+            rb.isKinematic = true;
         }
     }
 
-    void FixedUpdate()
+
+    private void Start()
+    {
+        player = FindFirstObjectByType<Player>();
+
+        if (enemyHealth != null)
+        {
+            enemyHealth.OnDamaged += HandleDamage;
+            enemyHealth.OnDeath += HandleDeath;
+            enemyHealth.OnShieldBreak += HandleShieldBreak;
+            enemyHealth.OnShieldImpact += HandleShieldImpact;
+        }
+    }
+
+
+    private void Update()
+    {
+        if (enemyHealth == null)
+        {
+            return;
+        }
+
+        if (enemyHealth.IsDead)
+        {
+            if (controller != null)
+            {
+                controller.enabled = false;
+            }
+        }
+    }
+
+
+    private void FixedUpdate()
     {
         ApplyGravity();
     }
 
 
+    // ------------------------------
+    // DAMAGE & DEATH
+    // ------------------------------
+
     private void HandleDamage(float amount)
     {
-        if (enemyHealth.IsDead) return;
+        if (enemyHealth.IsDead)
+        {
+            return;
+        }
+
         ShowDamageText(amount);
     }
+
 
     private void HandleDeath()
     {
@@ -89,19 +112,25 @@ public class Enemy : MonoBehaviour
         {
             EnableRagdoll();
             SpawnRandomBloodEmitter(finisherBloodEmitters);
-
         }
     }
 
 
     private void HandleShieldImpact()
     {
-        animator.SetTrigger("ShieldImpact");
+        if (animator != null)
+        {
+            animator.SetTrigger("ShieldImpact");
+        }
     }
+
+
     private void HandleShieldBreak()
     {
         if (shieldBreakVFX != null)
+        {
             shieldBreakVFX.Play();
+        }
 
         if (shieldObject != null)
         {
@@ -110,17 +139,33 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
     // ------------------------------
     // VISUALS
     // ------------------------------
+
     private void ShowDamageText(float amount)
     {
-        if (!damageTextPrefab || !damageTextSpawnPoint) return;
+        if (damageTextPrefab == null || damageTextSpawnPoint == null)
+        {
+            return;
+        }
 
-        var go = Instantiate(damageTextPrefab, damageTextSpawnPoint.position, Quaternion.identity, damageCanvasTransform);
-        if (go.TryGetComponent(out DamageText dmg))
-            dmg.ShowDamage(amount, Color.white);
+        GameObject damageTextObject = Instantiate(
+            damageTextPrefab,
+            damageTextSpawnPoint.position,
+            Quaternion.identity,
+            damageCanvasTransform
+        );
+
+        DamageText damageText = damageTextObject.GetComponent<DamageText>();
+
+        if (damageText != null)
+        {
+            damageText.ShowDamage(amount, Color.white);
+        }
     }
+
 
     public void StartBloodEffect()
     {
@@ -128,56 +173,106 @@ public class Enemy : MonoBehaviour
         SpawnRandomBloodEmitter(smallBloodEmitters);
     }
 
+
     public void StartFinisherBloodEffect()
     {
         DeactivateBloodDecal();
         SpawnRandomBloodEmitter(finisherBloodEmitters);
     }
 
+
     private void SpawnRandomBloodEmitter(GameObject[] pool)
     {
-        if (pool == null || pool.Length == 0) return;
+        if (pool == null || pool.Length == 0)
+        {
+            return;
+        }
 
         Transform spawnPoint = transform.Find("BloodPoint");
-        if (!spawnPoint) return;
+
+        if (spawnPoint == null)
+        {
+            return;
+        }
 
         int index = Random.Range(0, pool.Length);
-        Instantiate(pool[index], spawnPoint.position, spawnPoint.rotation);
+
+        Instantiate(
+            pool[index],
+            spawnPoint.position,
+            spawnPoint.rotation
+        );
+
         ActivateBloodDecal();
     }
 
-    private void ActivateBloodDecal() => attachedBloodDecals?.SetActive(true);
-    private void DeactivateBloodDecal() => attachedBloodDecals?.SetActive(false);
+
+    private void ActivateBloodDecal()
+    {
+        if (attachedBloodDecals != null)
+        {
+            attachedBloodDecals.SetActive(true);
+        }
+    }
+
+
+    private void DeactivateBloodDecal()
+    {
+        if (attachedBloodDecals != null)
+        {
+            attachedBloodDecals.SetActive(false);
+        }
+    }
+
 
     // ------------------------------
     // FINISHER
     // ------------------------------
+
     public void StartFinisher(string trigger)
     {
-        if (enemyHealth.IsDead) return;
+        if (enemyHealth.IsDead)
+        {
+            return;
+        }
 
         InterruptAnimations();
-        statemachine?.TemporarilyDisableFSM(1f);
+
+        if (statemachine != null)
+        {
+            statemachine.TemporarilyDisableFSM(1f);
+        }
 
         isFatalFinisher = enemyHealth.HealthPercent <= fatalFinisherThreshold;
 
-        animator.SetTrigger(trigger);
+        if (animator != null)
+        {
+            animator.SetTrigger(trigger);
+        }
     }
+
 
     // ------------------------------
     // COMBAT & ANIMATION CONTROL
     // ------------------------------
+
     public void InterruptAttack()
     {
         InterruptAnimations();
 
-        animator.SetTrigger("HitBlocked");
+        if (animator != null)
+        {
+            animator.SetTrigger("HitBlocked");
+        }
     }
+
 
     public void InterruptAnimations()
     {
-        if (!animator)
+        if (animator == null)
+        {
             return;
+        }
 
         // Angriffs-Trigger zurücksetzen
         animator.ResetTrigger("Attack_Left");
@@ -201,37 +296,70 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
     public void PlayHitReaction(Vector3 attackerPosition)
     {
-        if (enemyHealth.IsDead) return;
-        InterruptAnimations();
-        Vector3 toAttacker = (attackerPosition - transform.position).normalized;
-        toAttacker.y = 0;
+        if (enemyHealth.IsDead)
+        {
+            return;
+        }
 
-        float angle = Vector3.SignedAngle(transform.forward, toAttacker, Vector3.up);
-        string trigger = Mathf.Abs(angle) <= 90f ? "HitFront" : "HitBack";
+        InterruptAnimations();
+
+        Vector3 toAttacker = attackerPosition - transform.position;
+        toAttacker.Normalize();
+        toAttacker.y = 0f;
+
+        float angle = Vector3.SignedAngle(
+            transform.forward,
+            toAttacker,
+            Vector3.up
+        );
+
+        string trigger = "HitFront";
+
+        if (Mathf.Abs(angle) > 90f)
+        {
+            trigger = "HitBack";
+        }
+
         animator.SetTrigger(trigger);
     }
+
 
     // ------------------------------
     // RAGDOLL
     // ------------------------------
+
     public void EnableRagdoll()
     {
         DropWeapons();
-        animator.enabled = false;
+
+        if (animator != null)
+        {
+            animator.enabled = false;
+        }
+
         enemyHealth.currentHP = 0f;
-        statemachine.enabled = false;
-        foreach (var rb in ragdollRigidbodies)
+
+        if (statemachine != null)
+        {
+            statemachine.enabled = false;
+        }
+
+        foreach (Rigidbody rb in ragdollRigidbodies)
         {
             rb.isKinematic = false;
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
 
-        foreach (var col in ragdollColliders)
+        foreach (Collider col in ragdollColliders)
+        {
             col.enabled = true;
+        }
     }
+
 
     private void DropWeapons()
     {
@@ -239,29 +367,58 @@ public class Enemy : MonoBehaviour
         ApplyPhysics(shieldObject);
     }
 
+
     private void ApplyPhysics(GameObject obj)
     {
-        if (!obj) return;
+        if (obj == null)
+        {
+            return;
+        }
 
         obj.transform.SetParent(null);
-        if (obj.TryGetComponent(out Rigidbody rb))
+
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+
+        if (rb != null)
         {
             rb.isKinematic = false;
             rb.useGravity = true;
         }
-        if (obj.TryGetComponent(out Collider col))
+
+        Collider col = obj.GetComponent<Collider>();
+
+        if (col != null)
+        {
             col.isTrigger = false;
+        }
     }
+
 
     // ------------------------------
     // MOVEMENT / GRAVITY
     // ------------------------------
+
     private void ApplyGravity()
     {
-        if (enemyHealth.IsDead) return;
+        if (enemyHealth == null || enemyHealth.IsDead)
+        {
+            return;
+        }
 
-        velocity.y = controller.isGrounded ? -1f : velocity.y - gravity * Time.deltaTime;
+        if (controller == null || !controller.enabled)
+        {
+            return;
+        }
+
+        if (controller.isGrounded)
+        {
+            velocity.y = -1f;
+        }
+        else
+        {
+            velocity.y -= gravity * Time.deltaTime;
+        }
+
         controller.Move(velocity * Time.deltaTime);
     }
-
 }
