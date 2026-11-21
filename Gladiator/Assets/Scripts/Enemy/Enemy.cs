@@ -176,19 +176,29 @@ public class Enemy : MonoBehaviour
 
     public void InterruptAnimations()
     {
-        if (!animator) return;
+        if (!animator)
+            return;
 
-        string[] triggers = { "Attack_Left", "Attack_Right", "Attack_Overhead" };
-        foreach (string t in triggers)
-            animator.ResetTrigger(t);
+        // Angriffs-Trigger zurücksetzen
+        animator.ResetTrigger("Attack_Left");
+        animator.ResetTrigger("Attack_Right");
+        animator.ResetTrigger("Attack_Overhead");
 
+        // Bewegungs-Animationen stoppen
         animator.SetBool("IsWalking", false);
         animator.SetBool("IsRunning", false);
         animator.SetBool("InvestigateWalk", false);
         animator.SetBool("isRetreating", false);
         animator.SetBool("DoAttack", false);
 
-        animator.Play("Empty", 0);
+        // Attack-Layer finden
+        int attackLayer = animator.GetLayerIndex("Attack");
+
+        // Attack-Animation abbrechen
+        if (attackLayer != -1)
+        {
+            animator.Play("Empty", attackLayer, 0f);
+        }
     }
 
     public void PlayHitReaction(Vector3 attackerPosition)
