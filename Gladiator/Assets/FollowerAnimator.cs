@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class FollowerAnimator : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
+    
     private static readonly int IsMoving = Animator.StringToHash("isFlying");
 
     void Awake()

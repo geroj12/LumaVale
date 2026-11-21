@@ -16128,6 +16128,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cca5509b7c2c34fa8af39b8533c9bb, type: 3}
+--- !u!4 &1382237340 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2093193133332738919, guid: 0edfbc8737fa5d24985236ec859c5167, type: 3}
+  m_PrefabInstance: {fileID: 948493720432760981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1416871268
 GameObject:
   m_ObjectHideFlags: 0
@@ -24548,10 +24553,6 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1504547922892341697, guid: 0edfbc8737fa5d24985236ec859c5167, type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 6387544374596726332}
-    - target: {fileID: 1504547922892341697, guid: 0edfbc8737fa5d24985236ec859c5167, type: 3}
       propertyPath: followerHandler
       value: 
       objectReference: {fileID: 2100920613}
@@ -24563,6 +24564,14 @@ PrefabInstance:
       propertyPath: damageCanvasTransform
       value: 
       objectReference: {fileID: 680024683}
+    - target: {fileID: 2093193133332738919, guid: 0edfbc8737fa5d24985236ec859c5167, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093193133332738919, guid: 0edfbc8737fa5d24985236ec859c5167, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 5713730903669306296, guid: 0edfbc8737fa5d24985236ec859c5167, type: 3}
       propertyPath: m_LocalPosition.x
       value: 69.7
@@ -26465,10 +26474,6 @@ PrefabInstance:
     - target: {fileID: 3153353813994310422, guid: 60731c1a08508494db767b15f79a08ea, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3654868095994196414, guid: 60731c1a08508494db767b15f79a08ea, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6126281212514215949, guid: 60731c1a08508494db767b15f79a08ea, type: 3}
       propertyPath: music
@@ -31800,11 +31805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c6be16609107a42a2ec6a95c3b5675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!143 &6387544374596726332 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 7469431799507616603, guid: 0edfbc8737fa5d24985236ec859c5167, type: 3}
-  m_PrefabInstance: {fileID: 948493720432760981}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6412422398834863836
 Transform:
   m_ObjectHideFlags: 0
@@ -37445,6 +37445,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4065926962499526944}
+    - target: {fileID: 8674429191948738886, guid: dba5e432baeab894ab2481707024c57c, type: 3}
+      propertyPath: pocketAnchor
+      value: 
+      objectReference: {fileID: 1382237340}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

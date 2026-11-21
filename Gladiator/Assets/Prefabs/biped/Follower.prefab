@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8873498043242569205}
   - component: {fileID: 5293435527500717745}
   m_Layer: 0
-  m_Name: '?'
+  m_Name: '!'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.768
+      scalar: 0.56
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -340,7 +340,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.1520001
+      scalar: 0.84000003
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -393,7 +393,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.96
+      scalar: 0.7
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1608,7 +1608,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300056, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+    - sprite: {fileID: 21300000, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4946,7 +4946,7 @@ ParticleSystemRenderer:
   m_NormalDirection: 1
   m_ShadowBias: -0.5
   m_RenderAlignment: 0
-  m_Pivot: {x: -0.0625, y: 0, z: 0}
+  m_Pivot: {x: -0.31428573, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 1
@@ -10073,10 +10073,13 @@ MonoBehaviour:
   vision: {fileID: 3410053558072356173}
   followerAnimator: {fileID: 1100644471021116791}
   stateParticles: {fileID: 8210923934489372598}
-  followRadius: 1.5
-  moveSpeed: 3
+  pocketAnchor: {fileID: 0}
+  followRadius: 2
+  moveSpeed: 5
   baseOrbitSpeed: 30
   orbitBoostMultiplier: 10
+  pocketMoveSpeed: 0.5
+  shrinkDuration: 3
 --- !u!114 &7679592366034055602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10116,6 +10119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676d4f0f675a35f4c9f2e65494dab21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4732309059685821525}
 --- !u!114 &7319543378131768633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10206,7 +10210,7 @@ Transform:
   m_GameObject: {fileID: 2284495010793683575}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.19, z: 0}
+  m_LocalPosition: {x: -2.12, y: 2.19, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15082,7 +15086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDynamic: 0
-  text: '?'
+  text: '!'
   size: 1
   letterSpacing: 0.35
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
@@ -15217,7 +15221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dce3d3f74170534bae431d4ad822da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewDistance: 5
+  viewDistance: 7
   viewAngle: 360
   obstacleMask:
     serializedVersion: 2
@@ -15363,8 +15367,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7370342009139647152}
   - component: {fileID: 7813233881887488682}
-  - component: {fileID: 3419751803480588043}
   - component: {fileID: 5948861691956235937}
+  - component: {fileID: 3419751803480588043}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -15394,7 +15398,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3649644646691001394}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
   m_Name: 
@@ -15430,6 +15434,25 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &5948861691956235937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3649644646691001394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b617507da6d07e749b7efdb34e1173e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrackerSettings:
+    BindingMode: 4
+    PositionDamping: {x: 1, y: 1, z: 1}
+    AngularDampingMode: 0
+    RotationDamping: {x: 1, y: 1, z: 1}
+    QuaternionDamping: 1
+  FollowOffset: {x: 0, y: 0, z: -10}
 --- !u!114 &3419751803480588043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15459,25 +15482,6 @@ MonoBehaviour:
     Time: 0.122
     Smoothing: 0
     IgnoreY: 0
---- !u!114 &5948861691956235937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649644646691001394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b617507da6d07e749b7efdb34e1173e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrackerSettings:
-    BindingMode: 4
-    PositionDamping: {x: 1, y: 1, z: 1}
-    AngularDampingMode: 0
-    RotationDamping: {x: 1, y: 1, z: 1}
-    QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 0, z: -10}
 --- !u!1 &7063311739784621107
 GameObject:
   m_ObjectHideFlags: 0
@@ -15856,8 +15860,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 6
-      minScalar: 4
+      scalar: 4
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
