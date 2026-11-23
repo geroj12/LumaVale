@@ -22,7 +22,7 @@ public class EnemyCombat : MonoBehaviour
     private bool isDodging;
     private bool isDodgingFinished;
 
-     public bool IsAttacking
+    public bool IsAttacking
     {
         get { return isAttacking; }
     }
@@ -37,7 +37,7 @@ public class EnemyCombat : MonoBehaviour
         get { return isStunned; }
     }
 
-     public bool IsDodging
+    public bool IsDodging
     {
         get { return isDodging; }
     }
@@ -76,7 +76,7 @@ public class EnemyCombat : MonoBehaviour
             counterWindow = GetComponent<EnemyCounterWindow>();
     }
 
-  public void TelegraphAttackUI()
+    public void TelegraphAttackUI()
     {
         if (counterWindow != null)
         {
@@ -105,15 +105,14 @@ public class EnemyCombat : MonoBehaviour
     }
 
 
-    private IEnumerator ResetAttackFlag()
+    public void ResetAttackFinished()
     {
-        yield return new WaitForSeconds(1f);
         isAttackFinished = false;
     }
 
     private void HandleCounterTriggered()
     {
-         animator.SetTrigger("Countered");
+        animator.SetTrigger("Countered");
 
         if (stateMachine != null)
         {
@@ -123,7 +122,7 @@ public class EnemyCombat : MonoBehaviour
 
     public void TryCounterPlayerAttack()
     {
-           if (counterWindow == null)
+        if (counterWindow == null)
             return;
 
         if (counterWindow.IsActive || counterWindow.IsOnCooldown)
@@ -141,7 +140,7 @@ public class EnemyCombat : MonoBehaviour
     #region Animation Event Functions
     public void StartAttack()
     {
-       isAttacking = true;
+        isAttacking = true;
 
         if (weapon != null)
         {
@@ -152,7 +151,7 @@ public class EnemyCombat : MonoBehaviour
 
     public void EndAttack()
     {
-       isAttacking = false;
+        isAttacking = false;
 
         if (weapon != null)
         {
@@ -173,7 +172,6 @@ public class EnemyCombat : MonoBehaviour
     public void AttackFinished()
     {
         isAttackFinished = true;
-        StartCoroutine(ResetAttackFlag());
 
     }
     public void IsStunnedFinished()

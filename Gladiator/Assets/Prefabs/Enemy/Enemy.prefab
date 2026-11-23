@@ -1669,7 +1669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c87873379b71e4298a87b3202581ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 55
+  damage: 20
   enemy: {fileID: 8224715882379992504}
   weaponTrail: {fileID: 8643825436420442095}
 --- !u!1 &2043685965492384759
@@ -2528,6 +2528,7 @@ MonoBehaviour:
   animator: {fileID: 2112815609286597533}
   counterWindow: {fileID: 7236112628052548399}
   stateMachine: {fileID: 8141373866715825119}
+  enemy: {fileID: 8224715882379992504}
   counterChance: 0.25
   stunDuration: 2
 --- !u!114 &7236112628052548399
@@ -2543,7 +2544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeDuration: 1.2
-  cooldown: 5
+  cooldown: 8
 --- !u!1 &3234347445268322188
 GameObject:
   m_ObjectHideFlags: 0

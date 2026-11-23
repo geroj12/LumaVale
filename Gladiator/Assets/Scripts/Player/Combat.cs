@@ -200,6 +200,7 @@ public class Combat : MonoBehaviour
         weaponDamage?.DisableDamage();
     }
 
+
     public void UpdateWeaponDamage(PlayerWeapon newDamage) => weaponDamage = newDamage;
 
     public IEnumerator ResetAttackBools()

@@ -1,106 +1,70 @@
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Enemy Decisions/Combat Decision")]
 public class CombatDecision : ScriptableObject
 {
-
-    [Header("General Settings")]
+    [Header("Settings")]
     [SerializeField] private float attackRange = 2f;
 
-    [System.Serializable]
-    public class ActionOption
-    {
-        public string name;
-        [Range(0, 10)] public int baseWeight = 1;
-        public float cooldown = 2f;
-        public EnemyState targetState; // auf welchen State soll gewechselt werden?
+    [Header("Action States")]
+    [SerializeField] private EnemyState attackState;
+    [SerializeField] private EnemyState blockState;
+    [SerializeField] private EnemyState dodgeState;
 
-        [HideInInspector] public float nextAvailableTime;
-        [HideInInspector] public int currentWeight;
-    }
+    [Header("Action Chances")]
+    [Range(0, 100)]
+    [SerializeField] private int attackChance = 60;
 
-    [Header("Action Options")]
-    [SerializeField] private List<ActionOption> actions = new List<ActionOption>();
+    [Range(0, 100)]
+    [SerializeField] private int blockChance = 25;
 
-    /// <summary>
-    /// Evaluates combat logic and triggers a weighted random action.
-    /// </summary>
+    [Range(0, 100)]
+    [SerializeField] private int dodgeChance = 15;
+
+
     public void Evaluate(StateMachineEnemy enemy)
     {
-        float currentTime = Time.time;
-        float distance = Vector3.Distance(enemy.transform.position, enemy.target.position);
+        if (enemy == null || enemy.target == null)
+        {
+            return;
+        }
 
-        // Wenn Spieler zu weit weg ist → Chase
-        if (distance > attackRange + 0.5f)
+        float distance = Vector3.Distance(
+            enemy.transform.position,
+            enemy.target.position
+        );
+
+        // Spieler ist zu weit entfernt
+        if (distance > attackRange)
         {
             enemy.TransitionTo(enemy.chaseState);
             return;
         }
 
-        // Gewichtung vorbereiten
-        foreach (var action in actions)
-            action.currentWeight = action.baseWeight;
+        // Zufällige Aktion auswählen
+        int randomNumber = Random.Range(0, 100);
 
-        // Dynamische Gewichtsanpassung
-        AdjustWeightsBasedOnDistance(distance);
-
-        // Nur verfügbare Aktionen berücksichtigen
-        var availableActions = actions
-            .Where(a => currentTime >= a.nextAvailableTime && a.currentWeight > 0 && a.targetState != null)
-            .ToList();
-
-        if (availableActions.Count == 0)
+        if (randomNumber < attackChance)
         {
-            enemy.PlayIdleAnimation();
-            return;
-        }
-
-        // Gewichtete Zufallsauswahl
-        int totalWeight = availableActions.Sum(a => a.currentWeight);
-        int roll = Random.Range(0, totalWeight);
-
-        int cumulative = 0;
-        foreach (var action in availableActions)
-        {
-            cumulative += action.currentWeight;
-            if (roll < cumulative)
+            if (attackState != null)
             {
-                // Wechsle zum Ziel-State
-                enemy.TransitionTo(action.targetState);
-                action.nextAvailableTime = currentTime + action.cooldown;
-                return;
+                enemy.TransitionTo(attackState);
             }
         }
-    }
-
-    private void AdjustWeightsBasedOnDistance(float distance)
-    {
-        // Beispielhafte Logik
-        foreach (var a in actions)
-            a.currentWeight = a.baseWeight;
-
-        // Enger Nahkampf
-        if (distance < 1.2f)
+        else if (randomNumber < attackChance + blockChance)
         {
-            var dodge = actions.FirstOrDefault(a => a.name.ToLower().Contains("Dodge"));
-            var block = actions.FirstOrDefault(a => a.name.ToLower().Contains("Block"));
-            if (dodge != null) dodge.currentWeight += 3;
-            if (block != null) block.currentWeight += 2;
+            if (blockState != null)
+            {
+                enemy.TransitionTo(blockState);
+            }
         }
-        // Mittel-Distanz
-        else if (distance < 2.5f)
-        {
-            var attack = actions.FirstOrDefault(a => a.name.ToLower().Contains("Attack"));
-            if (attack != null) attack.currentWeight += 4;
-        }
-        // Weit weg
         else
         {
-            var retreat = actions.FirstOrDefault(a => a.name.ToLower().Contains("Retreat"));
-            if (retreat != null) retreat.currentWeight += 3;
+            if (dodgeState != null)
+            {
+                enemy.TransitionTo(dodgeState);
+            }
         }
     }
 }

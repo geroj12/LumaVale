@@ -11,6 +11,7 @@ public class State : MonoBehaviour
     public bool canMove = false;
     public bool isDead = false;
 
+
     [Header("Energy & Combat")]
     public float strength = 1f;
     public float currentEnergy = 100f;
@@ -48,4 +49,5 @@ public class State : MonoBehaviour
         attackUp = false;
 
     }
+   
 }
