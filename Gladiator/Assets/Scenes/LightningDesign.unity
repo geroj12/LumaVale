@@ -24564,6 +24564,10 @@ PrefabInstance:
       propertyPath: damageCanvasTransform
       value: 
       objectReference: {fileID: 680024683}
+    - target: {fileID: 4498160057620645808, guid: 0edfbc8737fa5d24985236ec859c5167, type: 3}
+      propertyPath: baseDamage
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5713730903669306296, guid: 0edfbc8737fa5d24985236ec859c5167, type: 3}
       propertyPath: m_LocalPosition.x
       value: 69.7

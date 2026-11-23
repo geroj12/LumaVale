@@ -269,6 +269,7 @@ AudioMixerController:
     - 956f3ad897bd9294599bdc7c97db0ed9
     - d4dbd9bc7ff089747ad354743bac6625
     - c136f9df3da928143bda924d1b006720
+    - 6eb37a1c0602165449dc8f8ac8c492b2
     - d6a07e5999dab5d41bfd9d9361446ff5
     - 80e6ddac8f8c21343a260b3228711fda
     - e876f1c51ab53674f8c6d46419071b13
@@ -279,7 +280,6 @@ AudioMixerController:
     - e9d2532e520e0774daa4716b7e4b054a
     - 723c2f0cac2882447a478e2409851571
     - a09168b79bd59ba46b474e2e4a00f277
-    - 6eb37a1c0602165449dc8f8ac8c492b2
     - c99392dffd3e47b4aa0f98ed24e291dd
     name: View
   m_CurrentViewIndex: 0

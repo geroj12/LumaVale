@@ -151,3 +151,4 @@
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='body-fall-47877', format=5, channels=2, frequency=48000, lengthbytes=18016, lengthpcm=88704, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.783051.
 [LOG] SoundI::release                          :  (0000028F504FFA28)
 [LOG] SoundI::release                          :     body-fall-47877 (0000028A2CCB7208)
+[ERR] assert                                   : assertion: 'gSystemInitCount == 0' failed
