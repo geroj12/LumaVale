@@ -20,13 +20,8 @@ public class StateMachineEnemy : MonoBehaviour
     [Header("States")]
     public EnemyState initialState;
     public EnemyState chaseState;
-    public EnemyState attackState;
-    public EnemyState investigateState;
     public EnemyState returnState;
-    public EnemyState blockState;
-    public EnemyState dodgeState;
     public EnemyState combatIdleState;
-    public EnemyState combatRetreatState;
 
     [HideInInspector] public Transform target;
     [HideInInspector] public Vector3 startPosition;
@@ -98,8 +93,6 @@ public class StateMachineEnemy : MonoBehaviour
 
         currentState.Tick();
     }
-
-    // State Management
 
     public void TransitionTo(EnemyState newState)
     {
@@ -210,33 +203,6 @@ public class StateMachineEnemy : MonoBehaviour
         controller.Move(direction * speed * Time.deltaTime);
     }
 
-    public void RetreatMove(Vector3 retreatTarget, float speed, Transform player)
-    {
-        Vector3 moveDirection = retreatTarget - transform.position;
-        moveDirection.y = 0;
-
-        moveDirection.Normalize();
-
-        controller.Move(moveDirection * speed * Time.deltaTime);
-
-        if (player == null)
-            return;
-
-        Vector3 lookDirection = player.position - transform.position;
-        lookDirection.y = 0;
-
-        if (lookDirection.sqrMagnitude > 0.001f)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation,
-                targetRotation,
-                10f * Time.deltaTime
-            );
-        }
-    }
-
     public void StopMovement()
     {
         if (controller != null)
@@ -244,8 +210,6 @@ public class StateMachineEnemy : MonoBehaviour
             controller.Move(Vector3.zero);
         }
     }
-
-    // Turning
 
     public bool TryPlayTurnAnimation(Transform target)
     {
@@ -313,13 +277,6 @@ public class StateMachineEnemy : MonoBehaviour
         return true;
     }
 
-    public void TurnFinished()
-    {
-        isTurning = false;
-    }
-
-    // Animations
-
     public void SetRunning(bool running)
     {
         if (isRunning == running)
@@ -329,16 +286,6 @@ public class StateMachineEnemy : MonoBehaviour
 
         animator.SetBool("IsRunning", running);
     }
-
-    public void PlayIdleAnimation()
-    {
-        animator.SetBool("IsRunning", false);
-        animator.SetBool("IsWalking", false);
-
-        isRunning = false;
-    }
-
-    // Disable State Machine
 
     public void TemporarilyDisableFSM(float duration)
     {
@@ -356,4 +303,18 @@ public class StateMachineEnemy : MonoBehaviour
 
         IsBrainDisabled = false;
     }
+    public void ResetCombatTriggers()
+    {
+        animator.ResetTrigger("Attack_Right");
+        animator.ResetTrigger("Attack_Left");
+        animator.ResetTrigger("Attack_Overhead");
+
+        animator.ResetTrigger("BlockRight");
+        animator.ResetTrigger("BlockLeft");
+
+        animator.ResetTrigger("DodgeLeft");
+        animator.ResetTrigger("DodgeRight");
+        animator.ResetTrigger("DodgeBack");
+    }
+
 }

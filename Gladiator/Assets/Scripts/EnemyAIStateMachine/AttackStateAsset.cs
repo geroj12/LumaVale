@@ -6,8 +6,7 @@ public class AttackStateAsset : EnemyState
 {
     public override void Enter()
     {
-        enemy.Combat.ResetAttackFinished();
-
+        enemy.ResetCombatTriggers();
         int index = Random.Range(0, 3);
 
         string trigger = "Attack_Overhead";

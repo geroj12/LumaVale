@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "EnemyStates/Combat/Dodge")]
@@ -11,33 +12,41 @@ public class EnemyCombatDodgeState : EnemyState
 
     public override void Enter()
     {
+        enemy.ResetCombatTriggers();
         exitTime = Time.time + dodgeDuration;
 
-        // Zufällige Richtung: links, rechts, rückwärts
         int dir = Random.Range(0, 3);
-        switch (dir)
+
+        if (dir == 0)
         {
-            case 0:
-                dodgeDirection = -enemy.transform.right; enemy.animator.SetTrigger("DodgeLeft");
-                break; 
-            case 1:
-                dodgeDirection = enemy.transform.right; enemy.animator.SetTrigger("DodgeRight");
-                break;  
-            default: dodgeDirection = -enemy.transform.forward; enemy.animator.SetTrigger("DodgeBack"); break; 
+            dodgeDirection = -enemy.transform.right;
+            enemy.animator.SetTrigger("DodgeLeft");
+        }
+        else if (dir == 1)
+        {
+            dodgeDirection = enemy.transform.right;
+            enemy.animator.SetTrigger("DodgeRight");
+        }
+        else
+        {
+            dodgeDirection = -enemy.transform.forward;
+            enemy.animator.SetTrigger("DodgeBack");
         }
 
-
-        // sofort ein kleines Stück bewegen
-        enemy.controller.Move(dodgeDirection * dodgeDistance * Time.deltaTime);
+        enemy.controller.Move(
+            dodgeDirection * dodgeDistance * Time.deltaTime
+        );
     }
 
     public override void Tick()
     {
-       
+        if (Time.time >= exitTime)
+        {
+            enemy.TransitionTo(enemy.combatIdleState);
+        }
     }
 
     public override void Exit()
     {
-        // Optionales Aufräumen
     }
 }

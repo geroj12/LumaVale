@@ -21,7 +21,7 @@ public class EnemyCombatIdleState : EnemyState
     public override void Tick()
     {
 
-        if (!enemy.target || enemy.isTurning)
+        if (enemy.target == null || enemy.isTurning)
             return;
 
         if (enemy.TryPlayTurnAnimation(enemy.target))
@@ -30,12 +30,20 @@ public class EnemyCombatIdleState : EnemyState
         if (Time.time < nextDecisionTime)
             return;
 
-        // interne Entscheidungslogik
-        decisionLogic?.Evaluate(enemy);
+        EnemyState stateBeforeDecision = enemy.CurrentState;
+
+        if (decisionLogic != null)
+        {
+            decisionLogic.Evaluate(enemy);
+        }
+
         ScheduleNextDecision();
 
-        // Transitions prüfen
-        base.Tick();
+        // Nur Transitions prüfen, wenn Evaluate keinen Zustandswechsel ausgelöst hat
+        if (enemy.CurrentState == stateBeforeDecision)
+        {
+            base.Tick();
+        }
     }
 
     private void ScheduleNextDecision()

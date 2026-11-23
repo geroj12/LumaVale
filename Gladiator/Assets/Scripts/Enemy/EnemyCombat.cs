@@ -105,11 +105,6 @@ public class EnemyCombat : MonoBehaviour
     }
 
 
-    public void ResetAttackFinished()
-    {
-        isAttackFinished = false;
-    }
-
     private void HandleCounterTriggered()
     {
         animator.SetTrigger("Countered");
